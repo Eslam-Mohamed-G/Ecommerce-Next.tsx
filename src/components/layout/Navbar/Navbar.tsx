@@ -21,7 +21,7 @@ export default function Navbar() {
                     </Link>
 
                     {/* Navigation Links */}
-                    <ul className={`absolute md:relative top-full left-0 right-0 z-50 border ${isNavOpen ? "bg-slate-400/30 h-[340px] p-4 shadow" : "h-0"} flex flex-col md:flex-row gap-8 md:bg-transparent md:h-fit md:p-0 md:py-4 md:shadow-none overflow-hidden transition-all ease-in-out duration-300`}>
+                    <ul className={`absolute md:relative top-full left-0 right-0 z-50 ${isNavOpen ? "bg-slate-400/30 h-[340px] p-4 shadow" : "h-0"} flex flex-col md:flex-row gap-8 md:bg-transparent md:h-fit md:p-0 md:py-4 md:shadow-none overflow-hidden transition-all ease-in-out duration-300`}>
                         <li>
                             <Link href="/products" className={pathName === "/products" ? "border-b-2 border-borderColor pb-px" : ""}>
                                 Products
