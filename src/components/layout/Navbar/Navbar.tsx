@@ -1,10 +1,12 @@
 "use client";
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 import React, { useState } from 'react'
 
 export default function Navbar() {
     const [isNavOpen, setIsNavOpen] = useState(false);
+    const pathName = usePathname();
     return (
         <header>
             <nav className='border-b border-borderColor relative'>
@@ -12,32 +14,41 @@ export default function Navbar() {
                     <p className='text-xs font-normal text-center'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <span className='underline decoration-primaryBackground font-semibold'>ShopNow</span></p>
                 </div>
 
-                <div className="xl:max-w-7xl lg:max-w-5xl m-auto flex items-center justify-between p-4">
+                <div className="xl:max-w-7xl lg:max-w-5xl m-auto flex items-center justify-between px-4">
                     {/* Logo */}
                     <Link href="/" aria-label="Homepage" className="md:text-2xl font-bold">
                         Exclusive
                     </Link>
 
                     {/* Navigation Links */}
-                    <ul
-                        className={`absolute md:relative top-full left-0 right-0 z-50 ${isNavOpen ? "bg-slate-400/30 h-56 p-4 shadow" : "h-0"} flex flex-col md:flex-row md:bg-transparent md:h-fit md:p-0 md:shadow-none gap-8 overflow-hidden transition-all ease-in-out duration-300`}>
+                    <ul className={`absolute md:relative top-full left-0 right-0 z-50 border ${isNavOpen ? "bg-slate-400/30 h-[340px] p-4 shadow" : "h-0"} flex flex-col md:flex-row gap-8 md:bg-transparent md:h-fit md:p-0 md:py-4 md:shadow-none overflow-hidden transition-all ease-in-out duration-300`}>
                         <li>
-                            <Link href="/products" className="hover:text-blue-600 transition">
+                            <Link href="/products" className={pathName === "/products" ? "border-b-2 border-borderColor pb-px" : ""}>
                                 Products
                             </Link>
                         </li>
                         <li>
-                            <Link href="/about" className="hover:text-blue-600 transition">
+                            <Link href="/about" className={pathName === "/about" ? "border-b-2 border-borderColor pb-px" : ""}>
                                 About
                             </Link>
                         </li>
                         <li>
-                            <Link href="/contact" className="hover:text-blue-600 transition">
+                            <Link href="/contact" className={pathName === "/contact" ? "border-b-2 border-borderColor pb-px" : ""}>
                                 Contact
                             </Link>
                         </li>
+                        <li className='block md:hidden'>
+                            <Link href="/wishlist" className="hover:text-blue-600 transition">
+                                Wishlist
+                            </Link>
+                        </li>
+                        <li className='block md:hidden'>
+                            <Link href="/cart" className="hover:text-blue-600 transition">
+                                Cart
+                            </Link>
+                        </li>
                         <li>
-                            <Link href="/signUp" className="hover:text-blue-600 transition">
+                            <Link href="/signUp" className={pathName === "/signUp" ? "border-b-2 border-borderColor pb-px" : ""}>
                                 Sign Up
                             </Link>
                         </li>
@@ -45,7 +56,7 @@ export default function Navbar() {
 
                     <div className="flex items-center gap-4">
                         <form className="bg-primaryBackground rounded-sm p-2 flex items-center justify-center" onSubmit={(e) => e.preventDefault()}>
-                            <input type="text" placeholder="What are you looking for?" className="w-20 md:w-40 text-xs px-2 outline-0" />
+                            <input type="text" placeholder="What are you looking for?" className="w-28 md:w-40 text-xs px-2 outline-0" />
                             <button type="submit" className="cursor-pointer">
                                 <Image src="/search.svg" alt="search" width={20} height={20} />
                             </button>
