@@ -4,7 +4,6 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import { useRouter } from "next/navigation";
 import axios from 'axios';
-import { setAuthToken } from '@/src/actions/setAuthToken';
 
 type valuesType = {
     name: string;
@@ -40,7 +39,6 @@ export default function SingUpForm() {
             try {
                 const response = await axios.post("/api/SingUp", values);
                 if (response.data.message === 'success') {
-                    setAuthToken(response?.data?.token);
                     router.push('/')
                 };
             } catch (error: any) {

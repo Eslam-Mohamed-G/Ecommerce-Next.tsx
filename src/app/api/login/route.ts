@@ -10,7 +10,10 @@ export async function POST(req: Request) {
       body
     );
 
-    return NextResponse.json(response.data);
+    return NextResponse.json({
+      message: "success",
+      token: response.data.token,
+    });
   } catch (error: any) {
     return NextResponse.json(
       { message: error?.response?.data?.message || "Login failed" },

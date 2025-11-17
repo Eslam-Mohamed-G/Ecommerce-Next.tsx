@@ -4,7 +4,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import { useRouter } from "next/navigation";
 import axios from 'axios';
-import { setAuthToken } from '@/src/actions/setAuthToken';
+import { setCookie } from "cookies-next";
 import Link from 'next/link';
 
 type valuesType = {
@@ -39,11 +39,15 @@ export default function LoginForm() {
             setIsLoading(true);
             try {
                 const response = await axios.post("/api/login", values);
-                if (response.data.message === 'success') {
-                    setAuthToken(response?.data?.token);
+                if (response.data.message === "success") {
+                    setCookie("token", response.data.token, {
+                        maxAge: 60 * 60 * 24 * 7,
+                        path: "/",
+                        secure: true,
+                    });
 
-                    router.push('/')
-                };
+                    router.push("/");
+                }
             } catch (error: any) {
                 setMessageFromBackEnd(error?.response?.data?.message)
             } finally {
