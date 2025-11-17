@@ -77,14 +77,20 @@ export default function LoginForm() {
                         Address
                     </label>
 
-                    {formik.errors.email && formik.touched.email ?
-                        <>
-                            <i className="absolute top-1/3 end-0 text-red-600 fa-solid fa-xmark"></i>
-                            <p className='absolute -bottom-5 text-red-600 text-[12px]'>{formik.errors.email}</p>
-                        </>
-                        :
-                        <i className={`${formik.touched.email ? formik.errors.email ? 'hidden' : '' : 'hidden'} absolute top-1/3 end-0 text-green-500 fa-solid fa-check`}></i>
-                    }
+                    <div aria-live="polite" className="text-red-600">
+                        {formik.errors.email && formik.touched.email ?
+                            <>
+                                <i className="absolute top-1/2 -translate-y-1/2 end-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+                                </i>
+                                <p className='absolute -bottom-5 text-xs'>{formik.errors.email}</p>
+                            </>
+                            :
+                            <i className={`${formik.touched.email ? formik.errors.email ? 'hidden' : '' : 'hidden'} absolute top-1/2 -translate-y-1/2 end-0 text-green-500 fa-solid fa-check`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5" /></svg>
+                            </i>
+                        }
+                    </div>
                 </div>
 
                 {/* password   password   password */}
@@ -101,17 +107,28 @@ export default function LoginForm() {
                         placeholder="Password"
                     />
                     <label htmlFor="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
-                    {formik.errors.password && formik.touched.password ?
-                        <>
-                            <i className="absolute top-1/3 end-7 text-red-600 fa-solid fa-xmark"></i>
-                            <p className='absolute -bottom-5 text-red-600 text-[12px]'>{formik.errors.password}</p>
-                        </>
-                        :
-                        <i className={`${formik.touched.password ? formik.errors.password ? 'hidden' : '' : 'hidden'} absolute top-1/3 end-7 text-green-500 fa-solid fa-check`}></i>
-                    }
-                    <div className='absolute top-2 end-0 cursor-pointer' onClick={togglePasswordVisibility}>
-                        {showPassword ? <i className="fa-regular fa-eye"></i> : <i className="fa-regular fa-eye-slash"></i>}
+                    <div aria-live="polite" className="">
+                        {formik.errors.password && formik.touched.password ?
+                            <>
+                                <i className="absolute top-1/2 -translate-y-1/2 end-7 text-red-600">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+                                </i>
+                                <p className='absolute -bottom-5 text-red-600 text-xs'>{formik.errors.password}</p>
+                            </>
+                            :
+                            <i className={`${formik.touched.password ? formik.errors.password ? 'hidden' : '' : 'hidden'} absolute top-1/3 end-7 text-green-500 fa-solid fa-check`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-check-icon lucide-check"><path d="M20 6 9 17l-5-5" /></svg>
+                            </i>
+                        }
                     </div>
+
+                    <button className='absolute top-1/2 -translate-y-1/2 end-0 cursor-pointer' onClick={togglePasswordVisibility}>
+                        {showPassword ?
+                            <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx={12} cy={12} r={3} /></svg>
+                            :
+                            <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-eye-off-icon lucide-eye-off"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /><path d="m2 2 20 20" /></svg>
+                        }
+                    </button>
                 </div>
 
                 {/* Forgot password */}
@@ -127,7 +144,6 @@ export default function LoginForm() {
                     </p>}
                 </div>
             </div>
-
 
             <div className="flex flex-row gap-3 items-center justify-center w-full text-base mt-6">
                 <p className='font-normal'>Need an account?</p>
