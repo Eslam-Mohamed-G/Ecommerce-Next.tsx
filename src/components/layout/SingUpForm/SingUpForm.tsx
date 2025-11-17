@@ -21,7 +21,7 @@ export default function SingUpForm() {
     let validator = Yup.object().shape({
         name: Yup.string().required('Name is required').min(3, 'min 3 letters'),
         email: Yup.string().required('email is required').email('invalid email'),
-        password: Yup.string().required('password is required').matches(/[a-z0-9]{6}$/, 'invalid password'),
+        password: Yup.string().required('password is required').min(6, 'password must be at least 6 characters'),
         rePassword: Yup.string().required('rePassword is required').oneOf([Yup.ref('password')], 'invalid rePassword'),
         phone: Yup.string().required('phone is required').matches(/^01[0125][0-9]{8}$/, 'invalid phone')
     });
@@ -38,7 +38,7 @@ export default function SingUpForm() {
         onSubmit: async (values: valuesType) => {
             setIsLoading(true);
             try {
-                const response = await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`, values);
+                const response = await axios.post("/api/SingUp", values);
                 if (response.data.message === 'success') {
                     setAuthToken(response?.data?.token);
                     router.push('/')

@@ -131,7 +131,7 @@ export default function LoginForm() {
 
             <div className="flex flex-row gap-3 items-center justify-center w-full text-base mt-6">
                 <p className='font-normal'>Need an account?</p>
-                <Link href="/login"><span className='font-medium border-b pb-px'>Create an account</span></Link>
+                <Link href="/signUp"><span className='font-medium border-b pb-px'>Create an account</span></Link>
             </div>
         </form>
     )
