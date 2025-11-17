@@ -7,6 +7,8 @@
   --color-singUpImgBackground: rgba(203, 228, 232, 1);
   --color-textColor: rgba(0, 0, 0, 1);
   --color-borderColor: rgba(0, 0, 0, 0.3);
+
+  --breakpoint-md2: 920px; 
 }
 
 @media (prefers-color-scheme: dark) {

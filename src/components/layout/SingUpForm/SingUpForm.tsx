@@ -56,8 +56,8 @@ export default function SingUpForm() {
     const falseMessage = "border-red-500 text-red-500 appearance-none text-sm focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 dark:text-red-500 dark:border-red-500";
 
     return (
-        <form onSubmit={formik.handleSubmit} className="flex-1 max-w-3xl md:max-w-md">
-            <div className="flex flex-col gap-2 mt-3">
+        <form onSubmit={formik.handleSubmit} className="w-full">
+            <div className="flex flex-col gap-1 mt-3 relative">
                 <div className="relative z-0 w-full mb-6 group">
                     <input
                         type="text"
@@ -189,7 +189,7 @@ export default function SingUpForm() {
                     {isLoading ? <>Submiting... <i className='fas fa-spinner fa-spin'></i></> : 'Create Account'}
                 </button>
 
-                <div aria-live="polite" className={`relative z-0 w-full mb-6 group text-center ${messageFromBackEnd ? '' : 'hidden'}`}>
+                <div aria-live="polite" className={`absolute top-full -bottom-2 z-0 w-full mb-6 group text-center ${messageFromBackEnd ? '' : 'hidden'}`}>
                     {messageFromBackEnd ? <p className='text-red-500'>{messageFromBackEnd}</p> : <p className='text-green-500'>succeed</p>}
                 </div>
             </div>
