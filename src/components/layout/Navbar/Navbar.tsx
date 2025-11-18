@@ -1,11 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
-import { headers, cookies } from "next/headers";
+import { cookies } from "next/headers";
 import NavbarClientActions from './NavbarClientActions';
 
 export default async function Navbar() {
-    const headerList = await headers();
-    const currentPath = headerList.get("x-invoke-path") || "/";
 
     const cookieStore = await cookies();
     const token = cookieStore.get("token")?.value;
@@ -43,7 +41,7 @@ export default async function Navbar() {
 
                         <li>
                             {!token && (
-                                <Link href="/login" className={`relative after:absolute after:top-full after:translate-y-0.5 after:start-0 after:end-full hover:after:-end-0.5 ${currentPath === "login" && "after:end-0"} after:h-0.5 after:bg-borderColor after:transition-all after:ease-in-out after:duration-300`}>
+                                <Link href="/login" className={`relative after:absolute after:top-full after:translate-y-0.5 after:start-0 after:end-full hover:after:-end-0.5 ${isActive("/login") ? "after:end-0" : ""} after:h-0.5 after:bg-borderColor after:transition-all after:ease-in-out after:duration-300`}>
                                     Login
                                 </Link>
                             )}
