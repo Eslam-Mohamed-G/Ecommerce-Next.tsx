@@ -47,6 +47,7 @@ export default function LoginForm() {
                     });
 
                     router.push("/");
+                    router.refresh();
                 }
             } catch (error: any) {
                 setMessageFromBackEnd(error?.response?.data?.message)
