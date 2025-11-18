@@ -41,7 +41,7 @@ export default async function Navbar() {
 
                         <li>
                             {!token && (
-                                <Link href="/login" className={`relative after:absolute after:top-full after:translate-y-0.5 after:start-0 after:end-full hover:after:-end-0.5 ${isActive("/login") ? "after:end-0" : ""} after:h-0.5 after:bg-borderColor after:transition-all after:ease-in-out after:duration-300`}>
+                                <Link href="/login" className={`relative after:absolute after:top-full after:translate-y-0.5 after:start-0 after:end-full hover:after:-end-0.5 after:h-0.5 after:bg-borderColor after:transition-all after:ease-in-out after:duration-300`}>
                                     Login
                                 </Link>
                             )}
