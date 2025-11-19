@@ -22,13 +22,10 @@ export default function NavbarClientActions({ token }: Props) {
         function handleClickOutside(e: MouseEvent) {
             const target = e.target as Node;
 
-            // استثناء الزرار
             if (navToggleRef.current?.contains(target)) return;
 
-            // ضغط داخل الـ ul → تجاهل
             if (navRef.current?.contains(target)) return;
 
-            // أي ضغط برا → اقفل
             setIsNavOpen(false);
         }
         document.addEventListener("mousedown", handleClickOutside);
