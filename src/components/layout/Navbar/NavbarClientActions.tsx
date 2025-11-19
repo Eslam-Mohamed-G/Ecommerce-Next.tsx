@@ -23,35 +23,35 @@ export default function NavbarClientActions({ token }: Props) {
     };
     return (
         <>
-            <ul aria-hidden={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-8 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ? " h-[340px] py-4" : "h-0 py-0"} overflow-hidden transition-all ease-in-out duration-300`}>
-                <li>
-                    <Link href="/products" className="">
+            <ul aria-hidden={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-3 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ?  token ? "h-[280px] py-4" : "h-[338px] py-4" : "h-0 py-0"} overflow-hidden transition-all ease-in-out duration-300`}>
+                <li className="flex items-center">
+                    <Link href="/products" className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/products" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Products
                     </Link>
                 </li>
-                <li>
-                    <Link href="/about" className="">
+                <li className="flex items-center">
+                    <Link href="/about" className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/about" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         About
                     </Link>
                 </li>
-                <li>
-                    <Link href="/contact" className="">
+                <li className="flex items-center">
+                    <Link href="/contact" className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/contact" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Contact
                     </Link>
                 </li>
-                <li className='block md:hidden'>
-                    <Link href="/wishlist" className="">
+                <li className="flex items-center">
+                    <Link href="/wishlist" className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishlist" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Wishlist
                     </Link>
                 </li>
-                <li className='block md:hidden'>
-                    <Link href="/cart" className="">
+                <li className="flex items-center">
+                    <Link href="/cart" className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/cart" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Cart
                     </Link>
                 </li>
-                <li>
+                <li className="flex items-center">
                     {!token && (
-                        <Link href="/login" className="">
+                        <Link href="/login" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/login" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                             Login
                         </Link>
                     )}
@@ -89,10 +89,10 @@ export default function NavbarClientActions({ token }: Props) {
                 </button>
             </div>
 
-            <div id="user-menu" aria-hidden={!isAuthMenuOpen} className={`absolute bg-black/35 backdrop-blur-xl top-full end-4 z-50 w-52 px-4 rounded ${isAuthMenuOpen ? "h-56 py-4" : "h-0 py-0"} overflow-hidden shadow transition-all ease-in-out duration-300`}>
-                <ul role="menu" className='flex flex-col gap-4 text-white text-sm'>
-                    <li className=''>
-                        <Link href="/" className='flex items-center gap-2'>
+            <div id="user-menu" aria-hidden={!isAuthMenuOpen} className={`absolute bg-black/40 backdrop-blur-xl top-full end-4 z-50 w-48 px-2 rounded ${isAuthMenuOpen ? "h-56 py-4" : "h-0 py-0"} overflow-hidden shadow transition-all ease-in-out duration-300`}>
+                <ul role="menu" className='flex flex-col gap-2 text-white text-sm'>
+                    <li className='flex items-center'>
+                        <Link href="/" className='flex-1 flex items-center gap-2 rounded ps-0 pe-2 hover:bg-white/20'>
                             <div className="w-8 h-8 flex items-center justify-center text-white fill-white relative">
                                 <Image src="/navbar/user.svg" alt='User menu' fill />
                             </div>
@@ -100,8 +100,8 @@ export default function NavbarClientActions({ token }: Props) {
                         </Link>
                     </li>
 
-                    <li className=''>
-                        <Link href="/" className='flex items-center gap-3'>
+                    <li className='flex items-center'>
+                        <Link href="/" className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
                             <div className="w-6 h-6 ms-1 flex items-center justify-center relative">
                                 <Image src="/navbar/icon-cancel.svg" alt='icon-cancel' fill />
                             </div>
@@ -109,8 +109,8 @@ export default function NavbarClientActions({ token }: Props) {
                         </Link>
                     </li>
 
-                    <li className=''>
-                        <Link href="/" className='flex items-center gap-3'>
+                    <li className='flex items-center'>
+                        <Link href="/" className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
                             <div className="w-6 h-6 ms-1 flex items-center justify-center relative">
                                 <Image src="/navbar/icon-mallbag.svg" alt='user icon' fill />
                             </div>
@@ -118,8 +118,8 @@ export default function NavbarClientActions({ token }: Props) {
                         </Link>
                     </li>
 
-                    <li className=''>
-                        <Link href="/" className='flex items-center gap-3'>
+                    <li className='flex items-center'>
+                        <Link href="/" className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
                             <div className="w-6 h-6 ms-1 flex items-center justify-center relative">
                                 <Image src="/navbar/Icon-Reviews.svg" alt='Icon-Reviews' fill />
                             </div>
@@ -127,8 +127,8 @@ export default function NavbarClientActions({ token }: Props) {
                         </Link>
                     </li>
 
-                    <li className=''>
-                        <button onClick={() => { handleLogout(); }} className='flex items-center gap-3 cursor-pointer'>
+                    <li className='flex items-center'>
+                        <button onClick={() => { handleLogout(); }} className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded cursor-pointer'>
                             <div className="w-6 h-6 flex items-center justify-center relative">
                                 <Image src="/navbar/Icon-logout.svg" alt='logout Icon' fill />
                             </div>
