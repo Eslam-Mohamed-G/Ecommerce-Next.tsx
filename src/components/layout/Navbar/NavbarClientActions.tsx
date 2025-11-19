@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import UserMenu from "./UserMenu";
 
 interface Props {
     token: string | null;
@@ -41,8 +42,8 @@ export default function NavbarClientActions({ token }: Props) {
     };
 
     return (
-        <>
-            <ul ref={navRef} aria-hidden={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-3 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ? token ? "h-[280px] py-4" : "h-[338px] py-4" : "h-0 py-0"} overflow-hidden transition-all ease-in-out duration-300`}>
+        <nav aria-label="Mobile Navigation">
+            <ul ref={navRef} aria-hidden={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-3 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ? token ? "h-[280px] py-4" : "h-[338px] py-4" : "h-0 py-0"} md:hidden overflow-hidden transition-all ease-in-out duration-300`}>
                 <li className="flex items-center">
                     <Link href="/products" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/products" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Products
@@ -92,12 +93,7 @@ export default function NavbarClientActions({ token }: Props) {
                 <button className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer">
                     <Image src="/cart.svg" alt='Open Cart' width={28} height={28} />
                 </button>
-
-                {token &&
-                    <button aria-label="User menu" aria-expanded={isAuthMenuOpen} aria-controls="user-menu" onClick={() => { setIsAuthMenuOpen(!isAuthMenuOpen); setIsNavOpen(false) }} className="bg-primaryColor text-white flex items-center justify-center w-8 h-8 overflow-hidden rounded-full cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx={12} cy={7} r={4} /></svg>
-                    </button>
-                }
+                <UserMenu token={token || null}/>
 
                 <button ref={navToggleRef} className='flex justify-center items-center md:hidden cursor-pointer' onClick={() => { setIsNavOpen(!isNavOpen); setIsAuthMenuOpen(false) }}>
                     {isNavOpen ?
@@ -107,55 +103,6 @@ export default function NavbarClientActions({ token }: Props) {
                     }
                 </button>
             </div>
-
-            <div id="user-menu" aria-hidden={!isAuthMenuOpen} className={`absolute bg-black/40 backdrop-blur-xl top-full end-4 z-50 w-48 px-2 rounded ${isAuthMenuOpen ? "h-56 py-4" : "h-0 py-0"} overflow-hidden shadow transition-all ease-in-out duration-300`}>
-                <ul role="menu" className='flex flex-col gap-2 text-white text-sm'>
-                    <li className='flex items-center'>
-                        <Link href="/" className='flex-1 flex items-center gap-2 rounded ps-0 pe-2 hover:bg-white/20'>
-                            <div className="w-8 h-8 flex items-center justify-center text-white fill-white relative">
-                                <Image src="/navbar/user.svg" alt='User menu' fill />
-                            </div>
-                            <span>Manage My Account</span>
-                        </Link>
-                    </li>
-
-                    <li className='flex items-center'>
-                        <Link href="/" className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
-                            <div className="w-6 h-6 ms-1 flex items-center justify-center relative">
-                                <Image src="/navbar/icon-cancel.svg" alt='icon-cancel' fill />
-                            </div>
-                            <span>My Cancellations</span>
-                        </Link>
-                    </li>
-
-                    <li className='flex items-center'>
-                        <Link href="/" className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
-                            <div className="w-6 h-6 ms-1 flex items-center justify-center relative">
-                                <Image src="/navbar/icon-mallbag.svg" alt='user icon' fill />
-                            </div>
-                            <span>My Order</span>
-                        </Link>
-                    </li>
-
-                    <li className='flex items-center'>
-                        <Link href="/" className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
-                            <div className="w-6 h-6 ms-1 flex items-center justify-center relative">
-                                <Image src="/navbar/Icon-Reviews.svg" alt='Icon-Reviews' fill />
-                            </div>
-                            <span>My Reviews</span>
-                        </Link>
-                    </li>
-
-                    <li className='flex items-center'>
-                        <button onClick={() => { handleLogout(); }} className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded cursor-pointer'>
-                            <div className="w-6 h-6 flex items-center justify-center relative">
-                                <Image src="/navbar/Icon-logout.svg" alt='logout Icon' fill />
-                            </div>
-                            <span>Logout</span>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </>
+        </nav>
     )
 }

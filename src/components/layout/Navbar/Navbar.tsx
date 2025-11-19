@@ -12,7 +12,11 @@ export default async function Navbar() {
         <header>
             <nav className='border-b border-borderColor' aria-label="Main Navigation">
                 <div className="bg-textColor w-full h-10 text-white flex items-center justify-center">
-                    <p className='text-xs font-normal text-center'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! <span className='underline decoration-primaryBackground font-semibold'>ShopNow</span></p>
+                    <p className='text-xs font-normal text-center'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
+                        <Link href="/products" className="underline decoration-primaryBackground font-semibold">
+                            Shop Now
+                        </Link>
+                    </p>
                 </div>
 
                 <div className="xl:max-w-7xl lg:max-w-5xl m-auto flex items-center justify-between px-4 py-2 relative">
