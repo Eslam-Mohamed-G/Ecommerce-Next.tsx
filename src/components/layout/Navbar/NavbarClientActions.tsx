@@ -3,7 +3,7 @@ import { deleteCookie } from "cookies-next";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface Props {
     token: string | null;
@@ -15,43 +15,65 @@ export default function NavbarClientActions({ token }: Props) {
     const pathName = usePathname();
     const router = useRouter();
 
+    const navRef = useRef<HTMLUListElement | null>(null);
+    const navToggleRef = useRef<HTMLButtonElement | null>(null);
+
+    useEffect(() => {
+        function handleClickOutside(e: MouseEvent) {
+            const target = e.target as Node;
+
+            // استثناء الزرار
+            if (navToggleRef.current?.contains(target)) return;
+
+            // ضغط داخل الـ ul → تجاهل
+            if (navRef.current?.contains(target)) return;
+
+            // أي ضغط برا → اقفل
+            setIsNavOpen(false);
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     const handleLogout = () => {
         deleteCookie("token", { path: "/" });
         router.refresh();
         setIsAuthMenuOpen(false)
     };
-    
+
     return (
         <>
-            <ul aria-hidden={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-3 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ?  token ? "h-[280px] py-4" : "h-[338px] py-4" : "h-0 py-0"} overflow-hidden transition-all ease-in-out duration-300`}>
+            <ul ref={navRef} aria-hidden={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-3 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ? token ? "h-[280px] py-4" : "h-[338px] py-4" : "h-0 py-0"} overflow-hidden transition-all ease-in-out duration-300`}>
                 <li className="flex items-center">
-                    <Link href="/products" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/products" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/products" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/products" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Products
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href="/about" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/about" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/about" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/about" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         About
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href="/contact" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/contact" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/contact" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/contact" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Contact
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href="/wishlist" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishlist" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/wishlist" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishlist" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Wishlist
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href="/cart" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/cart" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/cart" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/cart" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Cart
                     </Link>
                 </li>
                 <li className="flex items-center">
                     {!token && (
-                        <Link href="/login" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/login" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                        <Link href="/login" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/login" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                             Login
                         </Link>
                     )}
@@ -80,7 +102,7 @@ export default function NavbarClientActions({ token }: Props) {
                     </button>
                 }
 
-                <button className='flex justify-center items-center md:hidden cursor-pointer' onClick={() => { setIsNavOpen(!isNavOpen); setIsAuthMenuOpen(false) }}>
+                <button ref={navToggleRef} className='flex justify-center items-center md:hidden cursor-pointer' onClick={() => { setIsNavOpen(!isNavOpen); setIsAuthMenuOpen(false) }}>
                     {isNavOpen ?
                         <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
                         :
