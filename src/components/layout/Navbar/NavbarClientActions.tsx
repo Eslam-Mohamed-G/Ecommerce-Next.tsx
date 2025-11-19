@@ -15,12 +15,12 @@ export default function NavbarClientActions({ token }: Props) {
     const pathName = usePathname();
     const router = useRouter();
 
-
     const handleLogout = () => {
         deleteCookie("token", { path: "/" });
         router.refresh();
         setIsAuthMenuOpen(false)
     };
+    
     return (
         <>
             <ul aria-hidden={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-3 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ?  token ? "h-[280px] py-4" : "h-[338px] py-4" : "h-0 py-0"} overflow-hidden transition-all ease-in-out duration-300`}>
