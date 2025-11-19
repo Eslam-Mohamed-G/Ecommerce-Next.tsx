@@ -10,6 +10,7 @@ interface Props {
 export default function UserMenu({ token }: Props) {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [isAuthMenuOpen, setIsAuthMenuOpen] = useState(false);
+    const [confirmLogout, setConfirmLogout] = useState(false);
     const router = useRouter();
 
     const userButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -31,10 +32,21 @@ export default function UserMenu({ token }: Props) {
         };
     }, []);
 
+    useEffect(() => {
+        if (confirmLogout) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [confirmLogout]);
+
     const handleLogout = () => {
         deleteCookie("token", { path: "/" });
         router.refresh();
-        setIsAuthMenuOpen(false)
+        setConfirmLogout(false);
     };
 
     return (
@@ -84,7 +96,7 @@ export default function UserMenu({ token }: Props) {
                     </li>
 
                     <li className='flex items-center'>
-                        <button onClick={() => { handleLogout(); }} className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded cursor-pointer'>
+                        <button onClick={() => { setIsAuthMenuOpen(false); setConfirmLogout(true); }} className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded cursor-pointer'>
                             <div className="w-6 h-6 flex items-center justify-center relative">
                                 <Image src="/navbar/Icon-logout.svg" alt='logout Icon' fill />
                             </div>
@@ -93,6 +105,18 @@ export default function UserMenu({ token }: Props) {
                     </li>
                 </ul>
             </div>
+
+            {confirmLogout && (
+                <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center">
+                    <div className="bg-white flex flex-col items-center justify-center gap-4 p-4 capitalize rounded">
+                        <h1 className="text-lg font-bold">confirm logout</h1>
+                        <div className="flex flex-row gap-4">
+                            <button type="button" onClick={handleLogout} className="text-primaryColor w-20 py-2 border rounded">logout</button>
+                            <button type="button" onClick={() => setConfirmLogout(false)} className="bg-primaryColor text-white w-20 py-2 rounded cursor-pointer">cancl</button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }
