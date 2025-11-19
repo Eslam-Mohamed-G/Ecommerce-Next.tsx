@@ -25,27 +25,27 @@ export default function NavbarClientActions({ token }: Props) {
         <>
             <ul aria-hidden={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-3 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ?  token ? "h-[280px] py-4" : "h-[338px] py-4" : "h-0 py-0"} overflow-hidden transition-all ease-in-out duration-300`}>
                 <li className="flex items-center">
-                    <Link href="/products" className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/products" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/products" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/products" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Products
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href="/about" className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/about" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/about" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/about" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         About
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href="/contact" className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/contact" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/contact" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/contact" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Contact
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href="/wishlist" className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishlist" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/wishlist" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishlist" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Wishlist
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href="/cart" className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/cart" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/cart" onClick={()=>setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/cart" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Cart
                     </Link>
                 </li>
