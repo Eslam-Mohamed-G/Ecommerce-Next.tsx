@@ -13,7 +13,7 @@ export default async function Navbar() {
             <nav className='border-b border-borderColor' aria-label="Main Navigation">
                 <div className="bg-textColor w-full h-10 text-white flex items-center justify-center">
                     <p className='text-xs font-normal text-center'>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!
-                        <Link href="/products" className="underline decoration-primaryBackground font-semibold">
+                        <Link href="/products" className="underline decoration-primaryBackground font-semibold md:ms-1">
                             Shop Now
                         </Link>
                     </p>
