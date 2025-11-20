@@ -57,7 +57,7 @@ export default function UserMenu({ token }: Props) {
                 </button>
             }
 
-            <div ref={userMenuRef} id="user-menu" hidden={!isAuthMenuOpen} className={`absolute bg-black/40 backdrop-blur-xl top-full end-4 z-50 w-48 px-2 rounded ${isAuthMenuOpen ? "h-56 py-4" : "h-0 py-0"} overflow-hidden shadow transition-all ease-in-out duration-300`}>
+            <div ref={userMenuRef} id="user-menu" className={`absolute bg-black/40 backdrop-blur-xl top-full end-4 z-50 w-48 px-2 rounded ${isAuthMenuOpen ? "h-56 py-4" : "h-0 py-0"} overflow-hidden shadow transition-all ease-in-out duration-300`}>
                 <ul role="menu" className='flex flex-col gap-2 text-white text-sm'>
                     <li className='flex items-center'>
                         <Link href="/" className='flex-1 flex items-center gap-2 rounded ps-0 pe-2 hover:bg-white/20'>
