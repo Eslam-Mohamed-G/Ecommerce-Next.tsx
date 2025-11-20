@@ -1,4 +1,4 @@
-import LoginForm from '@/src/components/layout/LoginForm/LoginForm'
+import LoginForm from '@/src/components/LoginForm/LoginForm'
 import Image from 'next/image'
 import React from 'react'
 
