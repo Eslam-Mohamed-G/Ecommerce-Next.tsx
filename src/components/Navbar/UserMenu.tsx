@@ -57,7 +57,7 @@ export default function UserMenu({ token }: Props) {
                 </button>
             }
 
-            <div ref={userMenuRef} id="user-menu" aria-hidden={!isAuthMenuOpen} className={`absolute bg-black/40 backdrop-blur-xl top-full end-4 z-50 w-48 px-2 rounded ${isAuthMenuOpen ? "h-56 py-4" : "h-0 py-0"} overflow-hidden shadow transition-all ease-in-out duration-300`}>
+            <div ref={userMenuRef} id="user-menu" hidden={!isAuthMenuOpen} className={`absolute bg-black/40 backdrop-blur-xl top-full end-4 z-50 w-48 px-2 rounded ${isAuthMenuOpen ? "h-56 py-4" : "h-0 py-0"} overflow-hidden shadow transition-all ease-in-out duration-300`}>
                 <ul role="menu" className='flex flex-col gap-2 text-white text-sm'>
                     <li className='flex items-center'>
                         <Link href="/" className='flex-1 flex items-center gap-2 rounded ps-0 pe-2 hover:bg-white/20'>
@@ -96,7 +96,7 @@ export default function UserMenu({ token }: Props) {
                     </li>
 
                     <li className='flex items-center'>
-                        <button onClick={() => { setIsAuthMenuOpen(false); setConfirmLogout(true); }} className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded cursor-pointer'>
+                        <button type="button" onClick={() => { setIsAuthMenuOpen(false); setConfirmLogout(true); }} className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded cursor-pointer'>
                             <div className="w-6 h-6 flex items-center justify-center relative">
                                 <Image src="/navbar/Icon-logout.svg" alt='logout Icon' fill />
                             </div>
@@ -107,7 +107,7 @@ export default function UserMenu({ token }: Props) {
             </div>
 
             {confirmLogout && (
-                <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center">
+                <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center">
                     <div className="bg-white flex flex-col items-center justify-center gap-4 p-4 capitalize rounded">
                         <h1 className="text-lg font-bold">confirm logout</h1>
                         <div className="flex flex-row gap-4">
