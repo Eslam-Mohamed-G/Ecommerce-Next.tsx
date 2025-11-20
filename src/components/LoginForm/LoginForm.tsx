@@ -127,7 +127,7 @@ export default function LoginForm() {
                         }
                     </div>
 
-                    <button className='absolute top-1/2 -translate-y-1/2 end-0 cursor-pointer' onClick={togglePasswordVisibility}>
+                    <button type='button' aria-label={showPassword ? "Hide password" : "Show password"} className='absolute top-1/2 -translate-y-1/2 end-0 cursor-pointer' onClick={togglePasswordVisibility}>
                         {showPassword ?
                             <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx={12} cy={12} r={3} /></svg>
                             :
@@ -138,7 +138,7 @@ export default function LoginForm() {
 
                 {/* Forgot password */}
                 <div className="relative flex flex-row items-center justify-between">
-                    <button className="bg-primaryColor text-white w-32 h-10 rounded cursor-pointer">
+                    <button type='submit' className="bg-primaryColor text-white w-32 h-10 rounded cursor-pointer">
                         {isLoading ? <>Submiting... <i className='fas fa-spinner fa-spin'></i></> : 'Log In'}
                     </button>
                     <Link href={'/forgetpassword'} className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</Link>
