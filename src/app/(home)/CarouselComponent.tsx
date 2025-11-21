@@ -177,7 +177,7 @@ export default function CarouselComponent() {
                                 {/* Shop Now */}
                                 <button className="group flex items-center gap-3 text-xl mt-6">
                                     Shop Now
-                                    <span className="border-b border-white pb-[2px] group-hover:translate-x-1 transition">
+                                    <span className="border-b border-white pb-0.5 group-hover:translate-x-1 transition">
                                         →
                                     </span>
                                 </button>
