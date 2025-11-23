@@ -162,23 +162,23 @@ export default function CarouselComponent() {
                     >
                         <div className="max-w-7xl mx-auto p-6 flex flex-col md:flex-row items-start pointer-events-none">
                             {/* Left Text */}
-                            <div className="max-w-2xs h-60 flex flex-col justify-between pointer-events-none border border-red-400">
+                            <div className="max-w-2xs h-60 ms-8 flex flex-col justify-between pointer-events-none">
                                 <p className="text-xl font-light">{item.title}</p>
 
                                 <h1 className="text-5xl font-bold leading-[1.1]">
                                     {item.heading}
                                 </h1>
 
-                                <button className="flex items-center gap-3 text-xl mt-6 pb-0.5 cursor-pointer">
+                                <button className="group flex items-center gap-3 text-xl cursor-pointer pointer-events-auto">
                                     Shop Now
-                                    <span className="border-b border-white transition">
+                                    <span className="border-b border-white transition group-hover:translate-x-1">
                                         →
                                     </span>
                                 </button>
                             </div>
 
                             {/* Right Image */}
-                            <div className="flex-1 flex justify-center pointer-events-none border">
+                            <div className="flex-1 flex justify-center pointer-events-none">
                                 <Image
                                     src={item.image}
                                     alt="Product"
