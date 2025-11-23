@@ -1,32 +1,46 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
-const originalSlides = ["First slide", "Second slide", "Third slide"];
+const slidesContent = [
+    {
+        title: "iPhone 14 Series",
+        heading: "Up to 10% off Voucher",
+        image: "/image/iphone.webp",
+    },
+    {
+        title: "MacBook Pro",
+        heading: "Save up to 15%",
+        image: "/image/mac.webp",
+    },
+    {
+        title: "Apple Watch Ultra",
+        heading: "New Arrival",
+        image: "/image/camera.webp",
+    },
+];
 
-// Create infinite loop structure: [last, ...slides, first]
+// Infinite structure → [last, ...original, first]
 const slides = [
-    originalSlides[originalSlides.length - 1],
-    ...originalSlides,
-    originalSlides[0],
+    slidesContent[slidesContent.length - 1],
+    ...slidesContent,
+    slidesContent[0],
 ];
 
 export default function CarouselComponent() {
     const containerRef = useRef<HTMLDivElement | null>(null);
-    const [current, setCurrent] = useState(1); // start at first real slide
+    const [current, setCurrent] = useState(1);
     const [slideWidth, setSlideWidth] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
 
-    // Update slide width
+    // Resize Handler
     useEffect(() => {
         const updateWidth = () => {
             const el = containerRef.current;
             if (!el) return;
             const w = el.clientWidth;
             setSlideWidth(w);
-
-            // Scroll to correct slide on resize
             el.scrollTo({ left: current * w, behavior: "instant" as ScrollBehavior });
         };
 
@@ -35,50 +49,45 @@ export default function CarouselComponent() {
         return () => window.removeEventListener("resize", updateWidth);
     }, [current]);
 
-    // Drag logic
+    // Drag Logic
     const isDragging = useRef(false);
     const startX = useRef(0);
     const scrollStart = useRef(0);
 
-    const onDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    const onDragStart = (e: any) => {
         const el = containerRef.current;
         if (!el) return;
-        isDragging.current = true;
-        startX.current =
-            "touches" in e
-                ? e.touches[0].clientX
-                : (e as React.MouseEvent).clientX;
 
+        isDragging.current = true;
+        startX.current = e.touches ? e.touches[0].clientX : e.clientX;
         scrollStart.current = el.scrollLeft;
+
         el.style.cursor = "grabbing";
     };
 
     const onDragMove = (e: any) => {
-        if (!isDragging.current || !containerRef.current) return;
+        const el = containerRef.current;
+        if (!isDragging.current || !el) return;
 
         const x = e.touches ? e.touches[0].clientX : e.clientX;
-        const walk = x - startX.current;
-        containerRef.current.scrollLeft = scrollStart.current - walk;
+        el.scrollLeft = scrollStart.current - (x - startX.current);
     };
 
     const onDragEnd = () => {
         const el = containerRef.current;
         if (!isDragging.current || !el) return;
+
         isDragging.current = false;
         el.style.cursor = "grab";
 
-        if (!slideWidth) return;
-
-        let idx = Math.round(el.scrollLeft / slideWidth);
-
+        const idx = Math.round(el.scrollLeft / slideWidth);
         setCurrent(idx);
-
         el.scrollTo({ left: idx * slideWidth, behavior: "smooth" });
 
         setIsTransitioning(true);
     };
 
-    // Attach global drag listeners
+    // Global Drag Listeners
     useEffect(() => {
         document.addEventListener("mousemove", onDragMove);
         document.addEventListener("mouseup", onDragEnd);
@@ -93,19 +102,19 @@ export default function CarouselComponent() {
         };
     }, [slideWidth]);
 
-    // Handle infinite loop jump
+    // Infinite Jump
     useEffect(() => {
         if (!isTransitioning || !containerRef.current || !slideWidth) return;
 
         const el = containerRef.current;
 
-        const handleTransitionEnd = () => {
+        const fixLoop = () => {
             setIsTransitioning(false);
 
             if (current === 0) {
-                setCurrent(originalSlides.length);
+                setCurrent(slidesContent.length);
                 el.scrollTo({
-                    left: originalSlides.length * slideWidth,
+                    left: slidesContent.length * slideWidth,
                     behavior: "instant" as ScrollBehavior,
                 });
             } else if (current === slides.length - 1) {
@@ -117,100 +126,84 @@ export default function CarouselComponent() {
             }
         };
 
-        const timeout = setTimeout(handleTransitionEnd, 300);
-
-        return () => clearTimeout(timeout);
+        const t = setTimeout(fixLoop, 350);
+        return () => clearTimeout(t);
     }, [current, slideWidth, isTransitioning]);
 
-    // Go to slide using dots
-    const goToRealSlide = (index: number) => {
+    // Go to Dot Slide
+    const goToSlide = (index: number) => {
         const el = containerRef.current;
-        if (!el || !slideWidth) return;
+        if (!el) return;
 
-        const realIndex = index + 1; // because of duplicated first item
+        const realIndex = index + 1;
         setCurrent(realIndex);
-
         el.scrollTo({ left: realIndex * slideWidth, behavior: "smooth" });
         setIsTransitioning(true);
     };
 
     return (
-        <div className="relative w-full bg-transparent text-white">
-            {/* SLIDER */}
+        <div className="relative w-full h-80 pt-6 text-white select-none">
+            {/* Slider */}
             <div
                 ref={containerRef}
-                className="flex overflow-hidden touch-pan-y cursor-grab select-none bg-textColor"
+                className="flex overflow-hidden cursor-grab touch-pan-y bg-textColor"
                 onMouseDown={onDragStart}
                 onTouchStart={onDragStart}
                 style={{ scrollBehavior: "smooth" }}
             >
-                {slides.map((text, idx) => (
+                {slides.map((item, idx) => (
                     <div
                         key={idx}
-                        className="flex-none p-4 flex justify-center items-center bg-transparent text-lg border border-red-500 transition-all ease-in-out duration-300"
+                        className="bg-transparent transition-all duration-300 ease-in-out overflow-hidden"
                         style={{
                             width: slideWidth || "100%",
                             minWidth: slideWidth || "100%",
-                            height: "300px",
                         }}
                     >
-                        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
+                        <div className="max-w-7xl mx-auto p-6 flex flex-col md:flex-row items-start pointer-events-none">
+                            {/* Left Text */}
+                            <div className="max-w-2xs h-60 flex flex-col justify-between pointer-events-none border border-red-400">
+                                <p className="text-xl font-light">{item.title}</p>
 
-                            {/* Left Content */}
-                            <div className="flex-1 space-y-6">
-                                {/* Apple Logo + Title */}
-                                <div className="flex items-center gap-3">
-                                    <Image
-                                        src="/image/apple-logo.png"
-                                        alt="Apple"
-                                        width={40}
-                                        height={40}
-                                    />
-                                    <p className="text-xl font-light">iPhone 14 Series</p>
-                                </div>
-
-                                {/* Big Heading */}
-                                <h1 className="text-5xl md:text-6xl font-bold leading-[1.1]">
-                                    Up to 10% <br /> off Voucher
+                                <h1 className="text-5xl font-bold leading-[1.1]">
+                                    {item.heading}
                                 </h1>
 
-                                {/* Shop Now */}
-                                <button className="group flex items-center gap-3 text-xl mt-6">
+                                <button className="flex items-center gap-3 text-xl mt-6 pb-0.5 cursor-pointer">
                                     Shop Now
-                                    <span className="border-b border-white pb-0.5 group-hover:translate-x-1 transition">
+                                    <span className="border-b border-white transition">
                                         →
                                     </span>
                                 </button>
                             </div>
 
                             {/* Right Image */}
-                            <div className="flex-1 mt-10 md:mt-0 flex justify-center md:justify-end">
+                            <div className="flex-1 flex justify-center pointer-events-none border">
                                 <Image
-                                    src="/iphone.png"
-                                    alt="iPhone"
-                                    width={500}
-                                    height={500}
-                                    className="object-contain drop-shadow-2xl"
-                                    priority
+                                    src={item.image}
+                                    alt="Product"
+                                    loading="lazy"
+                                    width={300}
+                                    height={280}
+                                    className="object-center"
                                 />
                             </div>
                         </div>
-                        {text}
                     </div>
                 ))}
             </div>
 
-            {/* DOTS */}
-            <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
-                {originalSlides.map((_, i) => (
+            {/* Dots */}
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3">
+                {slidesContent.map((_, i) => (
                     <button
                         key={i}
-                        className={`w-3 h-3 border-2 rounded-full ${current === i + 1
-                            ? "bg-primaryColor border-white"
-                            : "bg-gray-400 border-gray-300"
-                            } cursor-pointer transition-all ease-in-out duration-300`}
-                        onClick={() => goToRealSlide(i)}
-                    />
+                        onClick={() => goToSlide(i)}
+                        className={`w-3 h-3 rounded-full border-2 transition-all cursor-pointer ${current === i + 1
+                                ? "bg-primaryColor border-white"
+                                : "bg-gray-500 border-gray-500"
+                            }`}
+                    ></button>
                 ))}
             </div>
         </div>

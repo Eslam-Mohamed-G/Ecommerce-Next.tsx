@@ -10,7 +10,7 @@ export default function Home() {
                     <Sidebar/>
                 </nav>
 
-                <div className="border flex-1 h-full mt-6 md:ps-6 overflow-hidden">
+                <div className="flex-1 h-full md:ps-6 overflow-hidden">
                     <CarouselComponent/>
                 </div>
             </section> 
