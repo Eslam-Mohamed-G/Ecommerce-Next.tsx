@@ -36,7 +36,7 @@ export default function Sidebar() {
 
             <aside id="default-sidebar" ref={userSidebarRef} aria-label="Product Categories Sidebar" className={`md:border-e border-borderColor ${isSidebarOpen ? "w-48 ps-4 border-e bg-black/40 backdrop-blur-xl" : "w-0 ps-0"} md:w-48 md:bg-transparent transition-all ease-in-out duration-300 overflow-hidden`}>
                 <h2 className="sr-only">Categories</h2>
-                <ul className="flex flex-col gap-4 mt-6 p-0 pe-4 text-white md:text-textColor text-base font-normal w-48 h-[300px] overflow-hidden">
+                <ul className="flex flex-col gap-4 mt-5 p-0 pe-4 text-white md:text-textColor text-base font-normal w-48 h-[300px] overflow-hidden">
                     <li className=''>
                         <button aria-expanded={openWomenDropdown} aria-controls="women-submenu" onClick={() => { setOpenWomenDropdown(!openWomenDropdown); setOpenMenDropdown(false) }} className="relative flex flex-row w-full justify-between items-center cursor-pointer">
                             <span className="">Woman’s Fashion</span>
