@@ -142,7 +142,7 @@ export default function CarouselComponent() {
     };
 
     return (
-        <div className="relative w-full h-80 pt-6 text-white select-none">
+        <section aria-label="Hero Product Slider" className="relative w-full h-80 pt-6 text-white select-none">
             {/* Slider */}
             <div
                 ref={containerRef}
@@ -154,31 +154,35 @@ export default function CarouselComponent() {
                 {slides.map((item, idx) => (
                     <div
                         key={idx}
+                        aria-hidden={current !== idx}
+                        role="group"
+                        aria-roledescription="slide"
+                        aria-label={`Slide ${idx + 1} of ${slides.length}`}
                         className="bg-transparent transition-all duration-300 ease-in-out overflow-hidden"
                         style={{
                             width: slideWidth || "100%",
                             minWidth: slideWidth || "100%",
                         }}
                     >
-                        <div className="max-w-7xl mx-auto p-6 flex flex-col md:flex-row items-start pointer-events-none">
+                        <div className="max-w-7xl mx-auto p-6 flex flex-col md:flex-row md:gap-10 items-center justify-around pointer-events-none">
                             {/* Left Text */}
                             <div className="max-w-2xs h-60 ms-8 flex flex-col justify-between pointer-events-none">
                                 <p className="text-xl font-light">{item.title}</p>
 
-                                <h1 className="text-5xl font-bold leading-[1.1]">
+                                <h1 className="text-5xl font-bold">
                                     {item.heading}
                                 </h1>
 
-                                <button className="group flex items-center gap-3 text-xl cursor-pointer pointer-events-auto">
-                                    Shop Now
-                                    <span className="border-b border-white transition group-hover:translate-x-1">
-                                        →
+                                <button className="w-fit relative px-0.5 py-1 after:absolute after:-bottom-0.5 after:start-0 after:end-0 after:top-full hover:after:top-0 hover:after:bg-white/30 after:bg-white flex items-center gap-1 text-xl cursor-pointer pointer-events-auto after:transition-all after:ease-in-out after:duration-300">
+                                    <span className="">
+                                        Shop Now
                                     </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                                 </button>
                             </div>
 
                             {/* Right Image */}
-                            <div className="flex-1 flex justify-center pointer-events-none">
+                            <div className="flex justify-center pointer-events-none">
                                 <Image
                                     src={item.image}
                                     alt="Product"
@@ -197,15 +201,18 @@ export default function CarouselComponent() {
             <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3">
                 {slidesContent.map((_, i) => (
                     <button
+                        type="button"
                         key={i}
                         onClick={() => goToSlide(i)}
+                        aria-label={`Go to slide ${i + 1}`}
+                        aria-pressed={current === i}
                         className={`w-3 h-3 rounded-full border-2 transition-all cursor-pointer ${current === i + 1
-                                ? "bg-primaryColor border-white"
-                                : "bg-gray-500 border-gray-500"
+                            ? "bg-primaryColor border-white"
+                            : "bg-gray-500 border-gray-500"
                             }`}
                     ></button>
                 ))}
             </div>
-        </div>
+        </section>
     );
 }
