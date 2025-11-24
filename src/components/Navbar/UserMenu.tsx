@@ -59,7 +59,7 @@ export default function UserMenu({ token }: Props) {
 
             <div ref={userMenuRef} id="user-menu" className={`absolute bg-black/40 backdrop-blur-xl top-full end-4 z-50 w-48 px-2 rounded ${isAuthMenuOpen ? "h-56 py-4" : "h-0 py-0"} overflow-hidden shadow transition-all ease-in-out duration-300`}>
                 <ul role="menu" className='flex flex-col gap-2 text-white text-sm'>
-                    <li className='flex items-center'>
+                    <li role="menuitem" className='flex items-center'>
                         <Link href="/" className='flex-1 flex items-center gap-2 rounded ps-0 pe-2 hover:bg-white/20'>
                             <div className="w-8 h-8 flex items-center justify-center text-white fill-white relative">
                                 <Image src="/navbar/user.svg" alt='User menu' fill />
@@ -68,7 +68,7 @@ export default function UserMenu({ token }: Props) {
                         </Link>
                     </li>
 
-                    <li className='flex items-center'>
+                    <li role="menuitem" className='flex items-center'>
                         <Link href="/" className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
                             <div className="w-6 h-6 ms-1 flex items-center justify-center relative">
                                 <Image src="/navbar/icon-cancel.svg" alt='icon-cancel' fill />
@@ -77,7 +77,7 @@ export default function UserMenu({ token }: Props) {
                         </Link>
                     </li>
 
-                    <li className='flex items-center'>
+                    <li role="menuitem" className='flex items-center'>
                         <Link href="/" className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
                             <div className="w-6 h-6 ms-1 flex items-center justify-center relative">
                                 <Image src="/navbar/icon-mallbag.svg" alt='user icon' fill />
@@ -86,7 +86,7 @@ export default function UserMenu({ token }: Props) {
                         </Link>
                     </li>
 
-                    <li className='flex items-center'>
+                    <li role="menuitem" className='flex items-center'>
                         <Link href="/" className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
                             <div className="w-6 h-6 ms-1 flex items-center justify-center relative">
                                 <Image src="/navbar/Icon-Reviews.svg" alt='Icon-Reviews' fill />
@@ -95,7 +95,7 @@ export default function UserMenu({ token }: Props) {
                         </Link>
                     </li>
 
-                    <li className='flex items-center'>
+                    <li role="menuitem" className='flex items-center'>
                         <button type="button" onClick={() => { setIsAuthMenuOpen(false); setConfirmLogout(true); }} className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded cursor-pointer'>
                             <div className="w-6 h-6 flex items-center justify-center relative">
                                 <Image src="/navbar/Icon-logout.svg" alt='logout Icon' fill />
