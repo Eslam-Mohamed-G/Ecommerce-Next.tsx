@@ -29,7 +29,7 @@ export default function ProductCard() {
                     Add To Cart
                 </button>
             </div>
-            <div className="mt-5">
+            <div className="mt-3">
                 <header><h1>HAVIT HV-G92 Gamepad</h1></header>
                 <div className="flex flex-row gap-1 text-base">
                     <span className='text-primaryColor font-medium'>$120</span>
@@ -38,7 +38,7 @@ export default function ProductCard() {
             </div>
 
             {/* stars */}
-            
+
         </div>
     )
 }
