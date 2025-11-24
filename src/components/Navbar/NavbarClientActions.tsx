@@ -81,8 +81,8 @@ export default function NavbarClientActions({ token }: Props) {
             <div className="flex items-center gap-4">
                 <form className="bg-primaryBackground rounded-sm p-2 flex items-center justify-center" role="search" onSubmit={(e) => e.preventDefault()}>
                     <input type="text" placeholder="What are you looking for?" className="w-28 md:w-40 text-xs px-2 outline-0" />
-                    <button type="submit" aria-label="Search" className="cursor-pointer">
-                        <Image src="/search.svg" alt="search" width={20} height={20} />
+                    <button type="submit" aria-label="Search" className="flex items-center justify-center cursor-pointer">
+                        <Image src="/search.svg" alt="search" width={24} height={24} />
                     </button>
                 </form>
 
