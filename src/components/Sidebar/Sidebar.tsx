@@ -27,7 +27,7 @@ export default function Sidebar() {
     }, []);
     return (
         <nav className='absolute top-0 start-0 md:static z-40'>
-            <button ref={userButtonRef} aria-expanded={isSidebarOpen} onClick={()=>setIsSidebarOpen(!isSidebarOpen)} data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" className={`absolute z-30 start-3 ${isSidebarOpen ? "start-48 -translate-x-1": ""} text-heading bg-transparent md:hidden cursor-pointer transition-all ease-in-out duration-300`}>
+            <button ref={userButtonRef} aria-expanded={isSidebarOpen} onClick={()=>setIsSidebarOpen(!isSidebarOpen)} data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" className={`absolute -start-1 z-30 ${isSidebarOpen ? "start-48 -translate-x-1": ""} text-heading bg-transparent md:hidden cursor-pointer transition-all ease-in-out duration-300`}>
                 <span className="sr-only">Open sidebar</span>
                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width={28} height={28} fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" strokeLinecap="round" strokeWidth={2} d="M5 7h14M5 12h14M5 17h10" />
