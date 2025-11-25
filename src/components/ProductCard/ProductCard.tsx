@@ -22,7 +22,7 @@ export default function ProductCard() {
 
                 {/* img */}
                 <div className="">
-                    <Image src="/image/Joystick.png" alt='product image' width={190} height={180} />
+                    <Image src="/image/Joystick.png" alt='product image' width={190} height={180} loading='lazy' />
                 </div>
 
                 <button type='button' aria-label="Add product to cart" className='bg-textColor text-white text-base py-1 absolute left-0 right-0 top-full group-hover:-translate-y-8 cursor-pointer transition-all ease-in-out duration-300'>
@@ -33,7 +33,7 @@ export default function ProductCard() {
                 <header><h1 className='text-base font-medium'>HAVIT HV-G92 Gamepad</h1></header>
                 <div className="flex flex-row gap-3 text-base font-normal">
                     <span className='text-primaryColor'>$120</span>
-                    <span className='text-text2Color relative after:absolute after:top-1/2 after:-translatey-1/2 after:left-0 after:right-0 after:bg-text2Color after:h-px'>$160</span>
+                    <span className='text-text2Color relative after:absolute after:top-1/2 after:-translatey-y-1/2 after:left-0 after:right-0 after:bg-text2Color after:h-px'>$160</span>
                 </div>
             </div>
 
