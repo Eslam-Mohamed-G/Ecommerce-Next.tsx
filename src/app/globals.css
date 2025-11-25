@@ -2,6 +2,7 @@
 
 @theme {
   --color-primaryColor: rgba(219, 68, 68, 1);
+  --color-buttonColor: rgba(224, 117, 117, 1);
   --color-primaryBackground: rgba(245, 245, 245, 1);
   --color-Background: rgba(245, 245, 245, 9);
   --color-seconderyBackground: rgba(47, 46, 48, 1);

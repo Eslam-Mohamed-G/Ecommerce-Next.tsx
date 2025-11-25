@@ -2,6 +2,7 @@ import Sidebar from "@/src/components/Sidebar/Sidebar";
 import Image from "next/image";
 import CarouselComponent from "./CarouselComponent";
 import ProductCard from "@/src/components/ProductCard/ProductCard";
+import Countdown from "./Countdown";
 
 export default function Home() {
     return (
@@ -20,9 +21,11 @@ export default function Home() {
                     <span className="text-primaryColor font-semibold text-base">Today’s</span>
                 </header>
 
-                <div className="flex flex-row items-center">
+                <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-10">
                     <h1 className="text-4xl font-semibold">Flash Sales</h1>
-                    <div className=""></div>
+                    <div className="">
+                        <Countdown/>
+                    </div>
                 </div>
                 <ProductCard />
             </section>
