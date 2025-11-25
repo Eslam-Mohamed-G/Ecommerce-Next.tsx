@@ -50,7 +50,7 @@ export default function UserMenu({ token }: Props) {
     };
 
     return (
-        <div>
+        <div className={token ? "block" : "hidden"}>
             {token &&
                 <button ref={userButtonRef} aria-label="User menu" aria-expanded={isAuthMenuOpen} aria-controls="user-menu" onClick={() => { setIsAuthMenuOpen(!isAuthMenuOpen); setIsNavOpen(false) }} className="bg-primaryColor text-white flex items-center justify-center w-8 h-8 overflow-hidden rounded-full cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-icon lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx={12} cy={7} r={4} /></svg>
@@ -111,7 +111,7 @@ export default function UserMenu({ token }: Props) {
                     <div className="bg-white flex flex-col items-center justify-center gap-4 p-4 capitalize rounded">
                         <h1 className="text-lg font-bold">confirm logout</h1>
                         <div className="flex flex-row gap-4">
-                            <button type="button" onClick={handleLogout} className="text-primaryColor w-20 py-2 border rounded">logout</button>
+                            <button type="button" onClick={handleLogout} className="text-primaryColor w-20 py-2 border rounded cursor-pointer">logout</button>
                             <button type="button" onClick={() => setConfirmLogout(false)} className="bg-primaryColor text-white w-20 py-2 rounded cursor-pointer">cancl</button>
                         </div>
                     </div>
