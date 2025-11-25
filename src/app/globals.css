@@ -7,8 +7,10 @@
   --color-seconderyBackground: rgba(47, 46, 48, 1);
   --color-singUpImgBackground: rgba(203, 228, 232, 1);
   --color-text2Color: rgba(125, 129, 132, 1);
+  --color-grayStarColor: #9096A2;
   --color-textColor: rgba(0, 0, 0, 1);
   --color-borderColor: rgba(0, 0, 0, 0.3);
+  --color-starColor: rgba(255, 173, 51, 1);
 
   --breakpoint-md2: 920px; 
 }
