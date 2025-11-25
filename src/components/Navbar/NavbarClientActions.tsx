@@ -42,8 +42,8 @@ export default function NavbarClientActions({ token }: Props) {
     };
 
     return (
-        <nav aria-label="Mobile Navigation">
-            <ul ref={navRef} aria-hidden={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-3 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ? token ? "h-[280px] py-4" : "h-[338px] py-4" : "h-0 py-0"} md:hidden overflow-hidden transition-all ease-in-out duration-300`}>
+        <nav aria-label="Mobile Navigation" role="navigation">
+            <ul id="mobile-nav" ref={navRef} inert={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-3 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ? token ? "h-[280px] py-4" : "h-[338px] py-4" : "h-0 py-0"} md:hidden overflow-hidden transition-all ease-in-out duration-300`}>
                 <li className="flex items-center">
                     <Link href="/products" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/products" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Products
@@ -81,7 +81,7 @@ export default function NavbarClientActions({ token }: Props) {
             <div className="flex items-center gap-4">
                 <form className="bg-primaryBackground rounded-sm p-2 flex items-center justify-center" role="search" onSubmit={(e) => e.preventDefault()}>
                     <input type="text" placeholder="What are you looking for?" className="w-28 md:w-40 text-xs px-2 outline-0" />
-                    <button type="submit" aria-label="Search" className="flex items-center justify-center cursor-pointer">
+                    <button type="submit" aria-label="Search keywords" className="flex items-center justify-center cursor-pointer">
                         <Image src="/search.svg" alt="search" width={24} height={24} />
                     </button>
                 </form>
@@ -95,11 +95,11 @@ export default function NavbarClientActions({ token }: Props) {
                 </button>
                 <UserMenu token={token || null}/>
 
-                <button ref={navToggleRef} className='flex justify-center items-center md:hidden cursor-pointer' onClick={() => { setIsNavOpen(!isNavOpen); setIsAuthMenuOpen(false) }}>
+                <button ref={navToggleRef} aria-label="Toggle navigation menu" aria-expanded={isNavOpen} aria-controls="mobile-nav" className='flex justify-center items-center md:hidden cursor-pointer' onClick={() => { setIsNavOpen(!isNavOpen); setIsAuthMenuOpen(false) }}>
                     {isNavOpen ?
-                        <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
+                        <svg aria-hidden="true" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>
                         :
-                        <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-text-align-justify-icon lucide-text-align-justify"><path d="M3 5h18" /><path d="M3 12h18" /><path d="M3 19h18" /></svg>
+                        <svg aria-hidden="true" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-text-align-justify-icon lucide-text-align-justify"><path d="M3 5h18" /><path d="M3 12h18" /><path d="M3 19h18" /></svg>
                     }
                 </button>
             </div>

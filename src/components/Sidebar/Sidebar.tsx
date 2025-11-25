@@ -34,7 +34,7 @@ export default function Sidebar() {
                 </svg>
             </button>
 
-            <aside id="default-sidebar" ref={userSidebarRef} aria-label="Product Categories Sidebar" className={`md:border-e border-borderColor ${isSidebarOpen ? "w-48 ps-4 border-e bg-black/40 backdrop-blur-xl" : "w-0 ps-0"} md:w-48 md:bg-transparent transition-all ease-in-out duration-300 overflow-hidden`}>
+            <aside id="default-sidebar" ref={userSidebarRef} aria-label="Product Categories Sidebar" inert={!isSidebarOpen} className={`md:border-e border-borderColor ${isSidebarOpen ? "w-48 ps-4 border-e bg-black/40 backdrop-blur-xl" : "w-0 ps-0"} md:w-48 md:bg-transparent transition-all ease-in-out duration-300 overflow-hidden`}>
                 <h2 className="sr-only">Categories</h2>
                 <ul className="flex flex-col gap-4 mt-5 p-0 pe-4 text-white md:text-textColor text-base font-normal w-48 h-[300px] overflow-hidden">
                     <li className=''>
