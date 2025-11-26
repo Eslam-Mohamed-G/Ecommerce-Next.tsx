@@ -15,19 +15,23 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="flex flex-col gap-4 mt-10">
+            <section className="flex flex-col gap-4 mt-10 pb-10 border-b border-borderColor">
                 <header className="flex flex-row items-center gap-2">
-                    <span className="bg-primaryColor w-5 h-10 rounded"/>
+                    <span className="bg-primaryColor w-5 h-10 rounded" />
                     <span className="text-primaryColor font-semibold text-base">Today’s</span>
                 </header>
 
                 <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-10">
                     <h1 className="text-4xl font-semibold">Flash Sales</h1>
                     <div className="">
-                        <Countdown/>
+                        <Countdown />
                     </div>
                 </div>
                 <ProductCard />
+
+                <button type="button" className="bg-primaryColor hover:bg-buttonColor text-white w-3xs h-14 rounded m-auto mt-10 cursor-pointer transition-all ease-in-out duration-300">
+                    View All Products
+                </button>
             </section>
         </main>
     );
