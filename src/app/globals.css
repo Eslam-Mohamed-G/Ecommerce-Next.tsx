@@ -15,7 +15,8 @@
   --color-textColor: rgba(0, 0, 0, 1);
   --color-borderColor: rgba(0, 0, 0, 0.3);
   --color-starColor: rgba(255, 173, 51, 1);
-
+  
+  --breakpoint-xs: 30rem;
   --breakpoint-md2: 920px; 
 }
 

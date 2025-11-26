@@ -21,7 +21,7 @@ export default function Home() {
                     <span className="text-primaryColor font-semibold text-base">Today’s</span>
                 </header>
 
-                <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-10 mb-2 md:mb-6">
+                <div className="flex flex-col xs:flex-row xs:items-end gap-2 xs:gap-10 mb-2 md:mb-6">
                     <h1 className="text-4xl font-semibold">Flash Sales</h1>
                     <div className="">
                         <Countdown />
