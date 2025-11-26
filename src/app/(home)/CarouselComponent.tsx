@@ -142,7 +142,7 @@ export default function CarouselComponent() {
     };
 
     return (
-        <section aria-label="Hero Product Slider" className="relative w-full h-80 pt-6 text-white select-none">
+        <section aria-label="Hero Product Slider" className="relative z-30 w-full h-80 pt-6 text-white select-none">
             {/* Slider */}
             <div
                 ref={containerRef}
