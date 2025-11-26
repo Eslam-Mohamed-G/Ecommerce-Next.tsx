@@ -56,7 +56,7 @@ function TimeBox({ label, value }: { label: string; value: string }) {
     return (
         <div>
             <p className="text-xs font-semibold">{label}</p>
-            <p className="text-4xl font-bold">{value}</p>
+            <p className="text-3xl font-bold">{value}</p>
         </div>
     );
 }

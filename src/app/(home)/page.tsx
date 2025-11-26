@@ -21,8 +21,8 @@ export default function Home() {
                     <span className="text-primaryColor font-semibold text-base">Today’s</span>
                 </header>
 
-                <div className="flex flex-col xs:flex-row xs:items-end gap-2 xs:gap-10 mb-2 md:mb-6">
-                    <h1 className="text-4xl font-semibold">Flash Sales</h1>
+                <div className="flex flex-col xs:flex-row xs:items-end gap-2 xs:gap-12 mb-2 md:mb-6">
+                    <h1 className="text-3xl font-bold">Flash Sales</h1>
                     <div className="">
                         <Countdown />
                     </div>
@@ -39,6 +39,9 @@ export default function Home() {
                     <span className="bg-primaryColor w-5 h-10 rounded" />
                     <span className="text-primaryColor font-semibold text-base">Categories</span>
                 </header>
+                <div className="flex flex-col xs:flex-row xs:items-end gap-2 xs:gap-10 mb-2 md:mb-6">
+                    <h1 className="text-3xl font-bold">Browse By Category</h1>
+                </div>
             </section>
         </main>
     );
