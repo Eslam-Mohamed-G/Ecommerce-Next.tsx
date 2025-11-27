@@ -23,3 +23,12 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Hide scrollbar */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
