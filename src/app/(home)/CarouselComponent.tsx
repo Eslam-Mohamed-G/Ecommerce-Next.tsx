@@ -173,7 +173,7 @@ export default function CarouselComponent() {
                                     {item.heading}
                                 </h1>
 
-                                <button className="w-fit relative px-0.5 py-1 after:absolute after:-bottom-0.5 after:start-0 after:end-0 after:top-full hover:after:top-0 hover:after:bg-white/30 after:bg-white flex items-center gap-1 text-xl cursor-pointer pointer-events-auto after:transition-all after:ease-in-out after:duration-300">
+                                <button className="w-fit relative px-0.5 py-1 after:absolute after:-bottom-0.5 after:start-0 after:end-0 after:top-full hover:after:top-0 hover:after:bg-white/30 after:bg-white after:rounded flex items-center gap-1 text-xl cursor-pointer pointer-events-auto after:transition-all after:ease-in-out after:duration-300">
                                     <span className="">
                                         Shop Now
                                     </span>
