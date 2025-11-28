@@ -46,7 +46,7 @@ export default function Home() {
                 <CategoriesCarousel />
             </section>
 
-            <section className="flex flex-col-reverse md:flex-row items-center justify-around gap-4 mt-10 p-10 bg-textColor mb-10">
+            <section className="flex flex-col-reverse md:flex-row items-center justify-around gap-4 mt-10 p-10 bg-textColor overflow-hidden mb-10">
                 <div className="flex flex-col gap-5 md:gap-10 items-start text-white">
                     <h1 className="text-successButton font-semibold text-base">Categories</h1>
                     <p className="text-3xl md:text-5xl font-semibold max-w-64 md:max-w-[420px]">Enhance Your Music Experience</p>
@@ -75,7 +75,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center justify-center relative">
                     <Image src="/image/Speaker.webp" alt="Speaker" width={600} height={420} loading="lazy" className="static z-20"/>
-                    <div className="absolute z-10 bg-transparent md:bg-backGrounblur md:blur-[130px] w-[500px] h-[500px] rounded-full"/>
+                    <div className="absolute z-10 bg-transparent md:bg-backGrounblur md:blur-[80px] lg:blur-[130px] md:w-80 md:h-80 lg:w-[480px] lg:h-[480px] rounded-full border border-red-500"/>
                 </div>
             </section>
         </main>
