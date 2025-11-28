@@ -74,7 +74,7 @@ export default function Home() {
                     </button>
                 </div>
                 <div className="flex items-center justify-center relative">
-                    <Image src="/image/Frame 694.webp" alt="Speaker" width={600} height={420} loading="lazy" className="static z-20"/>
+                    <Image src="/image/Speaker.webp" alt="Speaker" width={600} height={420} loading="lazy" className="static z-20"/>
                     <div className="absolute z-10 bg-transparent md:bg-backGrounblur md:blur-[130px] w-[500px] h-[500px] rounded-full"/>
                 </div>
             </section>
