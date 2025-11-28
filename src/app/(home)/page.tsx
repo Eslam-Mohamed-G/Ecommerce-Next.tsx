@@ -45,6 +45,39 @@ export default function Home() {
                 </div>
                 <CategoriesCarousel />
             </section>
+
+            <section className="flex flex-col-reverse md:flex-row items-center justify-around gap-4 mt-10 p-10 bg-textColor mb-10">
+                <div className="flex flex-col gap-5 md:gap-10 items-start text-white">
+                    <h1 className="text-successButton font-semibold text-base">Categories</h1>
+                    <p className="text-3xl md:text-5xl font-semibold max-w-64 md:max-w-[420px]">Enhance Your Music Experience</p>
+                    <div className="flex flex-row gap-4 md:gap-7 text-textColor font-medium text-sm">
+                        <div className="bg-white w-16 h-16 rounded-full flex flex-col items-center justify-center">
+                            <span className="font-bold">05</span>
+                            <span>Days</span>
+                        </div>
+                        <div className="bg-white w-16 h-16 rounded-full flex flex-col items-center justify-center">
+                            <span className="font-bold">23</span>
+                            <span>Hours</span>
+                        </div>
+                        <div className="bg-white w-16 h-16 rounded-full flex flex-col items-center justify-center">
+                            <span className="font-bold">59</span>
+                            <span>Minutes</span>
+                        </div>
+                        <div className="bg-white w-16 h-16 rounded-full flex flex-col items-center justify-center">
+                            <span className="font-bold">35</span>
+                            <span>Seconds</span>
+                        </div>
+                    </div>
+
+                    <button type="button" className="flex items-center justify-center w-44 h-14 rounded bg-successButton cursor-pointer">
+                    Buy Now!
+                    </button>
+                </div>
+                <div className="flex items-center justify-center relative">
+                    <Image src="/image/Frame 694.webp" alt="Speaker" width={600} height={420} loading="lazy" className="static z-20"/>
+                    <div className="absolute z-10 bg-transparent md:bg-backGrounblur md:blur-[130px] w-[500px] h-[500px] rounded-full"/>
+                </div>
+            </section>
         </main>
     );
 }
