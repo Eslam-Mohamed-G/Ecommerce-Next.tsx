@@ -89,7 +89,7 @@ export default function Home() {
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-4 gap-5 md:h-[500px] lg:h-[600px]">
-                    <div className="col-span-2 row-span-4 bg-textColor group">
+                    <div className="col-span-2 row-span-4 bg-textColor rounded group">
                         <div className="w-full h-60 md:h-full p-4 md:p-6 lg:p-10 flex items-end grayscale group-hover:filter-none transition-all ease-in-out duration-300 relative">
                             <Image src="/image/playStation.webp" alt="Sony PlayStation 5 gaming console" width={200} height={200} loading="lazy" aria-hidden="true" className="absolute bottom-0 right-0 z-10 md:hidden" />
                             <Image src="/image/playStation.webp" alt="Sony PlayStation 5 gaming console" width={500} height={500} loading="lazy" aria-hidden="true" className="absolute bottom-0 z-10 hidden md:block" />
@@ -106,7 +106,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="col-span-2 row-span-2 bg-textColor">
+                    <div className="col-span-2 row-span-2 bg-textColor rounded">
                         <div className="w-full h-full p-4 md:p-6 lg:p-10 flex items-end relative">
                             {/* <Image src="/image/playStation.webp" alt="playStation" width={500} height={500} loading="lazy" className="absolute bottom-0 z-10" /> */}
                             <div className="text-white w-64 static z-20">
@@ -122,7 +122,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="col-span-1 row-span-2 bg-textColor group">
+                    <div className="col-span-1 row-span-2 bg-textColor rounded group">
                         <div className="w-full h-full p-4 md:p-6 lg:p-10 flex items-end  grayscale group-hover:filter-none transition-all ease-in-out duration-300 relative">
                             <Image src="/image/speakers3.webp" alt="speakers3" width={100} height={100} loading="lazy" aria-hidden="true" className="absolute top-1/2 -translate-y-1/2 right-0 z-10 md:hidden" />
                             <Image src="/image/speakers3.webp" alt="speakers3" width={200} height={200} loading="lazy" aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-1/2 z-10 hidden md:block" />
@@ -139,7 +139,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <div className="col-span-1 row-span-2 bg-textColor group">
+                    <div className="col-span-1 row-span-2 bg-textColor rounded group">
                         <div className="w-full h-full p-4 md:p-6 lg:p-10 flex items-end  grayscale group-hover:filter-none transition-all ease-in-out duration-300 relative">
                             <Image src="/image/perfume.webp" alt="perfume" width={100} height={100} loading="lazy" aria-hidden="true" className="absolute top-1/2 right-0 -translate-y-1/2 z-10 md:hidden" />
                             <Image src="/image/perfume.webp" alt="perfume" width={200} height={200} loading="lazy" aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-1/2 z-10 hidden md:block grayscale group-hover:filter-none transition-all ease-in-out duration-300" />
