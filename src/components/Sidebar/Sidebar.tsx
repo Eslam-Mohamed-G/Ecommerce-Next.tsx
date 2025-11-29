@@ -26,17 +26,17 @@ export default function Sidebar() {
         };
     }, []);
     return (
-        <nav className='absolute top-0 -start-4 md:static z-40'>
-            <button ref={userButtonRef} aria-expanded={isSidebarOpen} onClick={()=>setIsSidebarOpen(!isSidebarOpen)} data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" className={`absolute start-3 z-30 ${isSidebarOpen ? "start-48 -translate-x-1": ""} text-heading bg-transparent md:hidden cursor-pointer transition-all ease-in-out duration-300`}>
+        <nav className='static top-0 -start-4 z-40 border-e border-borderColor p-0'>
+            <button ref={userButtonRef} aria-expanded={isSidebarOpen} onClick={()=>setIsSidebarOpen(!isSidebarOpen)} data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar" aria-controls="default-sidebar" type="button" className={`block md:hidden absolute -start-1 top-2 sm:top-0 z-30 ${isSidebarOpen ? "start-48 -translate-x-1": ""} text-heading bg-transparent md:hidden cursor-pointer transition-all ease-in-out duration-300`}>
                 <span className="sr-only">Open sidebar</span>
                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width={28} height={28} fill="none" viewBox="0 0 24 24">
                     <path stroke="currentColor" strokeLinecap="round" strokeWidth={2} d="M5 7h14M5 12h14M5 17h10" />
                 </svg>
             </button>
 
-            <aside id="default-sidebar" ref={userSidebarRef} aria-label="Product Categories Sidebar" className={`md:border-e border-borderColor ${isSidebarOpen ? "w-48 ps-4 border-e bg-black/40 backdrop-blur-xl" : "w-0 ps-0"} md:w-48 md:ps-0 md:bg-transparent transition-all ease-in-out duration-300 overflow-hidden`}>
+            <aside id="default-sidebar" ref={userSidebarRef} aria-label="Product Categories Sidebar" className={`w-52 absolute md:static top-0 bottom-0 ${isSidebarOpen ? "-start-4 ps-4 pe-4 bg-black/40 backdrop-blur-xl" : "-start-48 ps-0"} md:ps-0 md:bg-transparent transition-all ease-in-out duration-300`}>
                 <h2 className="sr-only">Categories</h2>
-                <ul className="flex flex-col gap-4 mt-5 p-0 pe-4 text-white md:text-textColor text-base font-normal w-48 h-[300px] overflow-hidden">
+                <ul className="flex flex-col gap-4 mt-5 p-0 text-white md:text-textColor text-base font-normal w-48 h-[300px] overflow-hidden">
                     <li className=''>
                         <button aria-expanded={openWomenDropdown} aria-controls="women-submenu" onClick={() => { setOpenWomenDropdown(!openWomenDropdown); setOpenMenDropdown(false) }} className="relative flex flex-row w-full justify-between items-center cursor-pointer">
                             <span className="">Woman’s Fashion</span>
@@ -79,11 +79,6 @@ export default function Sidebar() {
                     <li>
                         <Link href="/" className="flex items-center">
                             <span className="">Electronics</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/" className="flex items-center">
-                            <span className="flex-1  whitespace-nowrap">Medicine</span>
                         </Link>
                     </li>
                 </ul>
