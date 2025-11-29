@@ -79,19 +79,20 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="flex flex-col gap-4 mt-10 pb-10">
+            <section aria-labelledby="new-arrivals" className="flex flex-col gap-4 mt-10 pb-10">
                 <header className="flex flex-row items-center gap-2">
-                    <span className="bg-primaryColor w-5 h-10 rounded" />
+                    <span aria-hidden="true" className="bg-primaryColor w-5 h-10 rounded" />
                     <span className="text-primaryColor font-semibold text-base">Featured</span>
                 </header>
                 <div className="flex flex-col xs:flex-row xs:items-end gap-2 xs:gap-10 mb-4">
-                    <h1 className="text-3xl font-bold">New Arrival</h1>
+                    <h2 className="text-3xl font-bold">New Arrival</h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-4 gap-5 md:h-[500px] lg:h-[600px]">
+                <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-4 gap-5 md:h-[500px] lg:h-[600px]">
                     <div className="col-span-2 row-span-4 bg-textColor">
-                        <div className="w-full h-full p-4 md:p-6 lg:p-10 border border-red-500 flex items-end relative">
-                            <Image src="/image/playStation.webp" alt="playStation" width={500} height={500} loading="lazy" className="absolute bottom-0 z-10" />
-                            <div className="text-white w-64 static z-20">
+                        <div className="w-full h-60 md:h-full p-4 md:p-6 lg:p-10 flex items-end relative">
+                            <Image src="/image/playStation.webp" alt="Sony PlayStation 5 gaming console" width={200} height={200} loading="lazy" aria-hidden="true" className="absolute bottom-0 right-0 z-10 md:hidden" />
+                            <Image src="/image/playStation.webp" alt="Sony PlayStation 5 gaming console" width={500} height={500} loading="lazy" aria-hidden="true" className="absolute bottom-0 z-10 hidden md:block" />
+                            <div className="text-white w-56 md:w-64 static z-20">
                                 <h3 className="font-semibold text-2xl">PlayStation 5</h3>
                                 <p className="my-2 font-normal">Black and White version of the PS5 coming out on sale.</p>
                                 <button type="button" className="w-fit relative px-0.5 py-1 after:absolute after:-bottom-0.5 after:start-0 after:end-0 after:top-full hover:after:top-0 hover:after:bg-white/30 after:bg-white after:rounded flex items-center gap-1 text-xl cursor-pointer pointer-events-auto after:transition-all after:ease-in-out after:duration-300">
@@ -122,7 +123,8 @@ export default function Home() {
 
                     <div className="col-span-1 row-span-2 bg-textColor">
                         <div className="w-full h-full p-4 md:p-6 lg:p-10 flex items-end relative">
-                            <Image src="/image/speakers3.webp" alt="speakers3" width={100} height={100} loading="lazy" className="absolute top-1/2 -translate-y-1/2 right-0 md:left-1/2 md:-translate-1/2 z-10" />
+                            <Image src="/image/speakers3.webp" alt="speakers3" width={100} height={100} loading="lazy" aria-hidden="true" className="absolute top-1/2 -translate-y-1/2 right-0 z-10 md:hidden" />
+                            <Image src="/image/speakers3.webp" alt="speakers3" width={200} height={200} loading="lazy" aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-1/2 z-10 hidden md:block" />
                             <div className="text-white w-64 static z-20">
                                 <h3 className="font-semibold text-2xl">Speakers</h3>
                                 <p className="my-2 font-normal">Amazon wireless speakers</p>
@@ -138,7 +140,8 @@ export default function Home() {
 
                     <div className="col-span-1 row-span-2 bg-textColor">
                         <div className="w-full h-full p-4 md:p-6 lg:p-10 flex items-end relative">
-                            <Image src="/image/perfume.webp" alt="perfume" width={200} height={200} loading="lazy" className="absolute top-1/2 left-1/2 -translate-1/2 z-10" />
+                            <Image src="/image/perfume.webp" alt="perfume" width={100} height={100} loading="lazy" aria-hidden="true" className="absolute top-1/2 right-0 -translate-y-1/2 z-10 md:hidden" />
+                            <Image src="/image/perfume.webp" alt="perfume" width={200} height={200} loading="lazy" aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-1/2 z-10 hidden md:block" />
                             <div className="text-white w-64 static z-20">
                                 <h3 className="font-semibold text-2xl">Speakers</h3>
                                 <p className="my-2 font-normal">Amazon wireless speakers</p>
