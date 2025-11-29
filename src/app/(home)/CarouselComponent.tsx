@@ -142,11 +142,11 @@ export default function CarouselComponent() {
     };
 
     return (
-        <section aria-label="Hero Product Slider" className="relative z-30 w-full h-80 pt-6 text-white select-none">
+        <section aria-label="Hero Product Slider" className="w-full h-80 pt-6 content-end text-white select-none relative z-30">
             {/* Slider */}
             <div
                 ref={containerRef}
-                className="flex overflow-hidden cursor-grab touch-pan-y bg-textColor"
+                className="flex flex-row cursor-grab touch-pan-y bg-textColor overflow-hidden"
                 onMouseDown={onDragStart}
                 onTouchStart={onDragStart}
                 style={{ scrollBehavior: "smooth" }}
@@ -164,9 +164,9 @@ export default function CarouselComponent() {
                             minWidth: slideWidth || "100%",
                         }}
                     >
-                        <div className="max-w-7xl mx-auto p-6 flex flex-col md:flex-row md:gap-10 items-center justify-around pointer-events-none">
+                        <div className="max-w-7xl mx-auto p-4 md:p-6 flex flex-col sm:flex-row md:gap-10 md:items-center justify-around pointer-events-none">
                             {/* Left Text */}
-                            <div className="max-w-2xs h-60 ms-8 flex flex-col justify-between pointer-events-none">
+                            <div className="max-w-2xs h-60 md:ms-8 py-6 sm:py-2 flex flex-col justify-between pointer-events-none">
                                 <p className="text-xl font-light">{item.title}</p>
 
                                 <h1 className="text-5xl font-bold">
@@ -182,7 +182,7 @@ export default function CarouselComponent() {
                             </div>
 
                             {/* Right Image */}
-                            <div className="flex justify-center pointer-events-none">
+                            <div className="hidden sm:flex justify-center  pointer-events-none">
                                 <Image
                                     src={item.image}
                                     alt="Product"
@@ -198,7 +198,7 @@ export default function CarouselComponent() {
             </div>
 
             {/* Dots */}
-            <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-3">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-40 flex justify-center gap-3">
                 {slidesContent.map((_, i) => (
                     <button
                         type="button"
