@@ -88,7 +88,7 @@ export default function Home() {
                     <h2 className="text-3xl font-bold">New Arrival</h2>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-4 gap-5 md:h-[500px] lg:h-[600px]">
+                <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-4 gap-5 md:h-[500px] lg:h-[600px] mb-10">
                     <div className="col-span-2 row-span-4 bg-textColor rounded group">
                         <div className="w-full h-60 md:h-full p-4 md:p-6 lg:p-10 flex items-end grayscale group-hover:filter-none transition-all ease-in-out duration-300 relative">
                             <Image src="/image/playStation.webp" alt="Sony PlayStation 5 gaming console" width={200} height={200} loading="lazy" aria-hidden="true" className="absolute bottom-0 right-0 z-10 md:hidden" />
@@ -154,6 +154,32 @@ export default function Home() {
                                 </button>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 my-12">
+                    <div className="flex flex-col items-center justify-center">
+                        <div className="w-16 h-16 rounded-full bg-textColor border-8 border-border2Color flex items-center justify-center">
+                            <Image src="/footer/deliveryIcon.svg" alt="delivery Icon" width={34} height={34} loading="lazy"/>
+                        </div>
+                        <h3 className="font-semibold text-xl mt-4">FREE AND FAST DELIVERY</h3>
+                        <p>Free delivery for all orders over $140</p>
+                    </div>
+
+                    <div className="flex flex-col items-center justify-center">
+                        <div className="w-16 h-16 rounded-full bg-textColor border-8 border-border2Color flex items-center justify-center">
+                            <Image src="/footer/customerService.svg" alt="customer Service" width={34} height={34} loading="lazy"/>
+                        </div>
+                        <h3 className="font-semibold text-xl mt-4">24/7 CUSTOMER SERVICE</h3>
+                        <p>Friendly 24/7 customer support</p>
+                    </div>
+
+                    <div className="flex flex-col items-center justify-center">
+                        <div className="w-16 h-16 rounded-full bg-textColor border-8 border-border2Color flex items-center justify-center">
+                            <Image src="/footer/secureIcon.svg" alt="secure Icon" width={34} height={34} loading="lazy"/>
+                        </div>
+                        <h3 className="font-semibold text-xl mt-4">MONEY BACK GUARANTEE</h3>
+                        <p>We reurn money within 30 days</p>
                     </div>
                 </div>
             </section>
