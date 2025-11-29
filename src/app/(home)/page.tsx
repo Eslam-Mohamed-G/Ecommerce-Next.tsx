@@ -157,7 +157,7 @@ export default function Home() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 my-12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5 my-12">
                     <div className="flex flex-col items-center justify-center">
                         <div className="w-16 h-16 rounded-full bg-textColor border-8 border-border2Color flex items-center justify-center">
                             <Image src="/footer/deliveryIcon.svg" alt="delivery Icon" width={34} height={34} loading="lazy"/>
