@@ -70,12 +70,87 @@ export default function Home() {
                     </div>
 
                     <button type="button" className="flex items-center justify-center w-44 h-14 rounded bg-[#078639] cursor-pointer">
-                    Buy Now!
+                        Buy Now!
                     </button>
                 </div>
                 <div className="flex items-center justify-center relative">
-                    <Image src="/image/Speaker.webp" alt="Speaker" width={600} height={420} loading="lazy" className="static z-20"/>
-                    <div className="absolute z-10 bg-transparent md:bg-backGrounblur md:blur-[80px] lg:blur-[130px] md:w-80 md:h-80 lg:w-[480px] lg:h-[480px] rounded-full border border-red-500"/>
+                    <Image src="/image/Speaker.webp" alt="Speaker" width={600} height={420} loading="lazy" className="static z-20" />
+                    <div className="absolute z-10 bg-transparent md:bg-backGrounblur md:blur-[80px] lg:blur-[130px] md:w-80 md:h-80 lg:w-[480px] lg:h-[480px] rounded-full border border-red-500" />
+                </div>
+            </section>
+
+            <section className="flex flex-col gap-4 mt-10 pb-10">
+                <header className="flex flex-row items-center gap-2">
+                    <span className="bg-primaryColor w-5 h-10 rounded" />
+                    <span className="text-primaryColor font-semibold text-base">Featured</span>
+                </header>
+                <div className="flex flex-col xs:flex-row xs:items-end gap-2 xs:gap-10 mb-4">
+                    <h1 className="text-3xl font-bold">New Arrival</h1>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-4 grid-rows-4 gap-5 md:h-[500px] lg:h-[600px]">
+                    <div className="col-span-2 row-span-4 bg-textColor">
+                        <div className="w-full h-full p-4 md:p-6 lg:p-10 border border-red-500 flex items-end relative">
+                            <Image src="/image/playStation.webp" alt="playStation" width={500} height={500} loading="lazy" className="absolute bottom-0 z-10" />
+                            <div className="text-white w-64 static z-20">
+                                <h3 className="font-semibold text-2xl">PlayStation 5</h3>
+                                <p className="my-2 font-normal">Black and White version of the PS5 coming out on sale.</p>
+                                <button type="button" className="w-fit relative px-0.5 py-1 after:absolute after:-bottom-0.5 after:start-0 after:end-0 after:top-full hover:after:top-0 hover:after:bg-white/30 after:bg-white after:rounded flex items-center gap-1 text-xl cursor-pointer pointer-events-auto after:transition-all after:ease-in-out after:duration-300">
+                                    <span className="">
+                                        Shop Now
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-span-2 row-span-2 bg-textColor">
+                        <div className="w-full h-full p-4 md:p-6 lg:p-10 flex items-end relative">
+                            {/* <Image src="/image/playStation.webp" alt="playStation" width={500} height={500} loading="lazy" className="absolute bottom-0 z-10" /> */}
+                            <div className="text-white w-64 static z-20">
+                                <h3 className="font-semibold text-2xl">Women’s Collections</h3>
+                                <p className="my-2 font-normal">Featured woman collections that give you another vibe.</p>
+                                <button type="button" className="w-fit relative px-0.5 py-1 after:absolute after:-bottom-0.5 after:start-0 after:end-0 after:top-full hover:after:top-0 hover:after:bg-white/30 after:bg-white after:rounded flex items-center gap-1 text-xl cursor-pointer pointer-events-auto after:transition-all after:ease-in-out after:duration-300">
+                                    <span className="">
+                                        Shop Now
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-span-1 row-span-2 bg-textColor">
+                        <div className="w-full h-full p-4 md:p-6 lg:p-10 flex items-end relative">
+                            <Image src="/image/speakers3.webp" alt="speakers3" width={100} height={100} loading="lazy" className="absolute top-1/2 -translate-y-1/2 right-0 md:left-1/2 md:-translate-1/2 z-10" />
+                            <div className="text-white w-64 static z-20">
+                                <h3 className="font-semibold text-2xl">Speakers</h3>
+                                <p className="my-2 font-normal">Amazon wireless speakers</p>
+                                <button type="button" className="w-fit relative px-0.5 py-1 after:absolute after:-bottom-0.5 after:start-0 after:end-0 after:top-full hover:after:top-0 hover:after:bg-white/30 after:bg-white after:rounded flex items-center gap-1 text-xl cursor-pointer pointer-events-auto after:transition-all after:ease-in-out after:duration-300">
+                                    <span className="">
+                                        Shop Now
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-span-1 row-span-2 bg-textColor">
+                        <div className="w-full h-full p-4 md:p-6 lg:p-10 flex items-end relative">
+                            <Image src="/image/perfume.webp" alt="perfume" width={200} height={200} loading="lazy" className="absolute top-1/2 left-1/2 -translate-1/2 z-10" />
+                            <div className="text-white w-64 static z-20">
+                                <h3 className="font-semibold text-2xl">Speakers</h3>
+                                <p className="my-2 font-normal">Amazon wireless speakers</p>
+                                <button type="button" className="w-fit relative px-0.5 py-1 after:absolute after:-bottom-0.5 after:start-0 after:end-0 after:top-full hover:after:top-0 hover:after:bg-white/30 after:bg-white after:rounded flex items-center gap-1 text-xl cursor-pointer pointer-events-auto after:transition-all after:ease-in-out after:duration-300">
+                                    <span className="">
+                                        Shop Now
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
