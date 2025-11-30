@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function Footer() {
     return (
         <section aria-label="Website footer" className='bg-textColor min-h-[380px] flex items-start'>
-            <div className="xl:max-w-7xl lg:max-w-5xl m-auto px-4 flex-1 flex flex-col md:flex-row justify-between gap-10 text-white">
+            <div className="xl:max-w-7xl lg:max-w-5xl m-auto px-4 pt-10 lg:pt-0 flex-1 flex flex-row flex-wrap justify-between gap-10 text-white">
                 <div className="flex flex-col gap-5">
                     <h1 className='font-bold text-2xl'>Exclusive</h1>
                     <h2 className='font-medium text-xl'>Subscribe</h2>
