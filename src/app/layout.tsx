@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "../components/Navbar/Navbar";
+import Footer from "../components/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "E-Commerce Store | Buy the Best Products Online",
@@ -45,6 +46,9 @@ export default function RootLayout({
         <main id="main-content">
           {children}
         </main>
+        <footer>
+          <Footer/>
+        </footer>
       </body>
     </html>
   );
