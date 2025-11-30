@@ -46,7 +46,7 @@ export default function RootLayout({
         <main id="main-content">
           {children}
         </main>
-        <footer>
+        <footer role="contentinfo">
           <Footer/>
         </footer>
       </body>
