@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function Footer() {
     return (
         <section className='bg-textColor min-h-[380px] flex items-start'>
-            <div className="xl:max-w-7xl lg:max-w-5xl m-auto px-4 flex-1 flex flex-col md:flex-row gap-10 text-white">
+            <div className="xl:max-w-7xl lg:max-w-5xl m-auto px-4 flex-1 flex flex-col md:flex-row justify-between gap-10 text-white">
                 <div className="flex flex-col gap-5">
                     <h1 className='font-bold text-2xl'>Exclusive</h1>
                     <h2 className='font-medium text-xl'>Subscribe</h2>
@@ -40,6 +40,36 @@ export default function Footer() {
                     <Link href="/">Terms Of Use</Link>
                     <Link href="/">FAQ</Link>
                     <Link href="/contact">Contact</Link>
+                </div>
+
+                <div className="flex flex-col gap-5">
+                    <h1 className='font-medium text-xl'>Download App</h1>
+                    <p className='text-xs text-grayStarColor'>Save $3 with App New User Only</p>
+                    <div className="grid grid-cols-2 grid-rows-2 gap-2">
+                        <div className="col-span-1 row-span-2">
+                            <Image src="/footer/Qrcode.png" alt='Qrcode' width={80} height={80} loading='lazy' />
+                        </div>
+                        <div className="col-span-1 row-span-1">
+                            <Image src="/footer/google-play-store.png" alt='google play store' width={104} height={30} loading='lazy' />
+                        </div>
+                        <div className="col-span-1 row-span-1">
+                            <Image src="/footer/apple-store.png" alt='apple store' width={104} height={30} loading='lazy' />
+                        </div>
+                    </div>
+                    <div className="flex flex-row gap-5 justify-between">
+                        <div className="flex items-center justify-center">
+                            <Image src="/footer/facebookIcon.svg" alt='facebook Icon' width={24} height={24} loading='lazy' />
+                        </div>
+                        <div className="flex items-center justify-center">
+                            <Image src="/footer/twitterIcon.svg" alt='twitter Icon' width={24} height={24} loading='lazy' />
+                        </div>
+                        <div className="flex items-center justify-center">
+                            <Image src="/footer/instagramicon.svg" alt='instagram Icon' width={24} height={24} loading='lazy' />
+                        </div>
+                        <div className="flex items-center justify-center">
+                            <Image src="/footer/linkedinIcon.svg" alt='linkedin Icon' width={24} height={24} loading='lazy' />
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
