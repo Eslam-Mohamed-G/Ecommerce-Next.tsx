@@ -47,13 +47,13 @@ export default function Footer() {
                     <p className='text-xs text-grayStarColor'>Save $3 with App New User Only</p>
                     <div className="grid grid-cols-2 grid-rows-2 gap-2">
                         <div className="col-span-1 row-span-2">
-                            <Image src="/footer/Qrcode.png" alt='Qrcode' width={80} height={80} loading='lazy' />
+                            <Image src="/footer/Qrcode.webp" alt='Qrcode' width={80} height={80} loading='lazy' />
                         </div>
                         <div className="col-span-1 row-span-1">
-                            <Image src="/footer/google-play-store.png" alt='google play store' width={104} height={30} loading='lazy' />
+                            <Image src="/footer/google-play-store.webp" alt='google play store' width={104} height={30} loading='lazy' />
                         </div>
                         <div className="col-span-1 row-span-1">
-                            <Image src="/footer/apple-store.png" alt='apple store' width={104} height={30} loading='lazy' />
+                            <Image src="/footer/apple-store.webp" alt='apple store' width={104} height={30} loading='lazy' />
                         </div>
                     </div>
                     <div className="flex flex-row gap-5 justify-between">
