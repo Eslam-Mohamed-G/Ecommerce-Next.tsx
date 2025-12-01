@@ -18,6 +18,7 @@
   --color-successButton: rgba(0, 255, 102, 1);
   /* --color-successButton: #078639; */
   --color-backGrounblur: #3a3a3a;
+  --color-textInputColor: #4a5565;
   
   --breakpoint-xs: 30rem;
   --breakpoint-md2: 920px; 
