@@ -6,9 +6,9 @@ export default function page() {
     return (
         <section className='xl:max-w-7xl lg:max-w-5xl max:h-dvh m-auto flex flex-row items-center justify-start'>
             <h1 className="sr-only">Sign In Page</h1>
-            <div className="flex flex-row justify-between w-full p-4 md:p-0 md:pe-4 mt-4 md:mt-8">
+            <div className="flex flex-row justify-between w-full p-4 md:p-0 md:pe-4 my-4 md:my-8">
                 <div className="hidden md:block md:w-md md2:w-lg lg:w-xl xl:w-3xl h-[550px] absolute start-0">
-                    <Image src="/image/sinUpImg.webp" alt='Sign Up illustration' fill loading='lazy' />
+                    <Image src="/image/sinUpImg.webp" alt='Sign Up illustration' loading='lazy' fill />
                 </div>
 
                 <div className="flex-1 flex flex-col md:items-end justify-center bg-primaryBackground h-[550px] p-4 md:ps-8 border border-borderColor rounded md:border-0 md:rounded-none overflow-hidden">

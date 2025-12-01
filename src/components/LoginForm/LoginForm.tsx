@@ -99,7 +99,7 @@ export default function LoginForm() {
                 </div>
 
                 {/* password   password   password */}
-                <div className="relative">
+                <div className="border-b-2 border-border2Color relative">
                     <input
                         value={formik.values.password}
                         onChange={formik.handleChange}
@@ -108,7 +108,7 @@ export default function LoginForm() {
                         id="password"
                         name="password"
                         type={showPassword ? 'text' : "password"}
-                        className={`peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600 ${formik.touched.password ? formik.errors.password ? falseMessage : trueMessage : inputGray}`}
+                        className={`w-11/12 h-10 peer placeholder-transparent text-gray-900 focus:outline-none focus:borer-rose-600 ${formik.touched.password ? formik.errors.password ? falseMessage : trueMessage : inputGray}`}
                         placeholder="Password"
                     />
                     <label htmlFor="password" className="absolute left-0 -top-3.5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Password</label>
@@ -127,7 +127,7 @@ export default function LoginForm() {
                         }
                     </div>
 
-                    <button type='button' aria-label={showPassword ? "Hide password" : "Show password"} className='absolute top-1/2 -translate-y-1/2 end-0 cursor-pointer' onClick={togglePasswordVisibility}>
+                    <button type='button' aria-label={showPassword ? "Hide password" : "Show password"} className='flex items-center justify-center absolute top-0 bottom-0 end-0 cursor-pointer' onClick={togglePasswordVisibility}>
                         {showPassword ?
                             <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx={12} cy={12} r={3} /></svg>
                             :
