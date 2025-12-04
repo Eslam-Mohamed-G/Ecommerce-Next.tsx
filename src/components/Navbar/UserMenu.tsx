@@ -60,7 +60,7 @@ export default function UserMenu({ token }: Props) {
             <div ref={userMenuRef} id="user-menu" className={`absolute bg-black/40 backdrop-blur-xl top-full end-5 z-50 w-48 px-2 rounded ${isAuthMenuOpen ? "h-56 py-4" : "h-0 py-0"} overflow-hidden shadow transition-all ease-in-out duration-300`}>
                 <ul role="menu" className='flex flex-col gap-2 text-white text-sm'>
                     <li role="menuitem" className='flex items-center'>
-                        <Link href="/" className='flex-1 flex items-center gap-2 rounded ps-0 pe-2 hover:bg-white/20'>
+                        <Link href="/account" onClick={()=>setIsAuthMenuOpen(false)} className='flex-1 flex items-center gap-2 rounded ps-0 pe-2 hover:bg-white/20'>
                             <div className="w-8 h-8 flex items-center justify-center text-white fill-white relative">
                                 <Image src="/navbar/user.svg" alt='User menu' fill />
                             </div>
