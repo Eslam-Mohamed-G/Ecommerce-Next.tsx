@@ -40,7 +40,7 @@ export default function page() {
                 </div>
 
                 <div className="col-span-3">
-                    <div className="w-full p-6 shadow">
+                    <div className="w-full p-6 rounded shadow">
                         <h2 className='text-primaryColor text-xl font-semibold mb-5'>Edit Your Profile</h2>
                         <form className='flex flex-col gap-5'>
                             <div className="flex flex-row flex-wrap gap-5">
