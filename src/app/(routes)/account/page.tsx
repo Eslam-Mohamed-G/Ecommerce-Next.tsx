@@ -1,15 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
+import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb';
 
 export default function page() {
     return (
         <section className='w-full lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-10'>
             <header className='flex items-center justify-between'>
-                <h1 className='flex flex-row items-center text-sm text-text2Color'>
-                    <Link href="/">Home</Link>
-                    <div className="bg-text2Color w-5 h-0.5 rounded-full -rotate-60" />
-                    <span className='font-normal text-textColor'>My Account</span>
-                </h1>
+                <Breadcrumb items={[{ label: 'My Account' }]} />
 
                 <div className="flex gap-2">
                     <span>Welcome! </span>
