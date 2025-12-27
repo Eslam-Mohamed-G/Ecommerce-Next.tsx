@@ -35,6 +35,17 @@ export default function FilterSidebar() {
                         <path d="M18 6L6 18M6 6l12 12" />
                     </svg>
                 </button>
+                <div className="flex flex-col gap-6">
+                    {/* header */}
+                    <div className="flex items-center justify-between">
+                        <h2 className="text-xl font-bold">Filters</h2>
+                        <button
+                            className="text-sm text-primaryColor hover:underline"
+                        >
+                            Clear All
+                        </button>
+                    </div>
+                </div>
             </aside>
         </>
     )
