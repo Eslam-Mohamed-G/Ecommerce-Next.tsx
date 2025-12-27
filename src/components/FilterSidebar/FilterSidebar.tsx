@@ -13,6 +13,15 @@ const categories = [
 ];
 export default function FilterSidebar() {
     const [isOpen, setIsOpen] = useState(false);
+
+    const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+    const handleCategoryToggle = (category: string) => {
+        const updated = selectedCategories.includes(category)
+            ? selectedCategories.filter(c => c !== category)
+            : [...selectedCategories, category];
+        setSelectedCategories(updated);
+    };
+
     return (
         <>
             {/* Mobile Filter Toggle */}
@@ -68,6 +77,8 @@ export default function FilterSidebar() {
                                 >
                                     <input
                                         type="checkbox"
+                                        checked={selectedCategories.includes(category)}
+                                        onChange={() => handleCategoryToggle(category)}
                                         className="w-4 h-4 accent-primaryColor cursor-pointer"
                                     />
                                     <span className="text-sm">{category}</span>
