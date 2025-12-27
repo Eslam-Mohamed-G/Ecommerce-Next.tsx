@@ -1,6 +1,16 @@
 "use client"
 import React, { useState } from 'react';
 
+const categories = [
+    'Electronics',
+    'Fashion',
+    'Home & Garden',
+    'Sports',
+    'Books',
+    'Toys',
+    'Beauty',
+    'Automotive'
+];
 export default function FilterSidebar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
@@ -45,6 +55,25 @@ export default function FilterSidebar() {
                         >
                             Clear All
                         </button>
+                    </div>
+
+                    {/* Categories */}
+                    <div>
+                        <h3 className="font-semibold mb-3">Categories</h3>
+                        <div className="flex flex-col gap-2">
+                            {categories.map((category) => (
+                                <label
+                                    key={category}
+                                    className="flex items-center gap-2 cursor-pointer hover:text-primaryColor transition-colors"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        className="w-4 h-4 accent-primaryColor cursor-pointer"
+                                    />
+                                    <span className="text-sm">{category}</span>
+                                </label>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </aside>
