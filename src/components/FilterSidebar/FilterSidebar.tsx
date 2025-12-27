@@ -40,7 +40,7 @@ export default function FilterSidebar() {
                     <div className="flex items-center justify-between">
                         <h2 className="text-xl font-bold">Filters</h2>
                         <button
-                            className="text-sm text-primaryColor hover:underline"
+                            className="text-sm text-primaryColor hover:underline cursor-pointer"
                         >
                             Clear All
                         </button>
