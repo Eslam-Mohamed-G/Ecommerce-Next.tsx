@@ -28,14 +28,15 @@ export default function FilterSidebar() {
                 {/* Mobile Close Button */}
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="lg:hidden absolute top-4 right-4 w-8 h-8 flex items-center justify-center"
+                    className="lg:hidden absolute top-2 right-2 w-11 h-11 flex items-center justify-center cursor-pointer"
                     aria-label="Close filters"
                 >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M18 6L6 18M6 6l12 12" />
                     </svg>
                 </button>
-                <div className="flex flex-col gap-6">
+
+                <div className="flex flex-col gap-6 mt-6">
                     {/* header */}
                     <div className="flex items-center justify-between">
                         <h2 className="text-xl font-bold">Filters</h2>
