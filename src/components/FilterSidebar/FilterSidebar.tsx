@@ -48,6 +48,14 @@ export default function FilterSidebar() {
                     </div>
                 </div>
             </aside>
+
+            {/* Mobile Overlay */}
+            {isOpen && (
+                <div
+                    className="lg:hidden fixed inset-0 bg-black/50 z-40"
+                    onClick={() => setIsOpen(false)}
+                />
+            )}
         </>
     )
 }
