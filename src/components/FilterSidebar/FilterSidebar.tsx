@@ -1,6 +1,16 @@
 "use client"
 import React, { useState } from 'react';
 
+interface FilterSidebarProps {
+    onFilterChange: (filters: FilterState) => void;
+}
+
+export interface FilterState {
+    categories: string[];
+    priceRange: [number, number];
+    rating: number;
+}
+
 const categories = [
     'Electronics',
     'Fashion',
@@ -11,7 +21,7 @@ const categories = [
     'Beauty',
     'Automotive'
 ];
-export default function FilterSidebar() {
+export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
     const [isOpen, setIsOpen] = useState(false);
 
     const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
