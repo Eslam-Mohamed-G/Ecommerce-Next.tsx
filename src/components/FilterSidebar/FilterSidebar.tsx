@@ -32,6 +32,16 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
         setSelectedCategories(updated);
     };
 
+    // price range
+    const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+    const [minRating, setMinRating] = useState(0);
+    const handlePriceChange = (index: 0 | 1, value: number) => {
+        const updated: [number, number] = [...priceRange] as [number, number];
+        updated[index] = value;
+        setPriceRange(updated);
+        onFilterChange({ categories: selectedCategories, priceRange: updated, rating: minRating });
+    };
+
     return (
         <>
             {/* Mobile Filter Toggle */}
@@ -94,6 +104,38 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                                     <span className="text-sm">{category}</span>
                                 </label>
                             ))}
+                        </div>
+                    </div>
+
+                    {/* Price Range */}
+                    <div>
+                        <h3 className="font-semibold mb-3">Price Range</h3>
+                        <div className="flex flex-col gap-3">
+                            <div className="flex items-center gap-2">
+                                <input
+                                    type="number"
+                                    value={priceRange[0]}
+                                    onChange={(e) => handlePriceChange(0, Number(e.target.value))}
+                                    className="w-full px-3 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
+                                    placeholder="Min"
+                                />
+                                <span>-</span>
+                                <input
+                                    type="number"
+                                    value={priceRange[1]}
+                                    onChange={(e) => handlePriceChange(1, Number(e.target.value))}
+                                    className="w-full px-3 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
+                                    placeholder="Max"
+                                />
+                            </div>
+                            <input
+                                type="range"
+                                min="0"
+                                max="1000"
+                                value={priceRange[1]}
+                                onChange={(e) => handlePriceChange(1, Number(e.target.value))}
+                                className="w-full accent-primaryColor"
+                            />
                         </div>
                     </div>
                 </div>
