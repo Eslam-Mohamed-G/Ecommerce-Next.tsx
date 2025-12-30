@@ -42,6 +42,12 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
         onFilterChange({ categories: selectedCategories, priceRange: updated, rating: minRating });
     };
 
+    // Rating
+    const handleRatingChange = (rating: number) => {
+        setMinRating(rating);
+        onFilterChange({ categories: selectedCategories, priceRange, rating });
+    };
+
     return (
         <>
             {/* Mobile Filter Toggle */}
@@ -152,7 +158,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                                         type="radio"
                                         name="rating"
                                         checked={minRating === rating}
-                                        // onChange={() => handleRatingChange(rating)}
+                                        onChange={() => handleRatingChange(rating)}
                                         className="w-4 h-4 accent-primaryColor cursor-pointer"
                                     />
                                     <div className="flex items-center gap-1">
