@@ -48,6 +48,13 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
         onFilterChange({ categories: selectedCategories, priceRange, rating });
     };
 
+    const clearFilters = () => {
+        setSelectedCategories([]);
+        setPriceRange([0, 1000]);
+        setMinRating(0);
+        onFilterChange({ categories: [], priceRange: [0, 1000], rating: 0 });
+    };
+
     return (
         <>
             {/* Mobile Filter Toggle */}
@@ -86,6 +93,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                     <div className="flex items-center justify-between">
                         <h2 className="text-xl font-bold">Filters</h2>
                         <button
+                            onClick={clearFilters}
                             className="text-sm text-primaryColor hover:underline cursor-pointer"
                         >
                             Clear All
