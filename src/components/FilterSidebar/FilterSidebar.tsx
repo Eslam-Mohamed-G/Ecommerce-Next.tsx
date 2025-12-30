@@ -30,6 +30,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
             ? selectedCategories.filter(c => c !== category)
             : [...selectedCategories, category];
         setSelectedCategories(updated);
+        onFilterChange({ categories: updated, priceRange, rating: minRating });
     };
 
     // price range
