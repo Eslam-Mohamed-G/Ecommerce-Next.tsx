@@ -138,6 +138,40 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                             />
                         </div>
                     </div>
+
+                    {/* Rating */}
+                    <div>
+                        <h3 className="font-semibold mb-3">Minimum Rating</h3>
+                        <div className="flex flex-col gap-2">
+                            {[4, 3, 2, 1].map((rating) => (
+                                <label
+                                    key={rating}
+                                    className="flex items-center gap-2 cursor-pointer hover:text-primaryColor transition-colors"
+                                >
+                                    <input
+                                        type="radio"
+                                        name="rating"
+                                        checked={minRating === rating}
+                                        // onChange={() => handleRatingChange(rating)}
+                                        className="w-4 h-4 accent-primaryColor cursor-pointer"
+                                    />
+                                    <div className="flex items-center gap-1">
+                                        {[...Array(5)].map((_, i) => (
+                                            <svg
+                                                key={i}
+                                                width="16"
+                                                height="16"
+                                                fill={i < rating ? '#FFAD33' : '#9096A2'}
+                                            >
+                                                <path d="M13.9461 6.83189C15.0168 6.022 14.444 4.31533 13.1015 4.31533H10.6724C10.0584 4.31533 9.51615 3.91536 9.33482 3.32884L8.61067 0.98653C8.20403 -0.328787 6.34224 -0.328787 5.93559 0.98653L5.21145 3.32884C5.03012 3.91536 4.48782 4.31533 3.87391 4.31533H1.40274C0.0645511 4.31533 -0.510949 6.01289 0.55135 6.82669L2.66783 8.44808C3.13198 8.80365 3.32627 9.41024 3.15509 9.96932L2.38609 12.4809C1.98729 13.7834 3.4948 14.8305 4.57614 14.0021L6.42174 12.5882C6.9241 12.2034 7.62216 12.2034 8.12452 12.5882L9.95382 13.9896C11.0367 14.8192 12.5457 13.768 12.1428 12.4648L11.3631 9.94286C11.189 9.37991 11.3861 8.76824 11.8561 8.41278L13.9461 6.83189Z" />
+                                            </svg>
+                                        ))}
+                                        <span className="text-sm ml-1">& Up</span>
+                                    </div>
+                                </label>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </aside>
 
