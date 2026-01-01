@@ -43,8 +43,8 @@ export default function ProductCard({ id, title, price, originalPrice, discount,
                 </div>
 
                 {/* img */}
-                <div className="">
-                    <Image src="/image/Joystick.png" alt='product image' width={190} height={180} loading='lazy' />
+                <div className="relative h-48 flex items-center justify-center p-6">
+                    <Image src={imageCover} alt={title} width={190} height={180} loading='lazy' className='object-contain group-hover:scale-110 transition-transform duration-300' />
                 </div>
 
                 <button type='button' aria-label="Add product to cart" className='bg-textColor text-white text-base py-1 absolute left-0 right-0 top-full group-hover:-translate-y-8 cursor-pointer transition-all ease-in-out duration-300'>
