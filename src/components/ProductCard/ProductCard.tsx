@@ -23,8 +23,12 @@ export default function ProductCard({ id, title, price, originalPrice, discount,
         <div role="article" className='w-3xs group'>
             <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
                 {/* Badges */}
-                <div className="bg-primaryColor w-12 h-6 rounded flex items-center justify-center text-white text-xs font-normal absolute top-3 left-3">
-                    <span>-35%</span>
+                <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
+                    {discount && (
+                        <span className="bg-primaryColor text-white text-xs px-3 py-1 rounded">
+                            -{discount}%
+                        </span>
+                    )}
                 </div>
 
                 <div className="flex flex-col gap-2 items-center justify-center absolute top-3 right-3">
