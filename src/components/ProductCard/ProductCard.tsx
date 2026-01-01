@@ -2,7 +2,23 @@
 import React from 'react';
 import Image from 'next/image'
 
-export default function ProductCard() {
+export interface Product {
+    id: number;
+    name: string;
+    price: number;
+    originalPrice?: number;
+    discount?: number;
+    image: string;
+    rating: number;
+    reviews: number;
+    isNew?: boolean;
+}
+
+interface ProductCardProps {
+    products: Product[];
+}
+
+export default function ProductCard({ products }: ProductCardProps) {
     return (
         <div role="article" className='w-3xs group'>
             <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
