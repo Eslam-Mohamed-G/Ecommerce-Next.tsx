@@ -52,11 +52,18 @@ export default function ProductCard({ id, title, price, originalPrice, discount,
                 </button>
             </div>
 
+            {/* Product Info */}
             <div className="mt-2">
-                <header><h1 className='text-base font-medium'>HAVIT HV-G92 Gamepad</h1></header>
-                <div className="flex flex-row gap-3 text-base font-normal">
-                    <span className='text-primaryColor'>$120</span>
-                    <span className='text-text2Color relative after:absolute after:top-1/2 after:-translatey-y-1/2 after:left-0 after:right-0 after:bg-text2Color after:h-px'>$160</span>
+                <h3 className="font-medium text-base line-clamp-2 group-hover:text-primaryColor transition-colors ease-in-out duration-300">HAVIT HV-G92 Gamepad</h3>
+                <div className="flex items-center gap-3 mt-2">
+                    <span className="text-primaryColor font-semibold">
+                        ${price}
+                    </span>
+                    {originalPrice && (
+                        <span className="text-text2Color line-through text-sm">
+                            ${originalPrice}
+                        </span>
+                    )}
                 </div>
             </div>
 
