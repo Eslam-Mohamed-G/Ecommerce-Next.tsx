@@ -15,10 +15,10 @@ export interface Product {
 }
 
 interface ProductCardProps {
-    products: Product[];
+    productItem: Product[];
 }
 
-export default function ProductCard({ products }: ProductCardProps) {
+export default function ProductCard({ productItem }: ProductCardProps) {
     return (
         <div role="article" className='w-3xs group'>
             <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
