@@ -4,13 +4,13 @@ import Image from 'next/image'
 
 export interface Product {
     id: number;
-    name: string;
+    title: string;
     price: number;
     originalPrice?: number;
     discount?: number;
-    image: string;
-    rating: number;
-    reviews: number;
+    imageCover: string;
+    ratingsAverage: number;
+    description: number;
     isNew?: boolean;
 }
 
@@ -18,11 +18,11 @@ interface ProductCardProps {
     productItem: Product[];
 }
 
-export default function ProductCard({ productItem }: ProductCardProps) {
+export default function ProductCard({ id, title, price, originalPrice, discount, imageCover, ratingsAverage, description, isNew }: Product) {
     return (
         <div role="article" className='w-3xs group'>
             <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
-                {/* discount */}
+                {/* Badges */}
                 <div className="bg-primaryColor w-12 h-6 rounded flex items-center justify-center text-white text-xs font-normal absolute top-3 left-3">
                     <span>-35%</span>
                 </div>
@@ -45,6 +45,7 @@ export default function ProductCard({ productItem }: ProductCardProps) {
                     Add To Cart
                 </button>
             </div>
+
             <div className="mt-2">
                 <header><h1 className='text-base font-medium'>HAVIT HV-G92 Gamepad</h1></header>
                 <div className="flex flex-row gap-3 text-base font-normal">
