@@ -10,15 +10,14 @@ export interface Product {
     discount?: number;
     imageCover: string;
     ratingsAverage: number;
-    description: number;
-    isNew?: boolean;
+    ratingsQuantity: number;
 }
 
 interface ProductCardProps {
     productItem: Product[];
 }
 
-export default function ProductCard({ id, title, price, originalPrice, discount, imageCover, ratingsAverage, description, isNew }: Product) {
+export default function ProductCard({ id, title, price, originalPrice, discount, imageCover, ratingsAverage, ratingsQuantity }: Product) {
     return (
         <div role="article" className='w-3xs group'>
             <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
@@ -32,7 +31,7 @@ export default function ProductCard({ id, title, price, originalPrice, discount,
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col gap-2 items-center justify-center absolute top-3 right-3">
+                <div className="flex flex-col gap-2 items-center justify-center absolute top-3 right-3 z-10">
                     <button type='button' aria-label="Add to favorites" className='w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer'>
                         <svg aria-hidden="true" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg>
                     </button>
@@ -54,7 +53,7 @@ export default function ProductCard({ id, title, price, originalPrice, discount,
 
             {/* Product Info */}
             <div className="mt-2">
-                <h3 className="font-medium text-base line-clamp-2 group-hover:text-primaryColor transition-colors ease-in-out duration-300">HAVIT HV-G92 Gamepad</h3>
+                <h3 className="font-medium text-base line-clamp-2 group-hover:text-primaryColor transition-colors ease-in-out duration-300">{title}</h3>
                 <div className="flex items-center gap-3 mt-2">
                     <span className="text-primaryColor font-semibold">
                         ${price}
@@ -68,11 +67,11 @@ export default function ProductCard({ id, title, price, originalPrice, discount,
             </div>
 
             {/* stars */}
-            <div className="flex flex-row items-center gap-2 text-sm">
+            <div className="flex flex-row items-center gap-2">
                 <div className="flex flex-row gap-1">
                     <span className="sr-only">Rating: out of 5</span>
                     {[...Array(5)].map((_, i) => {
-                        const fillPercent = Math.min(Math.max(3.5 - i, 0), 1) * 100;
+                        const fillPercent = Math.min(Math.max(ratingsAverage - i, 0), 1) * 100;
                         return (
                             <div key={i} className="relative w-4 h-4">
                                 {/* gray star */}
@@ -92,7 +91,7 @@ export default function ProductCard({ id, title, price, originalPrice, discount,
                     }
                     )}
                 </div>
-                <span className='text-text2Color'>(88)</span>
+                <span className="text-text2Color text-sm">({ratingsQuantity})</span>
             </div>
         </div>
     )
