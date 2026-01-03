@@ -9,7 +9,7 @@ export interface Product {
     slug: string;
     description: string;
     quantity: number;
-    price?: number;
+    price: number;
     priceAfterDiscount?: number;
     imageCover: string;
     images: string[];
