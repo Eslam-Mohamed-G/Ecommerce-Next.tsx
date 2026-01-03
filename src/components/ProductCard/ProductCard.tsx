@@ -35,6 +35,12 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({ id, title, price, priceAfterDiscount, imageCover, ratingsAverage, ratingsQuantity }: Product) {
+    // Calculate discount percentage
+    const discount = priceAfterDiscount
+        ? Math.round(((price - priceAfterDiscount) / price) * 100)
+        : 0;
+
+    const displayPrice = priceAfterDiscount || price;
     return (
         <div role="article" className='w-3xs group'>
             <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
