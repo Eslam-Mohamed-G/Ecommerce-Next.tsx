@@ -3,21 +3,38 @@ import React from 'react';
 import Image from 'next/image'
 
 export interface Product {
-    id: number;
+    _id?: string;
+    id: string;
     title: string;
-    price: number;
-    originalPrice?: number;
-    discount?: number;
+    slug: string;
+    description: string;
+    quantity: number;
+    price?: number;
+    priceAfterDiscount?: number;
     imageCover: string;
+    images: string[];
+    category: {
+        _id: string;
+        name: string;
+        slug: string;
+        image: string;
+    };
+    brand: {
+        _id: string;
+        name: string;
+        slug: string;
+        image: string;
+    };
     ratingsAverage: number;
     ratingsQuantity: number;
+    sold: number | null;
 }
 
 interface ProductCardProps {
     productItem: Product[];
 }
 
-export default function ProductCard({ id, title, price, originalPrice, discount, imageCover, ratingsAverage, ratingsQuantity }: Product) {
+export default function ProductCard({ id, title, price, priceAfterDiscount, imageCover, ratingsAverage, ratingsQuantity }: Product) {
     return (
         <div role="article" className='w-3xs group'>
             <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
