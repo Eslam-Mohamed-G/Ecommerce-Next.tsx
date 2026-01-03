@@ -46,7 +46,7 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
             <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
                 {/* Badges */}
                 <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
-                    {discount && (
+                    {discount > 0 && (
                         <span className="bg-primaryColor text-white text-xs px-3 py-1 rounded">
                             -{discount}%
                         </span>
@@ -79,11 +79,11 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
                 <h3 className="font-medium text-base line-clamp-2 group-hover:text-primaryColor transition-colors ease-in-out duration-300">{title}</h3>
                 <div className="flex items-center gap-3 mt-2">
                     <span className="text-primaryColor font-semibold">
-                        ${price}
+                        ${displayPrice}
                     </span>
-                    {originalPrice && (
+                    {priceAfterDiscount && (
                         <span className="text-text2Color line-through text-sm">
-                            ${originalPrice}
+                            ${price}
                         </span>
                     )}
                 </div>
