@@ -16,6 +16,7 @@ interface ApiResponse {
 }
 
 export default function page() {
+    const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
