@@ -17,6 +17,7 @@ interface ApiResponse {
 
 export default function page() {
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
 
     const [filters, setFilters] = useState<FilterState>({
         categories: [],
