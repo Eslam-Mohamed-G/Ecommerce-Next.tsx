@@ -1,7 +1,19 @@
 "use client"
 import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb'
 import FilterSidebar, { FilterState } from '@/src/components/FilterSidebar/FilterSidebar'
+import { Product } from '@/src/components/ProductCard/ProductCard';
 import React, { useState } from 'react'
+
+interface ApiResponse {
+    results: number;
+    metadata: {
+        currentPage: number;
+        numberOfPages: number;
+        limit: number;
+        nextPage?: number;
+    };
+    data: Product[];
+}
 
 export default function page() {
     const [filters, setFilters] = useState<FilterState>({
