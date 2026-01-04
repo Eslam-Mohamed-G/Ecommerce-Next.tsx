@@ -16,6 +16,11 @@ interface ApiResponse {
 }
 
 export default function page() {
+    const [products, setProducts] = useState<Product[]>([]);
+    const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+    
     const [filters, setFilters] = useState<FilterState>({
         categories: [],
         priceRange: [0, 1000],
