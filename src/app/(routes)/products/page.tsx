@@ -2,7 +2,7 @@
 import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb'
 import FilterSidebar, { FilterState } from '@/src/components/FilterSidebar/FilterSidebar'
 import { Product } from '@/src/components/ProductCard/ProductCard';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface ApiResponse {
     results: number;
@@ -27,6 +27,29 @@ export default function page() {
     });
 
     const [sortBy, setSortBy] = useState('default');
+
+    // Fetch products from API
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                setLoading(true);
+                const response = await fetch('https://ecommerce.routemisr.com/api/v1/products');
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+
+                const data: ApiResponse = await response.json();
+                setProducts(data.data);
+            } catch (err) {
+                setError(err instanceof Error ? err.message : 'An error occurred');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, []);
     return (
         <main className="xl:max-w-7xl lg:max-w-5xl m-auto px-4 py-8">
             <Breadcrumb items={[{ label: 'Products' }]} />
