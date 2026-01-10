@@ -66,6 +66,12 @@ export default function page() {
                 )
             );
         }
+
+        // Filter by price range
+        result = result.filter(prodcut =>{
+            const price = prodcut.priceAfterDiscount || prodcut.price;
+            return price >= filters.priceRange[0] && price <= filters.priceRange[1]
+        })
         setFilteredProducts(result);
     }, [products, filters, sortBy]);
     return (
