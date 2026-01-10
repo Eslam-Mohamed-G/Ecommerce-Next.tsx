@@ -1,7 +1,7 @@
 "use client"
 import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb'
 import FilterSidebar, { FilterState } from '@/src/components/FilterSidebar/FilterSidebar'
-import { Product } from '@/src/components/ProductCard/ProductCard';
+import ProductCard, { Product } from '@/src/components/ProductCard/ProductCard';
 import React, { useEffect, useState } from 'react'
 
 interface ApiResponse {
@@ -158,6 +158,24 @@ export default function page() {
                             <p className="font-semibold">Error loading products</p>
                             <p className="text-sm">{error}</p>
                         </div>
+                    )}
+
+                    {/* Products Grid */}
+                    {!loading && !error && (
+                        <>
+                            {filteredProducts.length > 0 ? (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                    {filteredProducts.map((product) => (
+                                        <ProductCard key={product.id} {...product} />
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="text-center py-20">
+                                    <p className="text-xl text-text2Color">No products found</p>
+                                    <p className="text-sm text-text2Color mt-2">Try adjusting your filters</p>
+                                </div>
+                            )}
+                        </>
                     )}
                 </div>
             </div>
