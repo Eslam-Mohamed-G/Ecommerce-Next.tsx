@@ -144,6 +144,13 @@ export default function page() {
                             </select>
                         </div>
                     </div>
+
+                    {/* Loading State */}
+                    {loading && (
+                        <div className="flex items-center justify-center py-20">
+                            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primaryColor"></div>
+                        </div>
+                    )}
                 </div>
             </div>
         </main>
