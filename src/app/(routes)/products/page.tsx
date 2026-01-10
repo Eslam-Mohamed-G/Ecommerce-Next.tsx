@@ -19,7 +19,7 @@ export default function page() {
     const [products, setProducts] = useState<Product[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     console.log(products);
-    
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -60,7 +60,7 @@ export default function page() {
 
         // filter by categories
         if (filters.categories.length > 0) {
-            result = result.filter(product => 
+            result = result.filter(product =>
                 filters.categories.some(cat =>
                     product.category.name.toLowerCase().includes(cat.toLowerCase())
                 )
@@ -68,13 +68,13 @@ export default function page() {
         }
 
         // Filter by price range
-        result = result.filter(prodcut =>{
+        result = result.filter(prodcut => {
             const price = prodcut.priceAfterDiscount || prodcut.price;
             return price >= filters.priceRange[0] && price <= filters.priceRange[1]
         })
 
         // Filter by rating
-        if(filters.rating > 0) {
+        if (filters.rating > 0) {
             result = result.filter(product => product.ratingsAverage >= filters.rating);
         };
 
@@ -87,7 +87,7 @@ export default function page() {
                     return priceA - priceB;
                 })
                 break;
-        
+
             case 'price-hieh':
                 result.sort((a, b) => {
                     const priceA = a.priceAfterDiscount || a.price;
@@ -95,15 +95,15 @@ export default function page() {
                     return priceB - priceA;
                 })
                 break;
-        
+
             case 'rating':
                 result.sort((a, b) => b.ratingsAverage - a.ratingsAverage);
                 break;
-        
+
             case 'name':
                 result.sort((a, b) => a.title.localeCompare(b.title));
                 break;
-        
+
             default:
                 break;
         };
@@ -151,7 +151,7 @@ export default function page() {
                             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primaryColor"></div>
                         </div>
                     )}
-                    
+
                     {/* Error State */}
                     {error && (
                         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
