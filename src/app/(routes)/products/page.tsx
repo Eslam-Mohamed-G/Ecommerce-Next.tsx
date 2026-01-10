@@ -17,6 +17,9 @@ interface ApiResponse {
 
 export default function page() {
     const [products, setProducts] = useState<Product[]>([]);
+    const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+    console.log(products);
+    
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -50,6 +53,14 @@ export default function page() {
 
         fetchProducts();
     }, []);
+
+    // Apply filters and sorting
+    useEffect(() => {
+        let result = [...products];
+
+
+        setFilteredProducts(result);
+    }, [products, filters, sortBy]);
     return (
         <main className="xl:max-w-7xl lg:max-w-5xl m-auto px-4 py-8">
             <Breadcrumb items={[{ label: 'Products' }]} />
