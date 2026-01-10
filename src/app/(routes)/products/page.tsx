@@ -125,7 +125,7 @@ export default function page() {
                         <div>
                             <h1 className="text-2xl md:text-3xl font-bold">All Products</h1>
                             <p className="text-text2Color mt-1">
-                                Showing of products
+                                Showing {filteredProducts.length} of {products.length} products
                             </p>
                         </div>
 
