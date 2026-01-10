@@ -77,6 +77,37 @@ export default function page() {
         if(filters.rating > 0) {
             result = result.filter(product => product.ratingsAverage >= filters.rating);
         };
+
+        // Apply sorting
+        switch (sortBy) {
+            case 'price-low':
+                result.sort((a, b) => {
+                    const priceA = a.priceAfterDiscount || a.price;
+                    const priceB = b.priceAfterDiscount || b.price;
+                    return priceA - priceB;
+                })
+                break;
+        
+            case 'price-hieh':
+                result.sort((a, b) => {
+                    const priceA = a.priceAfterDiscount || a.price;
+                    const priceB = b.priceAfterDiscount || b.price;
+                    return priceB - priceA;
+                })
+                break;
+        
+            case 'rating':
+                result.sort((a, b) => b.ratingsAverage - a.ratingsAverage);
+                break;
+        
+            case 'name':
+                result.sort((a, b) => a.title.localeCompare(b.title));
+                break;
+        
+            default:
+                break;
+        };
+
         setFilteredProducts(result);
     }, [products, filters, sortBy]);
     return (
