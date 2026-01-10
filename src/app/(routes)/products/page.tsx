@@ -72,6 +72,11 @@ export default function page() {
             const price = prodcut.priceAfterDiscount || prodcut.price;
             return price >= filters.priceRange[0] && price <= filters.priceRange[1]
         })
+
+        // Filter by rating
+        if(filters.rating > 0) {
+            result = result.filter(product => product.ratingsAverage >= filters.rating);
+        };
         setFilteredProducts(result);
     }, [products, filters, sortBy]);
     return (
