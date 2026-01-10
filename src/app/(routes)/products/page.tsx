@@ -58,7 +58,14 @@ export default function page() {
     useEffect(() => {
         let result = [...products];
 
-
+        // filter by categories
+        if (filters.categories.length > 0) {
+            result = result.filter(product => 
+                filters.categories.some(cat =>
+                    product.category.name.toLowerCase().includes(cat.toLowerCase())
+                )
+            );
+        }
         setFilteredProducts(result);
     }, [products, filters, sortBy]);
     return (
