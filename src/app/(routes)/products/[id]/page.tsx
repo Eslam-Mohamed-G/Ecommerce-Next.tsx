@@ -1,7 +1,8 @@
 "use client"
 import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'next/navigation';;
+import { useParams } from 'next/navigation'; import ImageGallery from '@/src/components/ImageGallery/ImageGallery';
+;
 interface ProductDetails {
     _id?: string;
     title: string;
@@ -59,7 +60,7 @@ export default function ProductDetailsPage() {
     useEffect(() => {
         fetchProductsDetails();
     }, [fetchProductsDetails]);
-    
+
     return (
         <section className='xl:max-w-7xl lg:max-w-5xl m-auto px-4 py-8'>
             <Breadcrumb
@@ -68,6 +69,17 @@ export default function ProductDetailsPage() {
                     { label: details?.title || '' },
                 ]}
             />
+
+            {/* Product Details Section */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+                {/* Image Gallery */}
+                {details && details.images?.length > 0 && (
+                    <ImageGallery
+                        images={details.images}
+                        productName={details.title}
+                    />
+                )}
+            </div>
         </section>
     )
 }
