@@ -29,6 +29,12 @@ interface ProductDetails {
     ratingsQuantity: number;
     sold: number | null;
 }
+
+// Mock product data
+const mockProduct = {
+    colors: ['#A0BCE0', '#E07575', '#000000'],
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
+};
 export default function ProductDetailsPage() {
     const { id } = useParams<{ id: string }>();
     const [loading, setLoading] = useState(true);
@@ -38,9 +44,8 @@ export default function ProductDetailsPage() {
     const discount = details?.priceAfterDiscount
         ? Math.round(((details?.price - details?.priceAfterDiscount) / details?.price) * 100)
         : 0;
-    console.log(details);
 
-
+        const [selectedColor, setSelectedColor] = useState(0);
     const fetchProductsDetails = useCallback(async () => {
         setLoading(true);
         setError(null);
@@ -141,6 +146,23 @@ export default function ProductDetailsPage() {
                     <p className="text-text2Color border-b border-borderColor pb-4">
                         {details?.description}
                     </p>
+
+                    {/* Colors */}
+                    <div>
+                        <h3 className="font-semibold mb-3">Colors:</h3>
+                        <div className="flex gap-2">
+                            {mockProduct.colors.map((color, index) => (
+                                <button
+                                    type='button'
+                                    key={index}
+                                    onClick={() => setSelectedColor(index)}
+                                    className={`w-8 h-8 rounded-full border-2 transition-all ${selectedColor === index ? 'border-textColor scale-110' : 'border-transparent'} cursor-pointer`}
+                                    style={{ backgroundColor: color }}
+                                    aria-label={`Select color ${index + 1}`}
+                                />
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
