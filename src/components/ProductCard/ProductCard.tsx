@@ -1,6 +1,7 @@
 "use client"
 import React from 'react';
 import Image from 'next/image'
+import Link from 'next/link';
 
 export interface Product {
     _id?: string;
@@ -42,7 +43,7 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
 
     const displayPrice = priceAfterDiscount || price;
     return (
-        <div role="article" className='w-full md:w-56 group'>
+        <Link href={`/products/${title}`} role="article" className='w-full md:w-56 group'>
             <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
                 {/* Badges */}
                 <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
@@ -116,6 +117,6 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
                 </div>
                 <span className="text-text2Color text-sm">({ratingsQuantity})</span>
             </div>
-        </div>
+        </Link>
     )
 }
