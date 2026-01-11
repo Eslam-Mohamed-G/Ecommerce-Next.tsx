@@ -13,7 +13,7 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
     return (
         <div className="flex flex-col gap-4">
             {/* main Image */}
-            <div className="relative bg-primaryBackground rounded-lg overflow-hidden group cursor-zoom-in">
+            <div className="relative bg-primaryBackground rounded-lg overflow-hidden group cursor-zoom-in" onClick={() => setIsZoomed(!isZoomed)}>
                 <Image
                     src={images[selectedImage]}
                     alt={`${productName} - Image ${selectedImage + 1}`}
@@ -22,6 +22,11 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
                     priority
                 />
             </div>
+            {isZoomed && (
+                <div className="absolute top-4 right-4 bg-white/90 px-3 py-1 rounded text-sm">
+                    Click to zoom out
+                </div>
+            )}
         </div>
     )
 }
