@@ -79,6 +79,12 @@ export default function ProductDetailsPage() {
                         productName={details.title}
                     />
                 )}
+
+                {/* Product Info */}
+                <div className="flex flex-col gap-4">
+                    <h1 className="text-2xl md:text-3xl font-bold">{details?.title}</h1>
+
+                </div>
             </div>
         </section>
     )
