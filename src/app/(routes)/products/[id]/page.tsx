@@ -1,6 +1,6 @@
 "use client"
 import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb'
-import React from 'react';
+import React, { useState } from 'react';
 interface ProductDetails {
     _id?: string;
     title: string;
@@ -28,6 +28,8 @@ interface ProductDetails {
     sold: number | null;
 }
 export default function ProductDetailsPage() {  
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
     return (
         <section className='xl:max-w-7xl lg:max-w-5xl m-auto px-4 py-8'>
             <Breadcrumb
