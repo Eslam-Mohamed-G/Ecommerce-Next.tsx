@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from 'react';
 import Image from 'next/image';
 
@@ -5,6 +6,7 @@ interface ImageGalleryProps {
     images: string[];
     productName: string;
 }
+
 export default function ImageGallery({ images, productName }: ImageGalleryProps) {
     const [selectedImage, setSelectedImage] = useState(0);
     const [isZoomed, setIsZoomed] = useState(false);
