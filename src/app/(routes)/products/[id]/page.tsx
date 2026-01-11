@@ -136,6 +136,11 @@ export default function ProductDetailsPage() {
                             <span className="text-3xl font-semibold">${details?.price}</span>
                         }
                     </div>
+
+                    {/* Description */}
+                    <p className="text-text2Color border-b border-borderColor pb-4">
+                        {details?.description}
+                    </p>
                 </div>
             </div>
         </section>
