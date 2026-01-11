@@ -29,6 +29,32 @@ export default function ImageGallery({ images, productName }: ImageGalleryProps)
                     </div>
                 )}
             </div>
+            {/* Thumbnails */}
+            {images.length > 1 && (
+                <div className="flex gap-3 overflow-x-auto scrollbar-none">
+                    {images.map((image, index) => (
+                        <button
+                            key={index}
+                            onClick={() => {
+                                setSelectedImage(index);
+                                setIsZoomed(false);
+                            }}
+                            className={`relative shrink-0 w-20 h-20 md:w-24 md:h-24 bg-primaryBackground rounded-lg overflow-hidden border-2 transition-all ${selectedImage === index
+                                ? 'border-primaryColor'
+                                : 'border-transparent hover:border-borderColor'
+                                }`}
+                            aria-label={`View image ${index + 1}`}
+                        >
+                            <Image
+                                src={image}
+                                alt={`${productName} thumbnail ${index + 1}`}
+                                fill
+                                className="object-contain p-2"
+                            />
+                        </button>
+                    ))}
+                </div>
+            )}
         </div>
     )
 }
