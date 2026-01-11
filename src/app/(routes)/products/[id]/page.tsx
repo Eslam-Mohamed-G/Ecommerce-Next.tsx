@@ -34,6 +34,12 @@ export default function ProductDetailsPage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [details, setDetails] = useState<ProductDetails | null>(null);
+    // Calculate discount percentage
+    const discount = details?.priceAfterDiscount
+        ? Math.round(((details?.price - details?.priceAfterDiscount) / details?.price) * 100)
+        : 0;
+    console.log(details);
+
 
     const fetchProductsDetails = useCallback(async () => {
         setLoading(true);
@@ -109,6 +115,26 @@ export default function ProductDetailsPage() {
                         <span className={details?.quantity ? 'text-successButton' : 'text-primaryColor'}>
                             {details?.quantity} {details?.quantity ? 'In Stock' : 'Out of Stock'}
                         </span>
+                    </div>
+
+                    {/* Price */}
+                    <div className="flex items-center gap-3">
+                        {details?.priceAfterDiscount ?
+                            <>
+                                <span className="text-3xl font-semibold">${details?.priceAfterDiscount}</span>
+                                {details?.price && (
+                                    <span className="text-xl text-text2Color line-through">${details?.price}</span>
+                                )}
+
+                                {discount && (
+                                    <span className="bg-primaryColor text-white px-2 py-1 rounded text-sm">
+                                        -{discount}%
+                                    </span>
+                                )}
+                            </>
+                            :
+                            <span className="text-3xl font-semibold">${details?.price}</span>
+                        }
                     </div>
                 </div>
             </div>
