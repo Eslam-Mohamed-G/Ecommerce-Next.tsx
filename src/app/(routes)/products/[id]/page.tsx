@@ -1,6 +1,7 @@
 "use client"
-import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb'
-import React, { useState } from 'react';
+import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';;
 interface ProductDetails {
     _id?: string;
     title: string;
@@ -27,15 +28,44 @@ interface ProductDetails {
     ratingsQuantity: number;
     sold: number | null;
 }
-export default function ProductDetailsPage() {  
+export default function ProductDetailsPage() {
+    const { id } = useParams<{ id: string }>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [details, setDetails] = useState<ProductDetails | null>(null);
+
+    const fetchProductsDetails = useCallback(async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await fetch(`https://ecommerce.routemisr.com/api/v1/products/${id}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch products');
+            }
+            const data = await response.json();
+            setDetails(data.data);
+            setLoading(false);
+        } catch (error) {
+            if (error instanceof Error) {
+                setError(error.message);
+            } else {
+                setError('Something went wrong');
+            }
+        } finally {
+            setLoading(false);
+        }
+    }, [id]);
+
+    useEffect(() => {
+        fetchProductsDetails();
+    }, [fetchProductsDetails]);
+    
     return (
         <section className='xl:max-w-7xl lg:max-w-5xl m-auto px-4 py-8'>
             <Breadcrumb
                 items={[
                     { label: 'Products', href: '/products' },
-                    { label: 'mockProduct.name' },
+                    { label: details?.title || '' },
                 ]}
             />
         </section>
