@@ -3,7 +3,7 @@ import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'; import ImageGallery from '@/src/components/ImageGallery/ImageGallery';
 import QuantitySelector from '@/src/components/QuantitySelector/QuantitySelector';
-import { Product } from '@/src/components/ProductCard/ProductCard';
+import ProductCard, { Product } from '@/src/components/ProductCard/ProductCard';
 
 interface ApiResponse {
     results: number;
@@ -54,8 +54,8 @@ export default function ProductDetailsPage() {
     const [error, setError] = useState<string | null>(null);
     const [details, setDetails] = useState<ProductDetails | null>(null);
     const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-    console.log("relatedProducts",relatedProducts);
-    
+    console.log("relatedProducts", relatedProducts);
+
     // Calculate discount percentage
     const discount = details?.priceAfterDiscount
         ? Math.round(((details?.price - details?.priceAfterDiscount) / details?.price) * 100)
@@ -97,20 +97,19 @@ export default function ProductDetailsPage() {
     };
 
     // Fetch related Products from API
-    
     useEffect(() => {
         const fetchrelatedProducts = async () => {
             try {
                 const response = await fetch('https://ecommerce.routemisr.com/api/v1/products');
-    
+
                 if (!response.ok) {
                     throw new Error('Failed to fetch products');
                 }
-    
+
                 const data: ApiResponse = await response.json();
                 const filtered = data.data
-                .filter((product: Product) => product.category._id !== details?.category._id)
-                .slice(0, 4);
+                    .filter((product: Product) => product.category._id !== details?.category._id)
+                    .slice(0, 4);
                 setRelatedProducts(filtered);
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'An error occurred');
@@ -276,6 +275,27 @@ export default function ProductDetailsPage() {
                                 </button>
                             </div>
                         </div>
+                    </div>
+
+                    {/* Related Products */}
+                    <div className='mb-8'>
+                        <div className="flex items-center gap-4 mb-6">
+                            <span aria-hidden="true" className="bg-primaryColor w-5 h-10 rounded" />
+                            <h2 className="text-2xl font-bold">Related Products</h2>
+                        </div>
+
+                        {relatedProducts.length > 0 ? (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+                                {relatedProducts.map((product) => (
+                                    <ProductCard key={product.id} {...product} />
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="text-center py-20">
+                                <p className="text-xl text-text2Color">No products found</p>
+                                <p className="text-sm text-text2Color mt-2">Try adjusting your filters</p>
+                            </div>
+                        )}
                     </div>
                 </>
             )}
