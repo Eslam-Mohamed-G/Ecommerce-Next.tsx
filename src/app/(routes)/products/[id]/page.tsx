@@ -3,7 +3,18 @@ import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'; import ImageGallery from '@/src/components/ImageGallery/ImageGallery';
 import QuantitySelector from '@/src/components/QuantitySelector/QuantitySelector';
-;
+import { Product } from '@/src/components/ProductCard/ProductCard';
+
+interface ApiResponse {
+    results: number;
+    metadata: {
+        currentPage: number;
+        numberOfPages: number;
+        limit: number;
+        nextPage?: number;
+    };
+    data: Product[];
+}
 interface ProductDetails {
     _id?: string;
     title: string;
@@ -36,11 +47,15 @@ const mockProduct = {
     colors: ['#A0BCE0', '#E07575', '#000000'],
     sizes: ['XS', 'S', 'M', 'L', 'XL'],
 };
+
 export default function ProductDetailsPage() {
     const { id } = useParams<{ id: string }>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [details, setDetails] = useState<ProductDetails | null>(null);
+    const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+    console.log("relatedProducts",relatedProducts);
+    
     // Calculate discount percentage
     const discount = details?.priceAfterDiscount
         ? Math.round(((details?.price - details?.priceAfterDiscount) / details?.price) * 100)
@@ -80,6 +95,30 @@ export default function ProductDetailsPage() {
         // Add to cart logic
         console.log('Added to cart:', { quantity, color: selectedColor, size: selectedSize });
     };
+
+    // Fetch related Products from API
+    
+    useEffect(() => {
+        const fetchrelatedProducts = async () => {
+            try {
+                const response = await fetch('https://ecommerce.routemisr.com/api/v1/products');
+    
+                if (!response.ok) {
+                    throw new Error('Failed to fetch products');
+                }
+    
+                const data: ApiResponse = await response.json();
+                const filtered = data.data
+                .filter((product: Product) => product.category._id !== details?.category._id)
+                .slice(0, 4);
+                setRelatedProducts(filtered);
+            } catch (err) {
+                setError(err instanceof Error ? err.message : 'An error occurred');
+            }
+        };
+
+        fetchrelatedProducts();
+    }, [details]);
 
     return (
         <section className='xl:max-w-7xl lg:max-w-5xl m-auto px-4 py-8'>
