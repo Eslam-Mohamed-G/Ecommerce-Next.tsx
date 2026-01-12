@@ -45,7 +45,7 @@ export default function ProductDetailsPage() {
         ? Math.round(((details?.price - details?.priceAfterDiscount) / details?.price) * 100)
         : 0;
 
-        const [selectedColor, setSelectedColor] = useState(0);
+    const [selectedColor, setSelectedColor] = useState(0);
     const fetchProductsDetails = useCallback(async () => {
         setLoading(true);
         setError(null);
@@ -80,6 +80,13 @@ export default function ProductDetailsPage() {
                     { label: details?.title || '' },
                 ]}
             />
+            
+            {/* Loading State */}
+            {loading && (
+                <div className="flex items-center justify-center py-20">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primaryColor"></div>
+                </div>
+            )}
 
             {/* Product Details Section */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
