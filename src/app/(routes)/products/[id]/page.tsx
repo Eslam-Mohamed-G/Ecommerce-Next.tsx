@@ -81,11 +81,6 @@ export default function ProductDetailsPage() {
         console.log('Added to cart:', { quantity, color: selectedColor, size: selectedSize });
     };
 
-    const handleBuyNow = () => {
-        // Buy now logic
-        console.log('Buy now:', { quantity, color: selectedColor, size: selectedSize });
-    };
-
     return (
         <section className='xl:max-w-7xl lg:max-w-5xl m-auto px-4 py-8'>
             <Breadcrumb
@@ -229,14 +224,6 @@ export default function ProductDetailsPage() {
                                     aria-label="Add to Cart"
                                 >
                                     Add To Cart
-                                </button>
-
-                                <button
-                                    type='button'
-                                    onClick={handleBuyNow}
-                                    className="flex-1 min-w-48 bg-textColor hover:bg-textColor/90 text-white py-3 px-8 rounded transition-colors duration-300 cursor-pointer"
-                                >
-                                    Buy Now
                                 </button>
 
                                 <button
