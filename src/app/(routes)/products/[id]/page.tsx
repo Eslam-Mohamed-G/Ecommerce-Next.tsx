@@ -179,8 +179,8 @@ export default function ProductDetailsPage() {
                             </p>
 
                             {/* Colors */}
-                            <div>
-                                <h3 className="font-semibold mb-3">Colors:</h3>
+                            <div className='flex flex-row items-center gap-4'>
+                                <h3 className="font-semibold">Colors:</h3>
                                 <div className="flex gap-2">
                                     {mockProduct.colors.map((color, index) => (
                                         <button
@@ -196,8 +196,8 @@ export default function ProductDetailsPage() {
                             </div>
 
                             {/* Sizes */}
-                            <div>
-                                <h3 className="font-semibold mb-3">Size:</h3>
+                            <div className='flex flex-row items-center gap-4 mt-3'>
+                                <h3 className="font-semibold">Size:</h3>
                                 <div className="flex gap-3">
                                     {mockProduct.sizes.map((size) => (
                                         <button
