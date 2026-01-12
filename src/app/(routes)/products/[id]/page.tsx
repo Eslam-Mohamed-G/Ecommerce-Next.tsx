@@ -2,6 +2,7 @@
 import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'; import ImageGallery from '@/src/components/ImageGallery/ImageGallery';
+import QuantitySelector from '@/src/components/QuantitySelector/QuantitySelector';
 ;
 interface ProductDetails {
     _id?: string;
@@ -215,11 +216,12 @@ export default function ProductDetailsPage() {
 
                             {/* Quantity and Actions */}
                             <div className="flex flex-wrap items-center gap-4 pt-4">
-                                {/* <QuantitySelector
+                                <QuantitySelector
                                     quantity={quantity}
                                     onIncrease={() => setQuantity(q => q + 1)}
                                     onDecrease={() => setQuantity(q => q - 1)}
-                                /> */}
+                                />
+
                                 <button
                                     type='button'
                                     onClick={handleAddToCart}
