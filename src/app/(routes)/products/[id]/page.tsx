@@ -47,6 +47,8 @@ export default function ProductDetailsPage() {
 
     const [selectedColor, setSelectedColor] = useState(0);
     const [selectedSize, setSelectedSize] = useState('M');
+    const [quantity, setQuantity] = useState(1);
+
     const fetchProductsDetails = useCallback(async () => {
         setLoading(true);
         setError(null);
@@ -72,6 +74,16 @@ export default function ProductDetailsPage() {
     useEffect(() => {
         fetchProductsDetails();
     }, [fetchProductsDetails]);
+
+    const handleAddToCart = () => {
+        // Add to cart logic
+        console.log('Added to cart:', { quantity, color: selectedColor, size: selectedSize });
+    };
+
+    const handleBuyNow = () => {
+        // Buy now logic
+        console.log('Buy now:', { quantity, color: selectedColor, size: selectedSize });
+    };
 
     return (
         <section className='xl:max-w-7xl lg:max-w-5xl m-auto px-4 py-8'>
@@ -199,6 +211,41 @@ export default function ProductDetailsPage() {
                                         </button>
                                     ))}
                                 </div>
+                            </div>
+
+                            {/* Quantity and Actions */}
+                            <div className="flex flex-wrap items-center gap-4 pt-4">
+                                {/* <QuantitySelector
+                                    quantity={quantity}
+                                    onIncrease={() => setQuantity(q => q + 1)}
+                                    onDecrease={() => setQuantity(q => q - 1)}
+                                /> */}
+                                <button
+                                    type='button'
+                                    onClick={handleAddToCart}
+                                    className="flex-1 min-w-48 bg-primaryColor hover:bg-buttonColor text-white py-3 px-8 rounded transition-colors duration-300 cursor-pointer"
+                                    aria-label="Add to Cart"
+                                >
+                                    Add To Cart
+                                </button>
+
+                                <button
+                                    type='button'
+                                    onClick={handleBuyNow}
+                                    className="flex-1 min-w-48 bg-textColor hover:bg-textColor/90 text-white py-3 px-8 rounded transition-colors duration-300 cursor-pointer"
+                                >
+                                    Buy Now
+                                </button>
+
+                                <button
+                                    type='button'
+                                    className="w-12 h-12 border border-borderColor rounded flex items-center justify-center hover:bg-primaryColor hover:text-white hover:border-primaryColor transition-all duration-300 cursor-pointer"
+                                    aria-label="Add to wishlist"
+                                >
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                        <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
