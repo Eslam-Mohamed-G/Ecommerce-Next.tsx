@@ -46,6 +46,7 @@ export default function ProductDetailsPage() {
         : 0;
 
     const [selectedColor, setSelectedColor] = useState(0);
+    const [selectedSize, setSelectedSize] = useState('M');
     const fetchProductsDetails = useCallback(async () => {
         setLoading(true);
         setError(null);
@@ -177,6 +178,25 @@ export default function ProductDetailsPage() {
                                             style={{ backgroundColor: color }}
                                             aria-label={`Select color ${index + 1}`}
                                         />
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Sizes */}
+                            <div>
+                                <h3 className="font-semibold mb-3">Size:</h3>
+                                <div className="flex gap-3">
+                                    {mockProduct.sizes.map((size) => (
+                                        <button
+                                            key={size}
+                                            onClick={() => setSelectedSize(size)}
+                                            className={`w-12 h-10 border rounded transition-all ${selectedSize === size
+                                                ? 'bg-primaryColor text-white border-primaryColor'
+                                                : 'border-borderColor hover:border-primaryColor'
+                                                }`}
+                                        >
+                                            {size}
+                                        </button>
                                     ))}
                                 </div>
                             </div>
