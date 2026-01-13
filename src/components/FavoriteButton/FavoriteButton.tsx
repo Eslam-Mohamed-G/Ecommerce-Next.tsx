@@ -1,11 +1,14 @@
 "use client"
+import { cookies } from 'next/headers';
 import React, { useState } from 'react';
 
 interface favoriteButtonProps {
     cssStyle: string;
 }
 
-export default function FavoriteButton({cssStyle}: favoriteButtonProps) {
+export default async function FavoriteButton({cssStyle}: favoriteButtonProps) {
+    const cookieStore = await cookies();
+    const token = cookieStore.get("token")?.value;
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     return (
