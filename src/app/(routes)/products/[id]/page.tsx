@@ -162,7 +162,7 @@ export default function ProductDetailsPage() {
                             <div className="flex items-center gap-3">
                                 <div className="flex gap-1">
                                     {[...Array(5)].map((_, i) => {
-                                        const fillPercent = Math.min(Math.max(details?.ratingsAverage - i, 0), 1) * 100;
+                                        const fillPercent = Math.min(Math.max((details?.ratingsAverage ?? 0) - i, 0), 1) * 100;
                                         return (
                                             <div key={i} className="relative w-5 h-5">
                                                 <div className="absolute top-0 left-0 text-grayStarColor">
