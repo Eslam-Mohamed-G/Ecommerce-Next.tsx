@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'; import ImageGallery from '@/src/components/ImageGallery/ImageGallery';
 import QuantitySelector from '@/src/components/QuantitySelector/QuantitySelector';
 import ProductCard, { Product } from '@/src/components/ProductCard/ProductCard';
+import FavoriteButton from '@/src/components/FavoriteButton/FavoriteButton';
 
 interface ApiResponse {
     results: number;
@@ -264,15 +265,7 @@ export default function ProductDetailsPage() {
                                     Add To Cart
                                 </button>
 
-                                <button
-                                    type='button'
-                                    className="w-12 h-12 border border-borderColor rounded flex items-center justify-center hover:bg-primaryColor hover:text-white hover:border-primaryColor transition-all duration-300 cursor-pointer"
-                                    aria-label="Add to wishlist"
-                                >
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                        <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
-                                    </svg>
-                                </button>
+                                <FavoriteButton cssStyle='w-12 h-12 border border-borderColor hover:border-primaryColor rounded'/>
                             </div>
                         </div>
                     </div>
