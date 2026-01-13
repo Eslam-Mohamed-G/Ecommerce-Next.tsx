@@ -1,4 +1,5 @@
-import { cookies } from 'next/headers';
+"use client"
+import { getCookie } from "cookies-next";
 import React, { useState } from 'react';
 
 interface favoriteButtonProps {
@@ -9,8 +10,11 @@ interface favoriteButtonProps {
 export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    
+    const rawToken = getCookie("token");
+    const token = typeof rawToken === "string" ? JSON.parse(rawToken)?.data?.token : null;
 
-    const token = "adf112455asfasf";
+    // const token = "adf112455asfasf";
     // POST Add product to wishlist
     const postWishlist = async (product_Id: string) => {
         if (!product_Id) {
