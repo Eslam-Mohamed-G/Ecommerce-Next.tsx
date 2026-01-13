@@ -265,7 +265,7 @@ export default function ProductDetailsPage() {
                                     Add To Cart
                                 </button>
 
-                                <FavoriteButton cssStyle='w-12 h-12 border border-borderColor hover:border-primaryColor rounded'/>
+                                <FavoriteButton product_Id={id} cssStyle='w-12 h-12 border border-borderColor hover:border-primaryColor rounded'/>
                             </div>
                         </div>
                     </div>

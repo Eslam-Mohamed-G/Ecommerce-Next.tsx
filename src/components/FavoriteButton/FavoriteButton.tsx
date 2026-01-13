@@ -1,18 +1,60 @@
-"use client"
 import { cookies } from 'next/headers';
 import React, { useState } from 'react';
 
 interface favoriteButtonProps {
     cssStyle: string;
+    product_Id: string;
 }
 
-export default async function FavoriteButton({cssStyle}: favoriteButtonProps) {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("token")?.value;
+export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+
+    const token = "adf112455asfasf";
+    // POST Add product to wishlist
+    const postWishlist = async (product_Id: string) => {
+        if (!product_Id) {
+            console.error("No product selected");
+            return;
+        }
+
+        if (!token) {
+            alert("You are not logged in");
+            return;
+        }
+
+        try {
+            setLoading(true);
+            const response = await fetch(
+                'https://ecommerce.routemisr.com/api/v1/wishlist',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        token: token,
+                    },
+                    body: JSON.stringify({
+                        productId: product_Id,
+                    }),
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error('Already exists');
+            }
+
+            await response.json();
+            alert('Added to your wishlist');
+        } catch (error) {
+            console.error('wishlist:', error);
+            alert('Already exists');
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
-        <button type='button' aria-label="Add to favorites" className={`${cssStyle} flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer`}>
+        <button type='button' onClick={() => { postWishlist(product_Id) }} aria-label="Add to favorites" className={`${cssStyle} flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer`}>
             <svg aria-hidden="true" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-heart-icon lucide-heart"><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg>
         </button>
     )
