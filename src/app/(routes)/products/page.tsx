@@ -87,7 +87,7 @@ export default function page() {
                 })
                 break;
 
-            case 'price-hieh':
+            case 'price-high':
                 result.sort((a, b) => {
                     const priceA = a.priceAfterDiscount || a.price;
                     const priceB = b.priceAfterDiscount || b.price;
