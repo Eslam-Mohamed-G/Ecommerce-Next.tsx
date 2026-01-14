@@ -10,11 +10,11 @@ interface favoriteButtonProps {
 export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-
+    
     // POST Add product to wishlist
     const postWishlist = async (product_Id: string) => {
-        const userData = getCookie("token");
-        const token = typeof userData === "string" ? JSON.parse(userData)?.data?.token : null;
+        const token = getCookie("token") as string | undefined;
+
         if (!product_Id) {
             console.error("No product selected");
             return;
