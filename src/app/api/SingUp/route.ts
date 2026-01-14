@@ -12,8 +12,10 @@ export async function POST(req: Request) {
 
     return NextResponse.json(response.data);
   } catch (error: any) {
-    console.log("FULL ERROR:", error);
-    console.log("RESPONSE DATA:", error?.response);
+    // Log errors only in development
+    if (process.env.NODE_ENV === "development") {
+      console.error("SignUp Error:", error?.response?.data);
+    }
     return NextResponse.json(
       { message: error?.response?.data?.message || "SingUp failed" },
       { status: 400 }
