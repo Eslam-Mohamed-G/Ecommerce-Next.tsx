@@ -43,9 +43,8 @@ export default function page() {
                 setLoading(false);
             }
         }
-        return () => {
 
-        };
+        getUserWishlist();
     }, []);
     return (
         <div>page</div>
