@@ -47,11 +47,11 @@ export default function page() {
         getUserWishlist();
     }, []);
     return (
-        <section className='border border-red-400'>
+        <section className=''>
             {!loading && !error && (
                 <div className='w-full lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8 flex items-center justify-between'>
                     {wishList.length > 0 ? (
-                        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 border border-black">
+                        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
                             {wishList.map((product) => (
                                 <ProductCard key={product.id} {...product} />
                             ))}
