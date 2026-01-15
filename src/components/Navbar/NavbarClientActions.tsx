@@ -86,9 +86,9 @@ export default function NavbarClientActions({ token }: Props) {
                     </button>
                 </form>
 
-                <button className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer">
+                <Link href="wishList" className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer">
                     <Image src="/Wishlist.svg" alt='Open Wishlist' width={28} height={28} />
-                </button>
+                </Link>
 
                 <button className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer">
                     <Image src="/cart.svg" alt='Open Cart' width={28} height={28} />

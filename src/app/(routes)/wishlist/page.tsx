@@ -47,6 +47,6 @@ export default function page() {
         getUserWishlist();
     }, []);
     return (
-        <div>page</div>
+        <section>wishList</section>
     )
 }
