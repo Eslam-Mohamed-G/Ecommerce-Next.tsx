@@ -80,7 +80,11 @@ export default function page() {
             )}
 
             {!loading && !error && (
-                <div className='w-full lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8 flex items-center justify-between'>
+                <div className='w-full lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8'>
+                    <div className="flex items-center gap-2 mb-4">
+                        <span aria-hidden="true" className="bg-primaryColor w-5 h-10 rounded" />
+                        <h1 className='font-medium text-lg'>Wishlist ({wishList.length})</h1>
+                    </div>
                     {wishList.length > 0 ? (
                         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
                             {wishList.map((product) => (
