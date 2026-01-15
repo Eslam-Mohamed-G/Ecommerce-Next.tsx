@@ -70,7 +70,15 @@ export default function page() {
                     ))}
                 </div>
             )}
-            
+
+            {/* Error State */}
+            {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                    <p className="font-semibold">Error loading products</p>
+                    <p className="text-sm">{error}</p>
+                </div>
+            )}
+
             {!loading && !error && (
                 <div className='w-full lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8 flex items-center justify-between'>
                     {wishList.length > 0 ? (
