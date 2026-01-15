@@ -5,12 +5,13 @@ import React, { useState } from 'react';
 interface favoriteButtonProps {
     cssStyle: string;
     product_Id: string;
+    favored: boolean;
 }
 
-export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonProps) {
+export default function FavoriteButton({ cssStyle, product_Id, favored = false }: favoriteButtonProps) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    
+
     // POST Add product to wishlist
     const postWishlist = async (product_Id: string) => {
         const token = getCookie("token") as string | undefined;
