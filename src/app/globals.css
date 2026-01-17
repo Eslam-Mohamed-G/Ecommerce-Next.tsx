@@ -36,7 +36,9 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
+.toast_container {
+  animation: fadeIn 0.3s ease-in, fadeOut 0.5s ease-out 2.5s forwards;
+}
 .progress-line-animation {
   height: 5px;
   border-radius: 5px;

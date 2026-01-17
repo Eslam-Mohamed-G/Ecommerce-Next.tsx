@@ -18,7 +18,7 @@ export default function ToastMessage({ messageTypy, messageContent, onClose }: T
         return () => clearTimeout(timer);
     }, [onClose]);
     return (
-        <section role="status" aria-live="polite" className='fixed top-20 left-0 right-0 z-50 flex items-center justify-center'>
+        <section role="status" aria-live="polite" className='fixed top-20 left-0 right-0 z-50 flex items-center justify-center toast_container'>
             {/* success message */}
             <div id="toast-success" className="flex items-center w-full max-w-80 p-4 pb-6 bg-white border border-borderColor rounded-xl shadow relative">
                 {messageTypy === "success" && (
