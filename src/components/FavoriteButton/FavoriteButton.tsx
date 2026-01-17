@@ -151,11 +151,12 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
                     )}
                 </button>
             }
-            
+
             {showToastMessage && (
                 <ToastMessage
                     messageTypy={showToastMessage.type}
                     messageContent={showToastMessage.message}
+                    onClose={() => setShowToastMessage(null)}
                 />
             )}
         </div>
