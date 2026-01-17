@@ -2,7 +2,7 @@
 import React from 'react';
 
 interface ToastMessageProps {
-    messageTypy: string;
+    messageTypy: "success" | "warning" | "error";
     messageContent: string;
 }
 export default function ToastMessage({ messageTypy, messageContent }: ToastMessageProps) {
