@@ -2,6 +2,7 @@
 import { getCookie } from "cookies-next";
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
+import ToastMessage from "../ToastMessage/ToastMessage";
 
 interface favoriteButtonProps {
     cssStyle: string;
@@ -150,6 +151,13 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
                     )}
                 </button>
             }
+            
+            {showToastMessage && (
+                <ToastMessage
+                    messageTypy={showToastMessage.type}
+                    messageContent={showToastMessage.message}
+                />
+            )}
         </div>
     )
 };
