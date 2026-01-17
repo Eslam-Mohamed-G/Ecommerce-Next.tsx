@@ -64,7 +64,7 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
             console.error('wishlist:', error);
             setShowToastMessage({
                 type: "error",
-                message: "Product already exists in your wishlist",
+                message: "Something is wrong, Please try again.",
             });
         } finally {
             setLoading(false);
@@ -81,7 +81,10 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
         }
 
         if (!token) {
-            alert("You are not logged in");
+            setShowToastMessage({
+                type: "warning",
+                message: "You are not logged in",
+            });
             return;
         }
 
@@ -103,10 +106,18 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
             }
 
             await response.json();
-            alert('Remove from your wishlist');
+
+            setShowToastMessage({
+                type: "success",
+                message: "Removed from your wishlist successfully",
+            });
+
         } catch (error) {
             console.error('wishlist:', error);
-            alert("Something is wrong. Please try again.");
+            setShowToastMessage({
+                type: "error",
+                message: "Something is wrong, Please try again.",
+            });
         } finally {
             setLoading(false);
         }
