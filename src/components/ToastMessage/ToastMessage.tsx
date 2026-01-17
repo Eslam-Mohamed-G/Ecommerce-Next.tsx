@@ -6,6 +6,8 @@ interface ToastMessageProps {
 }
 export default function ToastMessage({ messageTypy }: ToastMessageProps) {
     return (
-        <div>ToastMessage</div>
+        <section className=''>
+
+        </section>
     )
 };
