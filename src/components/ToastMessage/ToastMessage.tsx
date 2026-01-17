@@ -3,8 +3,9 @@ import React from 'react';
 
 interface ToastMessageProps {
     messageTypy: string;
+    messageContent: string;
 }
-export default function ToastMessage({ messageTypy }: ToastMessageProps) {
+export default function ToastMessage({ messageTypy, messageContent }: ToastMessageProps) {
     return (
         <section className='fixed top-20 left-0 right-0 z-50 flex items-center justify-center'>
             {/* success message */}
