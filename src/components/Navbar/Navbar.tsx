@@ -2,6 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import { cookies } from "next/headers";
 import NavbarClientActions from './NavbarClientActions';
+import ToastMessage from '../ToastMessage/ToastMessage';
 
 export default async function Navbar() {
 
@@ -55,6 +56,7 @@ export default async function Navbar() {
                     <NavbarClientActions token={token || null} />
                 </div>
             </nav>
+            <ToastMessage/>
         </header>
     )
 }
