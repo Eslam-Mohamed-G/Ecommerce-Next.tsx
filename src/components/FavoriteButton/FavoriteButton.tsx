@@ -1,6 +1,6 @@
 "use client"
 import { getCookie } from "cookies-next";
-import { usePathname  } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 
 interface favoriteButtonProps {
@@ -58,10 +58,51 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
         }
     };
 
+    // Remove product from wishlist
+    const removeWishlist = async (product_Id: string) => {
+        const token = getCookie("token") as string | undefined;
+
+        if (!product_Id) {
+            console.error("No product selected");
+            return;
+        }
+
+        if (!token) {
+            alert("You are not logged in");
+            return;
+        }
+
+        try {
+            setLoading(true);
+            const response = await fetch(
+                `https://ecommerce.routemisr.com/api/v1/wishlist/${product_Id}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        token: token,
+                    }
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error("It wasn't deleted. Please try again.");
+            }
+
+            await response.json();
+            alert('Remove from your wishlist');
+        } catch (error) {
+            console.error('wishlist:', error);
+            alert("Something is wrong. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <div className="">
             {isWishlistPage ?
-                <button type='button' onClick={(e) => { e.preventDefault(); }} aria-label="remove from favorites" className={`${cssStyle} flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer group/button`}>
+                <button type='button' onClick={(e) => { e.preventDefault(); removeWishlist(product_Id)}} aria-label="remove from favorites" className={`${cssStyle} flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer group/button`}>
                     {loading ? (
                         <svg className="animate-spin h-5 w-5 text-primaryColor group-hover/button:text-white transition-colors ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
