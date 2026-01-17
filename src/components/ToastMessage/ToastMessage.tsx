@@ -13,7 +13,7 @@ export default function ToastMessage({ messageTypy, messageContent, onClose }: T
 
         const timer = setTimeout(() => {
             onClose();
-        }, 2000);
+        }, 3000);
 
         return () => clearTimeout(timer);
     }, [onClose]);
