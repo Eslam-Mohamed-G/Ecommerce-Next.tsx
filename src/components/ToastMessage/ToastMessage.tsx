@@ -1,7 +1,10 @@
 "use client";
 import React from 'react';
 
-export default function ToastMessage() {
+interface ToastMessageProps {
+    messageTypy: string;
+}
+export default function ToastMessage({ messageTypy }: ToastMessageProps) {
     return (
         <div>ToastMessage</div>
     )
