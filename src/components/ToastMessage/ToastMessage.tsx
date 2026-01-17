@@ -52,7 +52,7 @@ export default function ToastMessage({ messageTypy, messageContent, onClose }: T
 
                 <div className="flex items-center absolute left-4 right-5 bottom-3">
                     <div className={`w-full ${messageTypy === "success" ? "bg-successIcon/10" : messageTypy === "warning" ? "bg-[#FDFDEA]" : "bg-red-500/10"} rounded-full h-1.5`}>
-                        <div className={`w-full ${messageTypy === "success" ? "bg-successIcon" : messageTypy === "warning" ? "bg-[#f97316]" : "bg-red-500"} rounded-full h-1.5`} style={{ width: '75%' }} />
+                        <div className={`${messageTypy === "success" ? "bg-successIcon" : messageTypy === "warning" ? "bg-[#f97316]" : "bg-red-500"} progress-line-animation`} />
                     </div>
                 </div>
             </div>

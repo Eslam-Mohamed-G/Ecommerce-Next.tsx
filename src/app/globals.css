@@ -36,3 +36,39 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.progress-line-animation {
+  height: 5px;
+  border-radius: 5px;
+  animation: progressFill 3s linear forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50px);
+  }
+
+  to {
+    opacity: 1;
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes progressFill {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
