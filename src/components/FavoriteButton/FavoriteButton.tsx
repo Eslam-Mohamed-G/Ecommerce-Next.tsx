@@ -12,7 +12,11 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
     const pathname = usePathname();
     const isWishlistPage = pathname === "/wishList";
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+
+    const [showToastMessage, setShowToastMessage] = useState<{
+        type: "success" | "warning" | "error";
+        message: string;
+    } | null>(null);
 
     // POST Add product to wishlist
     const postWishlist = async (product_Id: string) => {
@@ -102,7 +106,7 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
     return (
         <div className="">
             {isWishlistPage ?
-                <button type='button' onClick={(e) => { e.preventDefault(); removeWishlist(product_Id)}} aria-label="remove from favorites" className={`${cssStyle} flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer group/button`}>
+                <button type='button' onClick={(e) => { e.preventDefault(); removeWishlist(product_Id) }} aria-label="remove from favorites" className={`${cssStyle} flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer group/button`}>
                     {loading ? (
                         <svg className="animate-spin h-5 w-5 text-primaryColor group-hover/button:text-white transition-colors ease-in-out duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>

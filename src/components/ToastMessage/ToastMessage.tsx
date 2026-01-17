@@ -15,7 +15,7 @@ export default function ToastMessage({ messageTypy, messageContent }: ToastMessa
                     <span className="sr-only">Check icon</span>
                 </div>
                 
-                <div className="ms-3 text-sm font-normal">Item moved successfully.</div>
+                <div className="ms-3 text-sm font-normal">Added to your wishlist successfully.</div>
 
                 <button type="button" className="ms-auto flex items-center justify-center text-body hover:text-heading bg-transparent box-border hover:bg-border2Color/10 font-medium rounded text-sm h-8 w-8 cursor-pointer" data-dismiss-target="#toast-success" aria-label="Close">
                     <span className="sr-only">Close</span>
