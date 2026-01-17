@@ -56,7 +56,6 @@ export default async function Navbar() {
                     <NavbarClientActions token={token || null} />
                 </div>
             </nav>
-            <ToastMessage/>
         </header>
     )
 }
