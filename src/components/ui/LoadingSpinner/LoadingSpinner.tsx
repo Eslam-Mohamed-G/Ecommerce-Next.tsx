@@ -5,8 +5,8 @@ interface LoadingSpinnerProps {
 }
 
 const sizeClasses = {
-    sm: 'h-4 w-4',
-    md: 'h-5 w-5',
+    xs: 'h-4 w-4',
+    sm: 'h-5 w-5',
     lg: 'h-12 w-12',
 };
 
