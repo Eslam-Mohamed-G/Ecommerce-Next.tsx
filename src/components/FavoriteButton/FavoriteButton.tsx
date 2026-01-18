@@ -187,23 +187,23 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
 
     return (
         <div className="">
-            {isWishlistPage ?
-                <button type='button' onClick={(e) => { e.preventDefault(); removeWishlist(product_Id) }} aria-label="remove from favorites" className={`${cssStyle} flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer group/button`}>
-                    {loading ? (
-                        <LoadingSpinner size="sm" className="text-primaryColor group-hover/button:text-white" />
-                    ) : (
-                        <TrashIcon />
-                    )}
-                </button>
-                :
-                <button type='button' onClick={(e) => { e.preventDefault(); postWishlist(product_Id) }} aria-label="Add to favorites" className={`${cssStyle} flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer group/button`}>
-                    {loading ? (
-                        <LoadingSpinner size="sm" className="text-primaryColor group-hover/button:text-white" />
-                    ) : (
-                        <HeartIcon />
-                    )}
-                </button>
-            }
+            <button
+                type='button'
+                onClick={(e) => {
+                    e.preventDefault();
+                    handleWishlistAction(isWishlistPage ? 'remove' : 'add');
+                }}
+                aria-label={isWishlistPage ? "Remove from favorites" : "Add to favorites"}
+                className={`${cssStyle} flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer group/button`}
+            >
+                {loading ? (
+                    <LoadingSpinner size="sm" className="text-primaryColor group-hover/button:text-white" />
+                ) : isWishlistPage ? (
+                    <TrashIcon />
+                ) : (
+                    <HeartIcon />
+                )}
+            </button>
 
             {showToastMessage && (
                 <ToastMessage
