@@ -7,10 +7,11 @@ interface LoadingSpinnerProps {
 const sizeClasses = {
     xs: 'h-4 w-4',
     sm: 'h-5 w-5',
+    md: 'h-7 w-7',
     lg: 'h-12 w-12',
 };
 
-export default function LoadingSpinner({ size = 'md', className = '' }: LoadingSpinnerProps) {
+export default function LoadingSpinner({ size = 'sm', className = '' }: LoadingSpinnerProps) {
     return (
         <svg
             className={`animate-spin ${sizeClasses[size]} ${className}`}
