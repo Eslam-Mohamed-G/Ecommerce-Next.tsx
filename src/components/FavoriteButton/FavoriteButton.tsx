@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import ToastMessage from "../ToastMessage/ToastMessage";
 import { HeartIcon, TrashIcon } from "../ui/Icon/Icon";
 import LoadingSpinner from "../ui/LoadingSpinner/LoadingSpinner";
+import { API_ENDPOINTS } from "@/src/lib/constants/api";
 
 interface favoriteButtonProps {
     cssStyle: string;
@@ -141,6 +142,47 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
             });
             return;
         }
+
+        try {
+            setLoading(true);
+            const url = action === 'add'
+                ? API_ENDPOINTS.WISHLIST
+                : `${API_ENDPOINTS.WISHLIST}/${product_Id}`;
+
+            const response = await fetch(url, {
+                method: action === 'add' ? 'POST' : "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                    token: token,
+                },
+                body: action === 'add' ? JSON.stringify({ productId: product_Id }) : undefined,
+            });
+
+            if (!response.ok) {
+                setShowToastMessage({
+                    type: "error",
+                    message: "Something is wrong, Please try again.",
+                });
+                throw new Error("Something is wrong, Please try again.");
+            };
+
+            await response.json();
+
+            setShowToastMessage({
+                type: "success",
+                message: action === 'add'
+                    ? "Added to your wishlist successfully"
+                    : "Removed from your wishlist successfully",
+            });
+
+        } catch (error) {
+            setShowToastMessage({
+                type: "error",
+                message: "Something is wrong, Please try again.",
+            });
+        } finally {
+            setLoading(false);
+        };
     };
 
     return (
