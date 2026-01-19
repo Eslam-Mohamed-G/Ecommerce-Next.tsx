@@ -3,38 +3,7 @@ import React from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
-
-export interface Product {
-    _id?: string;
-    id: string;
-    title: string;
-    slug: string;
-    description: string;
-    quantity: number;
-    price: number;
-    priceAfterDiscount?: number;
-    imageCover: string;
-    images: string[];
-    category: {
-        _id: string;
-        name: string;
-        slug: string;
-        image: string;
-    };
-    brand: {
-        _id: string;
-        name: string;
-        slug: string;
-        image: string;
-    };
-    ratingsAverage: number;
-    ratingsQuantity: number;
-    sold: number | null;
-}
-
-interface ProductCardProps {
-    productItem: Product[];
-}
+import { Product } from '@/src/lib/types';
 
 export default function ProductCard({ id, title, price, priceAfterDiscount, imageCover, ratingsAverage, ratingsQuantity }: Product) {
     // Calculate discount percentage
