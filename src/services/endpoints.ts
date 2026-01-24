@@ -6,7 +6,12 @@ export const API_ENDPOINTS = {
         SIGNUP: `${API_BASE_URL}/auth/signup`,
     },
     PRODUCTS: `${API_BASE_URL}/products`,
-    WISHLIST: `${API_BASE_URL}/wishlist`,
+
+    // Wishlist
+    WISHLIST: {
+        BASE: `${API_BASE_URL}/wishlist`,
+        ITEM: (productId: string) => `${API_BASE_URL}/wishlist/${productId}`,
+    },
 } as const;
 
 export const COOKIE_CONFIG = {
