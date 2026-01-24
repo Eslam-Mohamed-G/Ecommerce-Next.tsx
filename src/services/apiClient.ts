@@ -88,7 +88,19 @@ apiClient.interceptors.response.use(
  * Extract error message from API error response
  */
 export function getErrorMessage(error: any): string {
-    return error?.response?.data?.message || 'An error occurred';
+    if (typeof error === 'string') {
+        return error;
+    }
+
+    if (error?.message) {
+        return error.message;
+    }
+
+    if (error?.response?.data?.message) {
+        return error.response.data.message;
+    }
+
+    return 'An error occurred';
 }
 
 /**
