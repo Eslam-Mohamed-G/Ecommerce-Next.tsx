@@ -1,11 +1,11 @@
 "use client"
-import { getCookie } from "cookies-next";
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import ToastMessage from "../../common/ToastMessage/ToastMessage";
 import { HeartIcon, TrashIcon } from "../../ui/Icon/Icon";
 import LoadingSpinner from "../../ui/LoadingSpinner/LoadingSpinner";
-import { API_ENDPOINTS } from "@/src/lib/constants/api";
+import wishlistService from '@/src/services/wishlistService';
+import { getErrorMessage } from '@/src/services/apiClient';
 
 interface favoriteButtonProps {
     cssStyle: string;
@@ -23,45 +23,19 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
     } | null>(null);
 
     const handleWishlistAction = async (action: 'add' | 'remove') => {
-        const token = getCookie("token") as string | undefined;
-
         if (!product_Id) {
             console.error("No product selected");
             return;
         }
 
-        if (!token) {
-            setShowToastMessage({
-                type: "warning",
-                message: "You are not logged in",
-            });
-            return;
-        }
-
         try {
             setLoading(true);
-            const url = action === 'add'
-                ? API_ENDPOINTS.WISHLIST
-                : `${API_ENDPOINTS.WISHLIST}/${product_Id}`;
 
-            const response = await fetch(url, {
-                method: action === 'add' ? 'POST' : "DELETE",
-                headers: {
-                    'Content-Type': 'application/json',
-                    token: token,
-                },
-                body: action === 'add' ? JSON.stringify({ productId: product_Id }) : undefined,
-            });
-
-            if (!response.ok) {
-                setShowToastMessage({
-                    type: "error",
-                    message: "Something is wrong, Please try again.",
-                });
-                throw new Error("Something is wrong, Please try again.");
-            };
-
-            await response.json();
+            if (action === 'add') {
+                await wishlistService.addToWishlist(product_Id);
+            } else {
+                await wishlistService.removeFromWishlist(product_Id);
+            }
 
             setShowToastMessage({
                 type: "success",
@@ -73,7 +47,7 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
         } catch (error) {
             setShowToastMessage({
                 type: "error",
-                message: "Something is wrong, Please try again.",
+                message: getErrorMessage(error),
             });
         } finally {
             setLoading(false);
