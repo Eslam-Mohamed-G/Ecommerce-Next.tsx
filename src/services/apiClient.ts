@@ -1,5 +1,6 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosError, AxiosInstance, InternalAxiosRequestConfig } from "axios";
 import { API_BASE_URL, API_ENDPOINTS } from "./endpoints";
+import { getCookie } from "cookies-next";
 
 /**
  * Create Axios instance with base configuration
@@ -11,6 +12,24 @@ const apiClient: AxiosInstance = axios.create({
     },
     timeout: 15000, // 15 seconds
 });
+
+/**
+ * Request Interceptor - Automatically attach auth token from cookies
+ */
+apiClient.interceptors.request.use(
+    (config: InternalAxiosRequestConfig) => {
+        const token = getCookie('token');
+
+        if (token && config.headers) {
+            config.headers.token = token as string;
+        }
+
+        return config;
+    },
+    (error: AxiosError) => {
+        return Promise.reject(error);
+    }
+);
 
 /**
  * Extract error message from API error response
