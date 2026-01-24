@@ -104,33 +104,18 @@ export function getErrorMessage(error: any): string {
 }
 
 /**
- * Create headers with authentication token
- */
-export function getAuthHeaders(token: string): Record<string, string> {
-    return {
-        'Content-Type': 'application/json',
-        token,
-    };
-}
-
-/**
  * Check if user is authenticated
  */
 export function isAuthenticated(token?: string | null): boolean {
     return !!token;
 }
 
-export const api = {
-    // Auth
-    login: (data: any) => axios.post(API_ENDPOINTS.AUTH.SIGNIN, data),
-    signup: (data: any) => axios.post(API_ENDPOINTS.AUTH.SIGNUP, data),
-    // Products
-    getProducts: () => axios.get(API_ENDPOINTS.PRODUCTS),
-    // Wishlist (requires auth token)
-    getWishlist: (token: string) =>
-        axios.get(API_ENDPOINTS.WISHLIST, { headers: getAuthHeaders(token) }),
-    addToWishlist: (productId: string, token: string) =>
-        axios.post(`${API_ENDPOINTS.WISHLIST}/${productId}`, {}, { headers: getAuthHeaders(token) }),
-    removeFromWishlist: (productId: string, token: string) =>
-        axios.delete(`${API_ENDPOINTS.WISHLIST}/${productId}`, { headers: getAuthHeaders(token) }),
-};
+/**
+ * Get authentication token from cookies
+ */
+export function getAuthToken(): string | undefined {
+    const token = getCookie('token');
+    return token as string | undefined;
+}
+
+export default apiClient;
