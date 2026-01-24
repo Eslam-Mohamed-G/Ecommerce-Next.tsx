@@ -1,5 +1,16 @@
-import axios from "axios";
-import { API_ENDPOINTS } from "./endpoints";
+import axios, { AxiosInstance } from "axios";
+import { API_BASE_URL, API_ENDPOINTS } from "./endpoints";
+
+/**
+ * Create Axios instance with base configuration
+ */
+const apiClient: AxiosInstance = axios.create({
+    baseURL: API_BASE_URL,
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    timeout: 15000, // 15 seconds
+});
 
 /**
  * Extract error message from API error response
