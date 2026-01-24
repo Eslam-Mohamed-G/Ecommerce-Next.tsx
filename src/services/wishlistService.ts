@@ -10,3 +10,11 @@ export const getWishlist =async (): Promise<ApiResponse<Product[]>> => {
     const response = await apiClient.get(API_ENDPOINTS.WISHLIST.BASE);
     return response.data;
 }
+
+/**
+ * Add product to wishlist
+ */
+export const addToWishlist = async (productId:string): Promise<ApiResponse<Product[]>> => {
+    const response = await apiClient.post(API_ENDPOINTS.WISHLIST.BASE, {productId});
+    return response.data;
+};
