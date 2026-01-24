@@ -18,3 +18,11 @@ export const addToWishlist = async (productId:string): Promise<ApiResponse<Produ
     const response = await apiClient.post(API_ENDPOINTS.WISHLIST.BASE, {productId});
     return response.data;
 };
+
+/**
+ * Remove product from wishlist
+ */
+export const removeFromWishlist = async (productId:string): Promise<ApiResponse<Product[]>> => {
+    const response = await apiClient.delete(API_ENDPOINTS.WISHLIST.ITEM(productId));
+    return response.data;
+};
