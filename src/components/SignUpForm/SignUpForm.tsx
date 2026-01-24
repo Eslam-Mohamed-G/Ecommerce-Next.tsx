@@ -1,19 +1,14 @@
 "use client";
 import React, { useState } from 'react';
-import { useFormik } from 'formik';
 import * as Yup from 'yup'
+import { useFormik } from 'formik';
+import { SignUpData } from '@/src/types';
 import { useRouter } from "next/navigation";
-import axios from 'axios';
+import authService from '@/src/services/authService';
+import { getErrorMessage } from '@/src/services/apiClient';
+import { EyeIcon, EyeOffIcon } from '../ui/Icon/Icon';
 
-type valuesType = {
-    name: string;
-    email: string;
-    password: string;
-    rePassword: string;
-    phone: string;
-}
-
-export default function SingUpForm() {
+export default function SignUpForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [showRePassword, setShowRePassword] = useState(false);
     const [messageFromBackEnd, setMessageFromBackEnd] = useState('');
@@ -36,15 +31,15 @@ export default function SingUpForm() {
             phone: '',
         },
         validationSchema: validator,
-        onSubmit: async (values: valuesType) => {
+        onSubmit: async (values: SignUpData) => {
             setIsLoading(true);
             try {
-                const response = await axios.post("/api/SingUp", values);
-                if (response.data.message === 'success') {
+                const response = await authService.signup(values);
+                if (response.message === 'success') {
                     router.push('/')
                 };
             } catch (error: any) {
-                setMessageFromBackEnd(error?.response?.data?.message)
+                setMessageFromBackEnd(getErrorMessage(error));
             } finally {
                 setIsLoading(false);
             }
@@ -121,11 +116,7 @@ export default function SingUpForm() {
                     </div>
 
                     <button type='button' aria-label={showPassword ? "Hide password" : "Show password"} className='flex items-center justify-center h-full text-textInputColor cursor-pointer' onClick={() => { setShowPassword(!showPassword) }}>
-                        {showPassword ?
-                            <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx={12} cy={12} r={3} /></svg>
-                            :
-                            <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-eye-off-icon lucide-eye-off"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /><path d="m2 2 20 20" /></svg>
-                        }
+                        {showPassword ? <EyeIcon /> : <EyeOffIcon />}
                     </button>
                 </div>
 
@@ -149,11 +140,7 @@ export default function SingUpForm() {
                     </div>
 
                     <button type='button' aria-label={showRePassword ? "Hide Confirm password" : "Show Confirm password"} className='flex items-center justify-center h-full text-textInputColor cursor-pointer' onClick={() => { setShowRePassword(!showRePassword) }}>
-                        {showRePassword ?
-                            <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-eye-icon lucide-eye"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" /><circle cx={12} cy={12} r={3} /></svg>
-                            :
-                            <svg xmlns="http://www.w3.org/2000/svg" width={22} height={22} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-eye-off-icon lucide-eye-off"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /><path d="m2 2 20 20" /></svg>
-                        }
+                        {showRePassword ? <EyeIcon /> : <EyeOffIcon />}
                     </button>
                 </div>
 

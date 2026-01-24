@@ -1,6 +1,6 @@
 
 
-import SingUpForm from '@/src/components/SingUpForm/SingUpForm';
+import SingUpForm from '@/src/components/SignUpForm/SignUpForm';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
