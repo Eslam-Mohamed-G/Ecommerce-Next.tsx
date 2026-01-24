@@ -33,6 +33,16 @@ export interface ToastMessage {
     message: string;
 }
 
+// ==================== User Types ====================
+export interface User {
+    _id: string;
+    name: string;
+    email: string;
+    phone?: string;
+    role: 'user' | 'admin';
+    active?: boolean;
+}
+
 // ==================== Auth Types ====================
 export interface LoginCredentials {
     email: string;
