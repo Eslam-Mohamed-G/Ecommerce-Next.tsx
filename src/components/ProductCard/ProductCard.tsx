@@ -3,8 +3,8 @@ import React from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
-import { Product } from '@/src/lib/types';
 import { StarIcon } from '../ui/Icon/Icon';
+import { Product } from '@/src/types';
 
 export default function ProductCard({ id, title, price, priceAfterDiscount, imageCover, ratingsAverage, ratingsQuantity }: Product) {
     // Calculate discount percentage
