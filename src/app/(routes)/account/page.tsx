@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb';
+import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 
 export default function page() {
     return (

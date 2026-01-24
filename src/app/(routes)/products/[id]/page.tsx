@@ -1,5 +1,5 @@
 "use client"
-import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb';
+import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'; import ImageGallery from '@/src/components/ImageGallery/ImageGallery';
 import QuantitySelector from '@/src/components/QuantitySelector/QuantitySelector';

@@ -1,5 +1,5 @@
 "use client"
-import Breadcrumb from '@/src/components/Breadcrumb/Breadcrumb'
+import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb'
 import FilterSidebar, { FilterState } from '@/src/components/FilterSidebar/FilterSidebar'
 import ProductCard, { Product } from '@/src/components/ProductCard/ProductCard';
 import React, { useEffect, useState } from 'react'

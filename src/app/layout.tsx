@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "../components/Navbar/Navbar";
-import Footer from "../components/Footer/Footer";
+import Navbar from "../components/common/Navbar/Navbar";
+import Footer from "../components/common/Footer/Footer";
 
 export const metadata: Metadata = {
   title: "E-Commerce Store | Buy the Best Products Online",
