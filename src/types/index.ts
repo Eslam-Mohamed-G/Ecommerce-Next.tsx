@@ -1,3 +1,29 @@
+// ==================== API Response Types ====================
+export interface ApiResponse<T> {
+    message?: string;
+    data?: T;
+    token?: string;
+    status?: string;
+    results?: number;
+    metadata?: {
+        currentPage: number;
+        numberOfPages: number;
+        limit: number;
+        nextPage?: number;
+    };
+}
+
+export interface ApiError {
+    message: string;
+    statusMsg?: string;
+    errors?: Array<{
+        value: string;
+        msg: string;
+        param: string;
+        location: string;
+    }>;
+}
+
 export interface Product {
     _id?: string;
     id: string;
@@ -55,10 +81,4 @@ export interface SignUpData {
     password: string;
     rePassword: string;
     phone: string;
-}
-
-export interface ApiResponse<T> {
-    message: string;
-    data?: T;
-    token?: string;
 }
