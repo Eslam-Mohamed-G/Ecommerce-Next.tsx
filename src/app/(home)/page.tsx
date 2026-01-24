@@ -1,7 +1,7 @@
-import Sidebar from "@/src/components/Sidebar/Sidebar";
+import Sidebar from "@/src/components/features/Sidebar/Sidebar";
 import Image from "next/image";
 import CarouselComponent from "./CarouselComponent";
-import ProductCard from "@/src/components/ProductCard/ProductCard";
+import ProductCard from "@/src/components/features/ProductCard/ProductCard";
 import Countdown from "./Countdown";
 import CategoriesCarousel from "./CategoriesCarousel";
 

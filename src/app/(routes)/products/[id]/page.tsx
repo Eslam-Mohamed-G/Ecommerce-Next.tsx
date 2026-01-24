@@ -1,10 +1,10 @@
 "use client"
 import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import React, { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'next/navigation'; import ImageGallery from '@/src/components/ImageGallery/ImageGallery';
-import QuantitySelector from '@/src/components/QuantitySelector/QuantitySelector';
-import ProductCard, { Product } from '@/src/components/ProductCard/ProductCard';
-import FavoriteButton from '@/src/components/FavoriteButton/FavoriteButton';
+import { useParams } from 'next/navigation'; import ImageGallery from '@/src/components/features/ImageGallery/ImageGallery';
+import QuantitySelector from '@/src/components/features/QuantitySelector/QuantitySelector';
+import ProductCard, { Product } from '@/src/components/features/ProductCard/ProductCard';
+import FavoriteButton from '@/src/components/features/FavoriteButton/FavoriteButton';
 
 interface ApiResponse {
     results: number;

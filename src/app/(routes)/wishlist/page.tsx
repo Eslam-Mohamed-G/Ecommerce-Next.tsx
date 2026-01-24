@@ -1,5 +1,5 @@
 "use client"
-import ProductCard, { Product } from '@/src/components/ProductCard/ProductCard';
+import ProductCard, { Product } from '@/src/components/features/ProductCard/ProductCard';
 import { getCookie } from 'cookies-next';
 import React, { useEffect, useState } from 'react';
 

@@ -3,7 +3,7 @@ import React from 'react';
 import Image from 'next/image'
 import Link from 'next/link';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
-import { StarIcon } from '../ui/Icon/Icon';
+import { StarIcon } from '../../ui/Icon/Icon';
 import { Product } from '@/src/types';
 
 export default function ProductCard({ id, title, price, priceAfterDiscount, imageCover, ratingsAverage, ratingsQuantity }: Product) {

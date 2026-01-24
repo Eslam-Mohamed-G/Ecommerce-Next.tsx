@@ -2,9 +2,9 @@
 import { getCookie } from "cookies-next";
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
-import ToastMessage from "../common/ToastMessage/ToastMessage";
-import { HeartIcon, TrashIcon } from "../ui/Icon/Icon";
-import LoadingSpinner from "../ui/LoadingSpinner/LoadingSpinner";
+import ToastMessage from "../../common/ToastMessage/ToastMessage";
+import { HeartIcon, TrashIcon } from "../../ui/Icon/Icon";
+import LoadingSpinner from "../../ui/LoadingSpinner/LoadingSpinner";
 import { API_ENDPOINTS } from "@/src/lib/constants/api";
 
 interface favoriteButtonProps {
