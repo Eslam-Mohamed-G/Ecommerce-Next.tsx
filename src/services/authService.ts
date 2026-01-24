@@ -14,3 +14,9 @@ export const signup = async (userData: SignUpData): Promise<ApiResponse<User>> =
     const response = await apiClient.post(API_ENDPOINTS.AUTH.SIGNUP, userData);
     return response.data;
 };
+
+const authService = {
+    signup,
+};
+
+export default authService;
