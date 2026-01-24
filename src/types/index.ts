@@ -33,6 +33,7 @@ export interface ToastMessage {
     message: string;
 }
 
+// ==================== Auth Types ====================
 export interface LoginCredentials {
     email: string;
     password: string;
