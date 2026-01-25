@@ -3,8 +3,10 @@ import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'next/navigation'; import ImageGallery from '@/src/components/features/ImageGallery/ImageGallery';
 import QuantitySelector from '@/src/components/features/QuantitySelector/QuantitySelector';
-import ProductCard, { Product } from '@/src/components/features/ProductCard/ProductCard';
+import ProductCard from '@/src/components/features/ProductCard/ProductCard';
 import FavoriteButton from '@/src/components/features/FavoriteButton/FavoriteButton';
+import { Product } from '@/src/types';
+import productService from '@/src/services/productService';
 
 interface ApiResponse {
     results: number;
@@ -15,32 +17,6 @@ interface ApiResponse {
         nextPage?: number;
     };
     data: Product[];
-}
-interface ProductDetails {
-    _id?: string;
-    title: string;
-    slug: string;
-    description: string;
-    quantity: number;
-    price: number;
-    priceAfterDiscount?: number;
-    imageCover: string;
-    images: string[];
-    category: {
-        _id: string;
-        name: string;
-        slug: string;
-        image: string;
-    };
-    brand: {
-        _id: string;
-        name: string;
-        slug: string;
-        image: string;
-    };
-    ratingsAverage: number;
-    ratingsQuantity: number;
-    sold: number | null;
 }
 
 // Mock product data
@@ -53,7 +29,7 @@ export default function ProductDetailsPage() {
     const { id } = useParams<{ id: string }>();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [details, setDetails] = useState<ProductDetails | null>(null);
+    const [details, setDetails] = useState<Product | null>(null);
     const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
     console.log("relatedProducts", relatedProducts);
 
@@ -70,12 +46,10 @@ export default function ProductDetailsPage() {
         setLoading(true);
         setError(null);
         try {
-            const response = await fetch(`https://ecommerce.routemisr.com/api/v1/products/${id}`);
-            if (!response.ok) {
-                throw new Error('Failed to fetch products');
+            const response = await productService.getProductById(id);
+            if (response.data) {
+                setDetails(response.data);
             }
-            const data = await response.json();
-            setDetails(data.data);
             setLoading(false);
         } catch (error) {
             if (error instanceof Error) {
