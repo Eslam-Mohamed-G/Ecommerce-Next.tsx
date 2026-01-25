@@ -61,16 +61,20 @@ export default function ProductDetailsPage() {
 
     // Fetch related Products from API
     useEffect(() => {
+        // Only fetch related products when details are loaded
+        if (!details) return;
+
         const fetchrelatedProducts = async () => {
             try {
                 const response = await productService.getAllProducts();
 
                 const filtered = response.data
-                    ?.filter((product: Product) => product.category._id !== details?.category._id)
+                    ?.filter((product: Product) => product.category._id === details.category._id && product.id !== details.id)
                     .slice(0, 4) ?? [];
                 setRelatedProducts(filtered);
             } catch (err) {
-                setError(err instanceof Error ? err.message : 'An error occurred');
+                // Don't set main error state for related products failure
+                console.error('Failed to fetch related products:', err);
             }
         };
 

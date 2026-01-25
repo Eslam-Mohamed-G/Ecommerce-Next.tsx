@@ -19,10 +19,14 @@ const apiClient: AxiosInstance = axios.create({
  */
 apiClient.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
-        const token = getCookie('token');
-
-        if (token && config.headers) {
-            config.headers.token = token as string;
+        // Safely get token - only works in client-side
+        try {
+            const token = getCookie('token');
+            if (token && config.headers) {
+                config.headers.token = token as string;
+            }
+        } catch (error) {
+            // getCookie might fail in SSR context, ignore silently
         }
 
         return config;
@@ -49,23 +53,6 @@ apiClient.interceptors.response.use(
                 statusMsg: error.response.data?.statusMsg,
                 errors: error.response.data?.errors,
             };
-
-            // Handle specific status codes
-            switch (error.response.status) {
-                case 401:
-                    // Unauthorized - could trigger logout or redirect
-                    console.error('Unauthorized access - please login');
-                    break;
-                case 403:
-                    console.error('Forbidden - insufficient permissions');
-                    break;
-                case 404:
-                    console.error('Resource not found');
-                    break;
-                case 500:
-                    console.error('Server error - please try again later');
-                    break;
-            }
 
             return Promise.reject(apiError);
         } else if (error.request) {
