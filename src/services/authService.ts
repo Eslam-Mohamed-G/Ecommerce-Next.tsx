@@ -1,5 +1,5 @@
 
-import { ApiResponse, SignUpData, User } from '../types';
+import { ApiResponse, LoginCredentials, SignUpData, User } from '../types';
 import apiClient from './apiClient';
 import { API_ENDPOINTS } from './endpoints';
 /**
@@ -15,8 +15,17 @@ export const signup = async (userData: SignUpData): Promise<ApiResponse<User>> =
     return response.data;
 };
 
+/**
+ * Sign in user
+ */
+export const signin = async (credentials:LoginCredentials): Promise<ApiResponse<User>> => {
+    const response = await apiClient.post(API_ENDPOINTS.AUTH.SIGNIN, credentials);
+    return response.data;
+}
+
 const authService = {
     signup,
+    signin,
 };
 
 export default authService;
