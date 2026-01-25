@@ -114,9 +114,12 @@ export default function LoginForm() {
 
                 {/* submiting */}
                 <div className="relative flex flex-row items-center justify-between">
-                    <button type='submit' disabled={isLoading} className="bg-primaryColor text-white w-32 h-10 rounded cursor-pointer relative">
-                        <span>Log In</span>
-                        {isLoading && <LoadingSpinner size="sm" className="text-white absolute top-1/2 -translate-y-1/2 right-3.5" />}
+                    <button type='submit' disabled={isLoading} className={`bg-primaryColor text-white flex items-center justify-center ${isLoading ? "w-10 h-10 rounded-full opacity-60 cursor-not-allowed" : "w-32 h-10 rounded cursor-pointer"} relative transition-all ease-in-out duration-300`}>
+                        {isLoading ?
+                            <LoadingSpinner size="sm" />
+                            :
+                            <span>Log In</span>
+                        }
                     </button>
                     <Link href={'/forgetpassword'} className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</Link>
                 </div>
