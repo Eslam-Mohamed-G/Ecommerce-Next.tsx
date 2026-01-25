@@ -2,19 +2,10 @@
 import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb'
 import FilterSidebar, { FilterState } from '@/src/components/features/FilterSidebar/FilterSidebar'
 import ProductCard from '@/src/components/features/ProductCard/ProductCard';
+import productService from '@/src/services/productService';
 import { Product } from '@/src/types';
 import React, { useEffect, useState } from 'react'
 
-interface ApiResponse {
-    results: number;
-    metadata: {
-        currentPage: number;
-        numberOfPages: number;
-        limit: number;
-        nextPage?: number;
-    };
-    data: Product[];
-}
 
 export default function page() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -36,14 +27,11 @@ export default function page() {
         const fetchProducts = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('https://ecommerce.routemisr.com/api/v1/products');
+                const response = await productService.getAllProducts();
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch products');
+                if (response.data) {
+                    setProducts(response.data);
                 }
-
-                const data: ApiResponse = await response.json();
-                setProducts(data.data);
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'An error occurred');
             } finally {
