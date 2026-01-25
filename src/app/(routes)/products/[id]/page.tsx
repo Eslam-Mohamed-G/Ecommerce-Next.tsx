@@ -8,17 +8,6 @@ import FavoriteButton from '@/src/components/features/FavoriteButton/FavoriteBut
 import { Product } from '@/src/types';
 import productService from '@/src/services/productService';
 
-interface ApiResponse {
-    results: number;
-    metadata: {
-        currentPage: number;
-        numberOfPages: number;
-        limit: number;
-        nextPage?: number;
-    };
-    data: Product[];
-}
-
 // Mock product data
 const mockProduct = {
     colors: ['#A0BCE0', '#E07575', '#000000'],
@@ -31,7 +20,6 @@ export default function ProductDetailsPage() {
     const [error, setError] = useState<string | null>(null);
     const [details, setDetails] = useState<Product | null>(null);
     const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-    console.log("relatedProducts", relatedProducts);
 
     // Calculate discount percentage
     const discount = details?.priceAfterDiscount
@@ -75,16 +63,11 @@ export default function ProductDetailsPage() {
     useEffect(() => {
         const fetchrelatedProducts = async () => {
             try {
-                const response = await fetch('https://ecommerce.routemisr.com/api/v1/products');
+                const response = await productService.getAllProducts();
 
-                if (!response.ok) {
-                    throw new Error('Failed to fetch products');
-                }
-
-                const data: ApiResponse = await response.json();
-                const filtered = data.data
-                    .filter((product: Product) => product.category._id !== details?.category._id)
-                    .slice(0, 4);
+                const filtered = response.data
+                    ?.filter((product: Product) => product.category._id !== details?.category._id)
+                    .slice(0, 4) ?? [];
                 setRelatedProducts(filtered);
             } catch (err) {
                 setError(err instanceof Error ? err.message : 'An error occurred');
@@ -239,7 +222,7 @@ export default function ProductDetailsPage() {
                                     Add To Cart
                                 </button>
 
-                                <FavoriteButton product_Id={id} cssStyle='w-12 h-12 border border-borderColor hover:border-primaryColor rounded'/>
+                                <FavoriteButton product_Id={id} cssStyle='w-12 h-12 border border-borderColor hover:border-primaryColor rounded' />
                             </div>
                         </div>
                     </div>
