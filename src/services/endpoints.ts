@@ -5,7 +5,12 @@ export const API_ENDPOINTS = {
         SIGNIN: `${API_BASE_URL}/auth/signin`,
         SIGNUP: `${API_BASE_URL}/auth/signup`,
     },
-    PRODUCTS: `${API_BASE_URL}/products`,
+    
+    // Products
+    PRODUCTS: {
+        BASE: `${API_BASE_URL}/products`,
+        BY_ID: (id: string) => `${API_BASE_URL}/products/${id}`,
+    },
 
     // Wishlist
     WISHLIST: {
