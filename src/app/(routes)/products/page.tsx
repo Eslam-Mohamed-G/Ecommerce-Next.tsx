@@ -1,7 +1,8 @@
 "use client"
 import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb'
 import FilterSidebar, { FilterState } from '@/src/components/features/FilterSidebar/FilterSidebar'
-import ProductCard, { Product } from '@/src/components/features/ProductCard/ProductCard';
+import ProductCard from '@/src/components/features/ProductCard/ProductCard';
+import { Product } from '@/src/types';
 import React, { useEffect, useState } from 'react'
 
 interface ApiResponse {
