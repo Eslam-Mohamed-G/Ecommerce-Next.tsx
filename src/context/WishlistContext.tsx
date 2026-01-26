@@ -5,8 +5,10 @@ import { getCookie } from 'cookies-next';
 import wishlistService from '../services/wishlistService';
 
 export interface WishlistContextType {
+    loading: boolean;
+    error: string | null;
     wishlist: Product[];
-    addToWishlist: (product: Product) => void;
+    getUserWishlist: (product: Product) => void;
 }
 
 const WishlistContext = createContext<WishlistContextType | null>(null);
@@ -38,7 +40,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     };
 
     return (
-        <WishlistContext.Provider value={{}}>
+        <WishlistContext.Provider value={{ loading, error, getUserWishlist, wishlist}}>
             {children}
         </WishlistContext.Provider>
     )

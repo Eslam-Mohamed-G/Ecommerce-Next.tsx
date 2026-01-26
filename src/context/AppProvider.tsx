@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import { ToastProvider } from './ToastContext';
+import { WishlistProvider } from './WishlistContext';
 
 /**
  * AppProvider - Main provider that wraps all context providers
@@ -10,7 +11,9 @@ import { ToastProvider } from './ToastContext';
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
         <ToastProvider>
-            {children}
+            <WishlistProvider>
+                {children}
+            </WishlistProvider>
         </ToastProvider>
     )
 }
