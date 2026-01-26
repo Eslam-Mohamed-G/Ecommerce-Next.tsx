@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import UserMenu from "./UserMenu";
+import ToastMessage from "../ToastMessage/ToastMessage";
+import { useToast } from "@/src/context/ToastContext";
 
 interface Props {
     token: string | null;
@@ -15,6 +17,7 @@ export default function NavbarClientActions({ token }: Props) {
     const [isAuthMenuOpen, setIsAuthMenuOpen] = useState(false);
     const pathName = usePathname();
     const router = useRouter();
+    const {toast} = useToast();
 
     const navRef = useRef<HTMLUListElement | null>(null);
     const navToggleRef = useRef<HTMLButtonElement | null>(null);
@@ -103,6 +106,7 @@ export default function NavbarClientActions({ token }: Props) {
                     }
                 </button>
             </div>
+            {toast && <ToastMessage/>}
         </nav>
     )
 }

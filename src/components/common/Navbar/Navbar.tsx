@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { cookies } from "next/headers";
 import NavbarClientActions from './NavbarClientActions';
 import ToastMessage from '../ToastMessage/ToastMessage';
+import { useToast } from '@/src/context/ToastContext';
 
 export default async function Navbar() {
 
