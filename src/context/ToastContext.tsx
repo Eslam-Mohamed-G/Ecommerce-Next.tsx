@@ -1,6 +1,14 @@
 "use client";
 import React, { createContext, useState } from 'react';
 
+export interface ToastContextType {
+    type: "success" | "error" | "warning" | "info";
+    message: string;
+    duration?: number;
+    showToast: void;
+    removeToast: void;
+}
+
 const ToastContext = createContext();
 
 export default function ToastProvider({ children }) {
