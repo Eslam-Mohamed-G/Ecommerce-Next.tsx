@@ -17,6 +17,14 @@ const ToastContext = createContext<ToastContextType | null>(null);
 
 export const ToastProvider = ({ children }: { children: ReactNode }) => {
     const [toast, setToast] = useState<Toast | null>(null);
+
+    const showToast = (
+        type: ToastType,
+        message: string,
+        duration: number = 3000
+    ) => {
+        setToast({ type, message, duration });
+    };
     
     return (
         <ToastContext.Provider value={ }>
