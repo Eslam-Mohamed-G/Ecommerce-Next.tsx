@@ -12,6 +12,8 @@ const WishlistContext = createContext<WishlistContextType | null>(null);
 export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     const [wishlist, setWishlist] = useState<Product[]>([]);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    
     useEffect(() => {
         
         return () => {
