@@ -9,7 +9,7 @@ export interface ToastContextType {
     removeToast: void;
 }
 
-const ToastContext = createContext();
+const ToastContext = createContext<ToastContextType | null>(null);
 
 export default function ToastProvider({ children }) {
     const [state, setstate] = useState();
