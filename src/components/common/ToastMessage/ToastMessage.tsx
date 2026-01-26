@@ -10,24 +10,23 @@ export default function ToastMessage() {
             <div id="toast-success" className="flex items-center w-full max-w-80 p-4 pb-6 bg-white border border-borderColor rounded-xl shadow relative">
                 {toast?.type === "success" && (
                     <div className="inline-flex items-center justify-center shrink-0 w-7 h-7 text-successIcon bg-successButton/10 rounded">
-                        <svg className="w-5 h-5" aria-hidden="true" width={24} height={24} fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 11.917 9.724 16.5 19 7.5" /></svg>
-                        <span className="sr-only">Check icon</span>
+                        <svg className="w-5 h-5" aria-hidden="true" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" /></svg>
+                        <span className="sr-only">message square icon</span>
                     </div>
                 )}
 
                 {toast?.type === "warning" && (
                     <div className="inline-flex items-center justify-center shrink-0 w-7 h-7 text-[#f97316] bg-[#FDFDEA] rounded">
-                        <svg className="w-5 h-5" aria-hidden="true" width={24} height={24} fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 13V8m0 8h.01M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                        <span className="sr-only">Warning icon</span>
+                        <svg className="w-5 h-5" aria-hidden="true" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" /><path d="M12 15h.01" /><path d="M12 7v4" /></svg>
+                        <span className="sr-only">message square warning icon</span>
                     </div>
                 )}
 
                 {toast?.type === "error" && (
                     <div className="inline-flex items-center justify-center shrink-0 w-7 h-7 text-red-500 bg-red-500/10 rounded">
-                        <svg className="w-5 h-5" aria-hidden="true" width={24} height={24} fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 17.94 6M18 18 6.06 6" /></svg>
-                        <span className="sr-only">Error icon</span>
+                        <svg className="w-5 h-5" aria-hidden="true" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" /><path d="m14.5 8.5-5 5" /><path d="m9.5 8.5 5 5" /></svg>
+                        <span className="sr-only">message square x icon</span>
                     </div>
-
                 )}
 
                 <div className="ms-3 text-sm font-normal">{toast?.message}</div>

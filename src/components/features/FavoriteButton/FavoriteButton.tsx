@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { HeartIcon, TrashIcon } from "../../ui/Icon/Icon";
 import LoadingSpinner from "../../ui/LoadingSpinner/LoadingSpinner";
 import wishlistService from '@/src/services/wishlistService';
-import { getErrorMessage } from '@/src/services/apiClient';
 import { useToast } from '@/src/context/ToastContext';
+import { getCookie } from 'cookies-next';
 
 interface favoriteButtonProps {
     cssStyle: string;
@@ -24,6 +24,12 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
             return;
         }
 
+        const token = getCookie("token");
+        if (!token) {
+            showToast("warning", "You are not logged in");
+            return;
+        }
+
         try {
             setLoading(true);
 
@@ -36,15 +42,12 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
             showToast(
                 "success",
                 action === 'add'
-                    ? "Added to your wishlist successfully"
-                    : "Removed from your wishlist successfully",
+                    ? "Added to your wishlist"
+                    : "Removed from your wishlist",
             );
 
         } catch (error) {
-            showToast(
-                "error",
-                getErrorMessage(error),
-            );
+            showToast("error", "There's an error. Please try again.");
         } finally {
             setLoading(false);
         };
