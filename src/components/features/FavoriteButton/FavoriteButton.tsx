@@ -73,14 +73,6 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
                     <HeartIcon />
                 )}
             </button>
-
-            {showToastMessage && (
-                <ToastMessage
-                    messageTypy={showToastMessage.type}
-                    messageContent={showToastMessage.message}
-                    onClose={() => setShowToastMessage(null)}
-                />
-            )}
         </div>
     )
 };
