@@ -11,7 +11,7 @@ export interface ToastContextType {
 
 const ToastContext = createContext<ToastContextType | null>(null);
 
-export default function ToastProvider({ children }) {
+export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [state, setstate] = useState();
     return (
         <ToastContext.Provider value={ }>
