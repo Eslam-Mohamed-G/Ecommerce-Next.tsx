@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useEffect, useState } from 'react';
+import React, { ReactNode, createContext, useEffect, useState } from 'react';
 
 export type ToastType = "success" | "error" | "warning" | "info";
 interface Toast {
@@ -15,8 +15,9 @@ interface ToastContextType {
 
 const ToastContext = createContext<ToastContextType | null>(null);
 
-export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-
+export const ToastProvider = ({ children }: { children: ReactNode }) => {
+    const [toast, setToast] = useState<Toast | null>(null);
+    
     return (
         <ToastContext.Provider value={ }>
             {children}
