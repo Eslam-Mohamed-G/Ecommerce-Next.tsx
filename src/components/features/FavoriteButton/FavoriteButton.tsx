@@ -1,11 +1,11 @@
 "use client"
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
-import ToastMessage from "../../common/ToastMessage/ToastMessage";
 import { HeartIcon, TrashIcon } from "../../ui/Icon/Icon";
 import LoadingSpinner from "../../ui/LoadingSpinner/LoadingSpinner";
 import wishlistService from '@/src/services/wishlistService';
 import { getErrorMessage } from '@/src/services/apiClient';
+import { useToast } from '@/src/context/ToastContext';
 
 interface favoriteButtonProps {
     cssStyle: string;
@@ -16,11 +16,7 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
     const pathname = usePathname();
     const isWishlistPage = pathname === "/wishList";
     const [loading, setLoading] = useState(false);
-
-    const [showToastMessage, setShowToastMessage] = useState<{
-        type: "success" | "warning" | "error";
-        message: string;
-    } | null>(null);
+    const { showToast } = useToast();
 
     const handleWishlistAction = async (action: 'add' | 'remove') => {
         if (!product_Id) {
@@ -37,18 +33,18 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
                 await wishlistService.removeFromWishlist(product_Id);
             }
 
-            setShowToastMessage({
-                type: "success",
-                message: action === 'add'
+            showToast(
+                "success",
+                action === 'add'
                     ? "Added to your wishlist successfully"
                     : "Removed from your wishlist successfully",
-            });
+            );
 
         } catch (error) {
-            setShowToastMessage({
-                type: "error",
-                message: getErrorMessage(error),
-            });
+            showToast(
+                "error",
+                getErrorMessage(error),
+            );
         } finally {
             setLoading(false);
         };
