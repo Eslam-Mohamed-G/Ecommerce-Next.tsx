@@ -25,6 +25,10 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
     ) => {
         setToast({ type, message, duration });
     };
+
+    const hideToast = () => {
+        setToast(null);
+    };
     
     return (
         <ToastContext.Provider value={ }>
