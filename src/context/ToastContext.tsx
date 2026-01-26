@@ -29,7 +29,17 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
     const hideToast = () => {
         setToast(null);
     };
-    
+
+    useEffect(() => {
+        if (!toast) return;
+
+        const timer = setTimeout(() => {
+            hideToast();
+        }, toast.duration);
+
+        return () => clearTimeout(timer);
+    }, [toast]);
+
     return (
         <ToastContext.Provider value={ }>
             {children}
