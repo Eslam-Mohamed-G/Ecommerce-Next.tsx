@@ -1,51 +1,14 @@
 "use client"
-import ProductCard, { Product } from '@/src/components/features/ProductCard/ProductCard';
-import { getCookie } from 'cookies-next';
-import React, { useEffect, useState } from 'react';
+import ProductCard from '@/src/components/features/ProductCard/ProductCard';
+import { useWishlist } from '@/src/context/WishlistContext';
+import React, { useEffect } from 'react';
 
 export default function page() {
-    const [wishList, setWishList] = useState<Product[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
+const {loading, error, wishlist, getUserWishlist} = useWishlist();
     // useEffect will be used to fetch the wishlist data when the page loads.
     useEffect(() => {
-        const getUserWishlist = async () => {
-            const token = getCookie("token") as string | undefined;
-            if (!token) {
-                alert("You are not logged in");
-                return;
-            }
-
-            setLoading(true);
-            setError("");
-
-            try {
-                const response = await fetch(
-                    "https://ecommerce.routemisr.com/api/v1/wishlist",
-                    {
-                        method: "GET",
-                        headers: {
-                            token: token,
-                        },
-                    }
-                );
-
-                if (!response.ok) {
-                    throw new Error("Failed to fetch wishlist");
-                }
-
-                const data = await response.json();
-                setWishList([...data.data]);
-            } catch (error) {
-                setError(error instanceof Error ? error.message : 'An error occurred');
-            } finally {
-                setLoading(false);
-            }
-        }
-
         getUserWishlist();
-    }, []);
+    }, [wishlist.length]);
     return (
         <section className=''>
             {loading && (
@@ -83,11 +46,11 @@ export default function page() {
                 <div className='w-full lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8'>
                     <div className="flex items-center gap-2 mb-4">
                         <span aria-hidden="true" className="bg-primaryColor w-5 h-10 rounded" />
-                        <h1 className='font-medium text-lg'>Wishlist ({wishList.length})</h1>
+                        <h1 className='font-medium text-lg'>Wishlist ({wishlist.length})</h1>
                     </div>
-                    {wishList.length > 0 ? (
+                    {wishlist.length > 0 ? (
                         <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-                            {wishList.map((product) => (
+                            {wishlist.map((product) => (
                                 <ProductCard key={product.id} {...product} />
                             ))}
                         </div>

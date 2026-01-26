@@ -8,7 +8,7 @@ export interface WishlistContextType {
     loading: boolean;
     error: string | null;
     wishlist: Product[];
-    getUserWishlist: (product: Product) => void;
+    getUserWishlist: () => Promise<void>;
 }
 
 const WishlistContext = createContext<WishlistContextType | null>(null);
@@ -26,11 +26,11 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         }
 
         setLoading(true);
-        setError("");
+        setError(null);
         try {
             const response = await wishlistService.getWishlist();
             if (response.data) {
-                setWishlist(response.data);
+                setWishlist(response.data || []);
             }
         } catch (error) {
             setError(error instanceof Error ? error.message : 'An error occurred');
