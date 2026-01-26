@@ -2,13 +2,16 @@
 import React, { createContext, useEffect, useState } from 'react';
 
 export type ToastType = "success" | "error" | "warning" | "info";
-export interface ToastContextType {
+interface Toast {
     type: ToastType;
     message: string;
     duration?: number;
-    showToast: boolean;
-    removeToast: void;
-}
+};
+interface ToastContextType {
+    toast: Toast | null;
+    showToast: (type: ToastType, message: string, duration?: number) => void;
+    hideToast: () => void;
+};
 
 const ToastContext = createContext<ToastContextType | null>(null);
 
