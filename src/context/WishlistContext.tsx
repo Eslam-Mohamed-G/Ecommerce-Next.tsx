@@ -3,6 +3,7 @@ import React, { ReactNode, createContext, useContext, useEffect, useState } from
 import { Product } from '../types';
 import { getCookie } from 'cookies-next';
 import wishlistService from '../services/wishlistService';
+import { useToast } from './ToastContext';
 
 export interface WishlistContextType {
     loading: boolean;
@@ -18,10 +19,12 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    const {showToast} = useToast();
+
     const getUserWishlist = async () => {
         const token = getCookie("token") as string | undefined;
         if (!token) {
-            alert("You are not logged in");
+            showToast("warning", "You are not logged in");
             return;
         }
 
