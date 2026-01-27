@@ -42,6 +42,11 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
+    // useEffect will be used to fetch the wishlist data when the page loads.
+    useEffect(() => {
+        getUserWishlist();
+    }, [wishlist.length]);
+    
     return (
         <WishlistContext.Provider value={{ loading, error, getUserWishlist, wishlist }}>
             {children}

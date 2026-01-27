@@ -4,11 +4,13 @@ import { useWishlist } from '@/src/context/WishlistContext';
 import React, { useEffect } from 'react';
 
 export default function page() {
-const {loading, error, wishlist, getUserWishlist} = useWishlist();
+    const {loading, error, wishlist, getUserWishlist} = useWishlist();
+    
     // useEffect will be used to fetch the wishlist data when the page loads.
     useEffect(() => {
         getUserWishlist();
     }, [wishlist.length]);
+    
     return (
         <section className=''>
             {loading && (
