@@ -72,7 +72,7 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
                 ) : isWishlistPage ? (
                     <TrashIcon />
                 ) : (
-                    <HeartIcon />
+                    <HeartIcon width={28} height={28}/>
                 )}
             </button>
         </div>

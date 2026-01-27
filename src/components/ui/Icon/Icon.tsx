@@ -45,19 +45,15 @@ export const EyeOffIcon: React.FC<IconProps> = ({ className = "", width = 22, he
 
 export const HeartIcon: React.FC<IconProps> = ({ className = "", width = 24, height = 24 }) => (
     <svg
-        xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
-        viewBox="0 0 24 24"
+        className={className}
+        aria-hidden="true"
+        viewBox="0 0 32 32"
         fill="none"
         stroke="currentColor"
-        aria-hidden="true"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
     >
-        <path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" />
+        <path d="M11 7C8.239 7 6 9.216 6 11.95C6 14.157 6.875 19.395 15.488 24.69C15.6423 24.7839 15.8194 24.8335 16 24.8335C16.1806 24.8335 16.3577 24.7839 16.512 24.69C25.125 19.395 26 14.157 26 11.95C26 9.216 23.761 7 21 7C18.239 7 16 10 16 10C16 10 13.761 7 11 7Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
 );
 

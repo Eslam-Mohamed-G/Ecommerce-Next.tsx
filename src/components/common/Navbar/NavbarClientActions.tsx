@@ -8,6 +8,7 @@ import UserMenu from "./UserMenu";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import { useToast } from "@/src/context/ToastContext";
 import { useWishlist } from "@/src/context/WishlistContext";
+import { HeartIcon } from "../../ui/Icon/Icon";
 
 interface Props {
     token: string | null;
@@ -92,7 +93,8 @@ export default function NavbarClientActions({ token }: Props) {
                 </form>
 
                 <button type="button" aria-label="open wishlist" onClick={()=>{token ? router.push("wishList"): showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
-                    <Image src="/Wishlist.svg" alt='Open Wishlist' width={28} height={28} />
+                    {/* <Image src="/Wishlist.svg" alt='Open Wishlist' width={28} height={28} /> */}
+                    <HeartIcon width={28} height={28}/>
                     <span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{token && wishlist.length}</span>
                 </button>
 
