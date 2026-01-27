@@ -2,7 +2,7 @@
 import { deleteCookie } from "cookies-next";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 interface Props {
     token: string | null;
@@ -11,6 +11,7 @@ export default function UserMenu({ token }: Props) {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [isAuthMenuOpen, setIsAuthMenuOpen] = useState(false);
     const [confirmLogout, setConfirmLogout] = useState(false);
+    const pathName = usePathname();
     const router = useRouter();
 
     const userButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -44,7 +45,10 @@ export default function UserMenu({ token }: Props) {
     }, [confirmLogout]);
 
     const handleLogout = () => {
-        deleteCookie("token", { path: "/" });
+        deleteCookie("token");
+        if (pathName === "/wishList" || pathName === "/cart" ) {
+            router.push("/");
+        }
         router.refresh();
         setConfirmLogout(false);
     };
