@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import UserMenu from "./UserMenu";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import { useToast } from "@/src/context/ToastContext";
+import { useWishlist } from "@/src/context/WishlistContext";
 
 interface Props {
     token: string | null;
@@ -17,7 +18,8 @@ export default function NavbarClientActions({ token }: Props) {
     const [isAuthMenuOpen, setIsAuthMenuOpen] = useState(false);
     const pathName = usePathname();
     const router = useRouter();
-    const {toast} = useToast();
+    const {toast, showToast} = useToast();
+    const {wishlist} = useWishlist();
 
     const navRef = useRef<HTMLUListElement | null>(null);
     const navToggleRef = useRef<HTMLButtonElement | null>(null);
@@ -63,7 +65,7 @@ export default function NavbarClientActions({ token }: Props) {
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href="/wishList" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishlist" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href="/wishList" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishList" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Wishlist
                     </Link>
                 </li>
@@ -89,9 +91,10 @@ export default function NavbarClientActions({ token }: Props) {
                     </button>
                 </form>
 
-                <Link href="/wishList" className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer">
+                <button type="button" aria-label="open wishlist" onClick={()=>{token ? router.push("wishList"): showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
                     <Image src="/Wishlist.svg" alt='Open Wishlist' width={28} height={28} />
-                </Link>
+                    <span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{token && wishlist.length}</span>
+                </button>
 
                 <button className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer">
                     <Image src="/cart.svg" alt='Open Cart' width={28} height={28} />
