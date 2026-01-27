@@ -19,8 +19,8 @@ export default function NavbarClientActions({ token }: Props) {
     const [isAuthMenuOpen, setIsAuthMenuOpen] = useState(false);
     const pathName = usePathname();
     const router = useRouter();
-    const {toast, showToast} = useToast();
-    const {wishlist} = useWishlist();
+    const { toast, showToast } = useToast();
+    const { wishlist } = useWishlist();
 
     const navRef = useRef<HTMLUListElement | null>(null);
     const navToggleRef = useRef<HTMLButtonElement | null>(null);
@@ -41,12 +41,6 @@ export default function NavbarClientActions({ token }: Props) {
         };
     }, []);
 
-    const handleLogout = () => {
-        deleteCookie("token", { path: "/" });
-        router.refresh();
-        setIsAuthMenuOpen(false)
-    };
-
     return (
         <nav aria-label="Mobile Navigation" role="navigation">
             <ul id="mobile-nav" ref={navRef} inert={!isNavOpen} className={`bg-black/40 backdrop-blur-xl text-white flex flex-col gap-3 px-4 absolute top-full left-0 right-0 z-50 ${isNavOpen ? token ? "h-[280px] py-4" : "h-[338px] py-4" : "h-0 py-0"} md:hidden overflow-hidden transition-all ease-in-out duration-300`}>
@@ -66,7 +60,7 @@ export default function NavbarClientActions({ token }: Props) {
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href={token ? "/wishList" : "#"} onClick={() => {setIsNavOpen(false); !token && showToast("warning", "You are not logged in")}} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishList" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href={token ? "/wishList" : "#"} onClick={() => { setIsNavOpen(false); !token && showToast("warning", "You are not logged in") }} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishList" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Wishlist
                     </Link>
                 </li>
@@ -92,16 +86,15 @@ export default function NavbarClientActions({ token }: Props) {
                     </button>
                 </form>
 
-                <button type="button" aria-label="open wishlist" onClick={()=>{token ? router.push("wishList"): showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
-                    {/* <Image src="/Wishlist.svg" alt='Open Wishlist' width={28} height={28} /> */}
-                    <HeartIcon width={28} height={28}/>
-                    <span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{token && wishlist.length}</span>
+                <button type="button" aria-label="open wishlist" onClick={() => { token ? router.push("wishList") : showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
+                    <HeartIcon width={28} height={28} />
+                    {token && (<span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{wishlist.length}</span>)}
                 </button>
 
                 <button className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer">
                     <Image src="/cart.svg" alt='Open Cart' width={28} height={28} />
                 </button>
-                <UserMenu token={token || null}/>
+                <UserMenu token={token || null} />
 
                 <button ref={navToggleRef} aria-label="Toggle navigation menu" aria-expanded={isNavOpen} aria-controls="mobile-nav" className='flex justify-center items-center md:hidden cursor-pointer' onClick={() => { setIsNavOpen(!isNavOpen); setIsAuthMenuOpen(false) }}>
                     {isNavOpen ?
@@ -111,7 +104,7 @@ export default function NavbarClientActions({ token }: Props) {
                     }
                 </button>
             </div>
-            {toast && <ToastMessage/>}
+            {toast && <ToastMessage />}
         </nav>
     )
 }
