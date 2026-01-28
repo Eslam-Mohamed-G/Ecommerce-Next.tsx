@@ -37,6 +37,14 @@ export default function RandomProducts() {
                 </div>
             )}
 
+            {/* Error State */}
+            {error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                    <p className="font-semibold">Error loading products</p>
+                    <p className="text-sm">{error}</p>
+                </div>
+            )}
+
             {!loading && !error && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
                     {randomProducts.map((product) => (
