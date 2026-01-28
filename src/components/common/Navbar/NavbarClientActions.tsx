@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import UserMenu from "./UserMenu";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import { useToast } from "@/src/context/ToastContext";
-import { useWishlist } from "@/src/context/WishlistContext";
+import { useWishlist } from "@/src/context/GetProductsContext";
 import { HeartIcon } from "../../ui/Icon/Icon";
 
 interface Props {

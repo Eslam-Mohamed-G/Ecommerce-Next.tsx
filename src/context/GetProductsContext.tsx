@@ -5,14 +5,14 @@ import { getCookie } from 'cookies-next';
 import wishlistService from '../services/wishlistService';
 import { useToast } from './ToastContext';
 
-export interface WishlistContextType {
+export interface GetProductsContextType {
     loading: boolean;
     error: string | null;
     wishlist: Product[];
     getUserWishlist: () => Promise<void>;
 }
 
-const WishlistContext = createContext<WishlistContextType | null>(null);
+const GetProductsContext = createContext<GetProductsContextType | null>(null);
 
 export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     const [wishlist, setWishlist] = useState<Product[]>([]);
@@ -48,14 +48,14 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     }, [wishlist.length]);
     
     return (
-        <WishlistContext.Provider value={{ loading, error, getUserWishlist, wishlist }}>
+        <GetProductsContext.Provider value={{ loading, error, getUserWishlist, wishlist }}>
             {children}
-        </WishlistContext.Provider>
+        </GetProductsContext.Provider>
     )
 };
 
 export const useWishlist = () => {
-    const context = useContext(WishlistContext);
+    const context = useContext(GetProductsContext);
     if (!context) {
         throw new Error('useWishlist must be used within WishlistProvider');
     }

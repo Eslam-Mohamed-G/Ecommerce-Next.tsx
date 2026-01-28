@@ -6,7 +6,7 @@ import LoadingSpinner from "../../ui/LoadingSpinner/LoadingSpinner";
 import wishlistService from '@/src/services/wishlistService';
 import { useToast } from '@/src/context/ToastContext';
 import { getCookie } from 'cookies-next';
-import { useWishlist } from '@/src/context/WishlistContext';
+import { useWishlist } from '@/src/context/GetProductsContext';
 
 interface favoriteButtonProps {
     cssStyle: string;

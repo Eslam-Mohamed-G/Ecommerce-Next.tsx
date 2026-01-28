@@ -1,6 +1,6 @@
 "use client"
 import ProductCard from '@/src/components/features/ProductCard/ProductCard';
-import { useWishlist } from '@/src/context/WishlistContext';
+import { useWishlist } from '@/src/context/GetProductsContext';
 import React, { useEffect } from 'react';
 
 export default function page() {
