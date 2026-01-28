@@ -7,7 +7,7 @@ import RandomProducts from "./RandomProducts";
 
 export default function Home() {
     return (
-        <main className="xl:max-w-7xl lg:max-w-5xl m-auto px-4 flex flex-col gap-10">
+        <main className="xl:max-w-7xl lg:max-w-5xl m-auto px-4 flex flex-col gap-10 overflow-hidden">
             <section aria-label="top screen" className="flex items-end relative">
                 <Sidebar aria-label="Product Categories Navigation" />
 

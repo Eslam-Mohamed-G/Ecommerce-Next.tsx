@@ -7,7 +7,7 @@ import React, { useEffect, useRef } from 'react';
 export default function RandomProducts() {
     const { loading, error, products, fetchProducts } = useGetProducts();
 
-    const randomProducts = [...products].sort(() => .5 - Math.random()).slice(0, 5);
+    const randomProducts = [...products].sort(() => .5 - Math.random()).slice(0, 6);
 
     useEffect(() => {
         fetchProducts();
@@ -68,9 +68,9 @@ export default function RandomProducts() {
             )}
 
             {!loading && !error && (
-                <div ref={scrollRef} className="grid grid-cols-5 gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none">
+                <div ref={scrollRef} className="flex flex-row gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none">
                     {randomProducts.map((product) => (
-                        <ProductCard key={product.id} {...product} />
+                        <ProductCard key={product.id} className='w-56 transition-all ease-in-out duration-300 snap-center shrink-0 group' {...product} />
                     ))}
                 </div>
             )}
