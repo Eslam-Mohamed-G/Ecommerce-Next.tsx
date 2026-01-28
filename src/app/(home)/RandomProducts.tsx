@@ -1,7 +1,8 @@
 "use client"
 import ProductCard from '@/src/components/features/ProductCard/ProductCard';
 import { useGetProducts } from '@/src/context/GetProductsContext';
-import React, { useEffect } from 'react';
+import Image from 'next/image';
+import React, { useEffect, useRef } from 'react';
 
 export default function RandomProducts() {
     const { loading, error, products, fetchProducts } = useGetProducts();
@@ -12,8 +13,29 @@ export default function RandomProducts() {
         fetchProducts();
     }, []);
 
+    const scrollRef = useRef<HTMLDivElement | null>(null);
+
+    const scrollLeft = () => {
+        if (scrollRef.current) scrollRef.current.scrollBy({ left: -300, behavior: "smooth" });
+    };
+
+    const scrollRight = () => {
+        if (scrollRef.current) scrollRef.current.scrollBy({ left: 300, behavior: "smooth" });
+    };
+
     return (
-        <div className=''>
+        <div className='relative w-full'>
+            {/* Buttons */}
+            <div className="absolute bottom-full -translate-y-20 md:-translate-y-8 right-0 flex flex-row items-center justify-center gap-2 md:gap-4">
+                <button type="button" onClick={scrollLeft} className="flex items-center justify-center w-10 h-10 bg-primaryBackground rounded-full cursor-pointer">
+                    <Image src="/category/icons_arrow-left.svg" alt="icons_arrow-left" width={24} height={24} loading="lazy" />
+                </button>
+
+                <button type="button" onClick={scrollRight} className="flex items-center justify-center w-10 h-10 bg-primaryBackground rounded-full cursor-pointer">
+                    <Image src="/category/icons arrow-right.svg" alt="icons arrow-right" width={24} height={24} loading="lazy" />
+                </button>
+            </div>
+
             {loading && (
                 <div className='lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4'>
                     {Array.from({ length: 5 }, (_, i) => (
@@ -46,7 +68,7 @@ export default function RandomProducts() {
             )}
 
             {!loading && !error && (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-6">
+                <div ref={scrollRef} className="grid grid-cols-5 gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none">
                     {randomProducts.map((product) => (
                         <ProductCard key={product.id} {...product} />
                     ))}
