@@ -68,13 +68,13 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     }, [wishlist.length]);
 
     return (
-        <GetProductsContext.Provider value={{ loading, error, getUserWishlist, wishlist }}>
+        <GetProductsContext.Provider value={{ loading, error, getUserWishlist, wishlist, products, fetchProducts }}>
             {children}
         </GetProductsContext.Provider>
     )
 };
 
-export const useWishlist = () => {
+export const useGetProducts = () => {
     const context = useContext(GetProductsContext);
     if (!context) {
         throw new Error('useWishlist must be used within WishlistProvider');

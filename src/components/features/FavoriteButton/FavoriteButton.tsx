@@ -6,7 +6,7 @@ import LoadingSpinner from "../../ui/LoadingSpinner/LoadingSpinner";
 import wishlistService from '@/src/services/wishlistService';
 import { useToast } from '@/src/context/ToastContext';
 import { getCookie } from 'cookies-next';
-import { useWishlist } from '@/src/context/GetProductsContext';
+import { useGetProducts } from '@/src/context/GetProductsContext';
 
 interface favoriteButtonProps {
     cssStyle: string;
@@ -18,7 +18,7 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
     const isWishlistPage = pathname === "/wishList";
     const [loading, setLoading] = useState(false);
     const { showToast } = useToast();
-    const { getUserWishlist } = useWishlist();
+    const { getUserWishlist } = useGetProducts();
 
     const handleWishlistAction = async (action: 'add' | 'remove') => {
         if (!product_Id) {

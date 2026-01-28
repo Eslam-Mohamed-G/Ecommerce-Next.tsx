@@ -1,10 +1,10 @@
 "use client"
 import ProductCard from '@/src/components/features/ProductCard/ProductCard';
-import { useWishlist } from '@/src/context/GetProductsContext';
+import { useGetProducts } from '@/src/context/GetProductsContext';
 import React, { useEffect } from 'react';
 
 export default function page() {
-    const {loading, error, wishlist, getUserWishlist} = useWishlist();
+    const {loading, error, wishlist, getUserWishlist} = useGetProducts();
     
     // useEffect will be used to fetch the wishlist data when the page loads.
     useEffect(() => {

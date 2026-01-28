@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import UserMenu from "./UserMenu";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import { useToast } from "@/src/context/ToastContext";
-import { useWishlist } from "@/src/context/GetProductsContext";
+import { useGetProducts } from "@/src/context/GetProductsContext";
 import { HeartIcon } from "../../ui/Icon/Icon";
 
 interface Props {
@@ -20,7 +20,7 @@ export default function NavbarClientActions({ token }: Props) {
     const pathName = usePathname();
     const router = useRouter();
     const { toast, showToast } = useToast();
-    const { wishlist } = useWishlist();
+    const { wishlist } = useGetProducts();
 
     const navRef = useRef<HTMLUListElement | null>(null);
     const navToggleRef = useRef<HTMLButtonElement | null>(null);

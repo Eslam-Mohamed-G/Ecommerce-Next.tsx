@@ -2,18 +2,15 @@
 import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb'
 import FilterSidebar, { FilterState } from '@/src/components/features/FilterSidebar/FilterSidebar'
 import ProductCard from '@/src/components/features/ProductCard/ProductCard';
-import productService from '@/src/services/productService';
+import { useGetProducts } from '@/src/context/GetProductsContext';
 import { Product } from '@/src/types';
 import React, { useEffect, useState } from 'react'
 
 
 export default function page() {
-    const [products, setProducts] = useState<Product[]>([]);
+    const {loading, error, products, fetchProducts} = useGetProducts();
+
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
-
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string | null>(null);
-
     const [filters, setFilters] = useState<FilterState>({
         categories: [],
         priceRange: [0, 1000],
@@ -24,21 +21,6 @@ export default function page() {
 
     // Fetch products from API
     useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                setLoading(true);
-                const response = await productService.getAllProducts();
-
-                if (response.data) {
-                    setProducts(response.data);
-                }
-            } catch (err) {
-                setError(err instanceof Error ? err.message : 'An error occurred');
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchProducts();
     }, []);
 
