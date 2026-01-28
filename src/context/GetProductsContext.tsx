@@ -9,6 +9,8 @@ import { useToast } from './ToastContext';
 export interface GetProductsContextType {
     loading: boolean;
     error: string | null;
+    products: Product[];
+    fetchProducts: () => Promise<void>;
     wishlist: Product[];
     getUserWishlist: () => Promise<void>;
 }
@@ -35,9 +37,9 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
             setLoading(false);
         }
     };
-    
+
     const [wishlist, setWishlist] = useState<Product[]>([]);
-    const {showToast} = useToast();
+    const { showToast } = useToast();
 
     const getUserWishlist = async () => {
         const token = getCookie("token") as string | undefined;
@@ -64,7 +66,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
         getUserWishlist();
     }, [wishlist.length]);
-    
+
     return (
         <GetProductsContext.Provider value={{ loading, error, getUserWishlist, wishlist }}>
             {children}
