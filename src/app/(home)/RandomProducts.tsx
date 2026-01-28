@@ -7,7 +7,7 @@ import React, { useEffect, useRef } from 'react';
 export default function RandomProducts() {
     const { loading, error, products, fetchProducts } = useGetProducts();
 
-    const randomProducts = [...products].sort(() => .5 - Math.random()).slice(0, 6);
+    const randomProducts = [...products].sort(() => .5 - Math.random()).slice(0, 8);
 
     useEffect(() => {
         fetchProducts();
