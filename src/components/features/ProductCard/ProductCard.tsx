@@ -6,7 +6,11 @@ import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import { StarIcon } from '../../ui/Icon/Icon';
 import { Product } from '@/src/types';
 
-export default function ProductCard({ id, title, price, priceAfterDiscount, imageCover, ratingsAverage, ratingsQuantity }: Product) {
+type ProductCardProps = Product & {
+    className?: string;
+};
+
+export default function ProductCard({ id, title, price, priceAfterDiscount, imageCover, ratingsAverage, ratingsQuantity, className }: ProductCardProps) {
     // Calculate discount percentage
     const discount = priceAfterDiscount
         ? Math.round(((price - priceAfterDiscount) / price) * 100)
@@ -14,7 +18,7 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
 
     const displayPrice = priceAfterDiscount || price;
     return (
-        <Link href={`/products/${id}`} role="article" className='w-full md:w-56 group'>
+        <Link href={`/products/${id}`} role="article" className={className}>
             <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
                 {/* Badges */}
                 <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
