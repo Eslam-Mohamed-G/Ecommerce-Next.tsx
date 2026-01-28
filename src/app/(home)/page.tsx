@@ -1,7 +1,6 @@
 import Sidebar from "@/src/components/features/Sidebar/Sidebar";
 import Image from "next/image";
 import CarouselComponent from "./CarouselComponent";
-import ProductCard from "@/src/components/features/ProductCard/ProductCard";
 import Countdown from "./Countdown";
 import CategoriesCarousel from "./CategoriesCarousel";
 
@@ -28,7 +27,6 @@ export default function Home() {
                         <Countdown />
                     </div>
                 </div>
-                <ProductCard />
 
                 <button type="button" className="bg-primaryColor hover:bg-buttonColor text-white w-3xs h-14 rounded m-auto mt-10 cursor-pointer transition-all ease-in-out duration-300">
                     View All Products
