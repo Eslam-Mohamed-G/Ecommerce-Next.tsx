@@ -68,7 +68,7 @@ export default function Home() {
                         </div>
                     </div>
 
-                    <button type="button" className="flex items-center justify-center w-44 h-14 rounded bg-[#078639] cursor-pointer">
+                    <button type="button" className="flex items-center justify-center w-44 h-14 rounded bg-successIcon cursor-pointer">
                         Buy Now!
                     </button>
                 </div>
