@@ -3,6 +3,7 @@ import React, { ReactNode, createContext, useContext, useEffect, useState } from
 import { Product } from '../types';
 import { getCookie } from 'cookies-next';
 import wishlistService from '../services/wishlistService';
+import productService from '../services/productService';
 import { useToast } from './ToastContext';
 
 export interface GetProductsContextType {
@@ -15,10 +16,27 @@ export interface GetProductsContextType {
 const GetProductsContext = createContext<GetProductsContextType | null>(null);
 
 export const WishlistProvider = ({ children }: { children: ReactNode }) => {
-    const [wishlist, setWishlist] = useState<Product[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+    // fetch products data 
+    const [products, setProducts] = useState<Product[]>([]);
+    const fetchProducts = async () => {
+        try {
+            setLoading(true);
+            const response = await productService.getAllProducts();
+
+            if (response.data) {
+                setProducts(response.data);
+            }
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'An error occurred');
+        } finally {
+            setLoading(false);
+        }
+    };
+    
+    const [wishlist, setWishlist] = useState<Product[]>([]);
     const {showToast} = useToast();
 
     const getUserWishlist = async () => {
