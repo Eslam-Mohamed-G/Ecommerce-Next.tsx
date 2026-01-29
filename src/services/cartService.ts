@@ -20,3 +20,11 @@ export const removeFromCart = async (itemId: string) : Promise<ApiResponse<Cart>
     const response = await apiClient.delete(API_ENDPOINTS.CART.ITEM(itemId));
     return response.data;
 };
+
+/**
+ * Clear entire cart
+*/
+export const clearCart = async (): Promise<ApiResponse<any>> => {
+    const response = await apiClient.delete(API_ENDPOINTS.CART.BASE);
+    return response.data;
+};
