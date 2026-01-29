@@ -1,8 +1,10 @@
 import apiClient from './apiClient';
 import { API_ENDPOINTS } from './endpoints';
 import { Cart, ApiResponse } from '../types';
+
 /**
  * Cart Service
+ * Handles all cart-related API calls
 */
 
 /**
@@ -44,3 +46,13 @@ export const getCart = async (): Promise<ApiResponse<Cart>> => {
     const response = await apiClient.get(API_ENDPOINTS.CART.BASE);
     return response.data;
 };
+
+const cartService = {
+    addToCart,
+    removeFromCart,
+    clearCart,
+    updateCartItemQuantity,
+    getCart,
+};
+
+export default cartService;
