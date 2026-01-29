@@ -241,7 +241,7 @@ export default function ProductDetailsPage() {
                         {relatedProducts.length > 0 ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
                                 {relatedProducts.map((product) => (
-                                    <ProductCard key={product.id} {...product} />
+                                    <ProductCard key={product.id} className='w-full md:w-56 group' {...product} />
                                 ))}
                             </div>
                         ) : (
