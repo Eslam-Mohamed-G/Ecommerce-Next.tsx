@@ -41,7 +41,7 @@ export default function AddToCartButton({ className, product_Id }: AddToCartButt
     };
 
     return (
-        <button type='button' aria-label='add product to cart' onClick={() => addToCart(product_Id)} className={className}>
+        <button type='button' aria-label='add product to cart' onClick={(e) => {e.preventDefault(); addToCart(product_Id)}} className={className}>
             {loading ?
                 <LoadingSpinner size="sm" />
                 :
