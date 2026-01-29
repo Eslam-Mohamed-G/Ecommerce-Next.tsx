@@ -82,3 +82,19 @@ export interface SignUpData {
     rePassword: string;
     phone: string;
 }
+
+// ==================== Cart Types ====================
+export interface CartItem {
+    count: number;
+    _id: string;
+    product: Product;
+    price: number;
+}
+
+export interface Cart {
+    _id: string;
+    cartOwner: string;
+    products: CartItem[];
+    totalCartPrice: number;
+    totalPriceAfterDiscount?: number;
+}
