@@ -17,6 +17,14 @@ export const API_ENDPOINTS = {
         BASE: `${API_BASE_URL}/wishlist`,
         ITEM: (productId: string) => `${API_BASE_URL}/wishlist/${productId}`,
     },
+
+    // Cart
+    CART: {
+        BASE: `${API_BASE_URL}/cart`,
+        ITEM: (itemId: string) => `${API_BASE_URL}/cart/${itemId}`,
+        APPLY_COUPON: `${API_BASE_URL}/cart/applyCoupon`,
+    }
+    
 } as const;
 
 export const COOKIE_CONFIG = {
