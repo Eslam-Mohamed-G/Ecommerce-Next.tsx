@@ -3,6 +3,8 @@ import { useToast } from '@/src/context/ToastContext';
 import cartService from '@/src/services/cartService';
 import { getCookie } from 'cookies-next';
 import React, { useState } from 'react';
+import { CartIcon } from '../../ui/Icon/Icon';
+import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
 
 interface AddToCartButtonProps {
     className: string;
@@ -39,6 +41,13 @@ export default function AddToCartButton({ className, product_Id }: AddToCartButt
     };
 
     return (
-        <button type='button' aria-label='add product to cart' onClick={()=> addToCart(product_Id)} className={className}>Add To Cart</button>
+        <button type='button' aria-label='add product to cart' onClick={() => addToCart(product_Id)} className={className}>
+            {loading ?
+                <LoadingSpinner size="sm" />
+                :
+                <CartIcon width={24} height={24} />
+            }
+            Add To Cart
+        </button>
     )
 };
