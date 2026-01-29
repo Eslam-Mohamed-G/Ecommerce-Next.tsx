@@ -11,7 +11,7 @@ import { Cart, ApiResponse } from '../types';
  * Add product to cart
 */
 export const addToCart = async (productId: string): Promise<ApiResponse<Cart>> => {
-    const response = await apiClient.post(API_ENDPOINTS.CART.BASE, productId);
+    const response = await apiClient.post(API_ENDPOINTS.CART.BASE, {productId});
     return response.data;
 };
 
