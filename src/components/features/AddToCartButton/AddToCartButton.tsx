@@ -27,8 +27,10 @@ export default function AddToCartButton({ className, product_Id }: AddToCartButt
 
         try {
             setLoading(true);
-            await cartService.addToCart(product_Id);
-            showToast("success", "Added to your cart");
+            const response = await cartService.addToCart(product_Id);
+            if (response) {
+                showToast("success", "Added to your cart");
+            };
         } catch (error) {
             showToast("error", "There's an error. Please try again.");
         } finally {
