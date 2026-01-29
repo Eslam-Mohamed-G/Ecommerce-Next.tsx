@@ -36,3 +36,11 @@ export const updateCartItemQuantity = async (itemId: string, count: number): Pro
     const response = await apiClient.put(API_ENDPOINTS.CART.ITEM(itemId), count);
     return response.data;
 };
+
+/**
+ * Get user's cart
+*/
+export const getCart = async (): Promise<ApiResponse<Cart>> => {
+    const response = await apiClient.get(API_ENDPOINTS.CART.BASE);
+    return response.data;
+};
