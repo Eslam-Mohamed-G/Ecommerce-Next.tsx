@@ -28,3 +28,11 @@ export const clearCart = async (): Promise<ApiResponse<any>> => {
     const response = await apiClient.delete(API_ENDPOINTS.CART.BASE);
     return response.data;
 };
+
+/**
+ * Update cart item quantity
+*/
+export const updateCartItemQuantity = async (itemId: string, count: number): Promise<ApiResponse<Cart>> => {
+    const response = await apiClient.put(API_ENDPOINTS.CART.ITEM(itemId), count);
+    return response.data;
+};
