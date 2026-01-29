@@ -5,6 +5,7 @@ import Link from 'next/link';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import { StarIcon } from '../../ui/Icon/Icon';
 import { Product } from '@/src/types';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 type ProductCardProps = Product & {
     className?: string;
@@ -43,9 +44,7 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
                     <Image src={imageCover} alt={title} width={190} height={180} loading='lazy' className='object-contain group-hover:scale-110 transition-transform duration-300' />
                 </div>
 
-                <button type='button' aria-label="Add product to cart" className='bg-textColor text-white text-base py-1 absolute left-0 right-0 top-full group-hover:-translate-y-8 cursor-pointer transition-all ease-in-out duration-300'>
-                    Add To Cart
-                </button>
+                <AddToCartButton product_Id={id} className="flex items-center justify-center gap-2 bg-textColor text-white text-base py-1 absolute left-0 right-0 top-full group-hover:-translate-y-8 cursor-pointer transition-all ease-in-out duration-300"/>
             </div>
 
             {/* Product Info */}
