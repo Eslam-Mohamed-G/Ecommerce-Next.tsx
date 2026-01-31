@@ -9,6 +9,8 @@ import cartService from '../services/cartService';
 
 export interface GetProductsContextType {
     loading: boolean;
+    wishlistLoading: boolean;
+    cartlistLoading: boolean;
     error: string | null;
     products: Product[];
     fetchProducts: () => Promise<void>;
@@ -41,6 +43,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         }
     };
 
+    const [wishlistLoading, setWishlistLoading] = useState(false);
     const [wishlist, setWishlist] = useState<Product[]>([]);
     const { showToast } = useToast();
 
@@ -51,7 +54,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
             return;
         }
 
-        setLoading(true);
+        setWishlistLoading(true);
         setError(null);
         try {
             const response = await wishlistService.getWishlist();
@@ -61,7 +64,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         } catch (error) {
             setError(error instanceof Error ? error.message : 'An error occurred');
         } finally {
-            setLoading(false);
+            setWishlistLoading(false);
         }
     };
 
@@ -71,6 +74,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     // fetch cart products
+    const [cartlistLoading, setCartlistLoading] = useState(false);
     const [cartList, setCartList] = useState<Cart | null>(null);
     const getUserCart = async () => {
         const token = getCookie("token") as string | undefined;
@@ -78,7 +82,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
             showToast("warning", "You are not logged in");
             return;
         };
-        setLoading(true);
+        setCartlistLoading(true);
         setError(null);
         try {
             const response = await cartService.getCart();
@@ -88,7 +92,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         } catch (error) {
             setError(error instanceof Error ? error.message : 'An error occurred');
         } finally {
-            setLoading(false);
+            setCartlistLoading(false);
         };
     };
     useEffect(() => {
@@ -96,7 +100,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     return (
-        <GetProductsContext.Provider value={{ loading, error, getUserWishlist, wishlist, products, fetchProducts, cartList, getUserCart }}>
+        <GetProductsContext.Provider value={{ loading, wishlistLoading, cartlistLoading, error, getUserWishlist, wishlist, products, fetchProducts, cartList, getUserCart }}>
             {children}
         </GetProductsContext.Provider>
     )
