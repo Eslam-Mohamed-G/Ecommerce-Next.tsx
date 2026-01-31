@@ -1,10 +1,11 @@
 "use client";
 import React, { ReactNode, createContext, useContext, useEffect, useState } from 'react';
-import { Product } from '../types';
+import { Cart, Product } from '../types';
 import { getCookie } from 'cookies-next';
 import wishlistService from '../services/wishlistService';
 import productService from '../services/productService';
 import { useToast } from './ToastContext';
+import cartService from '../services/cartService';
 
 export interface GetProductsContextType {
     loading: boolean;
@@ -13,6 +14,8 @@ export interface GetProductsContextType {
     fetchProducts: () => Promise<void>;
     wishlist: Product[];
     getUserWishlist: () => Promise<void>;
+    cartList: Cart | null;
+    getUserCart: () => Promise<void>;
 }
 
 const GetProductsContext = createContext<GetProductsContextType | null>(null);
@@ -67,8 +70,30 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         getUserWishlist();
     }, [wishlist.length]);
 
+    // fetch cart products
+    const [cartList, setCartList] = useState<Cart | null>(null);
+    const getUserCart = async () => {
+        const token = getCookie("token") as string | undefined;
+        if (!token) {
+            showToast("warning", "You are not logged in");
+            return;
+        };
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await cartService.getCart();
+            if (response.data) {
+                setCartList(response.data);
+            }
+        } catch (error) {
+            setError(error instanceof Error ? error.message : 'An error occurred');
+        } finally {
+            setLoading(false);
+        };
+    };
+
     return (
-        <GetProductsContext.Provider value={{ loading, error, getUserWishlist, wishlist, products, fetchProducts }}>
+        <GetProductsContext.Provider value={{ loading, error, getUserWishlist, wishlist, products, fetchProducts, cartList, getUserCart }}>
             {children}
         </GetProductsContext.Provider>
     )
