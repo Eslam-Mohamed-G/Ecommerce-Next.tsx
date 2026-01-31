@@ -5,6 +5,7 @@ import { getCookie } from 'cookies-next';
 import React, { useState } from 'react';
 import { CartIcon } from '../../ui/Icon/Icon';
 import LoadingSpinner from '../../ui/LoadingSpinner/LoadingSpinner';
+import { useGetProducts } from '@/src/context/GetProductsContext';
 
 interface AddToCartButtonProps {
     className: string;
@@ -14,6 +15,7 @@ interface AddToCartButtonProps {
 export default function AddToCartButton({ className, product_Id }: AddToCartButtonProps) {
     const [loading, setLoading] = useState(false);
     const { showToast } = useToast();
+    const { getUserCart } = useGetProducts();
 
     const addToCart = async (product_Id: string) => {
         if (!product_Id) {
@@ -32,6 +34,7 @@ export default function AddToCartButton({ className, product_Id }: AddToCartButt
             const response = await cartService.addToCart(product_Id);
             if (response) {
                 showToast("success", "Added to your cart");
+                await getUserCart();
             };
         } catch (error) {
             showToast("error", "There's an error. Please try again.");
