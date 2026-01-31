@@ -66,7 +66,7 @@ export default function NavbarClientActions({ token }: Props) {
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href={token ? "/cart" : "#"} onClick={() => { setIsNavOpen(false); !token && showToast("warning", "You are not logged in") }} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/cart" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href={token ? "/cartList" : "#"} onClick={() => { setIsNavOpen(false); !token && showToast("warning", "You are not logged in") }} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/cart" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Cart
                     </Link>
                 </li>
@@ -87,12 +87,12 @@ export default function NavbarClientActions({ token }: Props) {
                     </button>
                 </form>
 
-                <button type="button" aria-label="open wishlist" onClick={() => { token ? router.push("wishList") : showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
+                <button type="button" aria-label="open wishlist" onClick={() => { token ? router.push("/wishList") : showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
                     <HeartIcon width={28} height={28} />
                     {token && (<span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{wishlist.length}</span>)}
                 </button>
 
-                <button type="button" aria-label="open wishlist" onClick={() => { token ? router.push("cart") : showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
+                <button type="button" aria-label="open wishlist" onClick={() => { token ? router.push("/cartList") : showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
                     <CartIcon width={26} height={26} />
                     {token && (<span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{itemsCount}</span>)}
                 </button>
