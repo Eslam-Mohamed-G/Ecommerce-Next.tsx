@@ -21,6 +21,7 @@ export default function NavbarClientActions({ token }: Props) {
     const router = useRouter();
     const { toast, showToast } = useToast();
     const { wishlist, cartList } = useGetProducts();
+    const itemsCount = cartList?.products.length || 0;
 
     const navRef = useRef<HTMLUListElement | null>(null);
     const navToggleRef = useRef<HTMLButtonElement | null>(null);
@@ -93,7 +94,7 @@ export default function NavbarClientActions({ token }: Props) {
 
                 <button type="button" aria-label="open wishlist" onClick={() => { token ? router.push("cart") : showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
                     <CartIcon width={26} height={26} />
-                    {token && (<span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{cartList.length}</span>)}
+                    {token && (<span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{itemsCount}</span>)}
                 </button>
 
                 <UserMenu token={token || null} />
