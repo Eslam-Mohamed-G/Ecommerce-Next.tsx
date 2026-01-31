@@ -5,6 +5,8 @@ import React from 'react';
 export default function page() {
     const { cartlistLoading, error, cartList, getUserCart } = useGetProducts();
     return (
-        <div>page</div>
+        <section className=''>
+
+        </section>
     )
 };
