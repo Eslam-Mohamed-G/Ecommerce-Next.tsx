@@ -14,7 +14,7 @@ export interface GetProductsContextType {
     fetchProducts: () => Promise<void>;
     wishlist: Product[];
     getUserWishlist: () => Promise<void>;
-    cartList: Cart | null;
+    cartList: Cart[];
     getUserCart: () => Promise<void>;
 }
 
@@ -71,7 +71,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     }, [wishlist.length]);
 
     // fetch cart products
-    const [cartList, setCartList] = useState<Cart | null>(null);
+    const [cartList, setCartList] = useState<Cart[]>([]);
     const getUserCart = async () => {
         const token = getCookie("token") as string | undefined;
         if (!token) {
@@ -83,7 +83,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         try {
             const response = await cartService.getCart();
             if (response.data) {
-                setCartList(response.data);
+                setCartList(response.data || []);
             }
         } catch (error) {
             setError(error instanceof Error ? error.message : 'An error occurred');
@@ -92,9 +92,9 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         };
     };
     useEffect(() => {
-        getUserWishlist();
-    }, [wishlist.length]);
-    
+        getUserCart();
+    }, [cartList.length]);
+
     return (
         <GetProductsContext.Provider value={{ loading, error, getUserWishlist, wishlist, products, fetchProducts, cartList, getUserCart }}>
             {children}
