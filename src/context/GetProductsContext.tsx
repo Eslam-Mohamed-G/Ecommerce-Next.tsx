@@ -91,7 +91,10 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
             setLoading(false);
         };
     };
-
+    useEffect(() => {
+        getUserWishlist();
+    }, [wishlist.length]);
+    
     return (
         <GetProductsContext.Provider value={{ loading, error, getUserWishlist, wishlist, products, fetchProducts, cartList, getUserCart }}>
             {children}
