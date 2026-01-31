@@ -8,7 +8,7 @@ import UserMenu from "./UserMenu";
 import ToastMessage from "../ToastMessage/ToastMessage";
 import { useToast } from "@/src/context/ToastContext";
 import { useGetProducts } from "@/src/context/GetProductsContext";
-import { HeartIcon } from "../../ui/Icon/Icon";
+import { CartIcon, HeartIcon } from "../../ui/Icon/Icon";
 
 interface Props {
     token: string | null;
@@ -20,7 +20,7 @@ export default function NavbarClientActions({ token }: Props) {
     const pathName = usePathname();
     const router = useRouter();
     const { toast, showToast } = useToast();
-    const { wishlist } = useGetProducts();
+    const { wishlist, cartList } = useGetProducts();
 
     const navRef = useRef<HTMLUListElement | null>(null);
     const navToggleRef = useRef<HTMLButtonElement | null>(null);
@@ -65,7 +65,7 @@ export default function NavbarClientActions({ token }: Props) {
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href="/cart" onClick={() => setIsNavOpen(false)} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/cart" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                    <Link href={token ? "/cart" : "#"} onClick={() => { setIsNavOpen(false); !token && showToast("warning", "You are not logged in") }} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/cart" && "bg-white/20"} transition-all ease-in-out duration-300`}>
                         Cart
                     </Link>
                 </li>
@@ -91,9 +91,11 @@ export default function NavbarClientActions({ token }: Props) {
                     {token && (<span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{wishlist.length}</span>)}
                 </button>
 
-                <button className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer">
-                    <Image src="/cart.svg" alt='Open Cart' width={28} height={28} />
+                <button type="button" aria-label="open wishlist" onClick={() => { token ? router.push("cart") : showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
+                    <CartIcon width={26} height={26} />
+                    {token && (<span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{cartList.length}</span>)}
                 </button>
+
                 <UserMenu token={token || null} />
 
                 <button ref={navToggleRef} aria-label="Toggle navigation menu" aria-expanded={isNavOpen} aria-controls="mobile-nav" className='flex justify-center items-center md:hidden cursor-pointer' onClick={() => { setIsNavOpen(!isNavOpen); setIsAuthMenuOpen(false) }}>
