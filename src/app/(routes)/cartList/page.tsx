@@ -11,7 +11,7 @@ export default function page() {
     }, []);
     
     return (
-        <section className=''>
+        <section className='w-full min-h-96 lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8'>
             <Breadcrumb items={[{ label: 'Cart' }]} />
             {cartlistLoading && (
                 <div className="flex items-center justify-center py-20">
