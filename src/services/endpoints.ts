@@ -5,6 +5,7 @@ export const API_ENDPOINTS = {
         SIGNIN: `${API_BASE_URL}/auth/signin`,
         SIGNUP: `${API_BASE_URL}/auth/signup`,
         FORGOT_PASSWORD: `${API_BASE_URL}/auth/forgotPasswords`,
+        VERIFY_RESET_CODE: `${API_BASE_URL}/auth/verifyResetCode`,
     },
     
     // Products
