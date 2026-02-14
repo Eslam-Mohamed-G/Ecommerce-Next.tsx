@@ -4,6 +4,7 @@ export const API_ENDPOINTS = {
     AUTH: {
         SIGNIN: `${API_BASE_URL}/auth/signin`,
         SIGNUP: `${API_BASE_URL}/auth/signup`,
+        FORGOT_PASSWORD: `${API_BASE_URL}/auth/forgotPasswords`,
     },
     
     // Products
