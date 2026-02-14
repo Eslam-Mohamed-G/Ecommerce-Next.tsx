@@ -42,6 +42,7 @@ export const verifyResetCode = async (data: VerifyResetCodeData): Promise<ApiRes
 const authService = {
     signup,
     signin,
+    forgotPassword,
     verifyResetCode
 };
 
