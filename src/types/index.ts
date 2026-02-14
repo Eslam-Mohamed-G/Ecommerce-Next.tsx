@@ -83,6 +83,10 @@ export interface SignUpData {
     phone: string;
 }
 
+export interface ForgotPasswordData {
+    email: string;
+}
+
 // ==================== Cart Types ====================
 export interface CartItem {
     count: number;
