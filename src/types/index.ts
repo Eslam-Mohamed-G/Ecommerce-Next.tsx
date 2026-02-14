@@ -87,6 +87,9 @@ export interface ForgotPasswordData {
     email: string;
 }
 
+export interface VerifyResetCodeData {
+    resetCode: string;
+}
 // ==================== Cart Types ====================
 export interface CartItem {
     count: number;

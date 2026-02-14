@@ -1,5 +1,5 @@
 
-import { ApiResponse, ForgotPasswordData, LoginCredentials, SignUpData, User } from '../types';
+import { ApiResponse, ForgotPasswordData, LoginCredentials, SignUpData, User, VerifyResetCodeData } from '../types';
 import apiClient from './apiClient';
 import { API_ENDPOINTS } from './endpoints';
 /**
