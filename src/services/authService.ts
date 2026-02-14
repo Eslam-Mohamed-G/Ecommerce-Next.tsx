@@ -31,9 +31,18 @@ export const forgotPassword = async (data: ForgotPasswordData): Promise<ApiRespo
     return response.data;
 };
 
+/**
+ * Verify reset code
+*/
+export const verifyResetCode = async (data: VerifyResetCodeData): Promise<ApiResponse<any>> => {
+    const response = await apiClient.post(API_ENDPOINTS.AUTH.VERIFY_RESET_CODE, data);
+    return response.data;
+};
+
 const authService = {
     signup,
     signin,
+    verifyResetCode
 };
 
 export default authService;
