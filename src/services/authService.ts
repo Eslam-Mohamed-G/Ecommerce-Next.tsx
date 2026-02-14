@@ -23,6 +23,14 @@ export const signin = async (credentials:LoginCredentials): Promise<ApiResponse<
     return response.data;
 }
 
+/**
+ * Request password reset
+*/
+export const forgotPassword = async (data: ForgotPasswordData): Promise<ApiResponse<any>> => {
+    const response = await apiClient.post(API_ENDPOINTS.AUTH.FORGOT_PASSWORD, data);
+    return response.data;
+};
+
 const authService = {
     signup,
     signin,
