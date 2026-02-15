@@ -17,9 +17,9 @@ export default function page() {
             setUpdatingItemId(itemId);
             await cartService.updateCartItemQuantity(itemId, newCount);
             await getUserCart();
-
+            showToat('success', 'Cart updated successfully');
         } catch (error) {
-            
+            showToast('error', 'Failed to update cart');
         } finally {
             setUpdatingItemId(null);
         }
@@ -89,7 +89,7 @@ export default function page() {
                                                         <div className="flex items-center gap-4">
                                                             <div className="relative w-20 h-20 bg-primaryBackground rounded shrink-0">
                                                                 <Image
-                                                                    src={item.product.images[0]}
+                                                                    src={item.product.imageCover}
                                                                     alt={item.product.title}
                                                                     fill
                                                                     className="object-contain p-2"
@@ -134,3 +134,7 @@ export default function page() {
         </section>
     )
 };
+
+function showToat(arg0: string, arg1: string) {
+    throw new Error('Function not implemented.');
+}
