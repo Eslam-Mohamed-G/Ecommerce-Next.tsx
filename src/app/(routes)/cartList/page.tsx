@@ -27,6 +27,16 @@ export default function page() {
         }
     };
 
+    const handleRemoveItem = async (itemId: string) => {
+        try {
+            await cartService.removeFromCart(itemId);
+            await getUserCart();
+            showToast('success', 'Item removed from cart');
+        } catch (error) {
+            showToast('error', 'Failed to remove item');
+        }
+    };
+
     useEffect(() => {
         getUserCart();
     }, []);
