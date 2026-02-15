@@ -82,61 +82,98 @@ export default function page() {
                             <div className="lg:col-span-2">
                                 <h1 className="text-2xl md:text-3xl font-bold mb-6">Shopping Cart</h1>
 
-                                {/* Desktop Table View */}
-                                <div className="hidden md:block border border-borderColor rounded-lg overflow-hidden">
-                                    <table className="w-full">
-                                        <thead className="bg-primaryBackground">
-                                            <tr>
-                                                <th className="text-left p-4 font-semibold">Product</th>
-                                                <th className="text-center p-4 font-semibold">Price</th>
-                                                <th className="text-center p-4 font-semibold">Quantity</th>
-                                                <th className="text-center p-4 font-semibold">Subtotal</th>
-                                                <th className="text-center p-4 font-semibold">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {cartList?.products.map((item) => (
-                                                <tr key={item._id} className="border-t border-borderColor">
-                                                    <td className="p-4">
-                                                        <div className="flex items-center gap-4">
-                                                            <div className="relative w-20 h-20 bg-primaryBackground rounded shrink-0">
-                                                                <Image
-                                                                    src={item.product.imageCover}
-                                                                    alt={item.product.title}
-                                                                    fill
-                                                                    className="object-contain p-2"
-                                                                />
-                                                            </div>
-                                                            <div>
+                                {/* Cart Table */}
+                                <div className="bg-white shadow-sm rounded">
+                                    <div className="overflow-x-auto">
+                                        <table className="w-full">
+                                            <thead>
+                                                <tr className="border-b">
+                                                    <th className="text-left py-4 px-6 font-medium">Product</th>
+                                                    <th className="text-center py-4 px-6 font-medium">Price</th>
+                                                    <th className="text-center py-4 px-6 font-medium">Quantity</th>
+                                                    <th className="text-center py-4 px-6 font-medium">Subtotal</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {cartList?.products.map((item) => (
+                                                    <tr key={item._id} className="border-b hover:bg-gray-50 transition-colors">
+                                                        <td className="py-6 px-6">
+                                                            <div className="flex items-center gap-4">
+                                                                <button
+                                                                    onClick={() => handleRemoveItem(item._id)}
+                                                                    className="text-red-500 hover:text-red-700 transition-colors shrink-0"
+                                                                    aria-label="Remove item"
+                                                                >
+                                                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                                                        <circle cx="12" cy="12" r="10" />
+                                                                        <path d="M15 9l-6 6M9 9l6 6" />
+                                                                    </svg>
+                                                                </button>
+                                                                <div className="relative w-16 h-16 bg-gray-100 rounded shrink-0">
+                                                                    <Image
+                                                                        src={item.product.imageCover}
+                                                                        alt={item.product.title}
+                                                                        fill
+                                                                        className="object-contain p-2"
+                                                                    />
+                                                                </div>
                                                                 <Link
                                                                     href={`/products/${item.product._id}`}
-                                                                    className="font-medium hover:text-primaryColor transition-colors"
+                                                                    className="font-normal hover:text-primaryColor transition-colors text-sm"
                                                                 >
                                                                     {item.product.title}
                                                                 </Link>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td className="p-4 text-center">${item.price}</td>
-                                                    <td className="p-4">
-                                                    </td>
-                                                    <td className="p-4 text-center font-semibold">
-                                                        ${item.price * item.count}
-                                                    </td>
-                                                    <td className="p-4 text-center">
-                                                        <button
-                                                            className="text-primaryColor hover:text-buttonColor transition-colors"
-                                                            aria-label="Remove item"
-                                                        >
-                                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                                <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                                            </svg>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
+                                                        </td>
+                                                        <td className="py-6 px-6 text-center">${item.price}</td>
+                                                        <td className="py-6 px-6">
+                                                            <div className="flex items-center justify-center">
+                                                                <div className="inline-flex items-center border border-gray-300 rounded">
+                                                                    <button
+                                                                        onClick={() => handleQuantityChange(item._id, item.count - 1)}
+                                                                        disabled={item.count <= 1 || updatingItemId === item._id}
+                                                                        className="px-3 py-1 hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                                                    >
+                                                                        −
+                                                                    </button>
+                                                                    <input
+                                                                        type="text"
+                                                                        value={item.count.toString().padStart(2, '0')}
+                                                                        readOnly
+                                                                        className="w-12 text-center border-x border-gray-300 py-1 focus:outline-none"
+                                                                    />
+                                                                    <button
+                                                                        onClick={() => handleQuantityChange(item._id, item.count + 1)}
+                                                                        disabled={updatingItemId === item._id}
+                                                                        className="px-3 py-1 hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                                                    >
+                                                                        +
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td className="py-6 px-6 text-center font-medium">${item.price * item.count}</td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    {/* Action Buttons */}
+                                    <div className="flex flex-col sm:flex-row justify-between items-center gap-4 py-6 px-6 border-t">
+                                        <Link
+                                            href="/products"
+                                            className="px-8 py-3 border border-gray-300 rounded hover:bg-gray-50 transition-colors font-medium"
+                                        >
+                                            Return To Shop
+                                        </Link>
+                                        <button
+                                            onClick={() => getUserCart()}
+                                            className="px-8 py-3 border border-gray-300 rounded hover:bg-gray-50 transition-colors font-medium"
+                                        >
+                                            Update Cart
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +183,3 @@ export default function page() {
         </section>
     )
 };
-
-function showToat(arg0: string, arg1: string) {
-    throw new Error('Function not implemented.');
-}
