@@ -1,12 +1,13 @@
 "use client";
 import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import { useGetProducts } from '@/src/context/GetProductsContext';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 
 export default function page() {
     const { cartlistLoading, error, cartList, getUserCart } = useGetProducts();
+    const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
 
     useEffect(() => {
         getUserCart();
