@@ -176,6 +176,35 @@ export default function page() {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Coupon and Cart Total */}
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                {/* Coupon Section */}
+
+                                {/* Cart Total */}
+                                <div className="border-2 border-gray-900 rounded p-6 space-y-4">
+                                    <h3 className="text-xl font-semibold mb-4">Cart Total</h3>
+
+                                    <div className="flex justify-between items-center pb-4 border-b">
+                                        <span>Subtotal:</span>
+                                        <span className="font-medium">${cartList?.totalCartPrice || 0}</span>
+                                    </div>
+
+                                    <div className="flex justify-between items-center pb-4 border-b">
+                                        <span>Shipping:</span>
+                                        <span className="font-medium">Free</span>
+                                    </div>
+
+                                    <div className="flex justify-between items-center pt-2">
+                                        <span className="font-semibold">Total:</span>
+                                        <span className="font-semibold">${cartList?.totalPriceAfterDiscount || cartList?.totalCartPrice || 0}</span>
+                                    </div>
+
+                                    <button className="w-full mt-6 px-8 py-3 bg-primaryColor hover:bg-buttonColor text-white rounded transition-colors font-medium">
+                                        Procees to checkout
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     }
                 </div>
