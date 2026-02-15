@@ -77,9 +77,9 @@ export default function page() {
                             </Link>
                         </div>
                         :
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <div className="space-y-8">
                             {/* Cart Items */}
-                            <div className="lg:col-span-2">
+                            <div className="">
                                 <h1 className="text-2xl md:text-3xl font-bold mb-6">Shopping Cart</h1>
 
                                 {/* Cart Table */}
