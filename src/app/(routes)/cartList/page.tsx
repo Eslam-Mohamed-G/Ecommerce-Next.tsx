@@ -5,9 +5,11 @@ import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import cartService from '@/src/services/cartService';
+import { useToast } from '@/src/context/ToastContext';
 
 export default function page() {
     const { cartlistLoading, error, cartList, getUserCart } = useGetProducts();
+    const { showToast } = useToast();
     const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
 
     const handleQuantityChange = async (itemId: string, newCount: number) => {
@@ -17,7 +19,7 @@ export default function page() {
             setUpdatingItemId(itemId);
             await cartService.updateCartItemQuantity(itemId, newCount);
             await getUserCart();
-            showToat('success', 'Cart updated successfully');
+            showToast('success', 'Cart updated successfully');
         } catch (error) {
             showToast('error', 'Failed to update cart');
         } finally {
