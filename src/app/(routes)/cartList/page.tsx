@@ -4,10 +4,26 @@ import { useGetProducts } from '@/src/context/GetProductsContext';
 import React, { useEffect, useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
+import cartService from '@/src/services/cartService';
 
 export default function page() {
     const { cartlistLoading, error, cartList, getUserCart } = useGetProducts();
     const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
+
+    const handleQuantityChange = async (itemId: string, newCount: number) => {
+        if (newCount < 1) return;
+
+        try {
+            setUpdatingItemId(itemId);
+            await cartService.updateCartItemQuantity(itemId, newCount);
+            await getUserCart();
+
+        } catch (error) {
+            
+        } finally {
+            setUpdatingItemId(null);
+        }
+    };
 
     useEffect(() => {
         getUserCart();
