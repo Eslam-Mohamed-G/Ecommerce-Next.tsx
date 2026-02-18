@@ -81,19 +81,19 @@ export default function page() {
                         <div className="space-y-8">
                             {/* Cart Items */}
                             <h1 className="text-2xl md:text-3xl font-bold mb-6">Shopping Cart</h1>
-                            <div className="flex flex-row items-center justify-between bg-white shadow-sm rounded mb-4">
-                                <span className="text-left py-4 px-6 font-medium">Product</span>
-                                <span className="text-center py-4 px-6 font-medium">Price</span>
-                                <span className="text-center py-4 px-6 font-medium">Quantity</span>
-                                <span className="text-center py-4 px-6 font-medium">Subtotal</span>
+                            <div className="flex flex-row items-center justify-between bg-white font-medium shadow-sm rounded py-4 px-6 mb-4">
+                                <span className="text-left">Product</span>
+                                <span className="text-center">Price</span>
+                                <span className="text-center">Quantity</span>
+                                <span className="text-center">Subtotal</span>
                             </div>
 
                             {cartList?.products.map((item) => (
-                                <div className="flex flex-row items-center justify-between bg-white shadow-sm rounded mb-4 py-4">
-                                    <div className="flex items-center gap-4">
+                                <div key={item._id} className="flex flex-row items-center justify-between bg-white shadow-sm rounded mb-4 px-2 py-1 md:py-4 md:px-6">
+                                    <div className="flex items-center gap-4 relative">
                                         <button
-                                            onClick={() => handleRemoveItem(item._id)}
-                                            className="text-red-500 hover:text-red-700 transition-colors shrink-0"
+                                            onClick={() => handleRemoveItem(item?._id)}
+                                            className="text-red-500 hover:text-red-700"
                                             aria-label="Remove item"
                                         >
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -113,11 +113,10 @@ export default function page() {
                                             href={`/products/${item.product._id}`}
                                             className="font-normal hover:text-primaryColor transition-colors text-sm"
                                         >
-                                            {item.product.title}
                                         </Link>
                                     </div>
 
-                                    <div className="py-6 px-6 text-center">${item.price}</div>
+                                    <div className="text-center">${item.price}</div>
 
                                     <div className="flex items-center justify-center">
                                         <div className="inline-flex items-center border border-gray-300 rounded">
@@ -144,9 +143,10 @@ export default function page() {
                                         </div>
                                     </div>
 
-                                    <div className="py-6 px-6 text-center font-medium">${item.price * item.count}</div>
+                                    <div className="text-center font-medium">${item.price * item.count}</div>
                                 </div>
                             ))}
+                            
                             {/* Action Buttons */}
                             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 py-6">
                                 <Link
