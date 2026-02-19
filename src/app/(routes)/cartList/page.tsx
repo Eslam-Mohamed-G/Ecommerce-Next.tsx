@@ -6,6 +6,8 @@ import Link from "next/link";
 import Image from "next/image";
 import cartService from '@/src/services/cartService';
 import { useToast } from '@/src/context/ToastContext';
+import LoadingSpinner from '@/src/components/ui/LoadingSpinner/LoadingSpinner';
+import { TrashIcon } from '@/src/components/ui/Icon/Icon';
 
 export default function page() {
     const { cartlistLoading, error, cartList, getUserCart } = useGetProducts();
@@ -27,14 +29,18 @@ export default function page() {
         }
     };
 
+    const [loadingDelete, setLoadingDelete] = useState(false);
     const handleRemoveItem = async (itemId?: string) => {
         if (!itemId) return;
         try {
+            setLoadingDelete(true);
             await cartService.removeFromCart(itemId);
             await getUserCart();
             showToast('success', 'Item removed from cart');
         } catch (error) {
             showToast('error', 'Failed to remove item');
+        } finally {
+            setLoadingDelete(false)
         }
     };
 
@@ -94,20 +100,18 @@ export default function page() {
                                     <div className="flex items-center gap-4 relative">
                                         <button
                                             onClick={() => handleRemoveItem(item?.product?._id)}
-                                            className="text-red-500 hover:text-red-700"
+                                            className="flex items-center justify-center w-7 h-7 rounded-full bg-primaryColor text-white transition-colors ease-in-out duration-300 absolute -top-2 -left-2 z-30 cursor-pointer group"
                                             aria-label="Remove item"
                                         >
-                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                                <circle cx="12" cy="12" r="10" />
-                                                <path d="M15 9l-6 6M9 9l6 6" />
-                                            </svg>
+                                            {loadingDelete ? <LoadingSpinner size="sm" className="text-primaryColor group-hover/button:text-white" /> : <TrashIcon width={18} height={18}/>}
                                         </button>
+
                                         <div className="relative w-16 h-16 bg-gray-100 rounded shrink-0">
                                             <Image
                                                 src={item.product.imageCover}
                                                 alt={item.product.title}
                                                 fill
-                                                className="object-contain p-2"
+                                                className="object-contain"
                                             />
                                         </div>
                                         <Link
@@ -147,7 +151,7 @@ export default function page() {
                                     <div className="text-center font-medium">${item.price * item.count}</div>
                                 </div>
                             ))}
-                            
+
                             {/* Action Buttons */}
                             <div className="flex flex-col sm:flex-row justify-between items-center gap-4 py-6">
                                 <Link
