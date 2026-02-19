@@ -24,8 +24,8 @@ export const API_ENDPOINTS = {
     // Cart
     CART: {
         BASE: `${API_BASE_URL_V2}/cart`,
-        ITEM: (itemId: string) => `${API_BASE_URL}/cart/${itemId}`,
-        APPLY_COUPON: `${API_BASE_URL}/cart/applyCoupon`,
+        ITEM: (itemId: string) => `${API_BASE_URL_V2}/cart/${itemId}`,
+        APPLY_COUPON: `${API_BASE_URL_V2}/cart/applyCoupon`,
     }
     
 } as const;

@@ -11,6 +11,8 @@ import { TrashIcon } from '@/src/components/ui/Icon/Icon';
 
 export default function page() {
     const { cartlistLoading, error, cartList, getUserCart } = useGetProducts();
+    console.log(cartList?.products);
+    
     const { showToast } = useToast();
     const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
 
