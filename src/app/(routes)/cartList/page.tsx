@@ -38,7 +38,7 @@ export default function page() {
             setLoadingDelete(itemId);
             const response = await cartService.removeFromCart(itemId);
             if (response) {
-                await getUserCart();
+                await getUserCart(false);
                 showToast('success', 'Item removed from cart');
             }
         } catch (error) {
