@@ -7,6 +7,7 @@ import ProductCard from '@/src/components/features/ProductCard/ProductCard';
 import FavoriteButton from '@/src/components/features/FavoriteButton/FavoriteButton';
 import { Product } from '@/src/types';
 import productService from '@/src/services/productService';
+import AddToCartButton from '@/src/components/features/AddToCartButton/AddToCartButton';
 
 // Mock product data
 const mockProduct = {
@@ -217,14 +218,7 @@ export default function ProductDetailsPage() {
                                     onDecrease={() => setQuantity(q => q - 1)}
                                 />
 
-                                <button
-                                    type='button'
-                                    onClick={handleAddToCart}
-                                    className="flex-1 min-w-48 bg-primaryColor hover:bg-buttonColor text-white py-3 px-8 rounded transition-colors duration-300 cursor-pointer"
-                                    aria-label="Add to Cart"
-                                >
-                                    Add To Cart
-                                </button>
+                                <AddToCartButton aria-label="Add to Cart" product_Id={id} className="flex-1 flex items-center justify-center gap-2 min-w-48 bg-primaryColor hover:bg-buttonColor text-white py-3 px-8 rounded transition-colors duration-300 cursor-pointer"/>
 
                                 <FavoriteButton product_Id={id} cssStyle='w-12 h-12 border border-borderColor hover:border-primaryColor rounded' />
                             </div>
