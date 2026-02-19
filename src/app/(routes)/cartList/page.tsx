@@ -11,19 +11,19 @@ import { TrashIcon } from '@/src/components/ui/Icon/Icon';
 
 export default function page() {
     const { cartlistLoading, error, cartList, getUserCart } = useGetProducts();
-    console.log(cartList?.products);
-    
     const { showToast } = useToast();
-    const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
 
+    const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
     const handleQuantityChange = async (itemId: string | undefined, newCount: number) => {
         if (!itemId || newCount < 1) return;
 
         try {
             setUpdatingItemId(itemId);
-            await cartService.updateCartItemQuantity(itemId, newCount);
-            await getUserCart(false);
-            showToast('success', 'Cart updated successfully');
+            const response = await cartService.updateCartItemQuantity(itemId, newCount);
+            if (response) {
+                await getUserCart(false);
+                showToast('success', 'Cart updated successfully');
+            }
         } catch (error) {
             showToast('error', 'Failed to update cart');
         } finally {
