@@ -27,7 +27,8 @@ export default function page() {
         }
     };
 
-    const handleRemoveItem = async (itemId: string) => {
+    const handleRemoveItem = async (itemId?: string) => {
+        if (!itemId) return;
         try {
             await cartService.removeFromCart(itemId);
             await getUserCart();
@@ -89,10 +90,10 @@ export default function page() {
                             </div>
 
                             {cartList?.products.map((item) => (
-                                <div key={item._id} className="flex flex-row items-center justify-between bg-white shadow-sm rounded mb-4 px-2 py-1 md:py-4 md:px-6">
+                                <div key={item?.product._id} className="flex flex-row items-center justify-between bg-white shadow-sm rounded mb-4 px-2 py-1 md:py-4 md:px-6">
                                     <div className="flex items-center gap-4 relative">
                                         <button
-                                            onClick={() => handleRemoveItem(item?._id)}
+                                            onClick={() => handleRemoveItem(item?.product?._id)}
                                             className="text-red-500 hover:text-red-700"
                                             aria-label="Remove item"
                                         >
