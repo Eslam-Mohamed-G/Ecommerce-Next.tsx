@@ -1,4 +1,5 @@
 export const API_BASE_URL = 'https://ecommerce.routemisr.com/api/v1';
+export const API_BASE_URL_V2 = 'https://ecommerce.routemisr.com/api/v2';
 
 export const API_ENDPOINTS = {
     AUTH: {
@@ -22,7 +23,7 @@ export const API_ENDPOINTS = {
 
     // Cart
     CART: {
-        BASE: `${API_BASE_URL}/cart`,
+        BASE: `${API_BASE_URL_V2}/cart`,
         ITEM: (itemId: string) => `${API_BASE_URL}/cart/${itemId}`,
         APPLY_COUPON: `${API_BASE_URL}/cart/applyCoupon`,
     }
