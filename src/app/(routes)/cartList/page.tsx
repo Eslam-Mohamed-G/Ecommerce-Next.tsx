@@ -29,18 +29,18 @@ export default function page() {
         }
     };
 
-    const [loadingDelete, setLoadingDelete] = useState(false);
+    const [loadingDelete, setLoadingDelete] = useState<string | null>(null);
     const handleRemoveItem = async (itemId?: string) => {
         if (!itemId) return;
         try {
-            setLoadingDelete(true);
+            setLoadingDelete(itemId);
             await cartService.removeFromCart(itemId);
             await getUserCart();
             showToast('success', 'Item removed from cart');
         } catch (error) {
             showToast('error', 'Failed to remove item');
         } finally {
-            setLoadingDelete(false)
+            setLoadingDelete(itemId)
         }
     };
 
@@ -103,7 +103,7 @@ export default function page() {
                                             className="flex items-center justify-center w-7 h-7 rounded-full bg-primaryColor text-white transition-colors ease-in-out duration-300 absolute -top-2 -left-2 z-30 cursor-pointer group"
                                             aria-label="Remove item"
                                         >
-                                            {loadingDelete ? <LoadingSpinner size="sm" className="text-primaryColor group-hover/button:text-white" /> : <TrashIcon width={18} height={18}/>}
+                                            {loadingDelete === item?.product?._id ? <LoadingSpinner size="sm" className="text-white" /> : <TrashIcon width={18} height={18}/>}
                                         </button>
 
                                         <div className="relative w-16 h-16 bg-gray-100 rounded shrink-0">
