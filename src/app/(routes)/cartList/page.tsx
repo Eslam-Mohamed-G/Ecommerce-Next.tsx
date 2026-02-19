@@ -16,8 +16,8 @@ export default function page() {
     const { showToast } = useToast();
     const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
 
-    const handleQuantityChange = async (itemId: string, newCount: number) => {
-        if (newCount < 1) return;
+    const handleQuantityChange = async (itemId: string | undefined, newCount: number) => {
+        if (!itemId || newCount < 1) return;
 
         try {
             setUpdatingItemId(itemId);
@@ -133,8 +133,8 @@ export default function page() {
                                     <div className="flex items-center justify-center">
                                         <div className="inline-flex items-center border border-gray-300 rounded">
                                             <button
-                                                onClick={() => handleQuantityChange(item._id, item.count - 1)}
-                                                disabled={item.count <= 1 || updatingItemId === item._id}
+                                                onClick={() => handleQuantityChange(item?.product?._id, item.count - 1)}
+                                                disabled={item.count <= 1 || updatingItemId === item?.product?._id}
                                                 className="px-3 py-1 hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                             >
                                                 −
@@ -146,8 +146,8 @@ export default function page() {
                                                 className="w-12 text-center border-x border-gray-300 py-1 focus:outline-none"
                                             />
                                             <button
-                                                onClick={() => handleQuantityChange(item._id, item.count + 1)}
-                                                disabled={updatingItemId === item._id}
+                                                onClick={() => handleQuantityChange(item?.product?._id, item.count + 1)}
+                                                disabled={updatingItemId === item?.product?._id}
                                                 className="px-3 py-1 hover:bg-gray-100 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                             >
                                                 +
