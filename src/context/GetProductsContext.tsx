@@ -76,13 +76,17 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     // fetch cart products
     const [cartlistLoading, setCartlistLoading] = useState(false);
     const [cartList, setCartList] = useState<Cart | null>(null);
-    const getUserCart = async () => {
+    const getUserCart = async (showLoading: boolean = true) => {
         const token = getCookie("token") as string | undefined;
         if (!token) {
             showToast("warning", "You are not logged in");
             return;
         };
-        setCartlistLoading(true);
+
+        if (showLoading) {
+            setCartlistLoading(true);
+        }
+
         setError(null);
         try {
             const response = await cartService.getCart();
@@ -92,7 +96,9 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         } catch (error) {
             setError(error instanceof Error ? error.message : 'An error occurred');
         } finally {
-            setCartlistLoading(false);
+            if (showLoading) {
+                setCartlistLoading(false);
+            }
         };
     };
     useEffect(() => {

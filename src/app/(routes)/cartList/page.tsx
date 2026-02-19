@@ -22,7 +22,7 @@ export default function page() {
         try {
             setUpdatingItemId(itemId);
             await cartService.updateCartItemQuantity(itemId, newCount);
-            await getUserCart();
+            await getUserCart(false);
             showToast('success', 'Cart updated successfully');
         } catch (error) {
             showToast('error', 'Failed to update cart');
