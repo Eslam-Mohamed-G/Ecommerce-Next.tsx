@@ -99,6 +99,7 @@ export default function page() {
 
                             {cartList?.products.map((item) => (
                                 <div key={item?.product._id} className="flex flex-row items-center justify-between bg-white shadow-sm rounded mb-4 px-2 py-1 md:py-4 md:px-6">
+                                    {/* image + remove button */}
                                     <div className="flex items-center gap-4 relative">
                                         <button
                                             onClick={() => handleRemoveItem(item?.product?._id)}
@@ -123,8 +124,10 @@ export default function page() {
                                         </Link>
                                     </div>
 
+                                    {/* price */}
                                     <div className="text-center">${item.price}</div>
 
+                                    {/* quantity */}
                                     <div className="flex items-center justify-center">
                                         <div className="inline-flex items-center border border-gray-300 rounded">
                                             <button
