@@ -13,6 +13,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
     const [loading, setLoading] = useState(false);
     const [globalError, setGlobalError] = useState("");
     const [globalSuccess, setGlobalSuccess] = useState("");
+    const [savedEmail, setSavedEmail] = useState("");
     return (
         <div>ForgotPasswordModal</div>
     )
