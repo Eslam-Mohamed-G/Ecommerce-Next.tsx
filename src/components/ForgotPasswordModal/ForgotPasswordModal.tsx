@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useState } from 'react';
 
 interface ForgotPasswordModalProps {
     isOpen: boolean;
@@ -7,7 +7,9 @@ interface ForgotPasswordModalProps {
 }
 
 type Step = 1 | 2 | 3;
+
 export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProps) {
+    const [step, setStep] = useState<Step>(1);
     return (
         <div>ForgotPasswordModal</div>
     )
