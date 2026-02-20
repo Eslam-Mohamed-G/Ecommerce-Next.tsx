@@ -90,6 +90,12 @@ export interface ForgotPasswordData {
 export interface VerifyResetCodeData {
     resetCode: string;
 }
+
+export interface ResetPasswordData {
+    email: string;
+    newPassword: string;
+}
+
 // ==================== Cart Types ====================
 export interface CartItem {
     count: number;
