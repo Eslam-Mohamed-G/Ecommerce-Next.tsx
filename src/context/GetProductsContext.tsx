@@ -17,7 +17,7 @@ export interface GetProductsContextType {
     wishlist: Product[];
     getUserWishlist: () => Promise<void>;
     cartList: Cart | null;
-    getUserCart: () => Promise<void>;
+    getUserCart: (showLoading?: boolean) => Promise<void>;
 }
 
 const GetProductsContext = createContext<GetProductsContextType | null>(null);
