@@ -10,6 +10,7 @@ type Step = 1 | 2 | 3;
 
 export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProps) {
     const [step, setStep] = useState<Step>(1);
+    const [loading, setLoading] = useState(false);
     return (
         <div>ForgotPasswordModal</div>
     )
