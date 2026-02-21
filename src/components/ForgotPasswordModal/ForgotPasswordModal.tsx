@@ -35,7 +35,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
             email: Yup.string().required("Email is required").email("Invalid email address"),
         }),
 
-        onSubmit:async (values) => {
+        onSubmit: async (values) => {
             setLoading(true);
             setGlobalError("");
             setGlobalSuccess("");
@@ -104,6 +104,10 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                                     onChange={emailFormik.handleChange}
                                     onBlur={emailFormik.handleBlur}
                                 />
+                                
+                                {emailFormik.touched.email && emailFormik.errors.email && (
+                                    <p className="">{emailFormik.errors.email}</p>
+                                )}
                             </div>
                             <button
                                 type="submit"
