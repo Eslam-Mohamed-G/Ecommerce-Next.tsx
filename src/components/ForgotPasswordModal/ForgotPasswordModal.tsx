@@ -23,6 +23,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
         setStep(1);
         setGlobalError("");
         setGlobalSuccess("");
+        emailFormik.resetForm();
         onClose();
     };
 
