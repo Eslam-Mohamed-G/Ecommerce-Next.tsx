@@ -21,12 +21,37 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
         setGlobalSuccess("");
         onClose();
     };
+
     if (!isOpen) return null;
-    
+
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity ease-in-out duration-300">
-            <div className="bg-white rounded-lg shadow-xl w-full max-w-md overflow-hidden relative">
+            <div className="bg-white rounded-lg shadow-xl w-full p-6 max-w-md overflow-hidden">
+                {/* header */}
+                <div className="w-full relative">
+                    <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
+                        {step === 1 && "Forgot Password"}
+                        {step === 2 && "Enter Reset Code"}
+                        {step === 3 && "Reset Password"}
+                    </h2>
 
+                    <p className="text-gray-500 dark:text-gray-400 mb-6 text-sm">
+                        {step === 1 && "Enter your email address to receive a password reset code."}
+                        {step === 2 && "We've sent a 6-digit code to your email. Please enter it below."}
+                        {step === 3 && "Create a new strong password for your account."}
+                    </p>
+
+                    {/* close button */}
+                    <button
+                        onClick={handleClose}
+                        aria-label="Close modal"
+                        className="absolute -top-3 -right-3 ms-auto flex items-center justify-center bg-transparent box-border hover:bg-border2Color/10 font-medium rounded text-sm h-8 w-8 cursor-pointer transition-colors"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     )
