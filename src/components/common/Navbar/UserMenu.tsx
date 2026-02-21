@@ -112,7 +112,7 @@ export default function UserMenu({ token }: Props) {
 
             {confirmLogout && (
                 <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center">
-                    <div className="bg-white flex flex-col items-center justify-center gap-4 p-4 capitalize rounded">
+                    <div className="bg-white flex flex-col items-center justify-center gap-4 p-4 capitalize rounded animate-zoom-in">
                         <h1 className="text-lg font-bold">confirm logout</h1>
                         <div className="flex flex-row gap-4">
                             <button type="button" onClick={handleLogout} className="text-primaryColor w-20 py-2 border rounded cursor-pointer">logout</button>
