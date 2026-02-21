@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import LoadingSpinner from '../ui/LoadingSpinner/LoadingSpinner';
 
 interface ForgotPasswordModalProps {
     isOpen: boolean;
@@ -74,7 +75,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                                 disabled={loading}
                                 className="w-full bg-primaryColor hover:bg-buttonColor text-white font-semibold py-2 px-4 rounded cursor-pointer transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
                             >
-                                {loading ? <i className="fas fa-spinner fa-spin mr-2"></i> : null}
+                                {loading && <LoadingSpinner size="sm" />}
                                 {loading ? "Sending..." : "Send Code"}
                             </button>
                         </form>
