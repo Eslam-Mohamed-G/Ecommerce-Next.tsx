@@ -57,6 +57,10 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
 
     if (!isOpen) return null;
 
+    const inputClasses =
+        "w-full h-10 px-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primaryColor focus:border-transparent dark:bg-gray-700 dark:border-gray-600 dark:text-white transition-all";
+    const errorClasses = "text-red-500 text-sm absolute top-full left-0 translate-y-1";
+
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity ease-in-out duration-300">
             <div className="bg-white rounded-lg shadow-xl w-full p-6 max-w-md overflow-hidden">
@@ -91,7 +95,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                     {/* STEP 1 */}
                     {step === 1 && (
                         <form onSubmit={emailFormik.handleSubmit} className="flex flex-col gap-4">
-                            <div>
+                            <div className='relative'>
                                 <label htmlFor="modal-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Email Address
                                 </label>
@@ -103,17 +107,18 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                                     value={emailFormik.values.email}
                                     onChange={emailFormik.handleChange}
                                     onBlur={emailFormik.handleBlur}
+                                    className={inputClasses}
                                 />
-                                
+
                                 {emailFormik.touched.email && emailFormik.errors.email && (
-                                    <p className="">{emailFormik.errors.email}</p>
+                                    <p className={errorClasses}>{emailFormik.errors.email}</p>
                                 )}
                             </div>
 
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full bg-primaryColor hover:bg-buttonColor text-white font-semibold py-2 px-4 rounded cursor-pointer transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+                                className="w-full bg-primaryColor hover:bg-buttonColor text-white font-semibold mt-4 py-2 px-4 rounded cursor-pointer transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
                             >
                                 {loading && <LoadingSpinner size="sm" />}
                                 {loading ? "Sending..." : "Send Code"}
