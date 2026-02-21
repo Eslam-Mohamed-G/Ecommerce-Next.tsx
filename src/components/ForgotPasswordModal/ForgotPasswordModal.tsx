@@ -54,7 +54,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
             } finally {
                 setLoading(false);
             }
-        }
+        },
     });
 
     return (
@@ -90,7 +90,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                 <div className="relative">
                     {/* STEP 1 */}
                     {step === 1 && (
-                        <form className="animate-fade-right flex flex-col gap-4">
+                        <form onSubmit={emailFormik.handleSubmit} className="animate-fade-right flex flex-col gap-4">
                             <div>
                                 <label htmlFor="modal-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Email Address
