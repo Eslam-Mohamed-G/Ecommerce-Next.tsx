@@ -63,6 +63,7 @@ export default function LoginForm() {
     const trueMessage = "border-green-500 text-green-500 appearance-none dark:text-green-400 focus:ring-green-500 focus:border-green-500 dark:bg-gray-700 dark:border-green-500";
     const falseMessage = "border-red-500 text-red-500 appearance-none text-sm focus:ring-red-500 dark:bg-gray-700 focus:border-red-500 dark:text-red-500 dark:border-red-500";
     return (
+        <>
         <form onSubmit={formik.handleSubmit} className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
             <div className="flex flex-col gap-8 relative">
                 {/* email   email   email */}
@@ -124,7 +125,6 @@ export default function LoginForm() {
                         }
                     </button>
                     <button type="button" onClick={() => setIsForgotPasswordModalOpen(true)} className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700 cursor-pointer">Forgot Password?</button>
-                    <ForgotPasswordModal isOpen={isForgotPasswordModalOpen} onClose={()=> setIsForgotPasswordModalOpen(false)}/>
                 </div>
 
                 <div aria-live="polite" className={`absolute top-full -bottom-2 z-0 w-full mb-6 group text-center ${messageFromBackEnd ? '' : 'hidden'}`}>
@@ -138,5 +138,8 @@ export default function LoginForm() {
                 <Link href="/signUp"><span className='font-medium border-b pb-px'>Create an account</span></Link>
             </div>
         </form>
+        
+        <ForgotPasswordModal isOpen={isForgotPasswordModalOpen} onClose={()=> setIsForgotPasswordModalOpen(false)}/>
+        </>
     )
 }
