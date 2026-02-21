@@ -26,8 +26,6 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
         onClose();
     };
 
-    if (!isOpen) return null;
-
     // ---- step 1 ----
     const emailFormik = useFormik({
         initialValues: { email: "" },
@@ -56,6 +54,8 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
             }
         },
     });
+
+    if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity ease-in-out duration-300">
@@ -90,7 +90,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                 <div className="relative">
                     {/* STEP 1 */}
                     {step === 1 && (
-                        <form onSubmit={emailFormik.handleSubmit} className="animate-fade-right flex flex-col gap-4">
+                        <form onSubmit={emailFormik.handleSubmit} className="flex flex-col gap-4">
                             <div>
                                 <label htmlFor="modal-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Email Address
@@ -109,6 +109,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                                     <p className="">{emailFormik.errors.email}</p>
                                 )}
                             </div>
+
                             <button
                                 type="submit"
                                 disabled={loading}
