@@ -1,6 +1,9 @@
 "use client"
 import React, { useState } from 'react';
 import LoadingSpinner from '../ui/LoadingSpinner/LoadingSpinner';
+import { useFormik } from 'formik';
+import * as Yup from "yup";
+import authService from '@/src/services/authService';
 
 interface ForgotPasswordModalProps {
     isOpen: boolean;
@@ -25,6 +28,35 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
 
     if (!isOpen) return null;
 
+    // ---- step 1 ----
+    const emailFormik = useFormik({
+        initialValues: { email: "" },
+        validationSchema: Yup.object({
+            email: Yup.string().required("Email is required").email("Invalid email address"),
+        }),
+
+        onSubmit:async (values) => {
+            setLoading(true);
+            setGlobalError("");
+            setGlobalSuccess("");
+            try {
+                const response = await authService.forgotPassword({ email: values.email });
+                if (response.status === "success" || response.message) {
+                    setSavedEmail(values.email);
+                    setGlobalSuccess(response.message || "Reset code sent to your email.");
+                    setTimeout(() => {
+                        setGlobalSuccess("");
+                        setStep(2);
+                    }, 1500);
+                }
+            } catch (error: any) {
+                setGlobalError("something warring please try agin");
+            } finally {
+                setLoading(false);
+            }
+        }
+    });
+    
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity ease-in-out duration-300">
             <div className="bg-white rounded-lg shadow-xl w-full p-6 max-w-md overflow-hidden">
