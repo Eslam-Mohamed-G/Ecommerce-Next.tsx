@@ -56,7 +56,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
             }
         }
     });
-    
+
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity ease-in-out duration-300">
             <div className="bg-white rounded-lg shadow-xl w-full p-6 max-w-md overflow-hidden">
@@ -100,6 +100,9 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                                     name="email"
                                     type="email"
                                     placeholder="Enter your email"
+                                    value={emailFormik.values.email}
+                                    onChange={emailFormik.handleChange}
+                                    onBlur={emailFormik.handleBlur}
                                 />
                             </div>
                             <button
