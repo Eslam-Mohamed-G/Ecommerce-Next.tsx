@@ -63,7 +63,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
     const errorClasses = "text-red-500 text-sm absolute top-full left-0 translate-y-1";
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity ease-in-out duration-300">
+        <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity ease-in-out duration-300">
             <div className="bg-white rounded-lg shadow-xl w-full p-6 max-w-md overflow-hidden animate-zoom-in">
                 {/* header */}
                 <div className="w-full relative">
