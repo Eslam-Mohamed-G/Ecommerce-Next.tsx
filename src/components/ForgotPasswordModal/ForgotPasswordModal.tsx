@@ -52,6 +52,34 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                         </svg>
                     </button>
                 </div>
+
+                {/* content */}
+                <div className="relative">
+                    {/* STEP 1 */}
+                    {step === 1 && (
+                        <form className="animate-fade-right flex flex-col gap-4">
+                            <div>
+                                <label htmlFor="modal-email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    Email Address
+                                </label>
+                                <input
+                                    id="modal-email"
+                                    name="email"
+                                    type="email"
+                                    placeholder="Enter your email"
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full bg-primaryColor hover:bg-buttonColor text-white font-semibold py-2 px-4 rounded cursor-pointer transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+                            >
+                                {loading ? <i className="fas fa-spinner fa-spin mr-2"></i> : null}
+                                {loading ? "Sending..." : "Send Code"}
+                            </button>
+                        </form>
+                    )}
+                </div>
             </div>
         </div>
     )
