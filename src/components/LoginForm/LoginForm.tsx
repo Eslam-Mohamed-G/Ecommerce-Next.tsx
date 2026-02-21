@@ -11,11 +11,13 @@ import { getErrorMessage } from '@/src/services/apiClient';
 import { COOKIE_CONFIG } from '@/src/services/endpoints';
 import { EyeIcon, EyeOffIcon } from '../ui/Icon/Icon';
 import LoadingSpinner from '../ui/LoadingSpinner/LoadingSpinner';
+import ForgotPasswordModal from '../ForgotPasswordModal/ForgotPasswordModal';
 
 export default function LoginForm() {
     const [messageFromBackEnd, setMessageFromBackEnd] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [isForgotPasswordModalOpen, setIsForgotPasswordModalOpen] = useState(false);
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -121,7 +123,8 @@ export default function LoginForm() {
                             <span>Log In</span>
                         }
                     </button>
-                    <Link href={'/forgetpassword'} className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</Link>
+                    <button type="button" onClick={() => setIsForgotPasswordModalOpen(true)} className="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700 cursor-pointer">Forgot Password?</button>
+                    <ForgotPasswordModal isOpen={isForgotPasswordModalOpen} onClose={()=> setIsForgotPasswordModalOpen(false)}/>
                 </div>
 
                 <div aria-live="polite" className={`absolute top-full -bottom-2 z-0 w-full mb-6 group text-center ${messageFromBackEnd ? '' : 'hidden'}`}>
