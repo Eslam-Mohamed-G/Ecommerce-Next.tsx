@@ -74,3 +74,33 @@ body {
     width: 0%;
   }
 }
+
+@keyframes fade-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-right {
+  animation: fade-right 0.4s ease-out forwards;
+}
+
+@keyframes zoom-in {
+  0% {
+    opacity: 0;
+    transform: scale(85%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(100%);
+  }
+}
+.animate-zoom-in {
+  animation: zoom-in 0.4s ease-out forwards;
+}

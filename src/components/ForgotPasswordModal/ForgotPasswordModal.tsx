@@ -64,7 +64,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm transition-opacity ease-in-out duration-300">
-            <div className="bg-white rounded-lg shadow-xl w-full p-6 max-w-md overflow-hidden">
+            <div className="bg-white rounded-lg shadow-xl w-full p-6 max-w-md overflow-hidden animate-zoom-in">
                 {/* header */}
                 <div className="w-full relative">
                     <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-2">
