@@ -46,7 +46,7 @@ export default function UserMenu({ token }: Props) {
 
     const handleLogout = () => {
         deleteCookie("token");
-        if (pathName === "/wishList" || pathName === "/cart" ) {
+        if (pathName === "/wishList" || pathName === "/cartList" ) {
             router.push("/");
         }
         router.refresh();
