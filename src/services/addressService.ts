@@ -14,3 +14,8 @@ export const addAddress = async (addressData: Address): Promise<ApiResponse<Addr
     const response = await apiClient.post(API_ENDPOINTS.ADDRESSES.BASE, addressData);
     return response.data;
 };
+
+const addressService = {
+};
+
+export default addressService;
