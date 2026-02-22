@@ -56,6 +56,12 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
         },
     });
 
+    // --- STEP 2: RESET CODE ---
+    const resetCodeFormik = useFormik({
+        initialValues: { resetCode: "" },
+        
+    });
+
     if (!isOpen) return null;
 
     const inputClasses =
