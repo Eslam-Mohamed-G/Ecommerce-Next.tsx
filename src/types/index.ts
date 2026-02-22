@@ -102,6 +102,15 @@ export interface UpdatePasswordData {
     rePassword: string;
 }
 
+// ==================== Address Types ====================
+export interface Address {
+    _id?: string;
+    name: string;
+    details: string;
+    phone: string;
+    city: string;
+}
+
 // ==================== Cart Types ====================
 export interface CartItem {
     count: number;
