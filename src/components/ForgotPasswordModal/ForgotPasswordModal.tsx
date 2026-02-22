@@ -83,6 +83,11 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
         },
     });
 
+    // --- STEP 3: NEW PASSWORD ---
+    const newPasswordFormik = useFormik({
+        initialValues: { newPassword: "" },
+    });
+
     if (!isOpen) return null;
 
     const inputClasses =
