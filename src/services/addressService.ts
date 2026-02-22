@@ -16,6 +16,7 @@ export const addAddress = async (addressData: Address): Promise<ApiResponse<Addr
 };
 
 const addressService = {
+    addAddress,
 };
 
 export default addressService;
