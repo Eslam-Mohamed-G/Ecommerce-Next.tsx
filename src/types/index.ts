@@ -96,6 +96,12 @@ export interface ResetPasswordData {
     newPassword: string;
 }
 
+export interface UpdatePasswordData {
+    currentPassword: string;
+    password: string;
+    rePassword: string;
+}
+
 // ==================== Cart Types ====================
 export interface CartItem {
     count: number;

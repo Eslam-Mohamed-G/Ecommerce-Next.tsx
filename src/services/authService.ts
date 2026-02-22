@@ -1,5 +1,5 @@
 
-import { ApiResponse, ForgotPasswordData, LoginCredentials, ResetPasswordData, SignUpData, User, VerifyResetCodeData } from '../types';
+import { ApiResponse, ForgotPasswordData, LoginCredentials, ResetPasswordData, SignUpData, UpdatePasswordData, User, VerifyResetCodeData } from '../types';
 import apiClient from './apiClient';
 import { API_ENDPOINTS } from './endpoints';
 /**
@@ -47,12 +47,20 @@ export const resetPassword = async (data: ResetPasswordData): Promise<ApiRespons
     return response.data;
 };
 
+/**
+ * Update logged-in user password
+*/
+export const updateMyPassword = async (data: UpdatePasswordData): Promise<ApiResponse<User>> => {
+    const response = await apiClient.put(API_ENDPOINTS.AUTH.UPDATE_PASSWORD, data);
+    return response.data;
+};
 const authService = {
     signup,
     signin,
     forgotPassword,
     verifyResetCode,
-    resetPassword
+    resetPassword,
+    updateMyPassword,
 };
 
 export default authService;

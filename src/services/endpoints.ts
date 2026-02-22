@@ -8,6 +8,7 @@ export const API_ENDPOINTS = {
         FORGOT_PASSWORD: `${API_BASE_URL}/auth/forgotPasswords`,
         VERIFY_RESET_CODE: `${API_BASE_URL}/auth/verifyResetCode`,
         RESET_PASSWORD: `${API_BASE_URL}/auth/resetPassword`,
+        UPDATE_PASSWORD: `${API_BASE_URL}/users/changeMyPassword`,
     },
     
     // Products
