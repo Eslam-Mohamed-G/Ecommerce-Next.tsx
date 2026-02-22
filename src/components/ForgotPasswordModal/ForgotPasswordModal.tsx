@@ -146,7 +146,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                             <button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full bg-primaryColor hover:bg-buttonColor text-white font-semibold mt-4 py-2 px-4 rounded cursor-pointer transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center"
+                                className="w-full bg-primaryColor hover:bg-buttonColor text-white font-semibold mt-4 py-2 px-4 rounded cursor-pointer transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-1"
                             >
                                 {loading && <LoadingSpinner size="sm" />}
                                 {loading ? "Sending..." : "Send Code"}
