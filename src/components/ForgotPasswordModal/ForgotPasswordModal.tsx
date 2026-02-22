@@ -187,6 +187,32 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                             </button>
                         </form>
                     )}
+
+                    {/* STEP 3 */}
+                    {step === 3 && (
+                        <form className="animate-fade-right flex flex-col gap-4">
+                            <div className='relative'>
+                                <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                    New Password
+                                </label>
+                                <input
+                                    id="newPassword"
+                                    name="newPassword"
+                                    type="password"
+                                    placeholder="Enter new password"
+                                    className={inputClasses}
+                                />
+                            </div>
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full bg-primaryColor hover:bg-buttonColor text-white font-semibold py-2 px-4 rounded transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex justify-center items-center gap-1"
+                            >
+                                {loading && <LoadingSpinner size="sm" />}
+                                {loading ? "Resetting..." : "Reset Password"}
+                            </button>
+                        </form>
+                    )}
                 </div>
             </div>
         </div>
