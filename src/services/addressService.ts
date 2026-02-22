@@ -18,14 +18,14 @@ export const addAddress = async (addressData: Address): Promise<ApiResponse<Addr
 /**
  * Get user addresses
 */
-export const getAddresses = async (): Promise<ApiResponse<Address[]>> => {
+export const getAddress = async (): Promise<ApiResponse<Address[]>> => {
     const response = await apiClient.get(API_ENDPOINTS.ADDRESSES.BASE);
     return response.data;
 };
 
 const addressService = {
     addAddress,
-    getAddresses,
+    getAddress,
 };
 
 export default addressService;
