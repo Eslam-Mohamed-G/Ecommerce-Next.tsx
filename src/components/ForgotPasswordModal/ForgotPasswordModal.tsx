@@ -157,7 +157,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                     {/* STEP 2 */}
                     {step === 2 && (
                         <form onSubmit={resetCodeFormik.handleSubmit} className="animate-fade-right flex flex-col gap-4">
-                            <div>
+                            <div className='relative'>
                                 <label htmlFor="resetCode" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Reset Code
                                 </label>
@@ -172,6 +172,10 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                                     onBlur={resetCodeFormik.handleBlur}
                                     maxLength={6}
                                 />
+
+                                {resetCodeFormik.touched.resetCode && resetCodeFormik.errors.resetCode && (
+                                    <p className={errorClasses}>{resetCodeFormik.errors.resetCode}</p>
+                                )}
                             </div>
                             <button
                                 type="submit"
