@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import LoadingSpinner from '../ui/LoadingSpinner/LoadingSpinner';
 import { useFormik } from 'formik';
 import * as Yup from "yup";
-import authService from '@/src/services/authService';
+import authService, { verifyResetCode } from '@/src/services/authService';
 
 interface ForgotPasswordModalProps {
     isOpen: boolean;
@@ -156,7 +156,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
 
                     {/* STEP 2 */}
                     {step === 2 && (
-                        <form className="animate-fade-right flex flex-col gap-4">
+                        <form onSubmit={resetCodeFormik.handleSubmit} className="animate-fade-right flex flex-col gap-4">
                             <div>
                                 <label htmlFor="resetCode" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Reset Code
@@ -167,6 +167,9 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                                     type="text"
                                     placeholder="e.g. 123456"
                                     className={inputClasses}
+                                    value={resetCodeFormik.values.resetCode}
+                                    onChange={resetCodeFormik.handleChange}
+                                    onBlur={resetCodeFormik.handleBlur}
                                     maxLength={6}
                                 />
                             </div>
