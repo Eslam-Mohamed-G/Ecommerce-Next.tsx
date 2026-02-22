@@ -91,6 +91,27 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
                 .required("Password is required")
                 .min(6, "Password must be at least 6 characters"),
         }),
+        onSubmit: async (values) => {
+            setLoading(true);
+            setGlobalError("");
+            setGlobalSuccess("");
+            try {
+                const response = await authService.resetPassword({
+                    email: savedEmail,
+                    newPassword: values.newPassword,
+                });
+                if (response.token || response.message) {
+                    setGlobalSuccess("Password reset successfully. You can now log in.");
+                    setTimeout(() => {
+                        handleClose();
+                    }, 2000);
+                }
+            } catch (error: any) {
+                setGlobalError("something worring, please try agin!");
+            } finally {
+                setLoading(false);
+            }
+        }
     });
 
     if (!isOpen) return null;
@@ -200,7 +221,7 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
 
                     {/* STEP 3 */}
                     {step === 3 && (
-                        <form className="animate-fade-right flex flex-col gap-4">
+                        <form onSubmit={newPasswordFormik.handleSubmit} className="animate-fade-right flex flex-col gap-4">
                             <div className='relative'>
                                 <label htmlFor="newPassword" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     New Password
