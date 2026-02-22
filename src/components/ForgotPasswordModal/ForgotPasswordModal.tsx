@@ -62,6 +62,25 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
         validationSchema: Yup.object({
             resetCode: Yup.string().required("Reset code is required"),
         }),
+        onSubmit: async (values) => {
+            setLoading(true);
+            setGlobalError("");
+            setGlobalSuccess("");
+            try {
+                const response = await authService.verifyResetCode({ resetCode: values.resetCode });
+                if (response.status === "Success" || response.message) {
+                    setGlobalSuccess("Code verified successfully.");
+                    setTimeout(() => {
+                        setGlobalSuccess("");
+                        setStep(3);
+                    }, 1500);
+                }
+            } catch (error: any) {
+                setGlobalError("someting worring please try agin");
+            } finally {
+                setLoading(false);
+            }
+        },
     });
 
     if (!isOpen) return null;
