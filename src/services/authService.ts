@@ -1,5 +1,5 @@
 
-import { ApiResponse, ForgotPasswordData, LoginCredentials, SignUpData, User, VerifyResetCodeData } from '../types';
+import { ApiResponse, ForgotPasswordData, LoginCredentials, ResetPasswordData, SignUpData, User, VerifyResetCodeData } from '../types';
 import apiClient from './apiClient';
 import { API_ENDPOINTS } from './endpoints';
 /**
@@ -51,7 +51,8 @@ const authService = {
     signup,
     signin,
     forgotPassword,
-    verifyResetCode
+    verifyResetCode,
+    resetPassword
 };
 
 export default authService;
