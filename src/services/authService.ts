@@ -39,6 +39,14 @@ export const verifyResetCode = async (data: VerifyResetCodeData): Promise<ApiRes
     return response.data;
 };
 
+/**
+ * Reset password
+*/
+export const resetPassword = async (data: ResetPasswordData): Promise<ApiResponse<any>> => {
+    const response = await apiClient.put(API_ENDPOINTS.AUTH.RESET_PASSWORD, data);
+    return response.data;
+};
+
 const authService = {
     signup,
     signin,
