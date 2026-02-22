@@ -10,6 +10,12 @@ export const API_ENDPOINTS = {
         RESET_PASSWORD: `${API_BASE_URL}/auth/resetPassword`,
         UPDATE_PASSWORD: `${API_BASE_URL}/users/changeMyPassword`,
     },
+
+    // Addresses
+    ADDRESSES: {
+        BASE: `${API_BASE_URL}/addresses`,
+        BY_ID: (id: string) => `${API_BASE_URL}/addresses/${id}`,
+    },
     
     // Products
     PRODUCTS: {
