@@ -59,7 +59,9 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
     // --- STEP 2: RESET CODE ---
     const resetCodeFormik = useFormik({
         initialValues: { resetCode: "" },
-        
+        validationSchema: Yup.object({
+            resetCode: Yup.string().required("Reset code is required"),
+        }),
     });
 
     if (!isOpen) return null;
