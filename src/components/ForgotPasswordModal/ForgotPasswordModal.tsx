@@ -86,6 +86,11 @@ export default function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordM
     // --- STEP 3: NEW PASSWORD ---
     const newPasswordFormik = useFormik({
         initialValues: { newPassword: "" },
+        validationSchema: Yup.object({
+            newPassword: Yup.string()
+                .required("Password is required")
+                .min(6, "Password must be at least 6 characters"),
+        }),
     });
 
     if (!isOpen) return null;
