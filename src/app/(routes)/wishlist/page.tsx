@@ -9,7 +9,7 @@ export default function page() {
     // useEffect will be used to fetch the wishlist data when the page loads.
     useEffect(() => {
         getUserWishlist();
-    }, [wishlist.length]);
+    }, []);
     
     return (
         <section className=''>
