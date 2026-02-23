@@ -1,5 +1,6 @@
 import Sidebar from "@/src/components/features/Sidebar/Sidebar";
 import Image from "next/image";
+import Link from 'next/link'
 import CarouselComponent from "./CarouselComponent";
 import Countdown from "./Countdown";
 import CategoriesCarousel from "./CategoriesCarousel";
@@ -29,9 +30,9 @@ export default function Home() {
                     </div>
                 </div>
                 <RandomProducts/>
-                <button type="button" className="bg-primaryColor hover:bg-buttonColor text-white w-3xs h-14 rounded m-auto mt-10 cursor-pointer transition-all ease-in-out duration-300">
+                <Link href="/products" className="flex items-center justify-center bg-primaryColor hover:bg-buttonColor text-white w-3xs h-14 rounded m-auto mt-10 cursor-pointer transition-all ease-in-out duration-300">
                     View All Products
-                </button>
+                </Link>
             </section>
 
             <section className="flex flex-col gap-4 mt-10 pb-10 border-b border-borderColor overflow-hidden">
