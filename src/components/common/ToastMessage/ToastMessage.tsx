@@ -5,9 +5,9 @@ export default function ToastMessage() {
     const { toast, hideToast } = useToast();
 
     return (
-        <section role="status" aria-live="polite" className='fixed top-14 left-0 right-0 z-50 flex items-center justify-center toast_container'>
+        <section role="status" aria-live="polite" className='fixed top-11 right-1/2 translate-x-1/2 z-50 flex items-center justify-center toast_container'>
             {/* success message */}
-            <div id="toast-success" className="flex items-center min-w-[290px] w-[290px] p-4 pb-6 bg-white border border-borderColor rounded-xl shadow relative">
+            <div id="toast-success" className="flex items-center min-w-[290px] w-[290px] pt-2 px-4 pb-4 bg-white border border-borderColor rounded-xl shadow relative">
                 {toast?.type === "success" && (
                     <div className="inline-flex items-center justify-center shrink-0 w-7 h-7 text-successIcon bg-successButton/10 rounded">
                         <svg className="w-5 h-5" aria-hidden="true" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" /></svg>
@@ -36,7 +36,7 @@ export default function ToastMessage() {
                     <svg className="w-5 h-5" aria-hidden="true" width={24} height={24} fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18 17.94 6M18 18 6.06 6" /></svg>
                 </button>
 
-                <div className="flex items-center absolute left-4 right-5 bottom-3">
+                <div className="flex items-center absolute left-4 right-5 bottom-2">
                     <div className={`w-full ${toast?.type === "success" ? "bg-successIcon/10" : toast?.type === "warning" ? "bg-[#FDFDEA]" : "bg-red-500/10"} rounded-full h-1.5`}>
                         <div className={`${toast?.type === "success" ? "bg-successIcon" : toast?.type === "warning" ? "bg-[#f97316]" : "bg-red-500"} progress-line-animation`} />
                     </div>
