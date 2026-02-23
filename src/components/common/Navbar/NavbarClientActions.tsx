@@ -107,7 +107,7 @@ export default function NavbarClientActions({ token }: Props) {
                     }
                 </button>
             </div>
-            {toast && <ToastMessage />}
+            {toast && <ToastMessage key={toast.id} />}
         </nav>
     )
 }

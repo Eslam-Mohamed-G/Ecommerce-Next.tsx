@@ -3,6 +3,7 @@ import React, { ReactNode, createContext, useContext, useEffect, useState } from
 
 export type ToastType = "success" | "error" | "warning" | "info";
 interface Toast {
+    id: number;
     type: ToastType;
     message: string;
     duration?: number;
@@ -23,7 +24,7 @@ export const ToastProvider = ({ children }: { children: ReactNode }) => {
         message: string,
         duration: number = 3000
     ) => {
-        setToast({ type, message, duration });
+        setToast({ id: Date.now(), type, message, duration });
     };
 
     const hideToast = () => {
