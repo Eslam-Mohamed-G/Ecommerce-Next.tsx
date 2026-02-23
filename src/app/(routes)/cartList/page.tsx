@@ -100,7 +100,7 @@ export default function page() {
                             </div>
 
                             {cartList?.products.map((item) => (
-                                <div key={item?.product._id} className="flex flex-row items-center justify-between bg-white shadow-sm rounded mb-4 px-2 py-1 md:py-4 md:px-6">
+                                <div key={item?.product._id} className="flex flex-row items-center justify-between bg-white shadow-sm rounded mb-4 px-2 py-1 md:py-4 md:px-6 animate-fade-down">
                                     {/* image + remove button */}
                                     <div className="flex items-center gap-4 relative">
                                         <button
