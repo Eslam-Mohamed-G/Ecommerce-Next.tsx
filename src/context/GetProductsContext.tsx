@@ -9,6 +9,7 @@ import cartService from '../services/cartService';
 
 export interface GetProductsContextType {
     loading: boolean;
+    productError: string | null;
     wishlistLoading: boolean;
     cartlistLoading: boolean;
     error: string | null;
@@ -24,7 +25,7 @@ const GetProductsContext = createContext<GetProductsContextType | null>(null);
 
 export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const [productError, setProductError] = useState<string | null>(null);
 
     // fetch products data 
     const [products, setProducts] = useState<Product[]>([]);
@@ -37,7 +38,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
                 setProducts(response.data);
             }
         } catch (err) {
-            setError(err instanceof Error ? err.message : 'An error occurred');
+            setProductError(err instanceof Error ? err.message : 'An error occurred');
         } finally {
             setLoading(false);
         }
@@ -106,7 +107,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     return (
-        <GetProductsContext.Provider value={{ loading, wishlistLoading, cartlistLoading, error, getUserWishlist, wishlist, products, fetchProducts, cartList, getUserCart }}>
+        <GetProductsContext.Provider value={{ loading, wishlistLoading, cartlistLoading, productError, getUserWishlist, wishlist, products, fetchProducts, cartList, getUserCart }}>
             {children}
         </GetProductsContext.Provider>
     )

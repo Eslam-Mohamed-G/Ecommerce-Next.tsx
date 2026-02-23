@@ -8,7 +8,7 @@ import React, { useEffect, useState } from 'react'
 
 
 export default function page() {
-    const {loading, error, products, fetchProducts} = useGetProducts();
+    const {loading, productError, products, fetchProducts} = useGetProducts();
 
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [filters, setFilters] = useState<FilterState>({
@@ -123,15 +123,15 @@ export default function page() {
                     )}
 
                     {/* Error State */}
-                    {error && (
+                    {productError && (
                         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
                             <p className="font-semibold">Error loading products</p>
-                            <p className="text-sm">{error}</p>
+                            <p className="text-sm">{productError}</p>
                         </div>
                     )}
 
                     {/* Products Grid */}
-                    {!loading && !error && (
+                    {!loading && !productError && (
                         <>
                             {filteredProducts.length > 0 ? (
                                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
