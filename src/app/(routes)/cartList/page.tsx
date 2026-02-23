@@ -10,7 +10,7 @@ import LoadingSpinner from '@/src/components/ui/LoadingSpinner/LoadingSpinner';
 import { TrashIcon } from '@/src/components/ui/Icon/Icon';
 
 export default function page() {
-    const { cartlistLoading, error, cartList, getUserCart } = useGetProducts();
+    const { cartlistLoading, cartError, cartList, getUserCart } = useGetProducts();
     const { showToast } = useToast();
 
     const [updatingItemId, setUpdatingItemId] = useState<string | null>(null);
@@ -62,7 +62,14 @@ export default function page() {
                 </div>
             )}
 
-            {!cartlistLoading && !error && (
+            {cartError && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+                    <p className="font-semibold">Error loading products</p>
+                    <p className="text-sm">{cartError}</p>
+                </div>
+            )}
+
+            {!cartlistLoading && !cartError && (
                 <div className="">
                     {cartList?.products.length === 0 ?
                         <div className="text-center py-20">

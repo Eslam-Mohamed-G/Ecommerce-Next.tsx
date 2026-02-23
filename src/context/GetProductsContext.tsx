@@ -13,6 +13,7 @@ export interface GetProductsContextType {
     wishlistLoading: boolean;
     wishlistError: string | null;
     cartlistLoading: boolean;
+    cartError: string | null;
     error: string | null;
     products: Product[];
     fetchProducts: () => Promise<void>;
@@ -78,6 +79,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
 
     // fetch cart products
     const [cartlistLoading, setCartlistLoading] = useState(false);
+    const [cartError, setCartError] = useState<string | null>(null);
     const [cartList, setCartList] = useState<Cart | null>(null);
     const getUserCart = async (showLoading: boolean = true) => {
         const token = getCookie("token") as string | undefined;
@@ -90,14 +92,14 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
             setCartlistLoading(true);
         }
 
-        setError(null);
+        setCartError(null);
         try {
             const response = await cartService.getCart();
             if (response.data) {
                 setCartList(response.data);
             }
         } catch (error) {
-            setError(error instanceof Error ? error.message : 'An error occurred');
+            setCartError(error instanceof Error ? error.message : 'An error occurred');
         } finally {
             if (showLoading) {
                 setCartlistLoading(false);
@@ -109,7 +111,7 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     return (
-        <GetProductsContext.Provider value={{ loading, wishlistLoading, cartlistLoading, productError, getUserWishlist, wishlistError, wishlist, products, fetchProducts, cartList, getUserCart }}>
+        <GetProductsContext.Provider value={{ loading, wishlistLoading, cartlistLoading, productError, getUserWishlist, wishlistError, wishlist, products, fetchProducts, cartError, cartList, getUserCart }}>
             {children}
         </GetProductsContext.Provider>
     )
