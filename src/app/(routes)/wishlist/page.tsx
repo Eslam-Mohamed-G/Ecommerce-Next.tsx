@@ -4,7 +4,7 @@ import { useGetProducts } from '@/src/context/GetProductsContext';
 import React, { useEffect } from 'react';
 
 export default function page() {
-    const {loading, error, wishlist, getUserWishlist} = useGetProducts();
+    const {loading, wishlistError, wishlist, getUserWishlist} = useGetProducts();
     
     // useEffect will be used to fetch the wishlist data when the page loads.
     useEffect(() => {
@@ -37,14 +37,14 @@ export default function page() {
             )}
 
             {/* Error State */}
-            {error && (
+            {wishlistError && (
                 <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
                     <p className="font-semibold">Error loading products</p>
-                    <p className="text-sm">{error}</p>
+                    <p className="text-sm">{wishlistError}</p>
                 </div>
             )}
 
-            {!loading && !error && (
+            {!loading && !wishlistError && (
                 <div className='w-full lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8'>
                     <div className="flex items-center gap-2 mb-4">
                         <span aria-hidden="true" className="bg-primaryColor w-5 h-10 rounded" />
