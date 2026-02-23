@@ -14,7 +14,6 @@ export interface GetProductsContextType {
     wishlistError: string | null;
     cartlistLoading: boolean;
     cartError: string | null;
-    error: string | null;
     products: Product[];
     fetchProducts: () => Promise<void>;
     wishlist: Product[];

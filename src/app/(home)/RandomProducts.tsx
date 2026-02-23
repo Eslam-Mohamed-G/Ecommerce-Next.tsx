@@ -5,7 +5,7 @@ import Image from 'next/image';
 import React, { useEffect, useRef } from 'react';
 
 export default function RandomProducts() {
-    const { loading, error, products, fetchProducts } = useGetProducts();
+    const { loading, productError, products, fetchProducts } = useGetProducts();
 
     const randomProducts = [...products].sort(() => .5 - Math.random()).slice(0, 8);
 
@@ -60,14 +60,14 @@ export default function RandomProducts() {
             )}
 
             {/* Error State */}
-            {error && (
+            {productError && (
                 <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
                     <p className="font-semibold">Error loading products</p>
-                    <p className="text-sm">{error}</p>
+                    <p className="text-sm">{productError}</p>
                 </div>
             )}
 
-            {!loading && !error && (
+            {!loading && !productError && (
                 <div ref={scrollRef} className="flex flex-row gap-5 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none">
                     {randomProducts.map((product) => (
                         <ProductCard key={product.id} className='w-56 transition-all ease-in-out duration-300 snap-center shrink-0 group' {...product} />
