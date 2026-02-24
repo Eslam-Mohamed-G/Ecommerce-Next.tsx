@@ -119,3 +119,17 @@ body {
 .animate-zoom-in {
   animation: zoom-in 0.4s ease-out forwards;
 }
+
+.dotsLoader {
+  width: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+
+@keyframes l5 {
+  0%  { box-shadow: 12px 0 #fff, -12px 0 #fff2; background: #fff }
+  33% { box-shadow: 12px 0 #fff, -12px 0 #fff2; background: #fff2 }
+  66% { box-shadow: 12px 0 #fff2, -12px 0 #fff; background: #fff2 }
+  100%{ box-shadow: 12px 0 #fff2, -12px 0 #fff; background: #fff }
+}
