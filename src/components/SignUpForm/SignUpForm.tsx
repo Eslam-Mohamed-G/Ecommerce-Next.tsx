@@ -169,8 +169,12 @@ export default function SignUpForm() {
                     </div>
                 </div>
 
-                <button type="submit" className="text-white bg-primaryColor focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded text-sm w-full sm:w-auto px-5 py-2 text-center cursor-pointer">
-                    {isLoading ? <>Submiting... <i className='fas fa-spinner fa-spin'></i></> : 'Create Account'}
+                <button type="submit" className="bg-primaryColor text-white text-base font-medium text-center w-full sm:w-auto px-5 py-2 rounded cursor-pointer">
+
+                    <div className="relative w-fit m-auto">
+                        <span>Create Account</span>
+                        {isLoading && <span className='absolute bottom-1.5 -right-7 dotsLoader' />}
+                    </div>
                 </button>
 
                 <div aria-live="polite" className={`absolute top-full -bottom-2 z-0 w-full group text-center ${messageFromBackEnd ? '' : 'hidden'}`}>
