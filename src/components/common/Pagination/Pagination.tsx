@@ -30,6 +30,14 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
                 }
                 pages.push('...');
                 pages.push(totalPages);
+                
+                // Case 3: user is near the end
+            } else if (currentPage >= totalPages - 2) {
+                pages.push(1);
+                pages.push('...');
+                for (let i = totalPages - 3; i <= totalPages; i++) {
+                    pages.push(i);
+                }
             }
         }
     };
