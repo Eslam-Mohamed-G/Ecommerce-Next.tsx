@@ -87,7 +87,7 @@ export default function NavbarClientActions({ token }: Props) {
                     </button>
                 </form>
 
-                <button type="button" aria-label="open wishlist" onClick={() => { token ? router.push("/wishList") : showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
+                <button type="button" aria-label="open wishlist" onClick={() => { token ? router.push("/wishlist") : showToast("warning", "You are not logged in") }} className="hidden w-8 h-8 md:flex items-center justify-center cursor-pointer relative">
                     <HeartIcon width={28} height={28} />
                     {token && (<span className="absolute -top-1.5 right-0 text-primaryColor text-sm font-medium">{wishlist.length}</span>)}
                 </button>
