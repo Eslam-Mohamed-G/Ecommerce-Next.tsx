@@ -16,6 +16,13 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
     const generatePages = (): (number | string)[] => {
         const pages: (number | string)[] = [];
         const maxPagesToShow = 5;
+
+        // Case 1: total pages small enough → show all
+        if (totalPages <= maxPagesToShow) {
+            for (let i = 1; i <= totalPages; i++) {
+                pages.push(i);
+            }
+        }
     };
     return (
         <div>Pagination</div>
