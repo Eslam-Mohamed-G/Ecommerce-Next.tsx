@@ -38,7 +38,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
                 for (let i = totalPages - 3; i <= totalPages; i++) {
                     pages.push(i);
                 }
-                
+
                 // Case 4: user in the middle
             } else {
                 pages.push(1);
@@ -50,6 +50,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
                 pages.push(totalPages);
             }
         }
+        return pages;
     };
     return (
         <div>Pagination</div>
