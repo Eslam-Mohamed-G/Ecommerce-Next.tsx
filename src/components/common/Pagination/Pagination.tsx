@@ -13,7 +13,10 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
      * Generates an array of page numbers and ellipsis ("...")
      * depending on the current page and total pages.
     */
-    const generatePages = (): (number | string)[] => {};
+    const generatePages = (): (number | string)[] => {
+        const pages: (number | string)[] = [];
+        const maxPagesToShow = 5;
+    };
     return (
         <div>Pagination</div>
     )
