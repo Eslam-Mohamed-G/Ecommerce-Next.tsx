@@ -6,6 +6,8 @@ interface PaginationProps {
 }
 
 export default function Pagination({ currentPage, totalPages, onPageChange }: PaginationProps) {
+    if (totalPages <= 1) return null;
+    
     return (
         <div>Pagination</div>
     )
