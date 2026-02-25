@@ -61,8 +61,8 @@ export default function NavbarClientActions({ token }: Props) {
                     </Link>
                 </li>
                 <li className="flex items-center">
-                    <Link href={token ? "/wishList" : "#"} onClick={() => { setIsNavOpen(false); !token && showToast("warning", "You are not logged in") }} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishList" && "bg-white/20"} transition-all ease-in-out duration-300`}>
-                        Wishlist
+                    <Link href={token ? "/wishlist" : "#"} onClick={() => { setIsNavOpen(false); !token && showToast("warning", "You are not logged in") }} className={`flex-1 p-2 rounded hover:bg-white/20 ${pathName === "/wishList" && "bg-white/20"} transition-all ease-in-out duration-300`}>
+                        Wish List
                     </Link>
                 </li>
                 <li className="flex items-center">
