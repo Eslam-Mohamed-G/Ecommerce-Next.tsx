@@ -22,6 +22,15 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
             for (let i = 1; i <= totalPages; i++) {
                 pages.push(i);
             }
+        } else {
+            // Case 2: user is near the beginning
+            if (currentPage <= 3) {
+                for (let i = 1; i <= 4; i++) {
+                    pages.push(i);
+                }
+                pages.push('...');
+                pages.push(totalPages);
+            }
         }
     };
     return (
