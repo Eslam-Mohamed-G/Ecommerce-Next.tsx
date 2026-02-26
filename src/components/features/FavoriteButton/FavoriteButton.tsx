@@ -52,7 +52,7 @@ export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonP
             showToast("error", "There's an error. Please try again.");
         } finally {
             setLoading(false);
-            getUserWishlist();
+            getUserWishlist(false);
         };
     };
 
