@@ -57,12 +57,12 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
             <button
                 onClick={() => onPageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="p-2 border border-borderColor rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
+                className="p-2 border border-borderColor rounded cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
                 aria-label="Previous page"
             >
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
             </button>
-            
+
             {generatePages().map((page, index) => (
                 <React.Fragment key={index}>
                     {page === '...' ? (
@@ -71,8 +71,8 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
                         <button
                             onClick={() => typeof page === 'number' ? onPageChange(page) : undefined}
                             className={`w-10 h-10 flex items-center justify-center rounded border transition-colors ${currentPage === page
-                                ? 'bg-primaryColor text-white border-primaryColor'
-                                : 'border-borderColor hover:bg-gray-50 text-text2Color'
+                                ? 'bg-primaryColor text-white border-primaryColor cursor-default'
+                                : 'border-borderColor hover:bg-gray-50 text-text2Color  cursor-pointer'
                                 }`}
                         >
                             {page}
@@ -84,7 +84,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
             <button
                 onClick={() => onPageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="p-2 border border-borderColor rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
+                className="p-2 border border-borderColor rounded cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
                 aria-label="Next page"
             >
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
