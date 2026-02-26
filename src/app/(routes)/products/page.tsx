@@ -19,6 +19,10 @@ export default function page() {
 
     const [sortBy, setSortBy] = useState('default');
 
+    // Pagination state
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 12;
+    
     // Fetch products from API
     useEffect(() => {
         fetchProducts();
