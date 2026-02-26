@@ -1,5 +1,6 @@
 "use client"
 import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb'
+import Pagination from '@/src/components/common/Pagination/Pagination';
 import FilterSidebar, { FilterState } from '@/src/components/features/FilterSidebar/FilterSidebar'
 import ProductCard from '@/src/components/features/ProductCard/ProductCard';
 import { useGetProducts } from '@/src/context/GetProductsContext';
@@ -8,7 +9,7 @@ import React, { useEffect, useState } from 'react'
 
 
 export default function page() {
-    const {loading, productError, products, fetchProducts} = useGetProducts();
+    const { loading, productError, products, fetchProducts } = useGetProducts();
 
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [filters, setFilters] = useState<FilterState>({
@@ -146,11 +147,24 @@ export default function page() {
                     {!loading && !productError && (
                         <>
                             {filteredProducts.length > 0 ? (
-                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
-                                    {filteredProducts.map((product) => (
-                                        <ProductCard key={product.id} className='w-full md:w-56 group' {...product} />
-                                    ))}
-                                </div>
+                                <>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+                                        {currentProducts.map((product) => (
+                                            <ProductCard key={product.id} className='w-full md:w-56 group' {...product} />
+                                        ))}
+                                    </div>
+
+                                    {totalPages > 1 && (
+                                        <Pagination
+                                            currentPage={currentPage}
+                                            totalPages={totalPages}
+                                            onPageChange={(page) => {
+                                                setCurrentPage(page);
+                                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                            }}
+                                        />
+                                    )}
+                                </>
                             ) : (
                                 <div className="text-center py-20">
                                     <p className="text-xl text-text2Color">No products found</p>
