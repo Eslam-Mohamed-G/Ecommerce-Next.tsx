@@ -62,6 +62,24 @@ export default function Pagination({ currentPage, totalPages, onPageChange }: Pa
             >
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6" /></svg>
             </button>
+            
+            {generatePages().map((page, index) => (
+                <React.Fragment key={index}>
+                    {page === '...' ? (
+                        <span className="px-3 py-2 text-text2Color">...</span>
+                    ) : (
+                        <button
+                            onClick={() => typeof page === 'number' ? onPageChange(page) : undefined}
+                            className={`w-10 h-10 flex items-center justify-center rounded border transition-colors ${currentPage === page
+                                ? 'bg-primaryColor text-white border-primaryColor'
+                                : 'border-borderColor hover:bg-gray-50 text-text2Color'
+                                }`}
+                        >
+                            {page}
+                        </button>
+                    )}
+                </React.Fragment>
+            ))}
 
             <button
                 onClick={() => onPageChange(currentPage + 1)}
