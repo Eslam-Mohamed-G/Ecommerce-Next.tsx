@@ -17,7 +17,7 @@ export interface GetProductsContextType {
     products: Product[];
     fetchProducts: () => Promise<void>;
     wishlist: Product[];
-    getUserWishlist: () => Promise<void>;
+    getUserWishlist: (showLoading?: boolean) => Promise<void>;
     cartList: Cart | null;
     getUserCart: (showLoading?: boolean) => Promise<void>;
 }
@@ -50,14 +50,17 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
     const [wishlist, setWishlist] = useState<Product[]>([]);
     const { showToast } = useToast();
 
-    const getUserWishlist = async () => {
+    const getUserWishlist = async (showLoading: boolean = true) => {
         const token = getCookie("token") as string | undefined;
         if (!token) {
             showToast("warning", "You are not logged in");
             return;
         }
 
-        setWishlistLoading(true);
+        if (showLoading) {
+            setWishlistLoading(true)
+        };
+
         setWishlistError(null);
         try {
             const response = await wishlistService.getWishlist();
@@ -67,7 +70,9 @@ export const WishlistProvider = ({ children }: { children: ReactNode }) => {
         } catch (error) {
             setWishlistError(error instanceof Error ? error.message : 'An error occurred');
         } finally {
-            setWishlistLoading(false);
+            if (showLoading) {
+                setWishlistLoading(false)
+            };
         }
     };
 
