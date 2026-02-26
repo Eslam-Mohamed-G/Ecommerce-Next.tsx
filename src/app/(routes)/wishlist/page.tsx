@@ -4,16 +4,16 @@ import { useGetProducts } from '@/src/context/GetProductsContext';
 import React, { useEffect } from 'react';
 
 export default function page() {
-    const {loading, wishlistError, wishlist, getUserWishlist} = useGetProducts();
-    
+    const { wishlistLoading, wishlistError, wishlist, getUserWishlist } = useGetProducts();
+
     // useEffect will be used to fetch the wishlist data when the page loads.
     useEffect(() => {
         getUserWishlist();
     }, []);
-    
+
     return (
         <section className=''>
-            {loading && (
+            {wishlistLoading && (
                 <div className='lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4'>
                     {Array.from({ length: 5 }, (_, i) => (
                         <div role="status" key={i} className="flex flex-col gap-4 w-full max-w-sm border border-gray-200 p-4 rounded-lg overflow-hidden">
@@ -44,7 +44,7 @@ export default function page() {
                 </div>
             )}
 
-            {!loading && !wishlistError && (
+            {!wishlistLoading && !wishlistError && (
                 <div className='w-full lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8'>
                     <div className="flex items-center gap-2 mb-4">
                         <span aria-hidden="true" className="bg-primaryColor w-5 h-10 rounded" />
