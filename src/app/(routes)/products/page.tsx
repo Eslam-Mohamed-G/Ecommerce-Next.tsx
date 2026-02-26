@@ -22,7 +22,7 @@ export default function page() {
     // Pagination state
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 12;
-    
+
     // Fetch products from API
     useEffect(() => {
         fetchProducts();
@@ -83,7 +83,15 @@ export default function page() {
         };
 
         setFilteredProducts(result);
+        setCurrentPage(1); // Reset page to 1 when filters or sort change
     }, [products, filters, sortBy]);
+
+    // Pagination logic
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
     return (
         <main className="xl:max-w-7xl lg:max-w-5xl m-auto px-4 py-8">
             <Breadcrumb items={[{ label: 'Products' }]} />
