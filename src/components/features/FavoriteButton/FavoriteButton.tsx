@@ -15,7 +15,7 @@ interface favoriteButtonProps {
 
 export default function FavoriteButton({ cssStyle, product_Id }: favoriteButtonProps) {
     const pathname = usePathname();
-    const isWishlistPage = pathname === "/wishList";
+    const isWishlistPage = pathname === "/wishlist";
     const [loading, setLoading] = useState(false);
     const { showToast } = useToast();
     const { getUserWishlist } = useGetProducts();
