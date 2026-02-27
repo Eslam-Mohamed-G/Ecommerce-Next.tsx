@@ -7,7 +7,7 @@ interface FilterSidebarProps {
 
 export interface FilterState {
     categories: string[];
-    priceRange: [number, number];
+    priceRange: [number | null, number | null];
     rating: number;
 }
 
