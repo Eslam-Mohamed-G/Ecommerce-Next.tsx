@@ -36,9 +36,9 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
     // price range
     const [priceRange, setPriceRange] = useState<[number | null, number | null]>([null, null]);
     const [minRating, setMinRating] = useState(0);
-    const handlePriceChange = (index: 0 | 1, value: number) => {
-        const updated: [number, number] = [...priceRange] as [number, number];
-        updated[index] = value;
+    const handlePriceChange = (index: 0 | 1, value: number | '') => {
+        const updated: [number | null, number | null] = [...priceRange];
+        updated[index] = value === '' ? null : Number(value);
         setPriceRange(updated);
         onFilterChange({ categories: selectedCategories, priceRange: updated, rating: minRating });
     };
@@ -51,9 +51,9 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
 
     const clearFilters = () => {
         setSelectedCategories([]);
-        setPriceRange([0, 1000]);
+        setPriceRange([0, null]);
         setMinRating(0);
-        onFilterChange({ categories: [], priceRange: [0, 1000], rating: 0 });
+        onFilterChange({ categories: [], priceRange: [0, null], rating: 0 });
     };
 
     return (
@@ -130,7 +130,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                                 <input
                                     type="number"
                                     value={priceRange[0] ?? ''}
-                                    onChange={(e) => handlePriceChange(0, Number(e.target.value))}
+                                    onChange={(e) => handlePriceChange(0, e.target.value === '' ? '' : Number(e.target.value))}
                                     className="w-full px-3 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
                                     placeholder="Min"
                                 />
@@ -147,7 +147,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                                 type="range"
                                 min="0"
                                 max="1000"
-                                value={priceRange[1]}
+                                value={priceRange[1] ?? ""}
                                 onChange={(e) => handlePriceChange(1, Number(e.target.value))}
                                 className="w-full accent-primaryColor"
                             />
