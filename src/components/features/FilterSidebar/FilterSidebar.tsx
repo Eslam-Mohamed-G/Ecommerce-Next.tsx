@@ -34,7 +34,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
     };
 
     // price range
-    const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
+    const [priceRange, setPriceRange] = useState<[number | null, number | null]>([null, null]);
     const [minRating, setMinRating] = useState(0);
     const handlePriceChange = (index: 0 | 1, value: number) => {
         const updated: [number, number] = [...priceRange] as [number, number];
@@ -129,7 +129,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                             <div className="flex items-center gap-2">
                                 <input
                                     type="number"
-                                    value={priceRange[0]}
+                                    value={priceRange[0] ?? ''}
                                     onChange={(e) => handlePriceChange(0, Number(e.target.value))}
                                     className="w-full px-3 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
                                     placeholder="Min"
@@ -137,7 +137,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                                 <span>-</span>
                                 <input
                                     type="number"
-                                    value={priceRange[1]}
+                                    value={priceRange[1] ?? ''}
                                     onChange={(e) => handlePriceChange(1, Number(e.target.value))}
                                     className="w-full px-3 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
                                     placeholder="Max"
