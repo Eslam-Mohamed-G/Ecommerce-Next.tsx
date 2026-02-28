@@ -73,7 +73,7 @@ src/
 └── types/                      # TypeScript Type Definitions
 ```
 
-### 🔑 Architecture Highlights
+### Architecture Highlights
 
 | Layer | Responsibility |
 |---|---|
@@ -85,7 +85,7 @@ src/
 
 ---
 
-## 🔍 SEO
+## SEO
 
 - **`<title>` and `<meta description>`** defined per page using Next.js `generateMetadata`
 - **Open Graph image** (`og-image.webp`) for rich social sharing previews
@@ -95,7 +95,7 @@ src/
 
 ---
 
-## ♿ Accessibility
+## Accessibility
 
 - **ARIA attributes** used on interactive elements (buttons, modals, form controls)
 - **Keyboard navigable** components throughout the app
@@ -106,7 +106,7 @@ src/
 
 ---
 
-## ⚡ Performance
+## Performance
 
 - **Next.js App Router** with React Server Components (RSC) for reduced client-side JS
 - **`next/image`** for automatic responsive images, WebP/AVIF conversion, and lazy loading
@@ -117,7 +117,7 @@ src/
 
 ---
 
-## ✅ Best Practices
+## Best Practices
 
 - **TypeScript** for full type safety across the entire codebase
 - **Formik + Yup** for robust, schema-validated forms
@@ -129,7 +129,7 @@ src/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -166,7 +166,7 @@ npm run start
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technology | Purpose |
 |---|---|
@@ -178,9 +178,3 @@ npm run start
 | **Formik + Yup** | Form handling & validation |
 | **cookies-next** | Cookie management for auth |
 | **ESLint** | Code linting |
-
----
-
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
