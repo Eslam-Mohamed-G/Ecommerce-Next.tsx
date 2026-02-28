@@ -7,7 +7,7 @@ interface FilterSidebarProps {
 
 export interface FilterState {
     categories: string[];
-    priceRange: [number | null, number | null];
+    priceRange: [number, number] | null;
     rating: number;
 }
 
@@ -30,15 +30,15 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
             ? selectedCategories.filter(c => c !== category)
             : [...selectedCategories, category];
         setSelectedCategories(updated);
-        onFilterChange({ categories: updated, priceRange, rating: minRating });
+        onFilterChange({ categories: updated, priceRange: priceRange, rating: minRating });
     };
 
     // price range
-    const [priceRange, setPriceRange] = useState<[number | null, number | null]>([null, null]);
+    const [priceRange, setPriceRange] = useState<[number, number]>([0, 1000]);
     const [minRating, setMinRating] = useState(0);
-    const handlePriceChange = (index: 0 | 1, value: number | '') => {
-        const updated: [number | null, number | null] = [...priceRange];
-        updated[index] = value === '' ? null : Number(value);
+    const handlePriceChange = (index: 0 | 1, value: number) => {
+        const updated: [number, number] = [...priceRange] as [number, number];
+        updated[index] = value;
         setPriceRange(updated);
         onFilterChange({ categories: selectedCategories, priceRange: updated, rating: minRating });
     };
@@ -46,14 +46,14 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
     // Rating
     const handleRatingChange = (rating: number) => {
         setMinRating(rating);
-        onFilterChange({ categories: selectedCategories, priceRange, rating });
+        onFilterChange({ categories: selectedCategories, priceRange: priceRange, rating });
     };
 
     const clearFilters = () => {
         setSelectedCategories([]);
-        setPriceRange([0, null]);
+        setPriceRange([0, 1000]);
         setMinRating(0);
-        onFilterChange({ categories: [], priceRange: [0, null], rating: 0 });
+        onFilterChange({ categories: [], priceRange: null, rating: 0 });
     };
 
     return (
@@ -129,15 +129,15 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                             <div className="flex items-center gap-2">
                                 <input
                                     type="number"
-                                    value={priceRange[0] ?? ''}
-                                    onChange={(e) => handlePriceChange(0, e.target.value === '' ? '' : Number(e.target.value))}
+                                    value={priceRange[0]}
+                                    onChange={(e) => handlePriceChange(0, Number(e.target.value))}
                                     className="w-full px-3 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
                                     placeholder="Min"
                                 />
                                 <span>-</span>
                                 <input
                                     type="number"
-                                    value={priceRange[1] ?? ''}
+                                    value={priceRange[1]}
                                     onChange={(e) => handlePriceChange(1, Number(e.target.value))}
                                     className="w-full px-3 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
                                     placeholder="Max"
@@ -147,7 +147,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                                 type="range"
                                 min="0"
                                 max="1000"
-                                value={priceRange[1] ?? ""}
+                                value={priceRange[1]}
                                 onChange={(e) => handlePriceChange(1, Number(e.target.value))}
                                 className="w-full accent-primaryColor"
                             />

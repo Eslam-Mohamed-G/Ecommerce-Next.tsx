@@ -43,17 +43,12 @@ export default function page() {
         }
 
         // Filter by price range
-        result = result.filter(product => {
-            const price = product.priceAfterDiscount || product.price;
-        
-            const min = filters.priceRange[0];
-            const max = filters.priceRange[1];
-        
-            if (min !== null && price < min) return false;
-            if (max !== null && price > max) return false;
-        
-            return true;
-        });
+        if (filters.priceRange !== null) {
+            result = result.filter(product => {
+                const price = product.priceAfterDiscount || product.price;
+                return price >= filters.priceRange![0] && price <= filters.priceRange![1];
+            });
+        }
 
         // Filter by rating
         if (filters.rating > 0) {
