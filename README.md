@@ -2,7 +2,7 @@
 
 A modern, full-featured e-commerce web application built with **Next.js 16**, **TypeScript**, and **Tailwind CSS** — designed with **Clean Architecture** principles, optimized for **SEO**, **Accessibility**, **Performance**, and **Best Practices**.
 
-# [live demo](https://ecommerce-next-tsx.vercel.app/).
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-Visit%20Site-brightgreen?style=for-the-badge)](https://ecommerce-next-tsx.vercel.app/)
 ---
 
 ## Preview
