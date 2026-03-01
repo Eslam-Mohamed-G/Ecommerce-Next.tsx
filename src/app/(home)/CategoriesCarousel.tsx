@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useRef } from "react";
-import { CameraIcon, GamingIcon, PhoneIcon, ComputerIcon, HeadphoneIcon, MenFashionIcon, WomenFashionIcon, SmartWatchIcon } from "@/src/components/ui/Icon/Icon";
 
 export default function CategoriesCarousel() {
     const scrollRef = useRef<HTMLDivElement | null>(null);
