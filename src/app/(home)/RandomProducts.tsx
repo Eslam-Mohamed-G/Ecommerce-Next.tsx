@@ -28,11 +28,11 @@ export default function RandomProducts() {
             {/* Buttons */}
             <div className="absolute bottom-full -translate-y-20 md:-translate-y-8 right-0 flex flex-row items-center justify-center gap-2 md:gap-4">
                 <button type="button" onClick={scrollLeft} className="flex items-center justify-center w-10 h-10 bg-primaryBackground rounded-full cursor-pointer">
-                    <Image src="/category/icons_arrow-left.svg" alt="icons_arrow-left" width={24} height={24} loading="lazy" />
+                    <Image src="/icon/arrow-left.svg" alt="icons_arrow-left" width={24} height={24} loading="lazy" />
                 </button>
 
                 <button type="button" onClick={scrollRight} className="flex items-center justify-center w-10 h-10 bg-primaryBackground rounded-full cursor-pointer">
-                    <Image src="/category/icons arrow-right.svg" alt="icons arrow-right" width={24} height={24} loading="lazy" />
+                    <Image src="/icon/arrow-right.svg" alt="icons arrow-right" width={24} height={24} loading="lazy" />
                 </button>
             </div>
 
