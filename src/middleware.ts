@@ -21,11 +21,11 @@ export function middleware(request: NextRequest) {
     if (token && authRoutes.includes(pathname)) {
         return NextResponse.redirect(new URL('/', request.url));
     }
-    
+
     return NextResponse.next();
 }
 
 // Configure which routes this middleware should run on
 export const config = {
-    matcher: ['/wishlist', '/cartList', '/account'],
+    matcher: ['/wishlist', '/cartList', '/account', '/login', '/signUp'],
 };
