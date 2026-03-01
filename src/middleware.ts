@@ -2,6 +2,10 @@ import { NextRequest, NextResponse } from 'next/server';
 
 // Define routes that require authentication
 const protectedRoutes = ['/wishlist', '/cartList', '/account'];
+
+// Define routes that should NOT be accessible when user is authenticated
+const authRoutes = ['/login', '/signUp'];
+
 export function middleware(request: NextRequest) {
     const token = request.cookies.get('token')?.value;
 
