@@ -9,6 +9,9 @@ const authRoutes = ['/login', '/signUp'];
 export function middleware(request: NextRequest) {
     const token = request.cookies.get('token')?.value;
 
+    // Get current request pathname
+    const { pathname } = request.nextUrl;
+    
     if (!token) {
         return NextResponse.redirect(new URL('/login', request.url));
     }
