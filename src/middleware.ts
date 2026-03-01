@@ -12,5 +12,5 @@ export function middleware(request: NextRequest) {
 
 // Configure which routes this middleware should run on
 export const config = {
-    matcher: ['/wishlist', '/cartList'],
+    matcher: ['/wishlist', '/cartList', '/account'],
 };
