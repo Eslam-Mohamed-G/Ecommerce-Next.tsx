@@ -11,8 +11,9 @@ export function middleware(request: NextRequest) {
 
     // Get current request pathname
     const { pathname } = request.nextUrl;
-    
-    if (!token) {
+
+    // If there is NO token and user tries to access a protected route -→ Redirect to login page
+    if (!token && protectedRoutes.includes(pathname)) {
         return NextResponse.redirect(new URL('/login', request.url));
     }
 
