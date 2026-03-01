@@ -10,6 +10,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
 }
 
+// Configure which routes this middleware should run on
 export const config = {
-    matcher: ['/wishlist'],
+    matcher: ['/wishlist', '/cartList'],
 };
