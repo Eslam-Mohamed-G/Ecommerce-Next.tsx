@@ -17,6 +17,11 @@ export function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL('/login', request.url));
     }
 
+    // If there IS a token and user tries to access login or signup page -→ Redirect to home page
+    if (token && authRoutes.includes(pathname)) {
+        return NextResponse.redirect(new URL('/', request.url));
+    }
+    
     return NextResponse.next();
 }
 
