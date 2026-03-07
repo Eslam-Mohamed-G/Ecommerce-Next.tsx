@@ -189,7 +189,21 @@ export default function page() {
                             <div className="lg:col-span-1">
                                 <div className="border border-borderColor rounded-lg p-6 sticky top-4">
                                     {/* Coupon Section */}
-
+                                    <div className="mb-6">
+                                        <label className="block text-sm font-medium mb-2">Coupon Code</label>
+                                        <div className="flex gap-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Enter code"
+                                                className="flex-1 px-4 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
+                                            />
+                                            <button
+                                                className="bg-primaryColor hover:bg-buttonColor text-white px-6 py-2 rounded cursor-pointer transition-colors ease-in-out duration-300"
+                                            >
+                                                Apply
+                                            </button>
+                                        </div>
+                                    </div>
                                     {/* Cart Total */}
                                     <div className="space-y-4">
                                         <h3 className="text-xl font-semibold mb-4">Cart Total</h3>
