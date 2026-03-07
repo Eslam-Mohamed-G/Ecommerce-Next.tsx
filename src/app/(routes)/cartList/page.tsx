@@ -217,7 +217,7 @@ export default function page() {
                                             <span className="font-medium">Free</span>
                                         </div>
 
-                                        <div className="flex justify-between items-center pt-2">
+                                        <div className="flex justify-between items-center text-lg font-bold pt-2">
                                             <span className="font-semibold">Total:</span>
                                             <span className="font-semibold text-primaryColor">${cartList?.totalPriceAfterDiscount || cartList?.totalCartPrice || 0}</span>
                                         </div>
