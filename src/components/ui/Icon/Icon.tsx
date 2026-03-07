@@ -123,11 +123,11 @@ export const CameraIcon: React.FC<IconProps> = ({ className = "", width = 56, he
 
 export const GamingIcon: React.FC<IconProps> = ({ className = "", width = 56, height = 56 }) => (
     <svg width={width} height={height} className={className} aria-hidden="true" viewBox="0 0 56 56" fill="none" stroke="currentColor">
-        <g clip-path="url(#clip0_23436_3426)">
-            <path d="M46.6665 14H9.33317C6.75584 14 4.6665 16.0893 4.6665 18.6667V37.3333C4.6665 39.9107 6.75584 42 9.33317 42H46.6665C49.2438 42 51.3332 39.9107 51.3332 37.3333V18.6667C51.3332 16.0893 49.2438 14 46.6665 14Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M14 28H23.3333M18.6667 23.3334V32.6667" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M35 25.6666V25.6908" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M42 30.3333V30.3574" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        <g clipPath="url(#clip0_23436_3426)">
+            <path d="M46.6665 14H9.33317C6.75584 14 4.6665 16.0893 4.6665 18.6667V37.3333C4.6665 39.9107 6.75584 42 9.33317 42H46.6665C49.2438 42 51.3332 39.9107 51.3332 37.3333V18.6667C51.3332 16.0893 49.2438 14 46.6665 14Z" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M14 28H23.3333M18.6667 23.3334V32.6667" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M35 25.6666V25.6908" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M42 30.3333V30.3574" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" />
         </g>
         <defs>
             <clipPath id="clip0_23436_3426">
