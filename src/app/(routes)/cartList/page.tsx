@@ -188,6 +188,7 @@ export default function page() {
                             {/* Coupon and Cart Total */}
                             <div className="lg:col-span-1">
                                 <div className="border border-borderColor rounded-lg p-6 sticky top-4">
+                                    <h2 className="text-xl font-bold mb-6">Order Summary</h2>
                                     {/* Coupon Section */}
                                     <div className="mb-6">
                                         <label className="block text-sm font-medium mb-2">Coupon Code</label>
@@ -206,21 +207,19 @@ export default function page() {
                                     </div>
                                     {/* Cart Total */}
                                     <div className="space-y-4">
-                                        <h3 className="text-xl font-semibold mb-4">Cart Total</h3>
-
-                                        <div className="flex justify-between items-center pb-4 border-b">
-                                            <span>Subtotal:</span>
+                                        <div className="flex justify-between items-center">
+                                            <span className="text-text2Color">Subtotal:</span>
                                             <span className="font-medium">${cartList?.totalCartPrice || 0}</span>
                                         </div>
 
                                         <div className="flex justify-between items-center pb-4 border-b">
-                                            <span>Shipping:</span>
+                                            <span className="text-text2Color">Shipping:</span>
                                             <span className="font-medium">Free</span>
                                         </div>
 
                                         <div className="flex justify-between items-center pt-2">
                                             <span className="font-semibold">Total:</span>
-                                            <span className="font-semibold">${cartList?.totalPriceAfterDiscount || cartList?.totalCartPrice || 0}</span>
+                                            <span className="font-semibold text-primaryColor">${cartList?.totalPriceAfterDiscount || cartList?.totalCartPrice || 0}</span>
                                         </div>
 
                                         <button className="w-full mt-6 px-8 py-3 bg-primaryColor hover:bg-buttonColor text-white rounded transition-colors font-medium">
