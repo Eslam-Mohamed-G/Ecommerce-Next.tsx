@@ -193,9 +193,9 @@ export default function page() {
                                     </Link>
                                     <button
                                         onClick={() => getUserCart()}
-                                        className="px-8 py-3 border border-gray-300 rounded hover:bg-gray-50 transition-colors font-medium"
+                                        className="px-8 py-3 border border-primaryColor rounded bg-transparent hover:bg-primaryColor hover:text-white font-medium cursor-pointer transition-colors ease-in-out duration-300"
                                     >
-                                        Update Cart
+                                        Clear Cart
                                     </button>
                                 </div>
 
