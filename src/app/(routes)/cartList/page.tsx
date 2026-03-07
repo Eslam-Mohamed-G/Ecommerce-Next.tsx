@@ -48,6 +48,22 @@ export default function page() {
         }
     };
 
+    const [loadingClearCart, setLoadingClearCart] = useState<boolean>(false);
+    const handleClearCart = async () => {
+        try {
+            setLoadingClearCart(true);
+            const response = await cartService.clearCart();
+            if (response) {
+                await getUserCart(false);
+                showToast('success', 'All products removed from cart');
+            }
+        } catch (error) {
+            showToast('error', 'Failed to clear cart');
+        } finally {
+            setLoadingClearCart(false)
+        }
+    };
+
     useEffect(() => {
         getUserCart();
     }, []);
