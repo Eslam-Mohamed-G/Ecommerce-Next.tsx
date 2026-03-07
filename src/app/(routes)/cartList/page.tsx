@@ -192,14 +192,14 @@ export default function page() {
                                     {/* Coupon Section */}
                                     <div className="mb-6">
                                         <label className="block text-sm font-medium mb-2">Coupon Code</label>
-                                        <div className="flex gap-2">
+                                        <div className="grid grid-cols-4 gap-2">
                                             <input
                                                 type="text"
                                                 placeholder="Enter code"
-                                                className="flex-1 px-4 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
+                                                className="col-span-3 px-4 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
                                             />
                                             <button
-                                                className="bg-primaryColor hover:bg-buttonColor text-white px-6 py-2 rounded cursor-pointer transition-colors ease-in-out duration-300"
+                                                className="col-span-1 bg-primaryColor hover:bg-buttonColor text-white py-2 rounded cursor-pointer transition-colors ease-in-out duration-300"
                                             >
                                                 Apply
                                             </button>
