@@ -55,11 +55,6 @@ export default function ProductDetailsPage() {
         fetchProductsDetails();
     }, [fetchProductsDetails]);
 
-    const handleAddToCart = () => {
-        // Add to cart logic
-        console.log('Added to cart:', { quantity, color: selectedColor, size: selectedSize });
-    };
-
     // Fetch related Products from API
     useEffect(() => {
         // Only fetch related products when details are loaded
