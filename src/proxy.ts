@@ -6,7 +6,7 @@ const protectedRoutes = ['/wishlist', '/cartList', '/account'];
 // Define routes that should NOT be accessible when user is authenticated
 const authRoutes = ['/login', '/signUp'];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
     const token = request.cookies.get('token')?.value;
 
     // Get current request pathname
@@ -25,7 +25,7 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
 }
 
-// Configure which routes this middleware should run on
+// Configure which routes this proxy should run on
 export const config = {
     matcher: ['/wishlist', '/cartList', '/account', '/login', '/signUp'],
 };
