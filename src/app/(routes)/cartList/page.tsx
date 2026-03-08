@@ -242,19 +242,19 @@ export default function page() {
                                             <span className="font-medium">${cartList?.totalCartPrice || 0}</span>
                                         </div>
 
-                                        <div className="flex justify-between items-center pb-4 border-b">
+                                        <div className="flex justify-between items-center pb-4 border-b border-borderColor">
                                             <span className="text-text2Color">Shipping:</span>
                                             <span className="font-medium">Free</span>
                                         </div>
 
-                                        <div className="flex justify-between items-center text-lg font-bold pt-2">
+                                        <div className="flex justify-between items-center text-lg font-bold">
                                             <span className="font-semibold">Total:</span>
                                             <span className="font-semibold text-primaryColor">${cartList?.totalPriceAfterDiscount || cartList?.totalCartPrice || 0}</span>
                                         </div>
 
-                                        <button className="w-full mt-6 px-8 py-3 bg-primaryColor hover:bg-buttonColor text-white rounded transition-colors font-medium">
+                                        <Link href="/checkout" className="flex items-center justify-center w-full mt-6 px-8 py-3 bg-primaryColor hover:bg-buttonColor text-white rounded transition-colors ease-in-out duration-300 font-medium">
                                             Procees to checkout
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
