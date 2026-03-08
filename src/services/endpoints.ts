@@ -34,7 +34,14 @@ export const API_ENDPOINTS = {
         BASE: `${API_BASE_URL_V2}/cart`,
         ITEM: (itemId: string) => `${API_BASE_URL_V2}/cart/${itemId}`,
         APPLY_COUPON: `${API_BASE_URL_V2}/cart/applyCoupon`,
-    }
+    },
+
+    // Order
+    ORDER: {
+        USR_ORDER: (userId: string) => `${API_BASE_URL}/orders/user/${userId}`,
+        CASH_ORDER: (cartId: string) => `${API_BASE_URL_V2}/orders/${cartId}`,
+        CHECKOUT_SESSION: (cartId: string) => `${API_BASE_URL}/orders/checkout-session/${cartId}`,
+    },
     
 } as const;
 
