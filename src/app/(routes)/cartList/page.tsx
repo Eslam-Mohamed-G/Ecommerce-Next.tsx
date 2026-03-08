@@ -204,9 +204,9 @@ export default function page() {
                                         <div className="bg-white flex flex-col items-center justify-center gap-4 w-2xs p-4 capitalize rounded animate-zoom-in">
                                             <h1 className="text-lg font-bold">confirm logout</h1>
                                             <div className="flex flex-row justify-around gap-4 w-full">
-                                                <button type="button" aria-label='clear the cart' onClick={handleClearCart} className="flex items-center justify-center gap-2 text-primaryColor w-28 py-2 border rounded cursor-pointer">
-                                                    {loadingClearCart && (<LoadingSpinner size="sm" className="text-primaryColor" />)}
-                                                    <span>Clear cart</span>
+                                                <button type="button" aria-label='clear the cart' onClick={handleClearCart} className="flex items-center justify-center text-primaryColor w-24 py-2 border rounded relative cursor-pointer">
+                                                    {loadingClearCart && (<LoadingSpinner size="sm" className="text-primaryColor absolute top-1/2 -translate-y-1/2 left-1" />)}
+                                                    <span>Clear</span>
                                                 </button>
                                                 <button type="button" aria-label='cancel the Cleaning' onClick={() => setConfirmCleaningModel(false)} className="bg-primaryColor text-white w-24 py-2 rounded cursor-pointer">cancl</button>
                                             </div>
