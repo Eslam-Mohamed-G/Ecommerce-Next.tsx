@@ -126,3 +126,36 @@ export interface Cart {
     totalCartPrice: number;
     totalPriceAfterDiscount?: number;
 }
+
+// ==================== Order Types ====================
+export interface ShippingAddress {
+    details: string;
+    phone: string;
+    city: string;
+    postalCode: string;
+}
+
+export interface OrderItem {
+    count: number;
+    _id: string;
+    product: Pick<Product, '_id' | 'title' | 'imageCover' | 'price'>;
+    price: number;
+}
+
+export interface Order {
+    _id: string;
+    user: Pick<User, '_id' | 'name' | 'email' | 'phone'>;
+    cartItems: OrderItem[];
+    shippingAddress: ShippingAddress;
+    taxPrice: number;
+    shippingPrice: number;
+    totalOrderPrice: number;
+    paymentMethodType: 'cash' | 'card';
+    isPaid: boolean;
+    paidAt?: string;
+    isDelivered: boolean;
+    deliveredAt?: string;
+    createdAt: string;
+    updatedAt: string;
+    id: string;
+}
