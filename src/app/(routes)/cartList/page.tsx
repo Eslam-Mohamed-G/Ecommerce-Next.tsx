@@ -48,8 +48,8 @@ export default function page() {
         }
     };
 
-    const [confirmCleaningModel, setConfirmCleaningModel] = useState<boolean>(true);
-    const [loadingClearCart, setLoadingClearCart] = useState<boolean>(true);
+    const [confirmCleaningModel, setConfirmCleaningModel] = useState<boolean>(false);
+    const [loadingClearCart, setLoadingClearCart] = useState<boolean>(false);
     const handleClearCart = async () => {
         try {
             setLoadingClearCart(true);
