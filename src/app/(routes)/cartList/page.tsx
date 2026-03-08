@@ -201,14 +201,14 @@ export default function page() {
                                 </div>
                                 {confirmCleaningModel && (
                                     <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center">
-                                        <div className="bg-white flex flex-col items-center justify-center gap-4 p-4 capitalize rounded animate-zoom-in">
+                                        <div className="bg-white flex flex-col items-center justify-center gap-4 w-2xs p-4 capitalize rounded animate-zoom-in">
                                             <h1 className="text-lg font-bold">confirm logout</h1>
-                                            <div className="flex flex-row gap-4">
-                                                <button type="button" aria-label='clear the cart' onClick={handleClearCart} className="flex items-center justify-center gap-4 text-primaryColor w-24 py-2 border rounded cursor-pointer">
+                                            <div className="flex flex-row justify-around gap-4 w-full">
+                                                <button type="button" aria-label='clear the cart' onClick={handleClearCart} className="flex items-center justify-center gap-2 text-primaryColor w-28 py-2 border rounded cursor-pointer">
                                                     {loadingClearCart && (<LoadingSpinner size="sm" className="text-primaryColor" />)}
                                                     <span>Clear cart</span>
                                                 </button>
-                                                <button type="button" aria-label='cancel the Cleaning' onClick={() => setConfirmCleaningModel(false)} className="bg-primaryColor text-white w-20 py-2 rounded cursor-pointer">cancl</button>
+                                                <button type="button" aria-label='cancel the Cleaning' onClick={() => setConfirmCleaningModel(false)} className="bg-primaryColor text-white w-24 py-2 rounded cursor-pointer">cancl</button>
                                             </div>
                                         </div>
                                     </div>
