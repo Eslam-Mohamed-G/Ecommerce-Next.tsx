@@ -48,8 +48,8 @@ export default function page() {
         }
     };
 
-    const [confirmCleaningModel, setConfirmCleaningModel] = useState<boolean>(false);
-    const [loadingClearCart, setLoadingClearCart] = useState<boolean>(false);
+    const [confirmCleaningModel, setConfirmCleaningModel] = useState<boolean>(true);
+    const [loadingClearCart, setLoadingClearCart] = useState<boolean>(true);
     const handleClearCart = async () => {
         try {
             setLoadingClearCart(true);
@@ -204,7 +204,10 @@ export default function page() {
                                         <div className="bg-white flex flex-col items-center justify-center gap-4 p-4 capitalize rounded animate-zoom-in">
                                             <h1 className="text-lg font-bold">confirm logout</h1>
                                             <div className="flex flex-row gap-4">
-                                                <button type="button" aria-label='clear the cart' onClick={handleClearCart} className="text-primaryColor w-20 py-2 border rounded cursor-pointer">Clear cart</button>
+                                                <button type="button" aria-label='clear the cart' onClick={handleClearCart} className="flex items-center justify-center gap-4 text-primaryColor w-24 py-2 border rounded cursor-pointer">
+                                                    {loadingClearCart && (<LoadingSpinner size="sm" className="text-primaryColor" />)}
+                                                    <span>Clear cart</span>
+                                                </button>
                                                 <button type="button" aria-label='cancel the Cleaning' onClick={() => setConfirmCleaningModel(false)} className="bg-primaryColor text-white w-20 py-2 rounded cursor-pointer">cancl</button>
                                             </div>
                                         </div>
