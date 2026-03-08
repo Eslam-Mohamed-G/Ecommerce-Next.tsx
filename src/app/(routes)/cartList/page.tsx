@@ -199,7 +199,17 @@ export default function page() {
                                         Clear Cart
                                     </button>
                                 </div>
-
+                                {confirmCleaningModel && (
+                                    <div role="dialog" aria-modal="true" className="fixed inset-0 z-50 bg-black/40 backdrop-blur-xs flex items-center justify-center">
+                                        <div className="bg-white flex flex-col items-center justify-center gap-4 p-4 capitalize rounded animate-zoom-in">
+                                            <h1 className="text-lg font-bold">confirm logout</h1>
+                                            <div className="flex flex-row gap-4">
+                                                <button type="button" aria-label='clear the cart' onClick={handleClearCart} className="text-primaryColor w-20 py-2 border rounded cursor-pointer">Clear cart</button>
+                                                <button type="button" aria-label='cancel the Cleaning' onClick={() => setConfirmCleaningModel(false)} className="bg-primaryColor text-white w-20 py-2 rounded cursor-pointer">cancl</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
 
                             {/* Coupon and Cart Total */}
