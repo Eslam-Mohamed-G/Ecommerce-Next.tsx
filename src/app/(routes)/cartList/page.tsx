@@ -48,6 +48,7 @@ export default function page() {
         }
     };
 
+    const [confirmCleaningModel, setConfirmCleaningModel] = useState<boolean>(false);
     const [loadingClearCart, setLoadingClearCart] = useState<boolean>(false);
     const handleClearCart = async () => {
         try {
@@ -192,7 +193,7 @@ export default function page() {
                                         Return To Shop
                                     </Link>
                                     <button
-                                        onClick={() => getUserCart()}
+                                        onClick={() => setConfirmCleaningModel(true)}
                                         className="px-8 py-3 border border-primaryColor rounded bg-transparent hover:bg-primaryColor hover:text-white font-medium cursor-pointer transition-colors ease-in-out duration-300"
                                     >
                                         Clear Cart
