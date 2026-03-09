@@ -37,9 +37,18 @@ export const createCheckoutSession = async (
     return response.data;
 };
 
+/**
+ * Get all orders for a specific user
+*/
+export const getUserOrders = async (userId: string): Promise<Order[]> => {
+    const response = await apiClient.get(API_ENDPOINTS.ORDER.USR_ORDER(userId));
+    return response.data;
+};
+
 const orderService = {
     createCashOrder,
     createCheckoutSession,
+    getUserOrders,
 };
 
 export default orderService;
