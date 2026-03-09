@@ -21,8 +21,25 @@ export const createCashOrder = async (
     return response.data;
 };
 
+/**
+ * Create an online payment checkout session (Stripe)
+ * Returns a session URL to redirect the user to the payment page
+ * @param cartId - The ID of the cart to checkout
+ * @param shippingAddress - Shipping details for the order
+*/
+export const createCheckoutSession = async (
+    cartId: string,
+    shippingAddress: ShippingAddress
+): Promise<ApiResponse<{ session: { url: string } }>> => {
+    const response = await apiClient.post(API_ENDPOINTS.ORDER.CHECKOUT_SESSION(cartId), {
+        shippingAddress,
+    });
+    return response.data;
+};
+
 const orderService = {
     createCashOrder,
+    createCheckoutSession,
 };
 
 export default orderService;
