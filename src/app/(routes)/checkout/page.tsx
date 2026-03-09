@@ -75,7 +75,7 @@ export default function page() {
                                 className={`w-full px-4 py-3 border rounded focus:outline-none focus:border-primaryColor`}
                             />
                         </div>
-                        
+
                         {/* ZIP Code */}
                         <div>
                             <label htmlFor="zipCode" className="block text-sm font-medium mb-2">
@@ -92,7 +92,32 @@ export default function page() {
                 </div>
 
                 {/* Order Summary */}
-                <div className="lg:col-span-1"></div>
+                <div className="lg:col-span-1">
+                    <div className="border border-borderColor rounded-lg p-6 sticky top-4">
+                        <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
+                        {/* Cart Items */}
+                        <div className="flex flex-col gap-4 mb-6 pb-6 border-b border-borderColor">
+
+                        </div>
+
+                        {/* Totals */}
+                        <div className="flex flex-col gap-3 mb-6 pb-6 border-b border-borderColor">
+                            <div className="flex justify-between">
+                                <span className="text-text2Color">Subtotal:</span>
+                                <span className="font-medium">$</span>
+                            </div>
+                            <div className="flex justify-between">
+                                <span className="text-text2Color">Shipping:</span>
+                                <span className="font-medium">$</span>
+                            </div>
+                        </div>
+
+                        <div className="flex justify-between text-lg font-bold mb-6">
+                            <span>Total:</span>
+                            <span className="text-primaryColor">$</span>
+                        </div>
+                    </div>
+                </div>
             </form>
         </section>
     )
