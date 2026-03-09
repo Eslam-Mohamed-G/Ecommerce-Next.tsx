@@ -1,10 +1,12 @@
 "use client";
 import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import { useGetProducts } from '@/src/context/GetProductsContext';
+import Image from 'next/image';
 import React, { useEffect } from 'react';
 
 export default function page() {
     const { cartlistLoading, cartError, cartList, getUserCart } = useGetProducts();
+console.log(cartList);
 
     useEffect(() => {
         getUserCart();
@@ -12,7 +14,7 @@ export default function page() {
 
         };
     }, []);
-    
+
     return (
         <section className="w-full min-h-96 lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8">
             <Breadcrumb items={[{ label: 'Cart', href: '/cart' }, { label: 'Checkout' }]} />
@@ -108,24 +110,29 @@ export default function page() {
                         <h2 className="text-xl font-semibold mb-6">Order Summary</h2>
                         {/* Cart Items */}
                         <div className="flex flex-col gap-4 mb-6 pb-6 border-b border-borderColor">
-
+                            {cartList?.products.map((item) => (
+                                <div key={item?.product._id} className="flex items-center gap-3">
+                                    <div className="relative w-16 h-16 bg-primaryBackground rounded shrink-0">
+                                        <Image
+                                            src={item.product.imageCover}
+                                            alt={item.product.title}
+                                            fill
+                                            className="object-contain p-2"
+                                        />
+                                    </div>
+                                    <div className="flex-1">
+                                        <p className="text-sm font-medium line-clamp-2">{item.product.title}</p>
+                                        <p className="text-sm text-text2Color">Qty: {item.count}</p>
+                                    </div>
+                                    <span className="font-semibold">${item.price * item.count}</span>
+                                </div>
+                            ))}
                         </div>
 
                         {/* Totals */}
-                        <div className="flex flex-col gap-3 mb-6 pb-6 border-b border-borderColor">
-                            <div className="flex justify-between">
-                                <span className="text-text2Color">Subtotal:</span>
-                                <span className="font-medium">$</span>
-                            </div>
-                            <div className="flex justify-between">
-                                <span className="text-text2Color">Shipping:</span>
-                                <span className="font-medium">$</span>
-                            </div>
-                        </div>
-
                         <div className="flex justify-between text-lg font-bold mb-6">
                             <span>Total:</span>
-                            <span className="text-primaryColor">$</span>
+                            <span className="text-primaryColor">${cartList?.totalPriceAfterDiscount || cartList?.totalCartPrice || 0}</span>
                         </div>
                     </div>
                 </div>
