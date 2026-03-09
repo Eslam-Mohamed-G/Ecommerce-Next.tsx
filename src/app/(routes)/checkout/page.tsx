@@ -6,7 +6,6 @@ import React, { useEffect } from 'react';
 
 export default function page() {
     const { cartlistLoading, cartError, cartList, getUserCart } = useGetProducts();
-console.log(cartList);
 
     useEffect(() => {
         getUserCart();
@@ -133,6 +132,71 @@ console.log(cartList);
                         <div className="flex justify-between text-lg font-bold mb-6">
                             <span>Total:</span>
                             <span className="text-primaryColor">${cartList?.totalPriceAfterDiscount || cartList?.totalCartPrice || 0}</span>
+                        </div>
+
+                        {/* Payment Methods */}
+                        <div className="mb-6">
+                            <h3 className="font-semibold mb-4">Payment Method</h3>
+
+                            <div className="flex flex-col gap-3">
+                                {/* Credit Card */}
+                                <label className="flex items-center gap-3 p-3 border border-borderColor rounded cursor-pointer hover:border-primaryColor transition-colors">
+                                    <input
+                                        type="radio"
+                                        name="paymentMethod"
+                                        value="card"
+                                        checked={formData.paymentMethod === 'card'}
+                                        onChange={handleInputChange}
+                                        className="w-4 h-4 accent-primaryColor cursor-pointer"
+                                    />
+                                    <span>Credit / Debit Card</span>
+                                </label>
+
+                                {/* Card Details */}
+                                {formData.paymentMethod === 'card' && (
+                                    <div className="pl-7 flex flex-col gap-3">
+                                        <input
+                                            type="text"
+                                            name="cardNumber"
+                                            placeholder="Card Number"
+                                            value={formData.cardNumber || ''}
+                                            onChange={handleInputChange}
+                                            className={`w-full px-4 py-2 border rounded focus:outline-none focus:border-primaryColor ${errors.cardNumber ? 'border-primaryColor' : 'border-borderColor'}`}
+                                        />
+                                        <div className="grid grid-cols-2 gap-3">
+                                            <input
+                                                type="text"
+                                                name="cardExpiry"
+                                                placeholder="MM/YY"
+                                                value={formData.cardExpiry || ''}
+                                                onChange={handleInputChange}
+                                                className={`px-4 py-2 border rounded focus:outline-none focus:border-primaryColor ${errors.cardExpiry ? 'border-primaryColor' : 'border-borderColor'}`}
+                                            />
+                                            <input
+                                                type="text"
+                                                name="cardCVV"
+                                                placeholder="CVV"
+                                                value={formData.cardCVV || ''}
+                                                onChange={handleInputChange}
+                                                className={`px-4 py-2 border rounded focus:outline-none focus:border-primaryColor ${errors.cardCVV ? 'border-primaryColor' : 'border-borderColor'}`}
+                                            />
+                                        </div>
+                                    </div>
+                                )}
+
+                                {/* Cash on Delivery */}
+                                <label className="flex items-center gap-3 p-3 border border-borderColor rounded cursor-pointer hover:border-primaryColor transition-colors">
+                                    <input
+                                        type="radio"
+                                        name="paymentMethod"
+                                        value="cash"
+                                        checked={formData.paymentMethod === 'cash'}
+                                        onChange={handleInputChange}
+                                        className="w-4 h-4 accent-primaryColor cursor-pointer"
+                                    />
+                                    <span>Cash on Delivery</span>
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
