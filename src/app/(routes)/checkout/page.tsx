@@ -3,6 +3,20 @@ import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import { useGetProducts } from '@/src/context/GetProductsContext';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
+import * as Yup from 'yup';
+
+// ─── Validation Schema ───
+
+const checkoutSchema = Yup.object({
+    details: Yup.string().trim().required('Street address is required'),
+    phone: Yup.string()
+        .trim()
+        .required('Phone number is required')
+        .matches(/^[0-9+\-\s]{7,15}$/, 'Enter a valid phone number'),
+    city: Yup.string().trim().required('City is required'),
+    postalCode: Yup.string().trim().required('ZIP / Postal code is required'),
+    paymentMethod: Yup.string().oneOf(['cash', 'card']).required(),
+});
 
 export default function page() {
     const { cartlistLoading, cartError, cartList, getUserCart } = useGetProducts();
