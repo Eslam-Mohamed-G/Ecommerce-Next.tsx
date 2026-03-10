@@ -40,7 +40,7 @@ export default function page() {
                 showToast('error', 'Your cart is empty or could not be loaded.');
                 setSubmitting(false);
                 return;
-            }
+            };
         },
     });
 
