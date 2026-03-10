@@ -1,6 +1,7 @@
 "use client";
 import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import { useGetProducts } from '@/src/context/GetProductsContext';
+import { useToast } from '@/src/context/ToastContext';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
@@ -21,6 +22,7 @@ const checkoutSchema = Yup.object({
 
 export default function page() {
     const { cartlistLoading, cartError, cartList, getUserCart } = useGetProducts();
+    const { showToast } = useToast();
 
     const formik = useFormik({
         initialValues: {
