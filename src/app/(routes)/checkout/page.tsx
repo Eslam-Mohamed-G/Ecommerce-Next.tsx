@@ -7,6 +7,7 @@ import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { ShippingAddress } from '@/src/types';
+import { createCashOrder } from '@/src/services/orderService';
 
 // ─── Validation Schema ───
 
@@ -50,6 +51,20 @@ export default function page() {
                 city: values.city,
                 postalCode: values.postalCode,
             };
+
+            try {
+                // ──────── Cash on Delivery ────────────
+                if (values.paymentMethod === 'cash') {
+                    const response = await createCashOrder(cartList._id, shippingAddress);
+                    if (response.status === 'success') {
+                        showToast('success', 'Order placed successfully! 🎉');
+                    } else {
+                        showToast('error', response.message || 'Failed to place order. Please try again.');
+                    }
+                }
+            } catch () {
+            } finally {
+            }
         },
     });
 
