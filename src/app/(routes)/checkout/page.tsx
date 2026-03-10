@@ -6,6 +6,7 @@ import Image from 'next/image';
 import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { ShippingAddress } from '@/src/types';
 
 // ─── Validation Schema ───
 
@@ -40,6 +41,14 @@ export default function page() {
                 showToast('error', 'Your cart is empty or could not be loaded.');
                 setSubmitting(false);
                 return;
+            };
+
+            // Prepare shipping address object
+            const shippingAddress: ShippingAddress = {
+                details: values.details,
+                phone: values.phone,
+                city: values.city,
+                postalCode: values.postalCode,
             };
         },
     });
