@@ -78,7 +78,9 @@ export default function page() {
                 // Handle API errors
                 showToast('error', error?.message || 'Something went wrong.');
             } finally {
-            }
+                // Stop loading state
+                setSubmitting(false);
+            };
         },
     });
 
