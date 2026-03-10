@@ -74,7 +74,9 @@ export default function page() {
                         showToast('error', 'Could not create payment session.');
                     }
                 }
-            } catch () {
+            } catch (error: any) {
+                // Handle API errors
+                showToast('error', error?.message || 'Something went wrong.');
             } finally {
             }
         },
