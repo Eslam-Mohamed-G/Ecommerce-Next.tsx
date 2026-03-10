@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { ShippingAddress } from '@/src/types';
-import { createCashOrder } from '@/src/services/orderService';
+import { createCashOrder, createCheckoutSession } from '@/src/services/orderService';
 
 // ─── Validation Schema ───
 
@@ -60,6 +60,18 @@ export default function page() {
                         showToast('success', 'Order placed successfully! 🎉');
                     } else {
                         showToast('error', response.message || 'Failed to place order. Please try again.');
+                    }
+                } else {
+
+                    // ─────────── Online Payment (Stripe) ───────────────
+                    const response = await createCheckoutSession(cartList._id, shippingAddress);
+                    const sessionUrl = response?.data?.session?.url;
+
+                    // Redirect user to Stripe checkout page
+                    if (sessionUrl) {
+                        window.location.href = sessionUrl;
+                    } else {
+                        showToast('error', 'Could not create payment session.');
                     }
                 }
             } catch () {
