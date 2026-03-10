@@ -136,19 +136,6 @@ export default function page() {
                             )}
                         </div>
 
-                        {/* Email */}
-                        <div>
-                            <label htmlFor="email" className="block text-sm font-medium mb-1">
-                                Email <span className="text-primaryColor">*</span>
-                            </label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                className={`w-full px-4 py-3 border rounded focus:outline-none focus:border-primaryColor`}
-                            />
-                        </div>
-
                         {/* Phone */}
                         <div>
                             <label htmlFor="phone" className="block text-sm font-medium mb-1">
@@ -158,8 +145,15 @@ export default function page() {
                                 type="tel"
                                 id="phone"
                                 name="phone"
-                                className={`w-full px-4 py-3 border rounded focus:outline-none focus:border-primaryColor`}
+                                value={formik.values.phone}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder="e.g. 01012345678"
+                                className={inputClass('phone')}
                             />
+                            {formik.touched.phone && formik.errors.phone && (
+                                <p className="text-red-500 text-xs mt-1">{formik.errors.phone}</p>
+                            )}
                         </div>
 
                         {/* Address */}
