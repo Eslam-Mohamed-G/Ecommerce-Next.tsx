@@ -86,9 +86,6 @@ export default function page() {
 
     useEffect(() => {
         getUserCart();
-        return () => {
-
-        };
     }, []);
 
     // ─────────────────────────────────────────────────────
@@ -154,45 +151,6 @@ export default function page() {
                             {formik.touched.phone && formik.errors.phone && (
                                 <p className="text-red-500 text-xs mt-1">{formik.errors.phone}</p>
                             )}
-                        </div>
-
-                        {/* Address */}
-                        <div className="">
-                            <label htmlFor="address" className="block text-sm font-medium mb-1">
-                                Street Address <span className="text-primaryColor">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                id="address"
-                                name="address"
-                                className={`w-full px-4 py-3 border rounded focus:outline-none focus:border-primaryColor`}
-                            />
-                        </div>
-
-                        {/* City */}
-                        <div>
-                            <label htmlFor="city" className="block text-sm font-medium mb-1">
-                                City <span className="text-primaryColor">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                id="city"
-                                name="city"
-                                className={`w-full px-4 py-3 border rounded focus:outline-none focus:border-primaryColor`}
-                            />
-                        </div>
-
-                        {/* ZIP Code */}
-                        <div>
-                            <label htmlFor="zipCode" className="block text-sm font-medium mb-2">
-                                ZIP Code <span className="text-primaryColor">*</span>
-                            </label>
-                            <input
-                                type="text"
-                                id="zipCode"
-                                name="zipCode"
-                                className={`w-full px-4 py-3 border rounded focus:outline-none focus:border-primaryColor`}
-                            />
                         </div>
                     </form>
                 </div>
