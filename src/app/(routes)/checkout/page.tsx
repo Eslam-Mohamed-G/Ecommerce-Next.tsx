@@ -33,9 +33,14 @@ export default function page() {
             paymentMethod: 'cash' as 'cash' | 'card',
         },
         validationSchema: checkoutSchema,
-        
-        onSubmit: async (values, {setSubmitting}) => {
-            
+
+        onSubmit: async (values, { setSubmitting }) => {
+            // Ensure cart exists
+            if (!cartList?._id) {
+                showToast('error', 'Your cart is empty or could not be loaded.');
+                setSubmitting(false);
+                return;
+            }
         },
     });
 
