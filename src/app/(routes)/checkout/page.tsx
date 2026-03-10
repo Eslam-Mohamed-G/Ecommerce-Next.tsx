@@ -3,6 +3,7 @@ import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import { useGetProducts } from '@/src/context/GetProductsContext';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
 // ─── Validation Schema ───
@@ -20,6 +21,21 @@ const checkoutSchema = Yup.object({
 
 export default function page() {
     const { cartlistLoading, cartError, cartList, getUserCart } = useGetProducts();
+
+    const formik = useFormik({
+        initialValues: {
+            details: '',
+            phone: '',
+            city: '',
+            postalCode: '',
+            paymentMethod: 'cash' as 'cash' | 'card',
+        },
+        validationSchema: checkoutSchema,
+        
+        onSubmit: async (values, {setSubmitting}) => {
+            
+        },
+    });
 
     useEffect(() => {
         getUserCart();
