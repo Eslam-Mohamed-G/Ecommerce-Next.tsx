@@ -116,17 +116,24 @@ export default function page() {
                 <div className="lg:col-span-2">
                     <h2 className="text-xl font-semibold mb-6">Billing Details</h2>
                     <form action="" className="grid grid-cols-1 gap-6">
-                        {/* Name */}
+                        {/* Street Address */}
                         <div>
-                            <label htmlFor="name" className="block text-sm font-medium mb-1">
-                                Name <span className="text-primaryColor">*</span>
+                            <label htmlFor="details" className="block text-sm font-medium mb-1">
+                                Street Address <span className="text-primaryColor">*</span>
                             </label>
                             <input
                                 type="text"
-                                id="name"
-                                name="name"
-                                className={`w-full px-4 py-3 border rounded focus:outline-none focus:border-primaryColor`}
+                                id="details"
+                                name="details"
+                                value={formik.values.details}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                placeholder="e.g. 123 Main St, Apt 4B"
+                                className={inputClass('details')}
                             />
+                            {formik.touched.details && formik.errors.details && (
+                                <p className="text-red-500 text-xs mt-1">{formik.errors.details}</p>
+                            )}
                         </div>
 
                         {/* Email */}
