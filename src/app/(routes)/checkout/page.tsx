@@ -235,7 +235,7 @@ export default function page() {
                         <button
                             type="submit"
                             disabled={paymentLoading || cartlistLoading || !cartList?.products?.length}
-                            className="w-full py-3 bg-primaryColor text-white font-semibold rounded hover:opacity-90 transition-opacity disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
+                            className="w-full flex items-center justify-center gap-2 py-3 bg-primaryColor text-white font-semibold rounded hover:opacity-90 transition-opacity ease-in-out duration-300 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed"
                         >
                             {paymentLoading && <LoadingSpinner size="sm" className='text-white'/>}
                             {formik.values.paymentMethod === 'card' ? 'Pay Online' : 'Place Order'}
