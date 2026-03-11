@@ -111,7 +111,7 @@ export default function page() {
                 {/* Billing Details */}
                 <div className="lg:col-span-2">
                     <h2 className="text-xl font-semibold mb-6">Billing Details</h2>
-                    <form action="" className="grid grid-cols-1 gap-6">
+                    <form action="" onSubmit={formik.handleSubmit} className="grid grid-cols-1 gap-6">
                         {/* Street Address */}
                         <div className='relative'>
                             <label htmlFor="details" className="block text-sm font-medium mb-1">
