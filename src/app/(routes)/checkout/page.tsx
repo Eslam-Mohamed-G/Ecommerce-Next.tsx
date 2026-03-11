@@ -94,13 +94,10 @@ export default function page() {
     const inputClass = (field: 'details' | 'phone' | 'city' | 'postalCode') => {
         const hasError = formik.touched[field] && formik.errors[field];
 
-        return `w-full px-4 py-3 border rounded focus:outline-none focus:border-primaryColor transition-colors ${
-            hasError ? 'border-red-400 bg-red-50' : 'border-borderColor'
-        }`;
+        return `w-full px-4 py-3 border rounded focus:outline-none focus:border-primaryColor transition-colors ${hasError ? 'border-red-400 bg-red-50' : 'border-borderColor'}`;
     };
 
     // ─── Derived values ───
-
     const totalPrice = cartList?.totalPriceAfterDiscount ?? cartList?.totalCartPrice ?? 0;
     const itemCount = cartList?.products?.reduce((acc, item) => acc + item.count, 0) ?? 0;
 
