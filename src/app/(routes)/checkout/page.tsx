@@ -154,7 +154,7 @@ export default function page() {
                             </div>
                         </div>
 
-                        {/* City */}
+                        {/* City & Postal Code */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div className="relative">
                                 <label htmlFor="city" className="block text-sm font-medium mb-1">
@@ -173,6 +173,27 @@ export default function page() {
                                 <div className="absolute top-full left-0">
                                     {formik.touched.city && formik.errors.city && (
                                         <p className="text-red-500 text-xs mt-1">{formik.errors.city}</p>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="relative">
+                                <label htmlFor="postalCode" className="block text-sm font-medium mb-1">
+                                    ZIP / Postal Code <span className="text-primaryColor">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    id="postalCode"
+                                    name="postalCode"
+                                    value={formik.values.postalCode}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    placeholder="e.g. 11511"
+                                    className={inputClass('postalCode')}
+                                />
+                                <div className="absolute top-full left-0">
+                                    {formik.touched.postalCode && formik.errors.postalCode && (
+                                        <p className="text-red-500 text-xs mt-1">{formik.errors.postalCode}</p>
                                     )}
                                 </div>
                             </div>
