@@ -228,6 +228,15 @@ export default function page() {
                                 <span className="text-sm">Credit / Debit Card</span>
                             </label>
                         </div>
+
+                        {/* Submit */}
+                        <button
+                            type="submit"
+                            disabled={formik.isSubmitting || cartlistLoading || !cartList?.products?.length}
+                            className="w-full py-3 bg-primaryColor text-white font-semibold rounded hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
+                        >
+                            {formik.isSubmitting ? 'Processing…' : formik.values.paymentMethod === 'card' ? 'Pay Online' : 'Place Order'}
+                        </button>
                     </form>
                 </div>
 
