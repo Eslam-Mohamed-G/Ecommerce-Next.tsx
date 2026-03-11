@@ -133,7 +133,7 @@ export default function page() {
                         </div>
 
                         {/* Phone */}
-                        <div>
+                        <div className="relative">
                             <label htmlFor="phone" className="block text-sm font-medium mb-1">
                                 Phone <span className="text-primaryColor">*</span>
                             </label>
@@ -147,9 +147,11 @@ export default function page() {
                                 placeholder="e.g. 01012345678"
                                 className={inputClass('phone')}
                             />
-                            {formik.touched.phone && formik.errors.phone && (
-                                <p className="text-red-500 text-xs mt-1">{formik.errors.phone}</p>
-                            )}
+                            <div className="absolute top-full left-0">
+                                {formik.touched.phone && formik.errors.phone && (
+                                    <p className="text-red-500 text-xs mt-1">{formik.errors.phone}</p>
+                                )}
+                            </div>
                         </div>
                     </form>
                 </div>
