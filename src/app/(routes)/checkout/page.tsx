@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { ShippingAddress } from '@/src/types';
 import { createCashOrder, createCheckoutSession } from '@/src/services/orderService';
+import LoadingSpinner from '@/src/components/ui/LoadingSpinner/LoadingSpinner';
 
 // ─── Validation Schema ───
 
@@ -233,9 +234,10 @@ export default function page() {
                         {/* Submit */}
                         <button
                             type="submit"
-                            disabled={formik.isSubmitting || cartlistLoading || !cartList?.products?.length}
+                            disabled={paymentLoading || cartlistLoading || !cartList?.products?.length}
                             className="w-full py-3 bg-primaryColor text-white font-semibold rounded hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                         >
+                            {paymentLoading && <LoadingSpinner size="sm" className='text-white'/>}
                             {formik.isSubmitting ? 'Processing…' : formik.values.paymentMethod === 'card' ? 'Pay Online' : 'Place Order'}
                         </button>
                     </form>
