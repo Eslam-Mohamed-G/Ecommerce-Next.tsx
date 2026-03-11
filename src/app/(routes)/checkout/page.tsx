@@ -111,7 +111,7 @@ export default function page() {
                     <h2 className="text-xl font-semibold mb-6">Billing Details</h2>
                     <form action="" className="grid grid-cols-1 gap-6">
                         {/* Street Address */}
-                        <div>
+                        <div className='relative'>
                             <label htmlFor="details" className="block text-sm font-medium mb-1">
                                 Street Address <span className="text-primaryColor">*</span>
                             </label>
@@ -125,9 +125,11 @@ export default function page() {
                                 placeholder="e.g. 123 Main St, Apt 4B"
                                 className={inputClass('details')}
                             />
-                            {formik.touched.details && formik.errors.details && (
-                                <p className="text-red-500 text-xs mt-1">{formik.errors.details}</p>
-                            )}
+                            <div className="absolute top-full left-0">
+                                {formik.touched.details && formik.errors.details && (
+                                    <p className="text-red-500 text-xs">{formik.errors.details}</p>
+                                )}
+                            </div>
                         </div>
 
                         {/* Phone */}
