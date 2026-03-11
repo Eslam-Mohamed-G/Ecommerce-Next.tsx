@@ -149,13 +149,13 @@ export default function page() {
                             />
                             <div className="absolute top-full left-0">
                                 {formik.touched.phone && formik.errors.phone && (
-                                    <p className="text-red-500 text-xs mt-1">{formik.errors.phone}</p>
+                                    <p className="text-red-500 text-xs">{formik.errors.phone}</p>
                                 )}
                             </div>
                         </div>
 
                         {/* City & Postal Code */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-2">
                             <div className="relative">
                                 <label htmlFor="city" className="block text-sm font-medium mb-1">
                                     City <span className="text-primaryColor">*</span>
@@ -172,7 +172,7 @@ export default function page() {
                                 />
                                 <div className="absolute top-full left-0">
                                     {formik.touched.city && formik.errors.city && (
-                                        <p className="text-red-500 text-xs mt-1">{formik.errors.city}</p>
+                                        <p className="text-red-500 text-xs">{formik.errors.city}</p>
                                     )}
                                 </div>
                             </div>
@@ -193,7 +193,7 @@ export default function page() {
                                 />
                                 <div className="absolute top-full left-0">
                                     {formik.touched.postalCode && formik.errors.postalCode && (
-                                        <p className="text-red-500 text-xs mt-1">{formik.errors.postalCode}</p>
+                                        <p className="text-red-500 text-xs">{formik.errors.postalCode}</p>
                                     )}
                                 </div>
                             </div>
