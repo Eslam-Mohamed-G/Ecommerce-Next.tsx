@@ -213,6 +213,21 @@ export default function page() {
                                 <span className="text-sm">Cash on Delivery</span>
                             </label>
                         </div>
+
+                        {/* Credit Card (Stripe) */}
+                        <div className="relative">
+                            <label className={`flex items-center gap-3 p-3 border rounded cursor-pointer transition-colors ${formik.values.paymentMethod === 'card' ? 'border-primaryColor bg-primaryColor/5' : 'border-borderColor hover:border-primaryColor'}`}>
+                                <input
+                                    type="radio"
+                                    name="paymentMethod"
+                                    value="card"
+                                    checked={formik.values.paymentMethod === 'card'}
+                                    onChange={formik.handleChange}
+                                    className="w-4 h-4 accent-primaryColor cursor-pointer"
+                                />
+                                <span className="text-sm">Credit / Debit Card</span>
+                            </label>
+                        </div>
                     </form>
                 </div>
 
