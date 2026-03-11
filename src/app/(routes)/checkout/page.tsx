@@ -198,6 +198,21 @@ export default function page() {
                                 </div>
                             </div>
                         </div>
+
+                        {/* Cash on Delivery */}
+                        <div className="relative">
+                            <label className={`flex items-center gap-3 p-3 border rounded cursor-pointer transition-colors ease-in-out duration-300 ${formik.values.paymentMethod === 'cash' ? 'border-primaryColor bg-primaryColor/5' : 'border-borderColor hover:border-primaryColor'}`}>
+                                <input
+                                    type="radio"
+                                    name="paymentMethod"
+                                    value="cash"
+                                    checked={formik.values.paymentMethod === 'cash'}
+                                    onChange={formik.handleChange}
+                                    className="w-4 h-4 accent-primaryColor cursor-pointer"
+                                />
+                                <span className="text-sm">Cash on Delivery</span>
+                            </label>
+                        </div>
                     </form>
                 </div>
 
