@@ -153,6 +153,30 @@ export default function page() {
                                 )}
                             </div>
                         </div>
+
+                        {/* City */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div className="relative">
+                                <label htmlFor="city" className="block text-sm font-medium mb-1">
+                                    City <span className="text-primaryColor">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    id="city"
+                                    name="city"
+                                    value={formik.values.city}
+                                    onChange={formik.handleChange}
+                                    onBlur={formik.handleBlur}
+                                    placeholder="e.g. Cairo"
+                                    className={inputClass('city')}
+                                />
+                                <div className="absolute top-full left-0">
+                                    {formik.touched.city && formik.errors.city && (
+                                        <p className="text-red-500 text-xs mt-1">{formik.errors.city}</p>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
 
