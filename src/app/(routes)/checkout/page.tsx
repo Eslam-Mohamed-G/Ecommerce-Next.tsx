@@ -3,7 +3,7 @@ import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import { useGetProducts } from '@/src/context/GetProductsContext';
 import { useToast } from '@/src/context/ToastContext';
 import Image from 'next/image';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { ShippingAddress } from '@/src/types';
@@ -26,6 +26,7 @@ export default function page() {
     const { cartlistLoading, cartError, cartList, getUserCart } = useGetProducts();
     const { showToast } = useToast();
 
+    const [paymentLoading, setPaymentLoading] = useState<boolean>(false);
     const formik = useFormik({
         initialValues: {
             details: '',
@@ -36,11 +37,10 @@ export default function page() {
         },
         validationSchema: checkoutSchema,
 
-        onSubmit: async (values, { setSubmitting }) => {
+        onSubmit: async (values) => {
             // Ensure cart exists
             if (!cartList?._id) {
                 showToast('error', 'Your cart is empty or could not be loaded.');
-                setSubmitting(false);
                 return;
             };
 
@@ -53,6 +53,7 @@ export default function page() {
             };
 
             try {
+                setPaymentLoading(true);
                 // ──────── Cash on Delivery ────────────
                 if (values.paymentMethod === 'cash') {
                     const response = await createCashOrder(cartList._id, shippingAddress);
@@ -79,7 +80,7 @@ export default function page() {
                 showToast('error', error?.message || 'Something went wrong.');
             } finally {
                 // Stop loading state
-                setSubmitting(false);
+                setPaymentLoading(false);
             };
         },
     });
