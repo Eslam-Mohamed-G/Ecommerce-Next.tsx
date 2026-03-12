@@ -35,6 +35,9 @@ export default function page() {
             city: '',
             postalCode: '',
             paymentMethod: 'cash' as 'cash' | 'card',
+            cardNumber: '',
+            cardExpiry: '',
+            cardCVV: '',
         },
         validationSchema: checkoutSchema,
 
