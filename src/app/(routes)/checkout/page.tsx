@@ -245,7 +245,7 @@ export default function page() {
 
                 {/* Order Summary */}
                 <div className="lg:col-span-1">
-                    <div className="border border-borderColor rounded-lg p-6 sticky top-4">
+                    <div className="border border-borderColor rounded-lg p-6 pb-4 sticky top-4 max-h-[540px]">
                         <h2 className="text-xl font-semibold mb-6">
                             Order Summary
                             {itemCount > 0 && (
@@ -287,7 +287,7 @@ export default function page() {
                         )}
 
                         {/* Totals */}
-                        <div className="flex justify-between text-lg font-bold">
+                        <div className="flex justify-between text-lg font-bold pt-2">
                             <span>Total:</span>
                             <span className="text-primaryColor">${totalPrice.toFixed(2)}</span>
                         </div>
