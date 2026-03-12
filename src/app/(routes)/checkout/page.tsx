@@ -265,6 +265,9 @@ export default function page() {
                                         className="px-4 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
                                     />
                                 </div>
+                                <p className="text-xs text-text2Color">
+                                    🔒 You will be redirected to a secure Stripe payment page.
+                                </p>
                             </div>
                         )}
 
