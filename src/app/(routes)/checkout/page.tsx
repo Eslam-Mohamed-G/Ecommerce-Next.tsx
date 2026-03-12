@@ -234,6 +234,12 @@ export default function page() {
                             </label>
                         </div>
 
+                        {formik.values.paymentMethod === 'card' && (
+                            <div className="pl-7 flex flex-col gap-3">
+                                
+                            </div>
+                        )}
+
                         {/* Submit */}
                         <button
                             type="submit"
