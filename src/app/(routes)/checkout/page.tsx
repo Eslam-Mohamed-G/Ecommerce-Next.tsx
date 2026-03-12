@@ -236,7 +236,15 @@ export default function page() {
 
                         {formik.values.paymentMethod === 'card' && (
                             <div className="pl-7 flex flex-col gap-3">
-                                
+                                {/* card number */}
+                                <input
+                                    type="text"
+                                    name="cardNumber"
+                                    placeholder="Card Number"
+                                    value={formik.values.cardNumber}
+                                    onChange={formik.handleChange}
+                                    className="w-full px-4 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
+                                />
                             </div>
                         )}
 
