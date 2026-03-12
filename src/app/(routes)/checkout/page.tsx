@@ -255,6 +255,15 @@ export default function page() {
                                         onChange={formik.handleChange}
                                         className="px-4 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
                                     />
+                                    {/* card cvv */}
+                                    <input
+                                        type="text"
+                                        name="cardCVV"
+                                        placeholder="CVV"
+                                        value={formik.values.cardCVV}
+                                        onChange={formik.handleChange}
+                                        className="px-4 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
+                                    />
                                 </div>
                             </div>
                         )}
