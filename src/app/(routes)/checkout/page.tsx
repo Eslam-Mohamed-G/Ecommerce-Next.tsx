@@ -246,7 +246,15 @@ export default function page() {
                                     className="w-full px-4 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
                                 />
                                 <div className="grid grid-cols-2 gap-3">
-
+                                    {/* card expiry */}
+                                    <input
+                                        type="text"
+                                        name="cardExpiry"
+                                        placeholder="MM/YY"
+                                        value={formik.values.cardExpiry}
+                                        onChange={formik.handleChange}
+                                        className="px-4 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor"
+                                    />
                                 </div>
                             </div>
                         )}
