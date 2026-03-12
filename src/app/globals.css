@@ -36,6 +36,13 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.custom_scrollbar {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primaryColor) #e6e6e6;
+}
+
 .toast_container {
   animation: fadeIn 0.3s ease-in, fadeOut 0.5s ease-out 2.5s forwards;
 }

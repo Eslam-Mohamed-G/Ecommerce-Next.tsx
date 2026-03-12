@@ -259,7 +259,7 @@ export default function page() {
                         {cartlistLoading ? (
                             <p className="text-text2Color text-sm text-center py-4">Loading cart…</p>
                         ) : cartList?.products?.length ? (
-                            <div className="flex flex-col gap-4 mb-4 pb-4 border-b border-borderColor max-h-[395px] overflow-y-auto pr-1.5">
+                            <div className="flex flex-col gap-4 mb-4 pb-4 border-b border-borderColor max-h-[395px] overflow-y-auto pr-1.5 custom_scrollbar">
                                 {cartList.products.map((item) => (
                                     <div key={item?._id} className="flex items-center gap-3">
                                         <div className="relative w-16 h-16 bg-primaryBackground rounded shrink-0">
