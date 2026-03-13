@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react';
 
 export default function page() {
     const [orders, setOrders] = useState<Order[]>([]);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const fetchOrders = async () => {
@@ -16,10 +17,12 @@ export default function page() {
             }
 
             try {
+                setLoading(true);
                 const data = await getUserOrders(userId);
                 setOrders(Array.isArray(data) ? data : []);
             } catch (err: any) {
             } finally {
+                setLoading(false);
             }
         };
 
