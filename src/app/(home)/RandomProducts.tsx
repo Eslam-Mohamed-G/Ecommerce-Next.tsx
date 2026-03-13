@@ -2,12 +2,15 @@
 import ProductCard from '@/src/components/features/ProductCard/ProductCard';
 import { useGetProducts } from '@/src/context/GetProductsContext';
 import Image from 'next/image';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 
 export default function RandomProducts() {
     const { loading, productError, products, fetchProducts } = useGetProducts();
 
-    const randomProducts = [...products].sort(() => .5 - Math.random()).slice(0, 8);
+    const randomProducts = useMemo(
+        () => [...products].sort(() => .5 - Math.random()).slice(0, 8),
+        [products]
+    );
 
     useEffect(() => {
         fetchProducts();
