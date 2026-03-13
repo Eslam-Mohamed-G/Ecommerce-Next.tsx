@@ -1,9 +1,11 @@
 "use client";
 import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
+import { Order } from '@/src/types';
 import React, { useEffect, useState } from 'react';
 
 export default function page() {
-    const [state, setstate] = useState();
+    const [orders, setOrders] = useState<Order[]>([]);
+
     useEffect(() => {
 
         return () => {
