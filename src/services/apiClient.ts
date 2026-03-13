@@ -105,4 +105,20 @@ export function getAuthToken(): string | undefined {
     return token as string | undefined;
 }
 
+/**
+ * Decode the JWT token and return the user's _id
+*/
+export function getUserIdFromToken(): string | null {
+    try {
+        const token = getCookie('token') as string | undefined;
+        if (!token) return null;
+
+        const payload = token.split('.')[1];
+        const decoded = JSON.parse(atob(payload));
+        return decoded?.id || decoded?._id || null;
+    } catch {
+        return null;
+    }
+}
+
 export default apiClient;
