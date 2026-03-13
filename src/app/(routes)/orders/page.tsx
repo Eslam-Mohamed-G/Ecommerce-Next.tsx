@@ -8,11 +8,13 @@ import React, { useEffect, useState } from 'react';
 export default function page() {
     const [orders, setOrders] = useState<Order[]>([]);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchOrders = async () => {
             const userId = getUserIdFromToken();
             if (!userId) {
+                setError('You must be logged in to view your orders.');
                 return;
             }
 
@@ -21,6 +23,7 @@ export default function page() {
                 const data = await getUserOrders(userId);
                 setOrders(Array.isArray(data) ? data : []);
             } catch (err: any) {
+                setError(err?.message || 'Failed to load orders.');
             } finally {
                 setLoading(false);
             }
