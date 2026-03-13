@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // Define routes that require authentication
-const protectedRoutes = ['/wishlist', '/cartList', '/checkout', '/account'];
+const protectedRoutes = ['/wishlist', '/cartList', '/checkout', '/account', '/orders'];
 
 // Define routes that should NOT be accessible when user is authenticated
 const authRoutes = ['/login', '/signUp'];
@@ -27,5 +27,5 @@ export function proxy(request: NextRequest) {
 
 // Configure which routes this proxy should run on
 export const config = {
-    matcher: ['/wishlist', '/cartList', '/checkout', '/account', '/login', '/signUp'],
+    matcher: ['/wishlist', '/cartList', '/checkout', '/account', '/orders', '/login', '/signUp'],
 };
