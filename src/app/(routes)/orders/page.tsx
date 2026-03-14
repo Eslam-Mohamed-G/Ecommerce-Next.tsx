@@ -87,11 +87,14 @@ export default function page() {
             {!loading && !error && orders.length > 0 && (
                 <div className="flex flex-col gap-4">
                     <p className="text-sm text-text2Color">{orders.length} {orders.length === 1 ? 'order' : 'orders'} found</p>
-                    {orders.map((order) => (
-                        <article key={order._id} className="border border-borderColor rounded-lg overflow-hidden hover:shadow-md transition-shadow ease-in-out duration-300">
+                    {orders.map((order) => {
 
-                        </article>
-                    ))}
+                        return (
+                            <article key={order._id} className="border border-borderColor rounded-lg overflow-hidden hover:shadow-md transition-shadow ease-in-out duration-300">
+
+                            </article>
+                        )
+                    })}
                 </div>
             )}
         </section>
