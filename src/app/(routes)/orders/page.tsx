@@ -110,6 +110,11 @@ export default function page() {
                                         </span>
                                     </div>
                                 </div>
+
+                                {/* Body */}
+                                <div className="px-5 py-4 flex flex-col gap-4">
+                                    
+                                </div>
                             </article>
                         )
                     })}
