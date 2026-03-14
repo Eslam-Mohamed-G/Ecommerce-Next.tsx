@@ -68,6 +68,20 @@ export default function page() {
                     <Link href="/login" className="mt-3 inline-block text-sm text-primaryColor underline">Go to Login</Link>
                 </div>
             )}
+
+            {/* ───────── Empty State ───────── */}
+            {!loading && !error && orders.length === 0 && (
+                <div className="flex flex-col items-center justify-center py-20 gap-4 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-20 h-20 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                    </svg>
+                    <h2 className="text-xl font-semibold text-text2Color">No orders yet</h2>
+                    <p className="text-sm text-text2Color">Looks like you haven't placed any orders.</p>
+                    <Link href="/products" className="mt-2 px-6 py-2.5 bg-primaryColor text-white rounded font-medium hover:opacity-90 transition-opacity">
+                        Start Shopping
+                    </Link>
+                </div>
+            )}
         </section>
     )
 };
