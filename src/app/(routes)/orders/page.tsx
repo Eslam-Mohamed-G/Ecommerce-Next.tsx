@@ -58,6 +58,14 @@ export default function page() {
                     ))}
                 </div>
             )}
+
+            {/* ───────── Error message ───────── */}
+            {!loading && error && (
+                <div className="bg-red-50 border border-red-200 text-red-700 px-5 py-4 rounded-lg text-center">
+                    <p className="font-semibold mb-1">Something went wrong</p>
+                    <p className="text-sm">{error}</p>
+                </div>
+            )}
         </section>
     )
 };
