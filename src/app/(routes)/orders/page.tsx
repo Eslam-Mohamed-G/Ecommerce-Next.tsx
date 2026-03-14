@@ -35,6 +35,29 @@ export default function page() {
     return (
         <section className="w-full min-h-96 lg:max-w-5xl xl:max-w-7xl m-auto px-4 py-8">
             <Breadcrumb items={[{ label: 'My Orders' }]} />
+
+            {/* ───────── Loading Skeleton ───────── */}
+            {loading && (
+                <div className="flex flex-col gap-4">
+                    {[1, 2, 3].map((i) => (
+                        <div className="border border-borderColor rounded-lg p-5 animate-pulse">
+                            <div className="flex flex-wrap justify-between gap-4 mb-4">
+                                <div className="h-4 bg-gray-200 rounded w-40" />
+                                <div className="h-4 bg-gray-200 rounded w-24" />
+                            </div>
+                            <div className="flex gap-3 mb-4">
+                                {[1, 2, 3].map((i) => (
+                                    <div key={i} className="w-14 h-14 bg-gray-200 rounded" />
+                                ))}
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <div className="h-4 bg-gray-200 rounded w-28" />
+                                <div className="h-6 bg-gray-200 rounded w-20" />
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
         </section>
     )
 };
