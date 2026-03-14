@@ -41,7 +41,7 @@ export default function page() {
             {loading && (
                 <div className="flex flex-col gap-4">
                     {[1, 2, 3].map((i) => (
-                        <div className="border border-borderColor rounded-lg p-5 animate-pulse">
+                        <div key={i} className="border border-borderColor rounded-lg p-5 animate-pulse">
                             <div className="flex flex-wrap justify-between gap-4 mb-4">
                                 <div className="h-4 bg-gray-200 rounded w-40" />
                                 <div className="h-4 bg-gray-200 rounded w-24" />
