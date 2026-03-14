@@ -91,11 +91,13 @@ export default function page() {
                         const date = new Date(order.createdAt).toLocaleDateString('en-GB', {
                             day: 'numeric', month: 'short', year: 'numeric',
                         });
+                        const shortId = order._id.slice(-8).toUpperCase();
                         return (
                             <article key={order._id} className="border border-borderColor rounded-lg overflow-hidden hover:shadow-md transition-shadow ease-in-out duration-300">
                                 {/* Header */}
                                 <div className="bg-primaryBackground px-5 py-3 flex flex-wrap items-center justify-between gap-3">
                                     <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                                        <span className="text-xs text-text2Color">Order <span className="font-semibold text-textColor">#{shortId}</span></span>
                                         <span className="text-xs text-text2Color">{date}</span>
                                     </div>
 
