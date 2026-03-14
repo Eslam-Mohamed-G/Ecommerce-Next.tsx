@@ -91,7 +91,21 @@ export default function page() {
 
                         return (
                             <article key={order._id} className="border border-borderColor rounded-lg overflow-hidden hover:shadow-md transition-shadow ease-in-out duration-300">
+                                {/* Header */}
+                                <div className="bg-primaryBackground px-5 py-3 flex flex-wrap items-center justify-between gap-3">
+                                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
 
+                                    </div>
+
+                                    <div className="flex flex-wrap gap-2">
+                                        <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${order.isPaid ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                                            {order.isPaid ? '✅ Paid' : '⏳ Unpaid'}
+                                        </span>
+                                        <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium ${order.isDelivered ? 'bg-blue-100 text-blue-700' : 'bg-orange-100 text-orange-700'}`}>
+                                            {order.isDelivered ? '✅ Delivered' : '📦 Pending'}
+                                        </span>
+                                    </div>
+                                </div>
                             </article>
                         )
                     })}
