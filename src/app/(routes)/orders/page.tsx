@@ -3,6 +3,7 @@ import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import { getUserIdFromToken } from '@/src/services/apiClient';
 import { getUserOrders } from '@/src/services/orderService';
 import { Order } from '@/src/types';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 export default function page() {
@@ -64,6 +65,7 @@ export default function page() {
                 <div className="bg-red-50 border border-red-200 text-red-700 px-5 py-4 rounded-lg text-center">
                     <p className="font-semibold mb-1">Something went wrong</p>
                     <p className="text-sm">{error}</p>
+                    <Link href="/login" className="mt-3 inline-block text-sm text-primaryColor underline">Go to Login</Link>
                 </div>
             )}
         </section>
