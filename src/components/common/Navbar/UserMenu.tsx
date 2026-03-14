@@ -82,7 +82,7 @@ export default function UserMenu({ token }: Props) {
                     </li>
 
                     <li role="menuitem" className='flex items-center'>
-                        <Link href="/orders" className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
+                        <Link href="/orders" onClick={()=>setIsAuthMenuOpen(false)} className='flex-1 flex items-center gap-3 ps-0 pe-2 py-1 hover:bg-white/20 rounded'>
                             <div className="w-6 h-6 ms-1 flex items-center justify-center relative">
                                 <Image src="/navbar/icon-mallbag.svg" alt='user icon' fill />
                             </div>
