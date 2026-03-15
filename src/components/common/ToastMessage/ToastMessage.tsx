@@ -7,7 +7,7 @@ export default function ToastMessage() {
     return (
         <section role="status" aria-live="polite" className='fixed top-11 right-1/2 translate-x-1/2 z-50 flex items-center justify-center toast_container'>
             {/* success message */}
-            <div id="toast-success" className="flex items-center min-w-[290px] w-[290px] pt-2 px-4 pb-4 bg-white border border-borderColor rounded-xl shadow relative">
+            <div id="toast-success" className="flex items-center min-w-xs pt-2 px-4 pb-4 bg-white border border-borderColor rounded-xl shadow relative">
                 {toast?.type === "success" && (
                     <div className="inline-flex items-center justify-center shrink-0 w-7 h-7 text-successIcon bg-successButton/10 rounded">
                         <svg className="w-5 h-5" aria-hidden="true" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" /></svg>
