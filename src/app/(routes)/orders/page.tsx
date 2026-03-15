@@ -113,7 +113,23 @@ export default function page() {
 
                                 {/* Body */}
                                 <div className="px-5 py-4 flex flex-col gap-4">
-                                    
+                                    {/* Products */}
+                                    <div className="flex flex-col gap-3">
+                                        {order.cartItems.map((item) => (
+                                            <div key={item._id} className="flex items-center gap-3">
+                                                <div className="relative w-14 h-14 bg-primaryBackground rounded shrink-0">
+
+                                                </div>
+                                                <div className="flex-1 min-w-0">
+                                                    <p className="text-sm font-medium line-clamp-2">{item.product.title}</p>
+                                                    <p className="text-xs text-text2Color mt-0.5">Qty: {item.count} × ${item.price.toFixed(2)}</p>
+                                                </div>
+                                                <span className="text-sm font-semibold whitespace-nowrap">
+                                                    ${(item.price * item.count).toFixed(2)}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
                                 </div>
                             </article>
                         )
