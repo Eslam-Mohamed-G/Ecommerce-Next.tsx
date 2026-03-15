@@ -103,11 +103,11 @@ export default function page() {
                                         <span className="text-xs text-text2Color">{date}</span>
                                     </div>
 
-                                    <div className="flex flex-wrap gap-2">
-                                        <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium ${order.isPaid ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
+                                    <div className="flex flex-wrap gap-2 items-center">
+                                        <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 h-fit rounded-md text-xs font-medium ${order.isPaid ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
                                             {order.isPaid ? '✅ Paid' : '⏳ Unpaid'}
                                         </span>
-                                        <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-xs font-medium ${order.isDelivered ? 'bg-blue-100 text-blue-700' : 'bg-orange-100 text-orange-700'}`}>
+                                        <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 h-fit rounded-md text-xs font-medium ${order.isDelivered ? 'bg-blue-100 text-blue-700' : 'bg-orange-100 text-orange-700'}`}>
                                             {order.isDelivered ? '✅ Delivered' : '📦 Pending'}
                                         </span>
                                         <button type='button' className='flex items-center justify-center text-white bg-primaryColor w-8 h-8 rounded-full cursor-pointer'>
