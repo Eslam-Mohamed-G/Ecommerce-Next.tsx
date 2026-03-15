@@ -136,6 +136,19 @@ export default function page() {
                                             </div>
                                         ))}
                                     </div>
+                                    {/* Footer */}
+                                    <div className="pt-3 border-t border-borderColor flex flex-wrap items-center justify-between gap-2">
+                                        <div className="flex items-center gap-3 text-xs text-text2Color">
+                                            <span className="capitalize flex items-center gap-1">
+                                                {order.paymentMethodType === 'cash' ? '💵' : '💳'} {order.paymentMethodType === 'cash' ? 'Cash on Delivery' : 'Credit Card'}
+                                            </span>
+                                            <span>📍 {order.shippingAddress.city}</span>
+                                        </div>
+                                        <div className="text-right">
+                                            <p className="text-xs text-text2Color">Total</p>
+                                            <p className="text-lg font-bold text-primaryColor">${order.totalOrderPrice.toFixed(2)}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </article>
                         )
