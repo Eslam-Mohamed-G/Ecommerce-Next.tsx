@@ -111,8 +111,8 @@ export default function page() {
                                         <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 h-fit rounded-md text-xs font-medium ${order.isDelivered ? 'bg-blue-100 text-blue-700' : 'bg-orange-100 text-orange-700'}`}>
                                             {order.isDelivered ? '✅ Delivered' : '📦 Pending'}
                                         </span>
-                                        <button type='button' className='flex items-center justify-center text-white bg-primaryColor w-8 h-8 rounded-full cursor-pointer'>
-                                            <PlusIcon width={24} height={24}/>
+                                        <button type='button' onClick={() => setIsOpen(!isOpen)} className='flex items-center justify-center text-white bg-primaryColor w-8 h-8 rounded-full cursor-pointer'>
+                                            <PlusIcon width={24} height={24} />
                                         </button>
                                     </div>
                                 </div>
