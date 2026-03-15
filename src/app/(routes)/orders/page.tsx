@@ -3,6 +3,7 @@ import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
 import { getUserIdFromToken } from '@/src/services/apiClient';
 import { getUserOrders } from '@/src/services/orderService';
 import { Order } from '@/src/types';
+import Image from 'next/image';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
@@ -118,7 +119,12 @@ export default function page() {
                                         {order.cartItems.map((item) => (
                                             <div key={item._id} className="flex items-center gap-3">
                                                 <div className="relative w-14 h-14 bg-primaryBackground rounded shrink-0">
-
+                                                    <Image
+                                                        src={item.product.imageCover}
+                                                        alt={item.product.title}
+                                                        fill
+                                                        className="object-contain p-1.5"
+                                                    />
                                                 </div>
                                                 <div className="flex-1 min-w-0">
                                                     <p className="text-sm font-medium line-clamp-2">{item.product.title}</p>
