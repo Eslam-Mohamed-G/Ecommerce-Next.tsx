@@ -102,19 +102,19 @@ export default function page() {
                             <article key={order._id} className="border border-borderColor rounded-md overflow-hidden hover:shadow-md transition-shadow ease-in-out duration-300">
                                 {/* Header */}
                                 <div className="bg-primaryBackground px-5 py-3 flex flex-wrap items-center justify-between gap-3">
-                                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
+                                    <div className="flex items-center justify-between sm:gap-2 md:gap-4 w-full sm:w-fit">
                                         <span className="text-xs text-text2Color">Order <span className="font-semibold text-textColor">#{shortId}</span></span>
                                         <span className="text-xs text-text2Color">{date}</span>
                                     </div>
 
-                                    <div className="flex flex-wrap gap-2 items-center">
+                                    <div className="flex flex-wrap gap-2 items-center w-full sm:w-fit">
                                         <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 h-fit rounded-md text-xs font-medium ${order.isPaid ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'}`}>
                                             {order.isPaid ? '✅ Paid' : '⏳ Unpaid'}
                                         </span>
                                         <span className={`inline-flex items-center gap-1 px-2.5 py-0.5 h-fit rounded-md text-xs font-medium ${order.isDelivered ? 'bg-blue-100 text-blue-700' : 'bg-orange-100 text-orange-700'}`}>
                                             {order.isDelivered ? '✅ Delivered' : '📦 Pending'}
                                         </span>
-                                        <button type='button' onClick={() => toggleOrder(order._id)} className='flex items-center justify-center text-white bg-primaryColor w-8 h-8 rounded-full cursor-pointer'>
+                                        <button type='button' onClick={() => toggleOrder(order._id)} className='ml-auto flex items-center justify-center text-white bg-primaryColor w-8 h-8 rounded-full cursor-pointer'>
                                             <PlusIcon width={24} height={24} className={`${isOpen === order._id && "rotate-45"} transition-all ease-in-out duration-300`} />
                                         </button>
                                     </div>
