@@ -12,7 +12,7 @@ export default function page() {
     const [orders, setOrders] = useState<Order[]>([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchOrders = async () => {
