@@ -112,7 +112,7 @@ export default function page() {
                                             {order.isDelivered ? '✅ Delivered' : '📦 Pending'}
                                         </span>
                                         <button type='button' onClick={() => setIsOpen(order._id)} className='flex items-center justify-center text-white bg-primaryColor w-8 h-8 rounded-full cursor-pointer'>
-                                            <PlusIcon width={24} height={24} />
+                                            <PlusIcon width={24} height={24}  className={`${isOpen === order._id && "rotate-45"} transition-all ease-in-out duration-300`}/>
                                         </button>
                                     </div>
                                 </div>
