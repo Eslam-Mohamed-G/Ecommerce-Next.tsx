@@ -141,6 +141,16 @@ export default function CarouselComponent() {
         setIsTransitioning(true);
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === "ArrowLeft") {
+            const newIndex = current > 1 ? current - 2 : slidesContent.length - 1;
+            goToSlide(newIndex);
+        } else if (e.key === "ArrowRight") {
+            const newIndex = current < slidesContent.length ? current : 0;
+            goToSlide(newIndex);
+        }
+    };
+
     return (
         <section aria-label="Hero Product Slider" className="w-full h-80 pt-6 content-end text-white select-none relative z-30">
             {/* Slider */}
