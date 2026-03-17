@@ -24,7 +24,7 @@ export default function Home() {
                 </header>
 
                 <div className="flex flex-col xs:flex-row xs:items-end gap-2 xs:gap-12 mb-2 md:mb-6">
-                    <h1 className="text-3xl font-bold">Flash Sales</h1>
+                    <h2 className="text-3xl font-bold">Flash Sales</h2>
                     <div className="">
                         <Countdown />
                     </div>
@@ -41,14 +41,14 @@ export default function Home() {
                     <span className="text-primaryColor font-semibold text-base">Categories</span>
                 </header>
                 <div className="flex flex-col xs:flex-row xs:items-end gap-2 xs:gap-10 mb-4">
-                    <h1 className="text-3xl font-bold">Browse By Category</h1>
+                    <h2 className="text-3xl font-bold">Browse By Category</h2>
                 </div>
                 <CategoriesCarousel />
             </section>
 
             <section className="flex flex-col-reverse md:flex-row items-center justify-around gap-4 mt-10 p-10 bg-textColor overflow-hidden mb-10">
                 <div className="flex flex-col gap-5 md:gap-10 items-start text-white">
-                    <h1 className="text-successButton font-semibold text-base">Categories</h1>
+                    <h2 className="text-successButton font-semibold text-base">Categories</h2>
                     <p className="text-3xl md:text-5xl font-semibold max-w-64 md:max-w-[420px]">Enhance Your Music Experience</p>
                     <div className="flex flex-row gap-4 md:gap-7 text-textColor font-medium text-sm">
                         <div className="bg-white w-16 h-16 rounded-full flex flex-col items-center justify-center">
@@ -100,7 +100,7 @@ export default function Home() {
                                     <span className="">
                                         Shop Now
                                     </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h24" /><path d="m12 5 7 7-7 7" /></svg>
                                 </button>
                             </div>
                         </div>
@@ -116,7 +116,7 @@ export default function Home() {
                                     <span className="">
                                         Shop Now
                                     </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h24" /><path d="m12 5 7 7-7 7" /></svg>
                                 </button>
                             </div>
                         </div>
@@ -133,7 +133,7 @@ export default function Home() {
                                     <span className="">
                                         Shop Now
                                     </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h24" /><path d="m12 5 7 7-7 7" /></svg>
                                 </button>
                             </div>
                         </div>
@@ -150,7 +150,7 @@ export default function Home() {
                                     <span className="">
                                         Shop Now
                                     </span>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="mt-1 lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h24" /><path d="m12 5 7 7-7 7" /></svg>
                                 </button>
                             </div>
                         </div>
