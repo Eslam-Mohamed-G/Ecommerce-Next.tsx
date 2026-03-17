@@ -117,6 +117,7 @@ export default function page() {
                         <div className="flex items-center gap-3">
                             {/* Sort Dropdown */}
                             <select
+                                aria-label="Sort products by"
                                 value={sortBy}
                                 onChange={(e) => setSortBy(e.target.value)}
                                 className="px-4 py-2 border border-borderColor rounded focus:outline-none focus:border-primaryColor cursor-pointer"
@@ -151,8 +152,8 @@ export default function page() {
                             {filteredProducts.length > 0 ? (
                                 <>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-                                        {currentProducts.map((product) => (
-                                            <ProductCard key={product.id} className='w-full md:w-56 group' {...product} />
+                                        {currentProducts.map((product, idx) => (
+                                            <ProductCard key={product.id} className='w-full md:w-56 group' priority={idx < 4} {...product} />
                                         ))}
                                     </div>
 
