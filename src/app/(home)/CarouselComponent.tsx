@@ -156,7 +156,7 @@ export default function CarouselComponent() {
             {/* Slider */}
             <div
                 ref={containerRef}
-                className="flex flex-row cursor-grab touch-pan-y bg-textColor overflow-hidden"
+                className="flex flex-row cursor-grab touch-pan-y bg-textColor overflow-hidden focus:outline-none focus:ring-2 focus:ring-primaryColor"
                 onMouseDown={onDragStart}
                 onTouchStart={onDragStart}
                 onKeyDown={handleKeyDown}
