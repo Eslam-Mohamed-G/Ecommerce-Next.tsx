@@ -9,9 +9,10 @@ import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 type ProductCardProps = Product & {
     className?: string;
+    priority?: boolean;
 };
 
-export default function ProductCard({ id, title, price, priceAfterDiscount, imageCover, ratingsAverage, ratingsQuantity, className }: ProductCardProps) {
+export default function ProductCard({ id, title, price, priceAfterDiscount, imageCover, ratingsAverage, ratingsQuantity, className, priority = false }: ProductCardProps) {
     // Calculate discount percentage
     const discount = priceAfterDiscount
         ? Math.round(((price - priceAfterDiscount) / price) * 100)
@@ -19,10 +20,13 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
 
     const displayPrice = priceAfterDiscount || price;
     return (
-        <Link href={`/products/${id}`} role="article" className={className}>
-            <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative">
+        <div role="article" className={`${className} relative`}>
+            {/* Absolute link to cover the whole card */}
+            <Link href={`/products/${id}`} className="absolute inset-0 z-0 rounded" aria-label={`View details for ${title}`}/>
+
+            <div className="bg-primaryBackground rounded flex items-center justify-center p-6 overflow-hidden relative pointer-events-none">
                 {/* Badges */}
-                <div className="absolute top-3 left-3 z-10 flex flex-col gap-2">
+                <div className="absolute top-3 left-3 z-20 flex flex-col gap-2">
                     {discount > 0 && (
                         <span className="bg-primaryColor text-white text-xs px-3 py-1 rounded">
                             -{discount}%
@@ -31,7 +35,7 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col gap-2 items-center justify-center absolute top-3 right-3 z-10">
+                <div className="flex flex-col gap-2 items-center justify-center absolute top-3 right-3 z-20 pointer-events-auto">
                     <FavoriteButton cssStyle={"w-8 h-8 bg-white rounded-full"} product_Id={id} />
 
                     <button type='button' onClick={(e) => { e.preventDefault() }} aria-label="View details" className='w-8 h-8 bg-white rounded-full flex items-center justify-center hover:bg-primaryColor hover:text-white transition-colors ease-in-out duration-300 cursor-pointer'>
@@ -41,14 +45,14 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
 
                 {/* img */}
                 <div className="relative h-48 flex items-center justify-center p-6">
-                    <Image src={imageCover} alt={title} width={190} height={180} loading='lazy' className='object-contain group-hover:scale-110 transition-transform duration-300' />
+                    <Image src={imageCover} alt={title} width={190} height={180} loading={priority ? undefined : "lazy"} priority={priority} className='object-contain group-hover:scale-110 transition-transform duration-300' />
                 </div>
 
-                <AddToCartButton product_Id={id} className="flex items-center justify-center gap-2 bg-textColor text-white text-base py-1 absolute left-0 right-0 top-full group-hover:-translate-y-8 cursor-pointer transition-all ease-in-out duration-300"/>
+                <AddToCartButton product_Id={id} className="flex items-center justify-center gap-2 bg-textColor text-white text-base py-1 absolute left-0 right-0 top-full group-hover:-translate-y-8 cursor-pointer transition-all ease-in-out duration-300 z-20 pointer-events-auto"/>
             </div>
 
             {/* Product Info */}
-            <div className="mt-2">
+            <div className="mt-2 relative z-10 pointer-events-none">
                 <h3 className="font-medium text-base line-clamp-2 group-hover:text-primaryColor transition-colors ease-in-out duration-300">{title}</h3>
                 <div className="flex items-center gap-3 mt-2">
                     <span className="text-primaryColor font-semibold">
@@ -73,6 +77,6 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
                 </div>
                 <span className="text-text2Color text-sm">({ratingsQuantity})</span>
             </div>
-        </Link>
+        </div>
     )
 }
