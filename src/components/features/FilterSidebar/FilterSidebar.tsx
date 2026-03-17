@@ -145,7 +145,9 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                                     placeholder="Max"
                                 />
                             </div>
+                            <label htmlFor="price-range" className="sr-only"> Maximum price</label>
                             <input
+                                id="price-range"
                                 type="range"
                                 min="0"
                                 max="1000"
