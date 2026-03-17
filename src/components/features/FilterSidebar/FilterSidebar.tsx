@@ -128,6 +128,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                         <div className="flex flex-col gap-3">
                             <div className="flex items-center gap-2">
                                 <input
+                                    aria-label="Minimum price"
                                     type="number"
                                     value={priceRange[0]}
                                     onChange={(e) => handlePriceChange(0, Number(e.target.value))}
@@ -136,6 +137,7 @@ export default function FilterSidebar({ onFilterChange }: FilterSidebarProps) {
                                 />
                                 <span>-</span>
                                 <input
+                                    aria-label="Maximum price"
                                     type="number"
                                     value={priceRange[1]}
                                     onChange={(e) => handlePriceChange(1, Number(e.target.value))}
