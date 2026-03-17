@@ -181,9 +181,9 @@ export default function CarouselComponent() {
                             <div className="max-w-2xs h-60 md:ms-8 py-6 sm:py-2 flex flex-col justify-between pointer-events-none">
                                 <p className="text-xl font-light">{item.title}</p>
 
-                                <h1 className="text-5xl font-bold">
+                                <h2 className="text-5xl font-bold">
                                     {item.heading}
-                                </h1>
+                                </h2>
 
                                 <button
                                     tabIndex={current === idx ? 0 : -1}
@@ -202,7 +202,7 @@ export default function CarouselComponent() {
                                 <Image
                                     src={item.image}
                                     alt="Product"
-                                    loading="lazy"
+                                    priority={true}
                                     width={300}
                                     height={280}
                                     className="object-center"
