@@ -159,6 +159,8 @@ export default function CarouselComponent() {
                 className="flex flex-row cursor-grab touch-pan-y bg-textColor overflow-hidden"
                 onMouseDown={onDragStart}
                 onTouchStart={onDragStart}
+                onKeyDown={handleKeyDown}
+                tabIndex={0}
                 style={{ scrollBehavior: "smooth" }}
             >
                 {slides.map((item, idx) => (
