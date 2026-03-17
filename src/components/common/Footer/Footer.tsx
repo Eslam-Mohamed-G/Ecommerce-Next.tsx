@@ -7,12 +7,12 @@ export default function Footer() {
         <section aria-label="Website footer" className='bg-textColor min-h-[380px] flex items-start'>
             <div className="xl:max-w-7xl lg:max-w-5xl m-auto px-4 pt-10 lg:pt-0 flex-1 flex flex-row flex-wrap justify-between gap-10 text-white">
                 <div className="flex flex-col gap-5">
-                    <h1 className='font-bold text-2xl'>Exclusive</h1>
+                    <h2 className='font-bold text-2xl'>Exclusive</h2>
                     <h2 className='font-medium text-xl'>Subscribe</h2>
                     <p>Get 10% off your first order</p>
                     <form className='flex flex-row items-center justify-around gap-4 p-2 border border-Background rounded'>
-                        <input id='email-field' type="email" placeholder='Enter your email' className='outline-none max-w-40 h-full ps-1' />
-                        <button aria-label="Subscribe to newsletter" type='button' className='cursor-pointer'>
+                        <input aria-label="Email Address" id='email-field' type="email" placeholder='Enter your email' className='outline-none max-w-40 h-full ps-1' />
+                        <button aria-label="Subscribe to newsletter" type='submit' className='cursor-pointer'>
                             <Image src="/footer/icon-send.svg" alt="Send email icon" loading="lazy" width={30} height={30} />
                         </button>
                     </form>
@@ -57,18 +57,18 @@ export default function Footer() {
                         </div>
                     </div>
                     <div className="flex flex-row gap-5 justify-between">
-                        <div className="flex items-center justify-center">
-                            <Image src="/footer/facebookIcon.svg" alt='Visit our Facebook page' width={24} height={24} loading='lazy' aria-hidden="true" />
-                        </div>
-                        <div className="flex items-center justify-center">
-                            <Image src="/footer/twitterIcon.svg" alt='Visit our twitter page' width={24} height={24} loading='lazy' aria-hidden="true" />
-                        </div>
-                        <div className="flex items-center justify-center">
-                            <Image src="/footer/instagramicon.svg" alt='Visit our instagram page' width={24} height={24} loading='lazy' aria-hidden="true" />
-                        </div>
-                        <div className="flex items-center justify-center">
-                            <Image src="/footer/linkedinIcon.svg" alt='Visit our linkedin page' width={24} height={24} loading='lazy' aria-hidden="true" />
-                        </div>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+                            <Image src="/footer/facebookIcon.svg" alt='' width={24} height={24} loading='lazy' aria-hidden="true" />
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our twitter page" className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+                            <Image src="/footer/twitterIcon.svg" alt='' width={24} height={24} loading='lazy' aria-hidden="true" />
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our instagram page" className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+                            <Image src="/footer/instagramicon.svg" alt='' width={24} height={24} loading='lazy' aria-hidden="true" />
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our linkedin page" className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
+                            <Image src="/footer/linkedinIcon.svg" alt='' width={24} height={24} loading='lazy' aria-hidden="true" />
+                        </a>
                     </div>
                 </div>
             </div>
