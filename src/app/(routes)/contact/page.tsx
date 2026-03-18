@@ -1,7 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+    title: 'Contact Us | E-Commerce Store',
+    description: 'Get in touch with us for any inquiries, support, or feedback. We are here to help you 24/7.',
+};
 export default function page() {
   return (
     <section className='xl:max-w-7xl lg:max-w-5xl m-auto px-4 py-14 flex flex-col gap-10'>
