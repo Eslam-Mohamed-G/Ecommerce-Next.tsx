@@ -4,7 +4,13 @@ import Link from 'next/link'
 import CarouselComponent from "./CarouselComponent";
 import Countdown from "./Countdown";
 import CategoriesCarousel from "./CategoriesCarousel";
+import { Metadata } from "next";
 import RandomProducts from "./RandomProducts";
+
+export const metadata: Metadata = {
+    title: "Home | E-Commerce Store",
+    description: "Discover the best products, flash sales, and top categories at our E-Commerce Store.",
+};
 
 export default function Home() {
     return (
