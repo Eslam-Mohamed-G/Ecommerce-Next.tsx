@@ -53,7 +53,7 @@ export default function ProductCard({ id, title, price, priceAfterDiscount, imag
 
             {/* Product Info */}
             <div className="mt-2 relative z-10 pointer-events-none">
-                <h3 className="font-medium text-base line-clamp-2 group-hover:text-primaryColor transition-colors ease-in-out duration-300">{title}</h3>
+                <p className="font-medium text-base line-clamp-2 group-hover:text-primaryColor transition-colors ease-in-out duration-300">{title}</p>
                 <div className="flex items-center gap-3 mt-2">
                     <span className="text-primaryColor font-semibold">
                         ${displayPrice}
