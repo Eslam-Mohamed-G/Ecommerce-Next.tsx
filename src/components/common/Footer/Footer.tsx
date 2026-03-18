@@ -27,10 +27,10 @@ export default function Footer() {
 
                 <div className="flex flex-col gap-5">
                     <h2 className='font-medium text-xl'>Account</h2>
-                    <Link href="/">My Account</Link>
+                    <Link href="/account">My Account</Link>
                     <Link href="/login">Login / Register</Link>
-                    <Link href="/">Cart</Link>
-                    <Link href="/">Wishlist</Link>
+                    <Link href="/cartList">Cart</Link>
+                    <Link href="/wishlist">Wishlist</Link>
                     <Link href="/">Shop</Link>
                 </div>
 
@@ -58,16 +58,16 @@ export default function Footer() {
                     </div>
                     <div className="flex flex-row gap-5 justify-between">
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
-                            <Image src="/footer/facebookIcon.svg" alt='' width={24} height={24} loading='lazy' aria-hidden="true" />
+                            <Image src="/footer/facebookIcon.svg" alt='facebook Icon' width={24} height={24} loading='lazy' aria-hidden="true" />
                         </a>
                         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our twitter page" className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
-                            <Image src="/footer/twitterIcon.svg" alt='' width={24} height={24} loading='lazy' aria-hidden="true" />
+                            <Image src="/footer/twitterIcon.svg" alt='twitter Icon' width={24} height={24} loading='lazy' aria-hidden="true" />
                         </a>
                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our instagram page" className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
-                            <Image src="/footer/instagramicon.svg" alt='' width={24} height={24} loading='lazy' aria-hidden="true" />
+                            <Image src="/footer/instagramicon.svg" alt='instagram icon' width={24} height={24} loading='lazy' aria-hidden="true" />
                         </a>
                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Visit our linkedin page" className="flex items-center justify-center cursor-pointer hover:opacity-80 transition-opacity">
-                            <Image src="/footer/linkedinIcon.svg" alt='' width={24} height={24} loading='lazy' aria-hidden="true" />
+                            <Image src="/footer/linkedinIcon.svg" alt='linkedin Icon' width={24} height={24} loading='lazy' aria-hidden="true" />
                         </a>
                     </div>
                 </div>
