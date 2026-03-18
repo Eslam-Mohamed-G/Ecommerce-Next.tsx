@@ -6,12 +6,6 @@ import ProductCard from '@/src/components/features/ProductCard/ProductCard';
 import { useGetProducts } from '@/src/context/GetProductsContext';
 import { Product } from '@/src/types';
 import React, { useEffect, useState } from 'react'
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-    title: 'Products | E-Commerce Store',
-    description: 'Browse our extensive catalog of products, filter by categories and prices, and find what you need.',
-};
 
 export default function page() {
     const { loading, productError, products, fetchProducts } = useGetProducts();
