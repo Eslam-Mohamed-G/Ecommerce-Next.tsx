@@ -1,7 +1,12 @@
 import React from 'react';
 import Image from 'next/image'
 import Breadcrumb from '@/src/components/common/Breadcrumb/Breadcrumb';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+    title: 'About Us | E-Commerce Store',
+    description: 'Learn more about our E-Commerce Store, our story, and our commitment to bringing you the best products.',
+};
 export default function page() {
     return (
         <section className='relative'>
