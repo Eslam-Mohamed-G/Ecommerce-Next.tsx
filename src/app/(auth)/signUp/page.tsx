@@ -4,7 +4,12 @@ import SingUpForm from '@/src/components/SignUpForm/SignUpForm';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+    title: 'Sign Up | E-Commerce Store',
+    description: 'Create an account to track orders, save items to your wishlist, and enjoy a seamless shopping experience.',
+};
 
 export default function page() {
 
