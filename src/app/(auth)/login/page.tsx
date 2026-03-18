@@ -1,7 +1,12 @@
 import LoginForm from '@/src/components/LoginForm/LoginForm'
 import Image from 'next/image'
 import React from 'react'
+import { Metadata } from 'next';
 
+export const metadata: Metadata = {
+    title: 'Login | E-Commerce Store',
+    description: 'Log in to your account to access your orders, wishlist, and exclusive deals.',
+};
 export default function page() {
     return (
         <section className='xl:max-w-7xl lg:max-w-5xl max:h-dvh m-auto flex flex-row items-center justify-start'>
