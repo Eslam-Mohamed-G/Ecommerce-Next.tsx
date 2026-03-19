@@ -39,6 +39,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 priority: route === '' ? 1.0 : 0.8,
             })
         );
+        
+        // Merge static and dynamic routes into one sitemap
+        return [...routes, ...productEntries];
     } catch (error) {
         
     }
