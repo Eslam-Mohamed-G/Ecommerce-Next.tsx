@@ -25,6 +25,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             // Priority for search engines (0.0 - 1.0)
             priority: 0.8,
         }));
+
+        // Define static routes of the application
+        const routes = ['', '/about', '/contact', '/products', '/login', '/signUp'].map(
+            (route) => ({
+                // Construct full URL for each static route
+                url: `${baseUrl}${route}`,
+                // Mark last updated time
+                lastModified: new Date(),
+                // Static pages are updated more frequently
+                changeFrequency: 'daily' as const,
+                // Homepage gets highest priority
+                priority: route === '' ? 1.0 : 0.8,
+            })
+        );
     } catch (error) {
         
     }
