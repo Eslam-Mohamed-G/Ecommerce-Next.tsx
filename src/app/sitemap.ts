@@ -10,6 +10,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const productsRes = await productService.getAllProducts({ limit: 1000 });
         // Extract product data safely
         const products = productsRes.data || [];
+
+        // Create sitemap entries for dynamic product pages
+        const productEntries: MetadataRoute.Sitemap = products.map((product) => ({
+            // Generate product URL using id or _id
+            url: `${baseUrl}/products/${product.id || product._id}`,
+
+            // Last modification date (current time)
+            lastModified: new Date(),
+
+            // Frequency of content updates
+            changeFrequency: 'weekly' as const,
+
+            // Priority for search engines (0.0 - 1.0)
+            priority: 0.8,
+        }));
     } catch (error) {
         
     }
