@@ -39,10 +39,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
                 priority: route === '' ? 1.0 : 0.8,
             })
         );
-        
+
         // Merge static and dynamic routes into one sitemap
         return [...routes, ...productEntries];
     } catch (error) {
-        
+        console.error('Error generating sitemap:', error);
+        // Fallback: return only homepage
+        return [{
+            url: baseUrl,
+            lastModified: new Date(),
+            changeFrequency: 'daily' as const,
+            priority: 1.0,
+        }]
     }
 }
